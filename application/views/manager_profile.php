@@ -2,7 +2,7 @@
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>Edulink IMS</title>            
+        <title>TITLE</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,10 +11,8 @@
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->        
-         <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/css/theme-default.css'); ?>">
-         
-          
-        <!-- EOF CSS INCLUDE -->                                    
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/css/theme-default.css'); ?>"> 
+        <!-- EOF CSS INCLUDE -->
     </head>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -25,157 +23,13 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Edulink IMS</a>
+                        <a href="index.html">Joli Admin</a>
                         <a href="#" class="x-navigation-control"></a>
-                    </li>
-                    <li class="xn-profile">
-                        <a href="#" class="profile-mini">
-                            <img src="<?php echo base_url();?>public/assets/images/users/user3.jpg" alt="John Doe"/>
-                        </a>
-                        <div class="profile">
-                            <div class="profile-image">
-                                <img src="<?php echo base_url();?>public/assets/images/users/user3.jpg" alt="John Doe"/>
-                            </div>
-                            <div class="profile-data">
-                                <div class="profile-data-name">Name</div>
-                                <div class="profile-data-title">Designation</div>
-                            </div>
-                            <div class="profile-controls">
-                                <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
-                            </div>
-                        </div>                                                                        
-                    </li>
-                    <li class="xn-title">Menu</li>
-                    <li class="active">
-                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Home</span></a>                        
-                    </li>                    
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Inquiries</span></a>
-                        <ul>
-                            <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
-                            <li><a href="pages-profile.html"><span class="fa fa-user"></span> Profile</a></li>
-                            <li><a href="pages-address-book.html"><span class="fa fa-users"></span> Address Book</a></li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-clock-o"></span> Timeline</a>
-                                <ul>
-                                    <li><a href="pages-timeline.html"><span class="fa fa-align-center"></span> Default</a></li>
-                                    <li><a href="pages-timeline-simple.html"><span class="fa fa-align-justify"></span> Full Width</a></li>
-                                </ul>
-                            </li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-envelope"></span> Mailbox</a>
-                                <ul>
-                                    <li><a href="pages-mailbox-inbox.html"><span class="fa fa-inbox"></span> Inbox</a></li>
-                                    <li><a href="pages-mailbox-message.html"><span class="fa fa-file-text"></span> Message</a></li>
-                                    <li><a href="pages-mailbox-compose.html"><span class="fa fa-pencil"></span> Compose</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="pages-messages.html"><span class="fa fa-comments"></span> Messages</a></li>
-                            <li><a href="pages-calendar.html"><span class="fa fa-calendar"></span> Calendar</a></li>
-                            <li><a href="pages-tasks.html"><span class="fa fa-edit"></span> Tasks</a></li>
-                            <li><a href="pages-content-table.html"><span class="fa fa-columns"></span> Content Table</a></li>
-                            <li><a href="pages-faq.html"><span class="fa fa-question-circle"></span> FAQ</a></li>
-                            <li><a href="pages-search.html"><span class="fa fa-search"></span> Search</a></li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-file"></span> Blog</a>
-                                
-                                <ul>                                    
-                                    <li><a href="pages-blog-list.html"><span class="fa fa-copy"></span> List of Posts</a></li>
-                                    <li><a href="pages-blog-post.html"><span class="fa fa-file-o"></span>Single Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-sign-in"></span> Login</a>
-                                <ul>                                    
-                                    <li><a href="pages-login.html">App Login</a></li>
-                                    <li><a href="pages-login-website.html">Website Login</a></li>
-                                    <li><a href="pages-login-website-light.html"> Website Login Light</a></li>
-                                </ul>
-                            </li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-warning"></span> Error Pages</a>
-                                <ul>                                    
-                                    <li><a href="pages-error-404.html">Error 404 Sample 1</a></li>
-                                    <li><a href="pages-error-404-2.html">Error 404 Sample 2</a></li>
-                                    <li><a href="pages-error-500.html"> Error 500</a></li>
-                                </ul>
-                            </li>                            
-                        </ul>
-                    </li>
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Email/SMS</span></a>
-                        <ul>
-                            <li><a href="layout-boxed.html">Boxed</a></li>
-                            <li><a href="layout-nav-toggled.html">Navigation Toggled</a></li>
-                            <li><a href="layout-nav-top.html">Navigation Top</a></li>
-                            <li><a href="layout-nav-right.html">Navigation Right</a></li>
-                            <li><a href="layout-nav-top-fixed.html">Top Navigation Fixed</a></li>                            
-                            <li><a href="layout-nav-custom.html">Custom Navigation</a></li>
-                            <li><a href="layout-frame-left.html">Frame Left Column</a></li>
-                            <li><a href="layout-frame-right.html">Frame Right Column</a></li>
-                            <li><a href="layout-search-left.html">Search Left Side</a></li>
-                            <li><a href="blank.html">Blank Page</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="xn-openable">
-                        <a href="tables.html"><span class="fa fa-table"></span> <span class="xn-text">Admissions</span></a>
-                        <ul>                            
-                            <li><a href="table-basic.html"><span class="fa fa-align-justify"></span> Basic</a></li>
-                            <li><a href="table-datatables.html"><span class="fa fa-sort-alpha-desc"></span> Data Tables</a></li>
-                            <li><a href="table-export.html"><span class="fa fa-download"></span> Export Tables</a></li>                            
-                        </ul>
-                    </li>
-
-                    <li class="xn-openable">
-                        <a href="tables.html"><span class="fa fa-table"></span> <span class="xn-text">Student Profiles</span></a>
-                        
-                    </li>
-
-                    <li class="xn-openable">
-                        <a href= "<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-table"></span> <span class="xn-text">Settings</span></a>
-                        
-                    </li>
-
-                    <li class="xn-title">Administration</li>
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">Targets</span></a>                        
-                        <ul>
-                            <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>                            
-                            <li><a href="ui-elements.html"><span class="fa fa-cogs"></span> Elements</a></li>
-                            <li><a href="ui-buttons.html"><span class="fa fa-square-o"></span> Buttons</a></li>                            
-                            <li><a href="ui-panels.html"><span class="fa fa-pencil-square-o"></span> Panels</a></li>
-                            <li><a href="ui-icons.html"><span class="fa fa-magic"></span> Icons</a><div class="informer informer-warning">+679</div></li>
-                            <li><a href="ui-typography.html"><span class="fa fa-pencil"></span> Typography</a></li>
-                            <li><a href="ui-portlet.html"><span class="fa fa-th"></span> Portlet</a></li>
-                            <li><a href="ui-sliders.html"><span class="fa fa-arrows-h"></span> Sliders</a></li>
-                            <li><a href="ui-alerts-popups.html"><span class="fa fa-warning"></span> Alerts & Popups</a></li>                            
-                            <li><a href="ui-lists.html"><span class="fa fa-list-ul"></span> Lists</a></li>
-                            <li><a href="ui-tour.html"><span class="fa fa-random"></span> Tour</a></li>
-                        </ul>
-                    </li>                    
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Reports</span></a>
-                        <ul>
-                            <li>
-                                <a href="form-layouts-two-column.html"><span class="fa fa-tasks"></span> Form Layouts</a>
-                                <div class="informer informer-danger">New</div>
-                                <ul>
-                                    <li><a href="form-layouts-one-column.html"><span class="fa fa-align-justify"></span> One Column</a></li>
-                                    <li><a href="form-layouts-two-column.html"><span class="fa fa-th-large"></span> Two Column</a></li>
-                                    <li><a href="form-layouts-tabbed.html"><span class="fa fa-table"></span> Tabbed</a></li>
-                                    <li><a href="form-layouts-separated.html"><span class="fa fa-th-list"></span> Separated Rows</a></li>
-                                </ul> 
-                            </li>
-                            <li><a href="form-elements.html"><span class="fa fa-file-text-o"></span> Elements</a></li>
-                            <li><a href="form-validation.html"><span class="fa fa-list-alt"></span> Validation</a></li>
-                            <li><a href="form-wizards.html"><span class="fa fa-arrow-right"></span> Wizards</a></li>
-                            <li><a href="form-editors.html"><span class="fa fa-text-width"></span> WYSIWYG Editors</a></li>
-                            <li><a href="form-file-handling.html"><span class="fa fa-floppy-o"></span> File Handling</a></li>
-                        </ul>
-                    </li>
-                    
+                    </li>                                                                      
+                    <li class="xn-title">Navigation</li>
+                    <li>
+                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+                    </li>                                        
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
@@ -190,289 +44,41 @@
                     <li class="xn-icon-button">
                         <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
                     </li>
-                    <!-- END TOGGLE NAVIGATION -->
-                    <!-- SEARCH -->
-                    <li class="xn-search">
-                        <form role="form">
-                            <input type="text" name="search" placeholder="Search..."/>
-                        </form>
-                    </li>   
-                    <!-- END SEARCH -->
-                    <!-- SIGN OUT -->
-                    <li class="xn-icon-button pull-right">
-                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
-                    </li> 
-                    <!-- END SIGN OUT -->
-                    <!-- MESSAGES -->
-                    <li class="xn-icon-button pull-right">
-                        <a href="#"><span class="fa fa-comments"></span></a>
-                        <div class="informer informer-danger">4</div>
-                        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>                                
-                                <div class="pull-right">
-                                    <span class="label label-danger">4 new</span>
-                                </div>
-                            </div>
-                            <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
-                                <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-online"></div>
-                                    <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/>
-                                    <span class="contacts-title">John Doe</span>
-                                    <p>Praesent placerat tellus id augue condimentum</p>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-away"></div>
-                                    <img src="assets/images/users/user.jpg" class="pull-left" alt="Dmitry Ivaniuk"/>
-                                    <span class="contacts-title">Dmitry Ivaniuk</span>
-                                    <p>Donec risus sapien, sagittis et magna quis</p>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-away"></div>
-                                    <img src="assets/images/users/user3.jpg" class="pull-left" alt="Nadia Ali"/>
-                                    <span class="contacts-title">Nadia Ali</span>
-                                    <p>Mauris vel eros ut nunc rhoncus cursus sed</p>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-offline"></div>
-                                    <img src="assets/images/users/user6.jpg" class="pull-left" alt="Darth Vader"/>
-                                    <span class="contacts-title">Darth Vader</span>
-                                    <p>I want my money back!</p>
-                                </a>
-                            </div>     
-                            <div class="panel-footer text-center">
-                                <a href="pages-messages.html">Show all messages</a>
-                            </div>                            
-                        </div>                        
-                    </li>
-                    <!-- END MESSAGES -->
-                    <!-- TASKS -->
-                    <li class="xn-icon-button pull-right">
-                        <a href="#"><span class="fa fa-tasks"></span></a>
-                        <div class="informer informer-warning">3</div>
-                        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>                                
-                                <div class="pull-right">
-                                    <span class="label label-warning">3 active</span>
-                                </div>
-                            </div>
-                            <div class="panel-body list-group scroll" style="height: 200px;">                                
-                                <a class="list-group-item" href="#">
-                                    <strong>Phasellus augue arcu, elementum</strong>
-                                    <div class="progress progress-small progress-striped active">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
-                                    </div>
-                                    <small class="text-muted">John Doe, 25 Sep 2014 / 50%</small>
-                                </a>
-                                <a class="list-group-item" href="#">
-                                    <strong>Aenean ac cursus</strong>
-                                    <div class="progress progress-small progress-striped active">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
-                                    </div>
-                                    <small class="text-muted">Dmitry Ivaniuk, 24 Sep 2014 / 80%</small>
-                                </a>
-                                <a class="list-group-item" href="#">
-                                    <strong>Lorem ipsum dolor</strong>
-                                    <div class="progress progress-small progress-striped active">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">95%</div>
-                                    </div>
-                                    <small class="text-muted">John Doe, 23 Sep 2014 / 95%</small>
-                                </a>
-                                <a class="list-group-item" href="#">
-                                    <strong>Cras suscipit ac quam at tincidunt.</strong>
-                                    <div class="progress progress-small">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
-                                    </div>
-                                    <small class="text-muted">John Doe, 21 Sep 2014 /</small><small class="text-success"> Done</small>
-                                </a>                                
-                            </div>     
-                            <div class="panel-footer text-center">
-                                <a href="pages-tasks.html">Show all tasks</a>
-                            </div>                            
-                        </div>                        
-                    </li>
-                    <!-- END TASKS -->
+                    <!-- END TOGGLE NAVIGATION -->                    
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                     
-
+                
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
-                    <li class="active"></li>
+                    <li><a href="#">Link</a></li>                    
+                    <li class="active">Active</li>
                 </ul>
-                <!-- END BREADCRUMB -->                       
+                <!-- END BREADCRUMB -->                
+                
+                <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Page Title</h2>
+                </div>                   
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-                    
-                   <div class="col-md-1">
-                        
-                    </div>               
-                    <div class="col-md-3" id="left_division">
-                      
-                            <h2> Activity Summary</h2><br><br>
-                            
-                                     
-                            <table border="0" >
-                                        
-                                        <tr class="spaceUnder">
-                                            <td id="table_font"  width="20%"><h3><span class="label label-default">Pending</span></h3></td> 
-                                            <td width="10%">
-                                            </td>
-                                            <td>
-                                            <h4>10</h4>
-                                            </td>
-                                        </tr>
-                                        <tr ></tr>
-                                         <tr class="spaceUnder">
-                                            <td id="table_font"  width="20%"><h3><span class="label label-default">Following</span></h3></td> 
-                                            <td width="10%">
-                                            </td>
-                                            <td>
-                                            <h4>4</h4>
-                                            </td>
-                                        </tr>
-                                        <tr></tr>
-                                         <tr class="spaceUnder">
-                                            <td id="table_font"  width="20%"><h3><span class="label label-default">Complete</span></h3></td> 
-                                            <td width="10%">
-                                            </td>
-                                            <td>
-                                            <h4>6</h4>
-                                            </td>
-                                        </tr>
-                                        
-                                        
-                                    </table>            
-                    </div>
-                    <div class="col-md-7" >
-                    
-                        
-                        
-                           
-                                <div id="alert_holder"></div>
-                                <div class="calendar">                                
-                                    <div id="calendar"></div>                            
-                                </div>
-                           
-                        
-                        
-                   
-                    
-                    <div class="col-md-1"></div>                
-                    
-                    
+                
                     <div class="row">
-                        <div class="col-md-8">
-                            
-                            <!-- START SALES BLOCK 
+                        <div class="col-md-12">
+
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <div class="panel-title-box">
-                                        <h3>Sales</h3>
-                                        <span>Sales activity by period you selected</span>
-                                    </div>                                     
-                                    <ul class="panel-controls panel-controls-title">                                        
-                                        <li>
-                                            <div id="reportrange" class="dtrange">                                            
-                                                <span></span><b class="caret"></b>
-                                            </div>                                     
-                                        </li>                                
-                                        <li><a href="#" class="panel-fullscreen rounded"><span class="fa fa-expand"></span></a></li>
-                                    </ul>                                    
-                                    
+                                    <h3 class="panel-title">Panel Title</h3>
                                 </div>
-                                <div class="panel-body">                                    
-                                    <div class="row stacked">
-                                        <div class="col-md-4">                                            
-                                            <div class="progress-list">                                               
-                                                <div class="pull-left"><strong>In Queue</strong></div>
-                                                <div class="pull-right">75%</div>                                                
-                                                <div class="progress progress-small progress-striped active">
-                                                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%</div>
-                                                </div>
-                                            </div>
-                                            <div class="progress-list">                                               
-                                                <div class="pull-left"><strong>Shipped Products</strong></div>
-                                                <div class="pull-right">450/500</div>                                                
-                                                <div class="progress progress-small progress-striped active">
-                                                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">90%</div>
-                                                </div>
-                                            </div>
-                                            <div class="progress-list">                                               
-                                                <div class="pull-left"><strong class="text-danger">Returned Products</strong></div>
-                                                <div class="pull-right">25/500</div>                                                
-                                                <div class="progress progress-small progress-striped active">
-                                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">5%</div>
-                                                </div>
-                                            </div>
-                                            <div class="progress-list">                                               
-                                                <div class="pull-left"><strong class="text-warning">Progress Today</strong></div>
-                                                <div class="pull-right">75/150</div>                                                
-                                                <div class="progress progress-small progress-striped active">
-                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
-                                                </div>
-                                            </div>
-                                            <p><span class="fa fa-warning"></span> Data update in end of each hour. You can update it manual by pressign update button</p>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div id="dashboard-map-seles" style="width: 100%; height: 200px"></div>
-                                        </div>
-                                    </div>                                    
+                                <div class="panel-body">
+                                    Panel body
                                 </div>
                             </div>
-                             END SALES BLOCK -->
-                            
-                        </div>
-                        <div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-content">
-                                <ul class="list-inline item-details">
-                                    <li><a href="http://themifycloud.com/downloads/janux-premium-responsive-bootstrap-admin-dashboard-template/">Admin templates</a></li>
-                                    <li><a href="http://themescloud.org">Bootstrap themes</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4">
-                            
-                            <!-- START SALES & EVENTS BLOCK 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-title-box">
-                                        <h3>Sales & Event</h3>
-                                        <span>Event "Purchase Button"</span>
-                                    </div>
-                                    <ul class="panel-controls" style="margin-top: 2px;">
-                                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>                                        
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
-                                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
-                                            </ul>                                        
-                                        </li>                                        
-                                    </ul>
-                                </div>
-                                <div class="panel-body padding-0">
-                                    <div class="chart-holder" id="dashboard-line-1" style="height: 200px;"></div>
-                                </div>
-                            </div>
-                             END SALES & EVENTS BLOCK -->
-                            
+
                         </div>
                     </div>
-                    
-                    <!-- START DASHBOARD CHART 
-                    <div class="chart-holder" id="dashboard-area-1" style="height: 200px;"></div>
-                    <div class="block-full-width">
-                                                                       
-                    </div>                    
-                     END DASHBOARD CHART -->
-                    
+                
                 </div>
-                <!-- END PAGE CONTENT WRAPPER -->                                
+                <!-- END PAGE CONTENT WRAPPER -->                
             </div>            
             <!-- END PAGE CONTENT -->
         </div>
@@ -501,49 +107,22 @@
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
         <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->
-
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery-ui.min.js"></script>
-          <!-- START THIS PAGE PLUGINS calendar-->        
-        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js'></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        <!-- END PRELOADS -->                 
         
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/moment.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/fullcalendar/fullcalendar.min.js"></script>
-        <!-- END THIS PAGE PLUGINS-->         
-
+    <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
-        
-        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap.min.js"></script>        
+        <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>        
         <!-- END PLUGINS -->
 
-        <!-- START THIS PAGE PLUGINS-->        
-        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js'></script>        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/scrolltotop/scrolltopcontrol.js"></script>
-        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/morris/raphael-min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/morris/morris.min.js"></script>       
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/rickshaw/d3.v3.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/rickshaw/rickshaw.min.js"></script>
-        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
-        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>                
-        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap-datepicker.js'></script>                
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/owl/owl.carousel.min.js"></script>                 
-        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/moment.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/daterangepicker/daterangepicker.js"></script>
-        <!-- END THIS PAGE PLUGINS-->        
+        <!-- THIS PAGE PLUGINS -->
+
+        <!-- END PAGE PLUGINS -->         
 
         <!-- START TEMPLATE -->
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/settings.js"></script>
-        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script>
-        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/demo_dashboard.js"></script>
+        <script type="text/javascript" src="js/plugins.js"></script>        
+        <script type="text/javascript" src="js/actions.js"></script>        
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->         
     </body>

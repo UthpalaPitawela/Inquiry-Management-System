@@ -52,4 +52,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'login_controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['Manager_Settings_Controller'] = 'Manager_Settings_Controller/index';

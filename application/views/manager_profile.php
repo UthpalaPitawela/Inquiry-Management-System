@@ -305,48 +305,63 @@
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-                    
-                   <div class="col-md-1">
-                        
-                    </div>               
-                    <div class="col-md-3" id="left_division">
-                      
-                            <h2> Activity Summary</h2><br><br>
+                              
+                    <div class="col-md-6">
+                        <div class="row">
+                        <!--This is the activity summary section-->
+                            <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Activity Summary</h3>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                                80% Pending
+                                            </div>
+                                        </div>
+
+                                         <div class="progress">
+                                            <div class="progress-bar progress-bar-colorful" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                                75% Following
+                                            </div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                                60% Complete
+                                            </div>
+                                        </div>
+                                        
                             
-                                     
-                            <table border="0" >
                                         
-                                        <tr class="spaceUnder">
-                                            <td id="table_font"  width="20%"><h3><span class="label label-default">Pending</span></h3></td> 
-                                            <td width="10%">
-                                            </td>
-                                            <td>
-                                            <h4>10</h4>
-                                            </td>
-                                        </tr>
-                                        <tr ></tr>
-                                         <tr class="spaceUnder">
-                                            <td id="table_font"  width="20%"><h3><span class="label label-default">Following</span></h3></td> 
-                                            <td width="10%">
-                                            </td>
-                                            <td>
-                                            <h4>4</h4>
-                                            </td>
-                                        </tr>
-                                        <tr></tr>
-                                         <tr class="spaceUnder">
-                                            <td id="table_font"  width="20%"><h3><span class="label label-default">Complete</span></h3></td> 
-                                            <td width="10%">
-                                            </td>
-                                            <td>
-                                            <h4>6</h4>
-                                            </td>
-                                        </tr>
-                                        
-                                        
-                                    </table>            
+                                       
+                                                                   
+                                    </div>                            
+                            </div>
+                        </div>
+
+                        <div class="row">
+                              
+                            <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Target</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                    <!--This is the target section-->
+                                        <div class="list-group border-bottom push-down-20">
+                                            <a href="#" class="list-group-item active">Month(November)</a>
+                                            <a href="#" class="list-group-item">Total Target<span class="badge badge-success">30</span></a>
+                                            <a href="#" class="list-group-item">Completed <span class="badge badge-danger">5</span></a>
+                                            
+                                        </div> 
+                                       
+                                    </div>                            
+                            </div>
+                      
+                        </div>
+                                      
                     </div>
-                    <div class="col-md-7" >
+                    <div class="col-md-5" >
                     
                         
                         
@@ -359,72 +374,12 @@
                         
                         
                    
-                    
+                    </div>
                     <div class="col-md-1"></div>                
                     
                     
                     <div class="row">
-                        <div class="col-md-8">
-                            
-                            <!-- START SALES BLOCK 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-title-box">
-                                        <h3>Sales</h3>
-                                        <span>Sales activity by period you selected</span>
-                                    </div>                                     
-                                    <ul class="panel-controls panel-controls-title">                                        
-                                        <li>
-                                            <div id="reportrange" class="dtrange">                                            
-                                                <span></span><b class="caret"></b>
-                                            </div>                                     
-                                        </li>                                
-                                        <li><a href="#" class="panel-fullscreen rounded"><span class="fa fa-expand"></span></a></li>
-                                    </ul>                                    
-                                    
-                                </div>
-                                <div class="panel-body">                                    
-                                    <div class="row stacked">
-                                        <div class="col-md-4">                                            
-                                            <div class="progress-list">                                               
-                                                <div class="pull-left"><strong>In Queue</strong></div>
-                                                <div class="pull-right">75%</div>                                                
-                                                <div class="progress progress-small progress-striped active">
-                                                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%</div>
-                                                </div>
-                                            </div>
-                                            <div class="progress-list">                                               
-                                                <div class="pull-left"><strong>Shipped Products</strong></div>
-                                                <div class="pull-right">450/500</div>                                                
-                                                <div class="progress progress-small progress-striped active">
-                                                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">90%</div>
-                                                </div>
-                                            </div>
-                                            <div class="progress-list">                                               
-                                                <div class="pull-left"><strong class="text-danger">Returned Products</strong></div>
-                                                <div class="pull-right">25/500</div>                                                
-                                                <div class="progress progress-small progress-striped active">
-                                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">5%</div>
-                                                </div>
-                                            </div>
-                                            <div class="progress-list">                                               
-                                                <div class="pull-left"><strong class="text-warning">Progress Today</strong></div>
-                                                <div class="pull-right">75/150</div>                                                
-                                                <div class="progress progress-small progress-striped active">
-                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
-                                                </div>
-                                            </div>
-                                            <p><span class="fa fa-warning"></span> Data update in end of each hour. You can update it manual by pressign update button</p>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div id="dashboard-map-seles" style="width: 100%; height: 200px"></div>
-                                        </div>
-                                    </div>                                    
-                                </div>
-                            </div>
-                             END SALES BLOCK -->
-                            
-                        </div>
+                       
                         <div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-content">
                                 <ul class="list-inline item-details">
@@ -434,34 +389,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-4">
-                            
-                            <!-- START SALES & EVENTS BLOCK 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-title-box">
-                                        <h3>Sales & Event</h3>
-                                        <span>Event "Purchase Button"</span>
-                                    </div>
-                                    <ul class="panel-controls" style="margin-top: 2px;">
-                                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>                                        
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
-                                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
-                                            </ul>                                        
-                                        </li>                                        
-                                    </ul>
-                                </div>
-                                <div class="panel-body padding-0">
-                                    <div class="chart-holder" id="dashboard-line-1" style="height: 200px;"></div>
-                                </div>
-                            </div>
-                             END SALES & EVENTS BLOCK -->
-                            
-                        </div>
+                      
                     </div>
                     
                     <!-- START DASHBOARD CHART 
@@ -505,6 +433,11 @@
 
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery-ui.min.js"></script>
+         <!-- START PLUGINS -->
+        
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap.min.js"></script>        
+        <!-- END PLUGINS -->
           <!-- START THIS PAGE PLUGINS calendar-->        
         <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
@@ -513,7 +446,7 @@
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/fullcalendar/fullcalendar.min.js"></script>
         <!-- END THIS PAGE PLUGINS-->         
 
-        <!-- START PLUGINS -->
+        <!-- START PLUGINS progress bars -->
         
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap.min.js"></script>        
@@ -535,7 +468,16 @@
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/moment.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/daterangepicker/daterangepicker.js"></script>
-        <!-- END THIS PAGE PLUGINS-->        
+        <!-- END THIS PAGE PLUGINS-->    
+
+        <!-- START THIS PAGE PLUGINS  targets-->        
+        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js'></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/dropzone/dropzone.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js"></script>
+        <!-- END THIS PAGE PLUGINS-->    
 
         <!-- START TEMPLATE -->
         <script type="text/javascript" src="<?php echo base_url();?>public/js/settings.js"></script>

@@ -32,7 +32,7 @@ $this->load->model("login_model");
         	$this->session->set_userdata($data);*/
 
     	} else {
-    		echo "vwrv";
+    		echo "Check login details";
         	/*$this->form_validation->set_message('validate_user', $this->lang->line('error_login'));
         return false;*/
     }

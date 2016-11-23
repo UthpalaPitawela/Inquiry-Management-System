@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '127.0.0.1',
-	'username' => 'root',
-	'password' => '123',
+	'hostname' => 'br-cdbr-azure-south-b.cloudapp.net',
+	'username' => 'b658d4e90a843b',
+	'password' => '844ccd07',
 	'database' => 'edulink',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

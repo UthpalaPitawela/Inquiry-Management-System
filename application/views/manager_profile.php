@@ -309,43 +309,7 @@
                    <div class="col-md-1">
                         
                     </div>               
-                    <div class="col-md-3" id="left_division">
-                      
-                            <h2> Activity Summary</h2><br><br>
-                            
-                                     
-                            <table border="0" >
-                                        
-                                        <tr class="spaceUnder">
-                                            <td id="table_font"  width="20%"><h3><span class="label label-default">Pending</span></h3></td> 
-                                            <td width="10%">
-                                            </td>
-                                            <td>
-                                            <h4>10</h4>
-                                            </td>
-                                        </tr>
-                                        <tr ></tr>
-                                         <tr class="spaceUnder">
-                                            <td id="table_font"  width="20%"><h3><span class="label label-default">Following</span></h3></td> 
-                                            <td width="10%">
-                                            </td>
-                                            <td>
-                                            <h4>4</h4>
-                                            </td>
-                                        </tr>
-                                        <tr></tr>
-                                         <tr class="spaceUnder">
-                                            <td id="table_font"  width="20%"><h3><span class="label label-default">Complete</span></h3></td> 
-                                            <td width="10%">
-                                            </td>
-                                            <td>
-                                            <h4>6</h4>
-                                            </td>
-                                        </tr>
-                                        
-                                        
-                                    </table>            
-                    </div>
+               
                     <div class="col-md-7" >
                     
                         

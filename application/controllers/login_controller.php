@@ -26,6 +26,8 @@ $this->load->model("login_model");
         foreach ($result->result_array() as $row) {
 
             $_SESSION["first_username"]=$row['first_name'];
+             $_SESSION["user_ID"]=$row['u_id'];
+             $_SESSION["propic"]=$row['profilepicture'];
 
     	if ($row['status']==0) {
     		$this->load->view("manager_profile");

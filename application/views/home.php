@@ -30,19 +30,71 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Edulink</a>
+                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>">Edulink</a>
                         <a href="#" class="x-navigation-control"></a>
-                    </li>                                                                      
+                    </li>
+
+
+
+<?php
+
+$name=$_SESSION["first_username"];
+//$_SESSION['name'];
+$propic=$_SESSION["propic"];
+
+?>
+
+
+
+
+
+<li class="xn-profile">
+                       
+                        <div class="profile">
+                            <div class="profile-image">
+                                <img src='<?php echo base_url($propic); ?>' alt="No image">
+                            </div>
+                            <div class="profile-data">
+                                <div class="profile-data-name"><?php echo $name; ?></div>
+                                <div class="profile-data-title">Student</div>
+                            </div>
+                           
+                        </div>                                                                        
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <li class="xn-title">Navigation</li>
-                    <li>
+                    
                        
 
 
-
+<li>
   <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
+  </li>
+  <li>
   <a href="<?php echo site_url('page_controller/loadingpages/student_profile') ?>"><span class="fa fa-user"></span>  <span class="xn-text"> Profile</span> </a>
+  </li>
+  <li>
   <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-floppy-o"></span>  <span class="xn-text"> Upload results </span> </a>
+  </li>
+  <li>
   <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-envelope"></span>  <span class="xn-text"> Contact</span> </a>
+  </li>
                       <li class="xn-icon-button pull-right">
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> <span class="xn-text"> Logout</span></a>                        
                     </li> 
@@ -57,12 +109,6 @@
 
 
 
-
-
-<?php
-$name=$_SESSION["first_username"];
-//$_SESSION['name'];
-?>
 
 
 

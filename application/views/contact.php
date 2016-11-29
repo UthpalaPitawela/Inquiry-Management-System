@@ -34,11 +34,13 @@
                     <li>
      
 
-  <a href=" <?php echo site_url('page_controller/loadingpages/home') ?> "><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
-  <a href="profile.php"><span class="fa fa-desktop"></span>  <span class="xn-text"> Profile</span> </a>
-  <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Upload results </span> </a>
-  <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Contact</span> </a>
-   <a href="<?php echo site_url('login_controller../../../') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Logout</span> </a>
+ 
+  <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
+  <a href="<?php echo site_url('page_controller/loadingpages/student_profile') ?>"><span class="fa fa-user"></span>  <span class="xn-text"> Profile</span> </a>
+  <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-floppy-o"></span>  <span class="xn-text"> Upload results </span> </a>
+  <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-envelope"></span>  <span class="xn-text"> Contact</span> </a>
+  <a href="<?php echo site_url('login_controller../../../') ?>"><span class="fa fa-sign-out"></span>  <span class="xn-text"> Logout</span> </a>
+
 
 
 
@@ -93,7 +95,7 @@ $name=$_SESSION["first_username"];
 
                 
                 <div class="page-title">                    
-                    <h2><span class="fa fa-arrow-circle-o-left"></span>Contact Us</h2>
+                    <h2><span class="fa fa-envelope"></span>&nbspContact Us</h2>
                 </div>                   
                 
 
@@ -127,7 +129,7 @@ $name=$_SESSION["first_username"];
                         <div id="page-title">
 
                             </div>
-            <h2>Google Map</h2>            
+            <h2>Location</h2>            
             <div class="entry-content full-width-content" style="width:90% !important;">
                 <div id="street-map" style="box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25); padding: 0; margin: 0 0 30px 0; height: 300px;"><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9365705793143!2d79.85590599999996!3d6.898189999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25bdf63d3ebaf%3A0x9933be46f49b3e7!2sEdulink+International+Campus!5e0!3m2!1sen!2slk!4v1440058877955" width="100%" height="300" alt="Location of EDULINK in google map.Need Internet connection."frameborder="0"></iframe></div>
 

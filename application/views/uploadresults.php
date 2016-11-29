@@ -161,11 +161,14 @@ function checkSizeAssignment(upimage,i){
 
 
 
-  <a href="<?php echo site_url('page_controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
-  <a href="profile.php"><span class="fa fa-desktop"></span>  <span class="xn-text"> Profile</span> </a>
-  <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Upload results </span> </a>
-  <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Contact</span> </a>
-   <a href="<?php echo site_url('login_controller../../../') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Logout</span> </a>
+ 
+  <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
+  <a href="<?php echo site_url('page_controller/loadingpages/student_profile') ?>"><span class="fa fa-user"></span>  <span class="xn-text"> Profile</span> </a>
+  <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-floppy-o"></span>  <span class="xn-text"> Upload results </span> </a>
+  <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-envelope"></span>  <span class="xn-text"> Contact</span> </a>
+  <a href="<?php echo site_url('login_controller../../../') ?>"><span class="fa fa-sign-out"></span>  <span class="xn-text"> Logout</span> </a>
+
+
 <?php
 $name=$_SESSION["first_username"];
 //$_SESSION['name'];

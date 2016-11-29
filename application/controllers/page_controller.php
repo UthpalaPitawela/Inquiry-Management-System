@@ -34,6 +34,8 @@ $this->load->model("Results_model");
 }elseif ($page=='logout') {
 
     $this->load->view('login_view');
+}elseif($page=='student_profile'){
+    $this->load->view('student_profile');
 }
 
              }

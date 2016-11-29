@@ -14,83 +14,10 @@
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->       
-        <style> 
-       
-</style>
 
 
 
-
-
-    <!-- START SCRIPTS -->
-        <!-- START PLUGINS -->
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/css/jquery/jquery-ui.min.css"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap.min.js"></script>        
-        <!-- END PLUGINS -->
-        <!-- START THIS PAGE PLUGINS-->        
-        <script type='text/javascript' src="<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js"></script>        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/scrolltotop/scrolltopcontrol.js"></script>
-         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/morris/raphael-min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/morris/morris.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/rickshaw/d3.v3.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/rickshaw/rickshaw.min.js"></script>
-        <script type='text/javascript' src="<?php echo base_url();?>public/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-        <script type='text/javascript' src="<?php echo base_url();?>public/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>                
-        <script type='text/javascript' src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap-datepicker.js"></script>                
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/owl/owl.carousel.min.js"></script>                 
         
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/moment.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/daterangepicker/daterangepicker.js"></script>
-        <!-- END THIS PAGE PLUGINS-->        
-<!-- <script type="text/javascript" src="<?php echo base_url();?>public/js/settings.js"></script>
--->
-        <!-- START TEMPLATE -->
-        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>  
-   <!--       <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script> -->      
-            <!--    <script type="text/javascript" src="<?php echo base_url();?>public/js/demo_dashboard.js"></script> -->
-        <!-- END TEMPLATE -->
-    <!-- END SCRIPTS -->         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/bootstrap/css/bootstrap.css"> 
-       
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/theme-default.css">
-
-       
         
         <!-- EOF CSS INCLUDE -->
     </head>
@@ -113,10 +40,12 @@
 
 
   <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
-  <a href="profile.php"><span class="fa fa-desktop"></span>  <span class="xn-text"> Profile</span> </a>
-  <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Upload results </span> </a>
-  <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Contact</span> </a>
-  <a href="<?php echo site_url('login_controller../../../') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Logout</span> </a>
+  <a href="<?php echo site_url('page_controller/loadingpages/student_profile') ?>"><span class="fa fa-user"></span>  <span class="xn-text"> Profile</span> </a>
+  <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-floppy-o"></span>  <span class="xn-text"> Upload results </span> </a>
+  <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-envelope"></span>  <span class="xn-text"> Contact</span> </a>
+                      <li class="xn-icon-button pull-right">
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> <span class="xn-text"> Logout</span></a>                        
+                    </li> 
 
 
 
@@ -228,7 +157,7 @@ You can proceed to upload from <a href="<?php echo site_url('page_controller/loa
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+                            <a href="<?php echo site_url('login_controller../../../') ?>" class="btn btn-success btn-lg">Yes</a>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
@@ -238,7 +167,14 @@ You can proceed to upload from <a href="<?php echo site_url('page_controller/loa
         <!-- END MESSAGE BOX-->
 
         <!-- START PRELOADS -->
-        <!-- END PRELOADS -->                 
+        <!-- END PRELOADS -->     
+
+
+      <?php
+
+      include 'imports.php'
+      ?>
+
     </body>
 </html>
 

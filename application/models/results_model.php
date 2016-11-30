@@ -29,8 +29,8 @@ class Results_model extends CI_Model{
 
 
 
-  if (!file_exists('public/Assets/results/'.'1001')) {
-    mkdir('public/Assets/results/'.$user_Id, 0777, true);
+  if (!file_exists('public/assets/results/'.'1001')) {
+    mkdir('public/assets/results/'.$user_Id, 0777, true);
 }
 
  
@@ -40,32 +40,32 @@ class Results_model extends CI_Model{
 $link1=$link2=$link3=$link4=$link5='nolink';
 
 if(!empty($_FILES['file1']['name']) ) {
-        move_uploaded_file($_FILES["file1"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file1"]["name"]);
-        $link1='public/Assets/results/'.$user_Id.'/' . $_FILES["file1"]["name"];      
+        move_uploaded_file($_FILES["file1"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file1"]["name"]);
+        $link1='public/assets/results/'.$user_Id.'/' . $_FILES["file1"]["name"];      
 }
 
 if(!empty($_FILES['file2']['name'])){
 
-       move_uploaded_file($_FILES["file2"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file2"]["name"]);
-        $link2='public/Assets/results/'.$user_Id.'/' . $_FILES["file2"]["name"];            
+       move_uploaded_file($_FILES["file2"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file2"]["name"]);
+        $link2='public/assets/results/'.$user_Id.'/' . $_FILES["file2"]["name"];            
 }
 
 if(!empty($_FILES['file3']['name'])){
 
-        move_uploaded_file($_FILES["file3"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file3"]["name"]);
-        $link3='public/Assets/results/'.$user_Id.'/' . $_FILES["file3"]["name"];
+        move_uploaded_file($_FILES["file3"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file3"]["name"]);
+        $link3='public/assets/results/'.$user_Id.'/' . $_FILES["file3"]["name"];
 }
 
 if(!empty($_FILES['file4']['name'])){
  
-      move_uploaded_file($_FILES["file4"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file4"]["name"]);         
-        $link4='public/Assets/results/'.$user_Id .'/' . $_FILES["file4"]["name"];
+      move_uploaded_file($_FILES["file4"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file4"]["name"]);         
+        $link4='public/assets/results/'.$user_Id .'/' . $_FILES["file4"]["name"];
 }
 
 if(!empty($_FILES['file5']['name'])){
  
-      move_uploaded_file($_FILES["file5"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file5"]["name"]);         
-        $link5='public/Assets/results/'.$user_Id.'/' . $_FILES["file5"]["name"];
+      move_uploaded_file($_FILES["file5"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file5"]["name"]);         
+        $link5='public/assets/results/'.$user_Id.'/' . $_FILES["file5"]["name"];
 }
 
 
@@ -111,7 +111,7 @@ function rmdir_recursive($dir) {
 $deleteresult="DELETE FROM resultimages WHERE id='$user_Id'  "; 
 ?>
 <?php
-$this->rmdir_recursive('public/Assets/results/'.$user_Id);
+$this->rmdir_recursive('public/assets/results/'.$user_Id);
  return $this->db->query($deleteresult);
       
 
@@ -140,10 +140,10 @@ $this->rmdir_recursive('public/Assets/results/'.$user_Id);
 
 
 
-  if (!file_exists('public/Assets/results/'.'1001')) {
+  if (!file_exists('public/assets/results/'.'1001')) {
 
 
-    mkdir('public/Assets/results/'.$user_Id, 0777, true);
+    mkdir('public/assets/results/'.$user_Id, 0777, true);
 }
 
  
@@ -153,34 +153,34 @@ $this->rmdir_recursive('public/Assets/results/'.$user_Id);
 $link1=$link2=$link3=$link4=$link5='nolink';
 
 if(!empty($_FILES['file1']['name']) ) {
-        move_uploaded_file($_FILES["file1"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file1"]["name"]);
-        $link1='public/Assets/results/'.$user_Id.'/' . $_FILES["file1"]["name"];      
+        move_uploaded_file($_FILES["file1"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file1"]["name"]);
+        $link1='public/assets/results/'.$user_Id.'/' . $_FILES["file1"]["name"];      
 }
 
 if(!empty($_FILES['file2']['name'])){
 
-       move_uploaded_file($_FILES["file2"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file2"]["name"]);
-        $link2='public/Assets/results/'.$user_Id.'/' . $_FILES["file2"]["name"];            
+       move_uploaded_file($_FILES["file2"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file2"]["name"]);
+        $link2='public/assets/results/'.$user_Id.'/' . $_FILES["file2"]["name"];            
 }
 
 
 
 if(!empty($_FILES['file3']['name'])){
 
-        move_uploaded_file($_FILES["file3"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file3"]["name"]);
-        $link3='public/Assets/results/'.$user_Id.'/' . $_FILES["file3"]["name"];
+        move_uploaded_file($_FILES["file3"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file3"]["name"]);
+        $link3='public/assets/results/'.$user_Id.'/' . $_FILES["file3"]["name"];
 }
 
 if(!empty($_FILES['file4']['name'])){
  
-      move_uploaded_file($_FILES["file4"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file4"]["name"]);         
-        $link4='public/Assets/results/'.$user_Id .'/' . $_FILES["file4"]["name"];
+      move_uploaded_file($_FILES["file4"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file4"]["name"]);         
+        $link4='public/assets/results/'.$user_Id .'/' . $_FILES["file4"]["name"];
 }
 
 if(!empty($_FILES['file5']['name'])){
  
-      move_uploaded_file($_FILES["file5"]["tmp_name"],'public/Assets/results/'.$user_Id.'/'. $_FILES["file5"]["name"]);         
-        $link5='public/Assets/results/'.$user_Id.'/' . $_FILES["file5"]["name"];
+      move_uploaded_file($_FILES["file5"]["tmp_name"],'public/assets/results/'.$user_Id.'/'. $_FILES["file5"]["name"]);         
+        $link5='public/assets/results/'.$user_Id.'/' . $_FILES["file5"]["name"];
 }
 
 

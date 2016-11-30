@@ -41,6 +41,9 @@ $this->load->model("login_model");
     	}elseif ($row['status']==1) {
             $this->load->view('home');
         
+        }elseif ($row['status']==2) {
+            $this->load->view('Admission_Officer');
+        
         } else {
     		echo "vwrv";
         	/*$this->form_validation->set_message('validate_user', $this->lang->line('error_login'));

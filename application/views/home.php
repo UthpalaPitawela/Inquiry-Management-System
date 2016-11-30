@@ -83,7 +83,7 @@ $propic=$_SESSION["propic"];
                        
 
 
-<li>
+<li class="active">
   <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
   </li>
   <li>

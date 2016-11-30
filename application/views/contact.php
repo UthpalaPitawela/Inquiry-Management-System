@@ -84,7 +84,7 @@ $propic=$_SESSION["propic"];
   <li>
   <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-floppy-o"></span>  <span class="xn-text"> Upload results </span> </a>
   </li>
-  <li>
+  <li class="active">
   <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-envelope"></span>  <span class="xn-text"> Contact</span> </a>
   </li>
                       <li class="xn-icon-button pull-right">

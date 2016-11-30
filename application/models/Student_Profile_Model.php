@@ -18,10 +18,10 @@ class Student_Profile_Model extends CI_Model{
 
 
 
-  if (!file_exists('public/Assets/results/'.$user_Id.'/profilepic')) {
+  if (!file_exists('public/assets/results/'.$user_Id.'/profilepic')) {
 
 
-    mkdir('public/Assets/results/'.$user_Id.'/profilepic', 0777, true);
+    mkdir('public/assets/results/'.$user_Id.'/profilepic', 0777, true);
 }
 
  
@@ -31,8 +31,8 @@ class Student_Profile_Model extends CI_Model{
 $link1='nolink';
 
 if(!empty($_FILES['filename']['name']) ) {
-        move_uploaded_file($_FILES["filename"]["tmp_name"],'public/Assets/results/'.$user_Id.'/profilepic/'. $_FILES["filename"]["name"]);
-        $link1='public/Assets/results/'.$user_Id.'/profilepic/' . $_FILES["filename"]["name"];      
+        move_uploaded_file($_FILES["filename"]["tmp_name"],'public/assets/results/'.$user_Id.'/profilepic/'. $_FILES["filename"]["name"]);
+        $link1='public/assets/results/'.$user_Id.'/profilepic/' . $_FILES["filename"]["name"];      
 }
 
 

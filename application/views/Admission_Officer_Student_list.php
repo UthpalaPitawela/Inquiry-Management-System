@@ -15,6 +15,11 @@
           
         <!-- EOF CSS INCLUDE -->                                    
     </head>
+              <?php
+$name=$_SESSION["first_username"];
+$propic=$_SESSION["propic"];
+
+          ?>
     <body>
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
@@ -29,11 +34,11 @@
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
-                            <img src="<?php echo base_url();?>public/assets/images/users/user3.jpg" alt="John Doe"/>
+                            <img src="<?php echo base_url($propic);?>" alt="<?php echo $name." 's image";  ?>"/>
                         </a>
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?php echo base_url();?>public/assets/images/users/user3.jpg" alt="John Doe"/>
+                                <img src="<?php echo base_url($propic);?>" alt="<?php echo $name." 's image";  ?>"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name">Name</div>
@@ -213,7 +218,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
         <!-- END PAGE CONTAINER -->
 
       <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout" style="z-index: 1001 !important;">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>

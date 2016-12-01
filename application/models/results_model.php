@@ -2,7 +2,8 @@
 class Results_model extends CI_Model{
 	function load_results($user_Id){
 		
-
+		
+		$this->load->helper('url');	
 		$sql3 = "SELECT * FROM resultimages WHERE id='$user_Id'";
 
 		$resultquery = $this->db->query($sql3);

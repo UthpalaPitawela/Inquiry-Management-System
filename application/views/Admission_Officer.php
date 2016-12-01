@@ -33,11 +33,11 @@ $propic=$_SESSION["propic"];
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
-                            <img src="<?php echo base_url();?>public/assets/images/users/user3.jpg" alt="John Doe"/>
+                            <img src="<?php echo base_url($propic);?>" alt="<?php echo $name." 's image";  ?>"/>
                         </a>
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?php echo base_url();?>public/assets/images/users/user3.jpg" alt="John Doe"/>
+                                <img src="<?php echo base_url($propic);?>" alt="<?php echo $name." 's image";  ?>"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $name;  ?></div>

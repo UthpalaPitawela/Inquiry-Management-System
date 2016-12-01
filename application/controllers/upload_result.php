@@ -18,8 +18,7 @@ $this->load->model("Results_model");
 
     public function insert_Result(){
 
- $user_Id=1001;
-
+$user_Id=$_SESSION["user_ID"];
     $res = $this->Results_model->insert_Result($user_Id);
 
 
@@ -36,8 +35,8 @@ $this->load->model("Results_model");
 
     public function delete_Result(){
 
- $user_Id=1001;
-
+ 
+$user_Id=$_SESSION["user_ID"];
     $res = $this->Results_model->delete_Result($user_Id);
 
     if($res){
@@ -53,7 +52,7 @@ $this->load->model("Results_model");
 
     public function update_Result(){
 
- $user_Id=1001;
+ $user_Id=$_SESSION["user_ID"];
 
     $res = $this->Results_model->update_Result($user_Id);
 

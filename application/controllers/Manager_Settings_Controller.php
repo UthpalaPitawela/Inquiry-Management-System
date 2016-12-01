@@ -6,7 +6,7 @@ parent::__construct();
 }
  	public function index(){
  		
- 		$this->load->view("manager_setttings_view");
+ 		$this->load->view("Manager_Settings_View");
  	
  	}
  	public function changePassword(){
@@ -21,11 +21,11 @@ parent::__construct();
 
                 if ($this->form_validation->run() == FALSE)
                 {
-                        $this->load->view('manager_setttings_view');
+                        $this->load->view('Manager_Settings_View');
                 }
                 else
                 {
-                        $this->load->view('manager_setttings_view');
+                        $this->load->view('Manager_Settings_View');
                        // $username = manager;
     					$password = $this->input->post('newPwd');
 

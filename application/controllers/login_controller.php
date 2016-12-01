@@ -5,13 +5,13 @@
 function __construct() {
 
 parent::__construct();
-$this->load->model("login_model");
+$this->load->model("Login_Model");
 
 
 }
  	public function index(){
  		
- 		$this->load->view("login_view");
+ 		$this->load->view("Login_View");
  	
 
  	}
@@ -20,7 +20,7 @@ $this->load->model("login_model");
  		$username = $this->input->post('username');
     	$password = $this->input->post('password');
 
-    	$result = $this->login_model->check_login($username, $password);
+    	$result = $this->Login_Model->check_login($username, $password);
 
 
         foreach ($result->result_array() as $row) {
@@ -30,7 +30,7 @@ $this->load->model("login_model");
              $_SESSION["propic"]=$row['profilepicture'];
 
     	if ($row['status']==0) {
-    		$this->load->view("manager_profile");
+    		$this->load->view("Manager_Profile");
         	/*$data = array(
             	'is_logged' => true,
             	'username' => $this->input->post('username')

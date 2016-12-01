@@ -68,7 +68,7 @@
             <!-- END PAGE SIDEBAR -->
             
             <!-- PAGE CONTENT -->
-            <div class="page-content">
+            <div class="page-content" >
                 
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
@@ -98,9 +98,9 @@
                     <li class="active"></li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
-                
+                <div id='studiv'>
                 <!-- PAGE CONTENT WRAPPER -->
-                <div class="page-content-wrap">
+                <div class="page-content-wrap" >
                               
                     
 
@@ -127,7 +127,7 @@
 
                     <div class="panel panel-default">
                                 <div class="panel-heading">                                
-                                    <h3 class="panel-title">Default</h3>
+                                    <h3 class="panel-title">Student List</h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
                                         <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
@@ -160,7 +160,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                                                 <td><?php echo $studentrow['first_name']."  ".$studentrow['last_name'];?></td>
                                                 <td><?php echo $studentrow['email'];?></td>
                                                 <td><?php echo $studentrow['u_id'];?></td>
-                                                <td><a href=""><span class="fa fa-user"></span> View Profile</a></td>
+                                                <td><a href="javascript:selectStudent('<?php echo $studentrow['u_id'];?>')"><span class="fa fa-user"></span> View Profile</a></td>
                                                 </form>
                                             </tr>
 
@@ -204,7 +204,8 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                             
 
                 </div>
-                <!-- END PAGE CONTENT WRAPPER -->                                
+                <!-- END PAGE CONTENT WRAPPER -->    
+                </div>                            
             </div>            
             <!-- END PAGE CONTENT -->
         </div>
@@ -237,5 +238,40 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
 
       include 'imports.php'
       ?>
+
+
+
+
+
+
+
+
+      <script type="text/javascript">
+
+
+function selectStudent(s_Id,base_url){
+
+//alert("sdsdssds");
+
+$('#studiv').load('Welcome');
+//     $('#studentpage').load('base_url/Student_Data_Controller/loadingdetails/s_Id');
+/*
+    $.ajax({
+        type: "get",
+        url: "like_audio",
+        data: {
+            aId:aId
+        },
+        success: function (data){
+            alert(data);
+        },
+        error: function (xhr, ajaxOptions, thrownError){
+
+        }
+    });
+    return false;
+    */
+}
+     </script>
     </body>
 </html>

@@ -21,6 +21,8 @@ $this->load->model("Student_Data_Model");
     public function loadingpages(){
         $page=$this->uri->segment(3);
         $user_Id= $_SESSION["user_ID"];
+
+
         if($page=='uploadresults'){
       
  
@@ -29,7 +31,7 @@ $this->load->model("Student_Data_Model");
          $data['current_results'] = $this->Results_model->load_results($user_Id);
          $this->load->view('uploadresults',$data);
 }elseif ($page=='contact') {
-    
+
     $this->load->view('contact');
 }elseif ($page=='home') {
 

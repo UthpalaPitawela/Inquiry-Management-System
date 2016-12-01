@@ -12,7 +12,11 @@
         
         <!-- CSS INCLUDE -->        
                  
-          
+          <?php
+$name=$_SESSION["first_username"];
+$propic=$_SESSION["propic"];
+
+          ?>
         <!-- EOF CSS INCLUDE -->                                    
     </head>
     <body>
@@ -36,8 +40,8 @@
                                 <img src="<?php echo base_url();?>public/assets/images/users/user3.jpg" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">Name</div>
-                                <div class="profile-data-title">Designation</div>
+                                <div class="profile-data-name"><?php echo $name;  ?></div>
+                                <div class="profile-data-title">Admission Officer</div>
                             </div>
                             <div class="profile-controls">
                                 <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>

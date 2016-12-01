@@ -308,24 +308,24 @@
                         <div class="col-md-3"></div>
                         <div class="col-md-7">
                             
-                            <form class="form-horizontal">
-                                                            
+                            <form class="form-horizontal" role="form" method="post" action="<?php echo base_url('index.php/manager_settings_Controller/changePassword');?>">
+                           
                                 <div class="panel panel-default tabs"> 
                                     <div class="panel-body content">
                                         <div class="tab-pane active" id="tab-first">
                                             
-
+                                        
                                             <div class="form-group">
                                                 <label class="col-md-3 col-xs-12 control-label">Username</label>
                                                 <div class="col-md-6 col-xs-12">                
-                                                    <label>Manager</label>                                                 
+                                                    <label>manager</label>                                                 
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-3 col-xs-12 control-label">Change Password</label>
                                                 <div class="col-md-6 col-xs-12">                                            
-                                                    <input type="password" class="form-control" name="newPwd" />
+                                                    <input type="password" class="form-control" name="newPwd"/> <?php echo form_error('newPwd');?>
                                                 </div>
                                             </div>
 
@@ -333,6 +333,7 @@
                                                 <label class="col-md-3 col-xs-12 control-label">Confirm Password</label>
                                                 <div class="col-md-6 col-xs-12">                                            
                                                     <input type="password" class="form-control" name="newConfirmPwd" />
+                                                    <?php echo form_error('newConfirmPwd');?>
                                                 </div>
                                             </div>
 
@@ -343,7 +344,7 @@
                                       
                                     </div>
                                     <div class="panel-footer">                                                                        
-                                        <button class="btn btn-primary pull-right">Save Changes <span class="fa fa-floppy-o fa-right"></span></button>
+                                        <button class="btn btn-primary pull-right" value="Login form">Save Changes <span class="fa fa-floppy-o fa-right"></span></button>
                                     </div>
                                                                
                                 </div>

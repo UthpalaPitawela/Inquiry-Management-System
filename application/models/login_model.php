@@ -5,11 +5,7 @@ class Login_Model extends CI_Model{
 
 		$query = $this->db->query("SELECT status,first_name,u_id,profilepicture FROM user WHERE username= '$username' AND password = '$password'");
         return $query;
-        //if ($query->num_rows() > 0) {
-          //  return true;
-        //} else {
-          //  return false;
-        //}
+        
 	}
 }
 ?>

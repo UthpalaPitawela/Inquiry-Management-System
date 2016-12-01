@@ -329,6 +329,14 @@
                                                 </div>
                                             </div>
 
+                                             <div class="form-group">
+                                                <label class="col-md-3 col-xs-12 control-label">Confirm Password</label>
+                                                <div class="col-md-6 col-xs-12">                                            
+                                                    <input type="password" class="form-control" name="newConfirmPwd" />
+                                                </div>
+                                            </div>
+
+
 
                                         </div>
                                                                             
@@ -357,7 +365,18 @@
                                 <div class="panel-body">                                                                        
                                     
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Name</label>
+                                        <label class="col-md-3 col-xs-12 control-label"> First Name</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control"/>
+                                            </div>                                            
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Last Name</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>

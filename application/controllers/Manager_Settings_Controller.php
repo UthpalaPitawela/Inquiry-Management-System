@@ -40,6 +40,29 @@ parent::__construct();
                 }
  	}
 
+ 	public function addUser(){
+ 		$this->load->library('form_validation');
+
+        $this->form_validation->set_rules('fname', 'First Name', 'required');
+        $this->form_validation->set_rules('lname', 'Last Name', 'required');
+        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('addusername', 'Username', 'required|is_unique[user.username]');
+        $this->form_validation->set_rules('addpassword', 'Password', 'required');
+        $this->form_validation->set_rules('addconfirmpassword', 'Password Confirmation', 'required|matches[addpassword]');
+         if ($this->form_validation->run() == FALSE)
+                {
+                    $this->load->view('Manager_Settings_View');
+                	//echo "Hii";
+                }
+                else
+                {
+                   echo "success";
+				}
+
+
+
+ 	}
+
 
  }
 ?>

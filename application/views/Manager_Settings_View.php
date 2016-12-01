@@ -356,7 +356,7 @@
                     <div class="col-md-3"></div>
                       <div class="col-md-7">
                             
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" role="form" method="post" action="<?php echo base_url('index.php/manager_settings_Controller/addUser');?>">>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Add New User</strong></h3>
@@ -370,7 +370,8 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control"/>
+                                                <input type="text" class="form-control" name="fname" />
+                                                <?php echo form_error('fname');?>
                                             </div>                                            
                                             
                                         </div>
@@ -381,7 +382,8 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control"/>
+                                                <input type="text" class="form-control" name="lname" />
+                                                <?php echo form_error('lname');?>
                                             </div>                                            
                                             
                                         </div>
@@ -392,7 +394,8 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control"/>
+                                                <input type="text" class="form-control" name="role" />
+                                                <?php echo form_error('role');?>
                                             </div>                                            
                                             
                                         </div>
@@ -404,7 +407,8 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control"/>
+                                                <input type="text" class="form-control" name="addusername" />
+                                                <?php echo form_error('addusername');?>
                                             </div>                                            
                                             
                                         </div>
@@ -415,7 +419,8 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" class="form-control"/>
+                                                <input type="password" class="form-control" name="addpassword" />
+                                                <?php echo form_error('addpassword');?>
                                             </div>            
                                            
                                         </div>
@@ -426,7 +431,8 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" class="form-control"/>
+                                                <input type="password" class="form-control" name="addconfirmpassword" />
+                                                <?php echo form_error('addconfirmpassword');?>
                                             </div>            
                                            
                                         </div>

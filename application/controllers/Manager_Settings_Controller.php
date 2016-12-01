@@ -16,7 +16,7 @@ parent::__construct();
 
                 //$this->form_validation->set_rules('username', 'Username', 'required');
                 $this->form_validation->set_rules('newPwd', 'Password', 'required');
-                $this->form_validation->set_rules('newConfirmPwd', 'Password Confirmation', 'required');
+                $this->form_validation->set_rules('newConfirmPwd', 'Password Confirmation', 'required|matches[newPwd]');
                // $this->form_validation->set_rules('email', 'Email', 'required');
 
                 if ($this->form_validation->run() == FALSE)

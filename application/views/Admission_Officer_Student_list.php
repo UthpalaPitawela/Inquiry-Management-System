@@ -98,9 +98,10 @@
                     <li class="active"></li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
-                <div id='studiv'>
+                <div>
                 <!-- PAGE CONTENT WRAPPER -->
-                <div class="page-content-wrap" >
+                <div class="page-content-wrap"  id='studiv' ></div>
+                <div class="page-content-wrap"  >
                               
                     
 
@@ -231,6 +232,18 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
         </div>
         <!-- END MESSAGE BOX-->
 
+
+      <script type="text/javascript">
+
+
+function selectStudent(s_Id){
+
+//alert("sdsdssds");
+var ss=s_Id;
+$('#studiv').load("<?php echo site_url(); ?>/Student_Data_Controller/loadingdetails/"+ss);
+
+}
+     </script>
         
 
 
@@ -245,33 +258,5 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
 
 
 
-
-      <script type="text/javascript">
-
-
-function selectStudent(s_Id,base_url){
-
-//alert("sdsdssds");
-
-$('#studiv').load('Welcome');
-//     $('#studentpage').load('base_url/Student_Data_Controller/loadingdetails/s_Id');
-/*
-    $.ajax({
-        type: "get",
-        url: "like_audio",
-        data: {
-            aId:aId
-        },
-        success: function (data){
-            alert(data);
-        },
-        error: function (xhr, ajaxOptions, thrownError){
-
-        }
-    });
-    return false;
-    */
-}
-     </script>
     </body>
 </html>

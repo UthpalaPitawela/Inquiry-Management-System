@@ -44,10 +44,7 @@ $propic=$_SESSION["propic"];
                                 <div class="profile-data-name">Name</div>
                                 <div class="profile-data-title">Designation</div>
                             </div>
-                            <div class="profile-controls">
-                                <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
-                            </div>
+                           
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>
@@ -236,6 +233,10 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
             </div>
         </div>
         <!-- END MESSAGE BOX-->
+     <?php
+
+      include 'imports.php'
+      ?>
 
 
       <script type="text/javascript">
@@ -243,19 +244,47 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
 
 function selectStudent(s_Id){
 
-//alert("sdsdssds");
+
 var ss=s_Id;
 $('#studiv').load("<?php echo site_url(); ?>/Student_Data_Controller/loadingdetails/"+ss);
 
+
+
+
+  //  $.ajax({
+    //    type: 'POST',
+      //  url: "<?php //echo site_url(); ?>/Student_Data_Controller/loadingdetails/"+ss,
+        //dataType: 'html',
+        //success: function (data) {
+          // $('#studiv').innerHTML = data;
+        //}
+    //});
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      </script>
         
 
 
-     <?php
-
-      include 'imports.php'
-      ?>
 
 
 

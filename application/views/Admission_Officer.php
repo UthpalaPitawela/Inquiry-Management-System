@@ -43,10 +43,7 @@ $propic=$_SESSION["propic"];
                                 <div class="profile-data-name"><?php echo $name;  ?></div>
                                 <div class="profile-data-title">Admission Officer</div>
                             </div>
-                            <div class="profile-controls">
-                                <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
-                            </div>
+                            
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>

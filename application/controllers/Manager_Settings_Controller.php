@@ -49,14 +49,28 @@ parent::__construct();
         $this->form_validation->set_rules('addusername', 'Username', 'required|is_unique[user.username]');
         $this->form_validation->set_rules('addpassword', 'Password', 'required');
         $this->form_validation->set_rules('addconfirmpassword', 'Password Confirmation', 'required|matches[addpassword]');
-         if ($this->form_validation->run() == FALSE)
+        if ($this->form_validation->run() == FALSE)
                 {
                     $this->load->view('Manager_Settings_View');
                 	//echo "Hii";
                 }
                 else
                 {
-                   echo "success";
+                    $this->load->view('Manager_Settings_View');
+                       
+    				$fname = $this->input->post('fname');
+    				$lname = $this->input->post('lname');
+    				$role = $this->input->post('role');
+    				if($role == 'counsellor' | 'Counsellor'){
+    					$status = '3';
+    				}
+    				$username = $this->input->post('addusername');
+    				$password = $this->input->post('addpassword');
+
+
+					$this->load->model('Manager_Settings_Model');
+
+    				$this->Manager_Settings_Model->addUser($fname,$lname,$status,$username,$password);
 				}
 
 

@@ -356,7 +356,7 @@
                     <div class="col-md-3"></div>
                       <div class="col-md-7">
                             
-                            <form class="form-horizontal" role="form" method="post" action="<?php echo base_url('index.php/manager_settings_Controller/addUser');?>">>
+                            <form class="form-horizontal" role="form" method="post" action="<?php echo base_url('index.php/manager_settings_Controller/addUser');?>">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Add New User</strong></h3>

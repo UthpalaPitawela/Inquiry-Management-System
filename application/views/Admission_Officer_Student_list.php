@@ -11,7 +11,11 @@
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->        
-                 
+                 <style type="text/css">
+                     #loading {width: 100%;height: 100%;top: 40%;left: 40%;position: fixed;display: none; z-index: 99}
+
+/*#loading-image {position: absolute;top: 40%;left: 45%;z-index: 100} 
+  */               </style>
           
         <!-- EOF CSS INCLUDE -->                                    
     </head>
@@ -102,7 +106,21 @@ $propic=$_SESSION["propic"];
                 <!-- END BREADCRUMB -->                       
                 <div>
                 <!-- PAGE CONTENT WRAPPER -->
-                <div class="page-content-wrap"  id='studiv' ></div>
+
+                <!--loading div-->
+                <div id="loading">
+<img id="loading-image" src="<?php echo base_url();?>public/img/waiting.gif" alt="Loading..." />
+</div> 
+
+
+                <div class="page-content-wrap"  id='studiv' >
+                    
+
+
+ 
+
+
+                </div>
                 <div class="page-content-wrap"  >
                               
                     
@@ -241,13 +259,14 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
 
       <script type="text/javascript">
 
-
+var myDiv = document.getElementById("loading");
 function selectStudent(s_Id){
 
-
+ show();
 var ss=s_Id;
-$('#studiv').load("<?php echo site_url(); ?>/Student_Data_Controller/loadingdetails/"+ss);
 
+$('#studiv').load("<?php echo site_url(); ?>/Student_Data_Controller/loadingdetails/"+ss);
+ 
 
 
 
@@ -270,11 +289,21 @@ $('#studiv').load("<?php echo site_url(); ?>/Student_Data_Controller/loadingdeta
 
 
 
+show = function(){
+
+        myDiv.style.display = "block";
+        setTimeout(hide, 3000); // 5 seconds
+      }
+
+      hide = function(){
+        myDiv.style.display = "none";
+      }
+
+   
 
 
 
-
-
+ 
 
 
 
@@ -283,8 +312,6 @@ $('#studiv').load("<?php echo site_url(); ?>/Student_Data_Controller/loadingdeta
 
      </script>
         
-
-
 
 
 

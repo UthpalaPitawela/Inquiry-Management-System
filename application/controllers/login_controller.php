@@ -42,6 +42,7 @@ $this->load->model("Login_Model");
             $this->load->view('home');
         
         }elseif ($row['status']==2) {
+            
             $this->load->view('Admission_Officer');
         
         } else {

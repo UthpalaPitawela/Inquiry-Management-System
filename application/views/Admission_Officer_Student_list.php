@@ -12,10 +12,9 @@
         
         <!-- CSS INCLUDE -->        
                  <style type="text/css">
-                     #loading {width: 100%;height: 100%;top: 40%;left: 40%;position: fixed;display: none; z-index: 99}
+                     #loading {width: 100%;height: 100%;margin-top: 10%;left: 40%;position: fixed;display: none; z-index: 99}
 
-/*#loading-image {position: absolute;top: 40%;left: 45%;z-index: 100} 
-  */               </style>
+/               </style>
           
         <!-- EOF CSS INCLUDE -->                                    
     </head>

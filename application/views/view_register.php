@@ -439,7 +439,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="input-group">
                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                <input type="text" name="pdate" class="form-control" >
+                <input type="text" name="pdate" class="form-control datepicker"  >
 
             </div>
 
@@ -449,7 +449,7 @@
     <div class="row">
         <label class="col-md-2 col-xs-12 control-label"></label>
         <div class="col-md-6 col-xs-12" id="ss">
-            <button class="btn btn-primary pull-right" id="eligle">See Eligable Degrees</button>
+            <button class="btn btn-primary pull-right" id="eligle">See Eligible Degrees</button>
 
         </div>
     </div>

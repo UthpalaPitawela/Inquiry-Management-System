@@ -44,8 +44,8 @@ $propic=$_SESSION["propic"];
                                 <img src="<?php echo base_url($propic);?>" alt="<?php echo $name." 's image";  ?>"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">Name</div>
-                                <div class="profile-data-title">Designation</div>
+                                <div class="profile-data-name"><?php echo $name;  ?></div>
+                                <div class="profile-data-title">Admission Officer</div>
                             </div>
                            
                         </div>                                                                        

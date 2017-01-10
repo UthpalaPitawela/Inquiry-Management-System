@@ -12,7 +12,7 @@
 
     <!-- CSS INCLUDE -->
 
-    <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('assets/css/theme-default.css'); ?>"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('public/css/theme-default.css'); ?>"/>
 </head>
 <body>
 <!-- START PAGE CONTAINER -->

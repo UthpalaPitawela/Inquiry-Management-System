@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-        <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />
+         <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->        
@@ -32,7 +32,7 @@
                     <li class="xn-profile">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?php echo base_url('public/assets/images/users/defaultuser.jpg');?>" alt="Viduni"/>
+                                <img src="<?php echo base_url('public/assets/images/users/user2.jpg');?>" alt="Viduni"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name">Name</div>
@@ -52,7 +52,7 @@
                         
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
-                            <li><a href="dataEntry.php"><span class="fa fa-pencil"></span> Data Entry</a></li>
+                            <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
                             <li><a href="manageInquiries.php"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
                             
                         </ul>
@@ -60,7 +60,7 @@
                     </li>
 
                     <li>
-                        <a href="databases.php"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
+                        <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
                     </li>
 
                     <li>
@@ -79,7 +79,7 @@
 
                     <li class="xn-title">Administration</li>
                     <li class="active">
-                        <a href="targets.php"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
+                        <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
                     </li>    
 
                     <li>
@@ -87,16 +87,16 @@
                     </li> 
 
                     <li>
-                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
+                        <a href="<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
                     </li>               
 
                     
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
-            <!-- END PAGE SIDEBAR -->
             
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+            
+<!-- ++++++++++++++++++++++++++++++++++++++   END OF SIDEBAR   +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 <!-- PAGE CONTENT -->
             <div class="page-content">
@@ -104,13 +104,6 @@
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
                     
-                    <!-- SEARCH -->
-                    <li class="xn-search">
-                        <form role="form">
-                            <input type="text" name="search" placeholder="Search..."/>
-                        </form>
-                    </li>   
-                    <!-- END SEARCH -->
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
@@ -127,6 +120,7 @@
                     
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                     
+                                                          
 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
@@ -220,7 +214,7 @@
 
                                 </div>                            
                                 <div class="panel-footer">
-                                    <button class="btn btn-default">Clear</button>
+                                    <button type="reset" class="btn btn-default">Clear</button>
                                     <button class="btn btn-primary pull-right" name="Set_Target">Submit</button>
                                 </div>                              
                             </div>

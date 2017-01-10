@@ -19,6 +19,7 @@
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
         <!-- EOF CSS INCLUDE --> 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
+
         <!-- JS INCLUDE --> 
 
     </head>
@@ -63,7 +64,7 @@
                         </div>                                                                        
                     </li>                  
                     <li>
-                        <a href="#"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Home/index"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
@@ -74,7 +75,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
+                        <a href="<?php echo base_url();?>index.php/database/index"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
                     </li>
 
                     <li  class="active">
@@ -167,7 +168,7 @@
                                                     <div class="col-md-9">                                            
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                            <input type="text" class="form-control"/>
+                                                            <input type="text" id="campaign_name" name="campaign_name" class="form-control"/>
                                                         </div> 
                                                     </div>
                                                     
@@ -178,21 +179,24 @@
                                                     <div class="col-md-9">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                            <input type="text" name="inquiry_date" id="inquiry_date" class="form-control datepicker" value="2016-11-19">                                            
+                                                            <input type="text" name="inquiry_date" id="inquiry_date" class="form-control datepicker" value="">                                            
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">                                        
-                                                    <label class="col-md-3 control-label">Bulk Input</label>
-                                                    <div class="col-md-6">                                            
-                                                        <input type="file"  name="file" >
+                                                    <label class="col-md-3 control-label"></label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-group">
+                                                                                                        
+                                                        </div>
                                                     </div>
-                                                    
                                                 </div>
+                                                
                                                 <div class="form-group">                                        
                                                     <label class="col-md-3 control-label"></label>
                                                     <div class="col-md-9" >                             
-                                                        <button type="submit" name="evaluate" style="background-color:#1caf9a; border-color:#1caf9a; font-size: 14;" class="btn btn-primary" >Evaluate Contacts </button>
+                                                        <button type="submit" name="evaluate" style="background-color:#1caf9a; border-color:#1caf9a; font-size: 14;" class="btn btn-primary" 
+                                                        onclick="update_campaign()">Evaluate Contacts </button>
                                                     </div>
                                                 </div>
                                                                                           
@@ -205,7 +209,7 @@
                                                     <div class="col-md-9">                                        
                                                         <select name="inquiry_type" id="inquiry_type" class="form-control select">
                                                             <option>Select Type</option>
-                                                            <option>Walking</option>
+                                                            <option>Walk-in</option>
                                                             <option>Call</option>
                                                             <option>E-mail</option>
                                                             <option>SMS</option>
@@ -409,6 +413,11 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>        
         <!-- END TEMPLATE -->
+
+        <!-- START MyJS -->
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/shoutout.js"></script>        
+        <!-- END MyJS -->
+
     <!-- END SCRIPTS -->                   
     </body>
 </html>

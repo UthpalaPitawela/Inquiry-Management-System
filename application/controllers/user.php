@@ -2,7 +2,7 @@
  class user extends CI_Controller{
 
 
-     function user(){
+     function __construct(){
          parent::__construct();
          $this->view_data['base_url'] = base_url();
 

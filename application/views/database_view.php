@@ -28,6 +28,7 @@
           </div>
         <?php } ?>
         
+
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -37,48 +38,46 @@
                 <ul class="x-navigation">
                     <li class="xn-logo">
                         <a href="index.html">Edulink IMS</a>
-                        <a href="#" class="x-navigation-control"></a>
+                        
                     </li>
                     <li class="xn-profile">
-
-                        <a href="#" class="profile-mini">
-                            <img src="<?php echo base_url(); ?>public/assets/images/users/propics.png" alt="Harini"/>
-                        </a>
-
                         <div class="profile">
-                              
                             <div class="profile-image">
-                                <img src="<?php echo base_url(); ?>public/assets/images/users/propics.png" alt="Harini"/>
+                                <img src="<?php echo base_url('public/assets/images/users/user2.jpg');?>" alt="Viduni"/>
                             </div>
-                        
                             <div class="profile-data">
-                                <div class="profile-data-name">Harini</div>
-                                <div class="profile-data-title">Web Developer/Designer</div>
+                                <div class="profile-data-name">Name</div>
+                                <div class="profile-data-title">Designation</div>
                             </div>
                             <div class="profile-controls">
-                                <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-cog"></span></a>
+                                <a href="#" class="profile-control-left"><span class="fa fa-info"></span></a>
+                                <a href="#" class="profile-control-right"><span class="fa fa-cog"></span></a>
                             </div>
                         </div>                                                                        
-                    </li>                  
+                    </li>
+
                     <li>
-                        <a href="<?php echo base_url();?>index.php/home/home_view"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <a href="#"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
                     <li class="xn-openable">
+                        
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
-                            <li><a href="#"><span class="fa fa-pencil"></span> Data Entry</a></li>
-                            <li><a href="#"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
+                            <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
+                            <li><a href="manageInquiries.php"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
                             
                         </ul>
+                        
                     </li>
+
                     <li class="active">
-                        <a href="<?php echo base_url();?>index.php/Database/index"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
+                        <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
                     </li>
 
                     <li>
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
-                    </li >
+                    </li>
+
                     <li>
                         <a href="#"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                     </li>
@@ -86,10 +85,12 @@
                     <li>
                         <a href="#"><span class="fa fa-user"></span> <span class="xn-text">Student Profiles</span></a>   
                     </li>
+
                     
+
                     <li class="xn-title">Administration</li>
-                    <li>
-                        <a href="#"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
+                    <li class>
+                        <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
                     </li>    
 
                     <li>
@@ -97,28 +98,24 @@
                     </li> 
 
                     <li>
-                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
+                        <a href="<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
                     </li>               
 
-         
+                    
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
-            <!-- END PAGE SIDEBAR -->
             
-            <!-- PAGE CONTENT -->
+            
+<!-- ++++++++++++++++++++++++++++++++++++++   END OF SIDEBAR   +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<!-- PAGE CONTENT -->
             <div class="page-content">
                 
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
                     
-                    <!-- SEARCH -->
-                    <li class="xn-search">
-                        <form role="form">
-                            <input type="text" name="search" placeholder="Search..."/>
-                        </form>
-                    </li>   
-                    <!-- END SEARCH -->
+
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
@@ -133,12 +130,12 @@
 
                     
                 </ul>
-                <!-- END X-NAVIGATION VERTICAL -->                   
+                <!-- END X-NAVIGATION VERTICAL -->                                      
                 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="<?php echo base_url();?>index.php/Database/database_view">Databases</a></li>
+                    <li><a href="<?php echo base_url();?>index.php/Database">Databases</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
                 

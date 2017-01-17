@@ -56,6 +56,7 @@
              $mode = $this->input->post('mode');
              $intake = $this->input->post('intake');
              $pdate = $this->input->post('pdate');
+             $counsellorname = $this->input->post('counsellorname');
             // $total=  $this->input->post('grade1' + 'grade2' + 'grade3');
 
              //$activation_code = $this->_random_string(10);
@@ -63,7 +64,7 @@
 
 
              $this->user_model->register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,
-                 $subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate);
+                 $subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname);
 
 
 
@@ -134,7 +135,11 @@
          foreach($data as $dd){
              echo $dd->Programme1 .PHP_EOL;
              echo $dd->Programme2 .PHP_EOL;
-             echo $dd->Programme3;
+             echo $dd->Programme3 .PHP_EOL;
+             echo $dd->Programme4 .PHP_EOL;
+             echo $dd->Programme5 .PHP_EOL;
+             echo $dd->Programme6 .PHP_EOL;
+             echo $dd->Programme7;
 
         }
          //$this->load->view('view_register',$data);

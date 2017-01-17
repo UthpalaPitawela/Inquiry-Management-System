@@ -213,7 +213,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="input-group">
                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                <input type="text" name="email" class="form-control" />
+                <input type="text" name="email" class="form-control" required/>
             </div>
 
         </div>
@@ -223,7 +223,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="input-group">
                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                <input type="text" name="contactno" class="form-control" />
+                <input type="text" name="contactno" class="form-control" required/>
             </div>
 
         </div>
@@ -398,10 +398,20 @@
         <label class="col-md-3 col-xs-12 control-label"></label>
         <div class="col-md-6 col-xs-12">
             <div class="input-group">
-                <textarea class="form-control" rows="6" cols="50" name="ed" id="tt">
+                <textarea class="form-control" rows="3" cols="50" name="ed" id="tt">
 
             </textarea>
 
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">Counsellor Name</label>
+        <div class="col-md-6 col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                <input name="counsellorname" type="text" class="form-control" />
             </div>
 
         </div>
@@ -512,6 +522,8 @@
                 var id = 1;
             }else if(tot>=240){
                 var id = 2;
+            }else if(tot>=180){
+                var id = 3;
             }
             
             

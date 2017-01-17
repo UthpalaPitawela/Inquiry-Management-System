@@ -15,6 +15,12 @@
 @import "animate/animate.min.css";
 
 
+.ScrollStyle
+{
+    max-height: 230px;
+    overflow-y: scroll;
+}
+
 /* PREDEFINED CLASSES */
 .clearfix {
   zoom: 1;

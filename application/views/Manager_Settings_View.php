@@ -94,7 +94,7 @@
             </div>
             
             
-<!-- ++++++++++++++++++++++++++++++++++++++   END OF SIDEBAR   +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->    
+<!-- ++++++++++++++++++++++++++++++++++++++   END OF SIDEBAR   ++++++++++++++++++++++++++++++++++++++++++++++ -->    
 
 <!-- PAGE CONTENT -->
             <div class="page-content">
@@ -108,13 +108,6 @@
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->
-
-                    <!-- SETTINGS -->
-                    <li class="xn-icon-button pull-right">
-                        <a href="#"><span class="fa fa-cog"></span></a>                        
-                    </li> 
-                    <!-- END SETTINGS -->
-
                     
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->  
@@ -122,7 +115,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active"><a href="<?php echo base_url();?>index.php/Manager_Settings_Controller">Settings</li>
+                    <li class="active"><a href="#">Settings</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 
@@ -276,36 +269,6 @@
                             
                         </div>
                         </div>
-                    <div class="col-md-2"></div>
-                    <!-- END WIDGETS -->                    
-                    
-                    <div class="row">
-                        
-                        
-
-                        
-                    </div>
-                    
-                    <div class="row">
-                        
-                        <div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-content">
-                                <ul class="list-inline item-details">
-                                    <li><a href="http://themifycloud.com/downloads/janux-premium-responsive-bootstrap-admin-dashboard-template/">Admin templates</a></li>
-                                    <li><a href="http://themescloud.org">Bootstrap themes</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                    
-                    <!-- START DASHBOARD CHART 
-                    <div class="chart-holder" id="dashboard-area-1" style="height: 200px;"></div>
-                    <div class="block-full-width">
-                                                                       
-                    </div>                    
-                     END DASHBOARD CHART -->
                     
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->                                
@@ -365,7 +328,7 @@
         <!-- END THIS PAGE PLUGINS-->        
 
         <!-- START TEMPLATE -->
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/settings.js"></script>
+        
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script>

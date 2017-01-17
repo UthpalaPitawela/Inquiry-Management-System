@@ -124,13 +124,6 @@
                     </li> 
                     <!-- END SIGN OUT -->
 
-                    <!-- SETTINGS -->
-                    <li class="xn-icon-button pull-right">
-                        <a href="#"><span class="fa fa-cog"></span></a>                        
-                    </li> 
-                    <!-- END SETTINGS -->
-
-                    
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->              
                 
@@ -381,11 +374,7 @@
         </div>
         <!-- END PAGE CONTAINER -->
         
-        
-        <!-- START PRELOADS -->
-        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
-        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->             
+               
         
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
@@ -405,7 +394,6 @@
         <!-- END THIS PAGE PLUGINS -->       
         
         <!-- START TEMPLATE -->
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/settings.js"></script>
         
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>        

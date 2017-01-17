@@ -107,7 +107,7 @@
             </div>
             
             
-<!-- ++++++++++++++++++++++++++++++++++++++   END OF SIDEBAR   +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- ++++++++++++++++++++++++++++++++++++++   END OF SIDEBAR   +++++++++++++++++++++++++++++++++++++ -->
 
 <!-- PAGE CONTENT -->
             <div class="page-content">
@@ -147,7 +147,7 @@
                                     <h3 class="panel-title"><strong>Bulk Input</strong></h3>
                                 </div>
                             
-                                <div class="panel panel-default"  style="border-top-color:#1caf9a; border-top-width:2px; ">
+                                <div class="panel panel-default"  style="border-top-color:#2b73ef; border-top-width:2px; ">
                                     <div class="panel-heading" >
                                         <h2 class="panel-title"><strong>Create Bulk</strong></h2>
                                  	</div>
@@ -184,7 +184,7 @@
                                                 
                                                 <div class="panel-footer">
                                    					 <button type="reset" class="btn btn-default">Clear Form</button>                                    
-                                   					 <button type="submit" name="create_bulk" style="background-color:#1caf9a; border-color:#1caf9a; font-size: 14;" class="btn btn-primary pull-right" >Create Bulk</button>
+                                   					 <button type="submit" name="create_bulk" style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary pull-right" >Create Bulk</button>
                                 				</div>
                                                                                           
                                             </div>
@@ -197,7 +197,7 @@
                         <!-- END FORM -->
                         <div class="col-md-7">
                             <form class="form-horizontal" style="border-color: #808080;" action="<?php echo base_url();?>index.php/database/bulk_input" method="post" name="add_bulk" enctype="multipart/form-data">
-                                <div class="panel panel-default"  style="top:39px; border-top-color:#1caf9a; border-top-width:2px; "> 
+                                <div class="panel panel-default"  style="top:39px; border-top-color:#2b73ef; border-top-width:2px; "> 
                                 	<div class="panel-heading" >
                                         <h2 class="panel-title"><strong>View Bulk Details</strong></h2>
                                  	</div>

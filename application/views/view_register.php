@@ -22,12 +22,6 @@
 
     </head>
     <body>
-    	<?php if($this->session->flashdata('message')){?>
-          <div align="center" class="alert alert-success">      
-            <?php echo $this->session->flashdata('message')?>
-          </div>
-        <?php } ?>
-        
 
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
@@ -59,7 +53,7 @@
                     <li>
                         <a href="#"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
-                    <li class="xn-openable">
+                    <li class="xn-openable active">
                         
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
@@ -213,7 +207,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="input-group">
                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                <input type="text" name="email" class="form-control" />
+                <input type="text" name="email" class="form-control" required />
             </div>
 
         </div>
@@ -223,7 +217,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="input-group">
                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                <input type="text" name="contactno" class="form-control" />
+                <input type="text" name="contactno" class="form-control" required />
             </div>
 
         </div>
@@ -356,8 +350,8 @@
     <div class="form-group">
         <label class="col-md-3 col-xs-12 control-label">Mode Of Inquiry</label>
         <div class="col-md-6 col-xs-12" name="mode">
-            <input type="radio" name="mode" value="Walking"> &nbsp;Walk-in&nbsp;
-            <input type="radio" name="mode" value="Calls"> &nbsp;Call&nbsp;            
+            <input type="radio" name="mode" value="Walk-in"> &nbsp;Walk-in&nbsp;
+            <input type="radio" name="mode" value="Call"> &nbsp;Call&nbsp;            
             <input type="radio" name="mode" value="Email"> &nbsp;Email / SMS&nbsp;
 
         </div>
@@ -387,7 +381,7 @@
     <div class="row">
         <label class="col-md-2 col-xs-12 control-label"></label>
         <div class="col-md-6 col-xs-12" id="ss">
-            <button class="btn btn-primary pull-right" id="eligle">See Eligable Degrees</button>
+            <button class="btn btn-primary pull-right" id="eligle">See Eligible Degrees</button>
 
         </div>
     </div>
@@ -398,7 +392,7 @@
         <label class="col-md-3 col-xs-12 control-label"></label>
         <div class="col-md-6 col-xs-12">
             <div class="input-group">
-                <textarea class="form-control" rows="6" cols="50" name="ed" id="tt">
+                <textarea class="form-control" rows="3" cols="50" name="ed" id="tt">
 
             </textarea>
 
@@ -406,6 +400,17 @@
 
         </div>
     </div>
+
+      <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">Counsellor Name</label>
+         <div class="col-md-6 col-xs-12">
+             <div class="input-group">
+                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                 <input name="counsellorname" type="text" class="form-control" />
+            </div>
+ 
+         </div>
+     </div>
 
 
 </div>

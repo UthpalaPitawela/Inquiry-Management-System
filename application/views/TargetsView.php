@@ -46,7 +46,7 @@
                     </li>
 
                     <li>
-                        <a href="#"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/managerhome') ?>"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
                     <li class="xn-openable">
                         

@@ -53,6 +53,10 @@ $this->load->model("Student_Data_Model");
        $data['admissionstudent'] = $this->Student_Data_Model->get_Student_Data($user_Id);
    
         $this->load->view('admission_officer_student_list',$data);
+}elseif($page=='managerhome'){
+
+    $this->load->view('manager_profile');
+
 }
 
              }

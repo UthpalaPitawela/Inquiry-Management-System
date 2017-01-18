@@ -24,7 +24,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Edulink IMS</a>
+                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/managerhome') ?>">Edulink IMS</a>
                         
                     </li>
                     <li class="xn-profile">
@@ -44,7 +44,7 @@
                     </li>
 
                     <li>
-                        <a href="#"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/managerhome') ?>"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
                     <li class="xn-openable">
                         

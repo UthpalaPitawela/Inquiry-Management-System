@@ -24,7 +24,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Edulink IMS</a>
+                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/managerhome') ?>">Edulink IMS</a>
                         
                     </li>
                     <li class="xn-profile">
@@ -108,12 +108,6 @@
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->
-
-                    <!-- SETTINGS -->
-                    <li class="xn-icon-button pull-right">
-                        <a href="#"><span class="fa fa-cog"></span></a>                        
-                    </li> 
-                    <!-- END SETTINGS -->
 
                     
                 </ul>
@@ -297,7 +291,6 @@
         <!-- END THIS PAGE PLUGINS-->    
 
         <!-- START TEMPLATE -->
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/settings.js"></script>
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script>

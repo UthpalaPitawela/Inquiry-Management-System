@@ -15,7 +15,7 @@
     </head>
     <body>
         <!-- START PAGE CONTAINER -->
-        <div class="page-container" style="height: 662px; ">
+        <div class="page-container" >
             
             <!-- START PAGE SIDEBAR -->
             <div class="page-sidebar">

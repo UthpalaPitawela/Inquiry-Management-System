@@ -105,10 +105,9 @@ function checkSizepropic(){
                 document.getElementById("message-box-danger").style.display = 'block';
                 return false;
             }else{
-               // return false;
-                return Confirmsubmit();
-                return false ;
-            }
+                  
+               return true;
+               }
 
 }
 
@@ -130,7 +129,7 @@ function checktp2(){
    }
    else
    {
-          return Confirmsubmit();
+          return true;
    }
 
 
@@ -140,14 +139,15 @@ function checktp2(){
    
 }
 
-function Confirmsubmit{
+// function Confirmsubmit{
 
-        // document.getElementById('filename').click();
+//         // document.getElementById('filename').click();
 
-         document.getElementById("message-box-info").style.display = 'block';
+//          document.getElementById("message-box-info").style.display = 'block';
+//          return false;
 
 
-}
+// }
      // function notyConfirm(){
 
      //                    var retbool=false;
@@ -183,7 +183,7 @@ function Confirmsubmit{
         <!-- EOF CSS INCLUDE -->
     </head>
     <body>
-        <div class="page-container" style="height: 662px; ">
+        <div class="page-container" >
             
             <!-- START PAGE SIDEBAR -->
             <div class="page-sidebar">
@@ -316,17 +316,17 @@ echo"<script> alert(".$propic.");</script>";
                     <div class="row">
                         <div class="col-md-12">
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    
-                                </div>
-                                <div class="panel-body">
-                        <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return checkpropic();" action="<?php echo site_url("update_Profile/update_Data")?>" method="POST">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
+                            <div class="panel panel-warning">
+                                        <div class="panel-heading ui-draggable-handle">
                                     <h3 class="panel-title"><strong>Profile</strong></h3>
                                     
                                 </div>
+                        
+                        
+                        <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return checkpropic();" action="<?php echo site_url("update_Profile/update_Data")?>" method="POST">
+                           
+
+
                                 <div class="panel-body">                                                                        
                                     
 
@@ -409,7 +409,7 @@ echo"<script> alert(".$propic.");</script>";
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="text" id="telephone2" class="form-control" readonly value="<?php echo $row3['tpnumber2'];?>"/>
+                                                <input type="text" id="telephone2" name="tpnumber2" class="form-control" readonly value="<?php echo $row3['tpnumber2'];?>"/>
                                             </div>                                            
                                            
                                         </div>
@@ -449,11 +449,6 @@ echo"<script> alert(".$propic.");</script>";
 
 
 
-<button type="button" class="btn btn-primary" onClick="notyConfirm();">Confirm</button>       
-
-
-
-
 <?php
 
 
@@ -472,13 +467,13 @@ echo"<script> alert(".$propic.");</script>";
 
                                     
                                 </div>
-                            </div>
+                            
                             </form>
 
 
 
 
-                                </div>
+                                
                             </div>
 
                         </div>
@@ -535,7 +530,7 @@ echo"<script> alert(".$propic.");</script>";
 
 
 <!-- info -->
-        <div class="message-box message-box-info animated fadeIn" id="message-box-info">
+<!--         <div class="message-box message-box-info animated fadeIn" id="message-box-info" style="display: none;">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-info"></span> Information</div>
@@ -549,7 +544,7 @@ echo"<script> alert(".$propic.");</script>";
                 </div>
             </div>
         </div>
-        <!-- end info -->
+ -->        <!-- end info -->
         
 
 

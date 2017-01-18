@@ -20,9 +20,9 @@ $this->load->model("Student_Profile_Model");
    
     public function update_Data(){
 
+    $newtpnumber = $this->input->post('tpnumber2');	
 
-
-    $res = $this->Student_Profile_Model->update_Data();
+    $res = $this->Student_Profile_Model->update_Data($newtpnumber);
 
  if($res){
         ?>

@@ -4,7 +4,7 @@ class Results_model extends CI_Model{
 		
 		
 		$this->load->helper('url');	
-		$sql3 = "SELECT * FROM resultimages WHERE id='$user_Id'";
+		$sql3 = "SELECT * FROM resultimages WHERE email='$user_Id'";
 
 		$resultquery = $this->db->query($sql3);
 
@@ -24,13 +24,9 @@ class Results_model extends CI_Model{
 
 
 
-        $currentdate = date('Y-m-d H:i:s ', time());
-        $cd=date('Y-m-d H-i-s ', time());
 
 
-
-
-  if (!file_exists('public/assets/results/'.'1001')) {
+  if (!file_exists('public/assets/results/'.$user_Id)) {
     mkdir('public/assets/results/'.$user_Id, 0777, true);
 }
 
@@ -83,7 +79,7 @@ if(!empty($_FILES['file5']['name'])){
 			        //$this->input->post('file4'),
 			        'other' => $link5,
 			        //$this->input->post('file5'),
-			        'id'=>$user_Id
+			        'email'=>$user_Id
 			    );
 
 		return $this->db->insert('resultimages', $data);
@@ -111,7 +107,7 @@ function rmdir_recursive($dir) {
 	function  delete_Result($user_Id){
 
 
-$deleteresult="DELETE FROM resultimages WHERE id='$user_Id'  "; 
+$deleteresult="DELETE FROM resultimages WHERE email='$user_Id'  "; 
 ?>
 <?php
 $this->rmdir_recursive('public/assets/results/'.$user_Id);
@@ -137,13 +133,10 @@ $this->rmdir_recursive('public/assets/results/'.$user_Id);
 
 
 
-        $currentdate = date('Y-m-d H:i:s ', time());
-        $cd=date('Y-m-d H-i-s ', time());
 
 
 
-
-  if (!file_exists('public/assets/results/'.'1001')) {
+  if (!file_exists('public/assets/results/'.$user_Id)) {
 
 
     mkdir('public/assets/results/'.$user_Id, 0777, true);
@@ -191,7 +184,7 @@ if(!empty($_FILES['file5']['name'])){
 
 				if($link1!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set olimage1='$link1' WHERE id='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set olimage1='$link1' WHERE email='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 
@@ -206,7 +199,7 @@ if(!empty($_FILES['file5']['name'])){
 				}
 				if($link2!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set olimage2='$link2' WHERE id='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set olimage2='$link2' WHERE email='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 
@@ -225,7 +218,7 @@ if(!empty($_FILES['file5']['name'])){
 				}
 				if($link3!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set alimage1='$link3' WHERE id='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set alimage1='$link3' WHERE email='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 
@@ -236,7 +229,7 @@ if(!empty($_FILES['file5']['name'])){
 				}
 				if($link4!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set alimage2='$link4' WHERE id='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set alimage2='$link4' WHERE email='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 
@@ -247,7 +240,7 @@ if(!empty($_FILES['file5']['name'])){
 				}
 				if($link5!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set other='$link5' WHERE id='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set other='$link5' WHERE email='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 

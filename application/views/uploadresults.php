@@ -64,17 +64,19 @@ for (i = 1; i < 5; i++) {
         var ex=fileExtension.toLowerCase();
         switch(ex){
 
-          case "gif":checkSizeAssignment(object,i);break;
           case "png":checkSizeAssignment(object,i);break;
           case "jpg":checkSizeAssignment(object,i);break;
           case "jpeg": checkSizeAssignment(object,i);break;
-          case "bmp":checkSizeAssignment(object,i);break;
           case "pdf":checkSizeAssignment(object,i);break;
           
+   default: document.getElementById('pText').innerHTML = "Invalid file type. You can select only png,jpg,jpeg or pdf files";
+          
+              document.getElementById("message-box-danger").style.display = 'block';
+
+            return false;break;
+       
 
 
-          default:alert("You must select a valid file type for input no (file type must be pdf) "+i);
-            retval= false;break;
         }
 
 
@@ -83,17 +85,24 @@ for (i = 1; i < 5; i++) {
 
         
     }
-    return retval;
+    
 }
 
 function checkSizeAssignment(upimage,i){
             var oFile = document.getElementById(upimage).files[0]; 
 
+
             if (oFile.size > 2097152) // 2 mb for bytes.
             {
-                alert("Each image or file size must under 2 Mb.Image number "+i+" is higher than 2 MB.");
-                retval=false;
-            }
+                document.getElementById('pText').innerHTML = "Image "+i+" size is too large. Select an image of size atmost 2Mb.";
+          
+                document.getElementById("message-box-danger").style.display = 'block';
+                return false;
+            }else{
+                  
+               return true;
+               }
+
 
 }
 
@@ -145,7 +154,7 @@ function checkSizeAssignment(upimage,i){
     </head>
     <body>
         <!-- START PAGE CONTAINER -->
-        <div class="page-container" style="height: 662px; ">
+        <div class="page-container" >
             
             <!-- START PAGE SIDEBAR -->
             <div class="page-sidebar">
@@ -407,13 +416,11 @@ foreach ($current_results ->result_array() as $row3) {
 
 
 
-    
-   <br><br><br>
       
-    <button style="margin-top: -3.2%;margin-left: 85%; display:block; float:left;" class="btn btn-info" type="button" id="deleteresult" name="deleteresults"  onclick="window.location='<?php echo site_url("upload_result/delete_Result");?>'" > Delete </button>
+    <button class="btn btn-primary pull-right" type="button" id="deleteresult" name="deleteresults"  onclick="window.location='<?php echo site_url("upload_result/delete_Result");?>'" > Delete </button>
 
 
-<input style="margin-top: -3.2%;margin-left: 91%; display:block;" class="btn btn-info" type="submit" id="resultsubmit" name="submitresults"  value="Update">
+<input  class="btn btn-primary pull-right" type="submit" id="resultsubmit" name="submitresults"  value="Update">
  
 
 
@@ -627,6 +634,27 @@ foreach ($current_results ->result_array() as $row3) {
         </div>
         
         <!-- END MESSAGE BOX-->
+
+
+
+
+
+        <!-- danger -->
+        <div class="message-box message-box-danger animated fadeIn" id="message-box-danger" style="display: none;">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-times"></span> Danger</div>
+                    <div class="mb-content">
+                        <p id=pText ></p>
+                    </div>
+                    <div class="mb-footer">
+                        <button type="button" class="btn btn-default btn-lg pull-right mb-control-close" onclick="    document.getElementById('message-box-danger').style.display = 'none';" >Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end danger -->
+
 
         <!-- START PRELOADS -->
        

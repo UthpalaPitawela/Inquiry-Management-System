@@ -64,3 +64,37 @@
          <audio id="audio-alert" src="<?php echo base_url();?>public/audio/alert.mp3" preload="auto"></audio>
         <audio id="audio-fail" src="<?php echo base_url();?>public/audio/fail.mp3" preload="auto"></audio>
 
+
+
+        
+
+            <!-- THIS PAGE PLUGINS -->
+        
+            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/jquery.noty.js'></script>
+            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topCenter.js'></script>
+            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topLeft.js'></script>
+            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topRight.js'></script>            
+            
+            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/themes/default.js'></script>
+            <script type="text/javascript">                                            
+            <script type="text/javascript">                                            
+                function notyConfirm(){
+                    noty({
+                        text: 'Do you want to continue?',
+                        layout: 'topRight',
+                        buttons: [
+                                {addClass: 'btn btn-success btn-clean', text: 'Ok', onClick: function($noty) {
+                                    $noty.close();
+                                    noty({text: 'You clicked "Ok" button', layout: 'topRight', type: 'success'});
+                                }
+                                },
+                                {addClass: 'btn btn-danger btn-clean', text: 'Cancel', onClick: function($noty) {
+                                    $noty.close();
+                                    noty({text: 'You clicked "Cancel" button', layout: 'topRight', type: 'error'});
+                                    }
+                                }
+                            ]
+                    })                                                    
+                }                                            
+            </script>
+       

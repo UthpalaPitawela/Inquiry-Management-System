@@ -21,6 +21,7 @@
  function inputfileFunction() {
     document.getElementById('filename').click();
 
+
 }
 
 
@@ -35,11 +36,149 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
+    
+            document.getElementById("submitbutton").style.display = 'block';            
         }
 
 </script>
 
        
+<script>
+// changing attributes of the profile
+function TP2edit(){
+
+   document.getElementById("telephone2").readOnly = false;
+   document.getElementById("submitbutton").style.display = 'block';
+}
+
+
+</script>
+
+
+
+
+<!-- checking file type -->
+<script type="text/javascript">
+    function checkpropic() {
+
+        var fileElement = document.getElementById("filename");
+        var fileExtension = "";
+  
+
+        if ($('#filename').get(0).files.length === 0) {
+            return checktp2();
+        }else{
+
+            if (fileElement.value.lastIndexOf(".") > 0) {
+// if the selected file have a file type assigning file type to variable fileExtension   
+            fileExtension = fileElement.value.substring(fileElement.value.lastIndexOf(".") + 1, fileElement.value.length);
+        }
+        var ex=fileExtension.toLowerCase();
+// validating file type
+        
+        switch(ex){
+          case "png":return checkSizepropic();break;
+          case "jpg":return checkSizepropic();break;
+          case "jpeg":return checkSizepropic();break;
+          
+          default: document.getElementById('pText').innerHTML = "Invalid file type. You can select only png,jpg or jpeg files";
+          
+              document.getElementById("message-box-danger").style.display = 'block';
+
+            return false;break;
+        }
+
+
+        }
+
+
+        
+    }
+// checking file assignment
+function checkSizepropic(){
+            var oFile = document.getElementById("filename").files[0]; 
+
+            if (oFile.size > 2097152) // 2 mb for bytes.
+            {
+                document.getElementById('pText').innerHTML = "Image size too large. Select an image of size atmost 2Mb.";
+          
+                document.getElementById("message-box-danger").style.display = 'block';
+                return false;
+            }else{
+               // return false;
+                return Confirmsubmit();
+                return false ;
+            }
+
+}
+
+
+
+
+// checking text area
+function checktp2(){
+
+  var tpnumber = $.trim($('#telephone2').val());
+ 
+   if(tpnumber.length===0)
+   {
+        document.getElementById('pText').innerHTML = "To submit you have to either enter telephone number or upload profile picture ";
+          
+                document.getElementById("message-box-danger").style.display = 'block';
+                return false;
+
+   }
+   else
+   {
+          return Confirmsubmit();
+   }
+
+
+
+
+
+   
+}
+
+function Confirmsubmit{
+
+        // document.getElementById('filename').click();
+
+         document.getElementById("message-box-info").style.display = 'block';
+
+
+}
+     // function notyConfirm(){
+
+     //                    var retbool=false;
+     //                noty({
+     //                    text: 'Are you sure you want to submit?',
+     //                    layout: 'topRight',
+     //                    buttons: [
+     //                            {addClass: 'btn btn-success btn-clean', text: 'Ok', onClick: function($noty) {
+     //                                   retbool= true;
+                                   
+     //                                $noty.close();
+     //                             }
+     //                            },
+     //                            {addClass: 'btn btn-danger btn-clean', text: 'Cancel', onClick: function($noty) {
+     //                                retbool=false;
+     //                                $noty.close();
+                                    
+     //                                }
+     //                            }
+     //                        ]
+     //                })                                                    
+     //                return retbool;
+     //            }                                            
+           
+</script>
+
+
+
+
+
+
         
         <!-- EOF CSS INCLUDE -->
     </head>
@@ -182,7 +321,7 @@ echo"<script> alert(".$propic.");</script>";
                                     
                                 </div>
                                 <div class="panel-body">
-                        <form class="form-horizontal" enctype="multipart/form-data" action="<?php echo site_url("update_Profile/update_Data")?>" method="POST">
+                        <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return checkpropic();" action="<?php echo site_url("update_Profile/update_Data")?>" method="POST">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Profile</strong></h3>
@@ -233,7 +372,7 @@ echo"<script> alert(".$propic.");</script>";
                                     </div>
                                     
                                     <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Datepicker</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Birthday</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
@@ -266,11 +405,11 @@ echo"<script> alert(".$propic.");</script>";
                                     </div>
 
                                      <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Telephone No2</label><button class="btn btn-primary"><span class="fa fa-pencil"></span> Edit</button>
+                                        <label class="col-md-3 col-xs-12 control-label">Telephone No2</label><button class="btn btn-primary" onclick="TP2edit();" type="button" ><span class="fa fa-pencil"></span> Edit</button>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="text" class="form-control" readonly value="<?php echo $row3['tpnumber2'];?>"/>
+                                                <input type="text" id="telephone2" class="form-control" readonly value="<?php echo $row3['tpnumber2'];?>"/>
                                             </div>                                            
                                            
                                         </div>
@@ -304,13 +443,13 @@ echo"<script> alert(".$propic.");</script>";
                                 </div>
                                 <div class="panel-footer">
                                     
-                                    <button class="btn btn-primary pull-right">Submit</button>
+                                    <button class="btn btn-primary pull-right" id="submitbutton" style="display:none;" onsubmit="">Submit</button>
 
 
 
 
 
-
+<button type="button" class="btn btn-primary" onClick="notyConfirm();">Confirm</button>       
 
 
 
@@ -371,68 +510,88 @@ echo"<script> alert(".$propic.");</script>";
             </div>
         </div>
         <!--end of message box-->
+
+
+
+
+
+
+
+        <!-- danger -->
+        <div class="message-box message-box-danger animated fadeIn" id="message-box-danger" style="display: none;">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-times"></span> Danger</div>
+                    <div class="mb-content">
+                        <p id=pText ></p>
+                    </div>
+                    <div class="mb-footer">
+                        <button type="button" class="btn btn-default btn-lg pull-right mb-control-close" onclick="    document.getElementById('message-box-danger').style.display = 'none';" >Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end danger -->
+
+
+<!-- info -->
+        <div class="message-box message-box-info animated fadeIn" id="message-box-info">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-info"></span> Information</div>
+                    <div class="mb-content">
+                        <p>Confirm ?</p>
+                    </div>
+                    <div class="mb-footer">
+                        <button class="btn btn-default btn-lg pull-right mb-control-close">Yes</button>
+                        <button type="button" class="btn btn-default btn-lg pull-right mb-control-close" onclick="    document.getElementById('message-box-info').style.display = 'none';"">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end info -->
+        
+
+
               <?php
 
       include 'imports.php';
+
+
+
       ?>
+
+
+
+
+        
+        <!-- END Message Boxes -->
+        
+
+            <!-- THIS PAGE PLUGINS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

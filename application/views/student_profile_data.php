@@ -62,7 +62,7 @@
 $name=$_SESSION["first_username"];
 //$_SESSION['name'];
 $propic=$_SESSION["propic"];
-
+echo"<script> alert(".$propic.");</script>";
 ?>
 
 
@@ -73,7 +73,7 @@ $propic=$_SESSION["propic"];
                        
                         <div class="profile">
                             <div class="profile-image">
-                                <img src='<?php echo base_url($propic); ?>' alt="No image">
+                                <img src="<?php echo base_url($propic);?>" alt="No image">
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $name; ?></div>
@@ -151,7 +151,7 @@ $propic=$_SESSION["propic"];
                     <li class="xn-icon-button">
                         <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
                     </li>
-                    <li style="color:white; padding-top: 16px;" >Loged in as  <?php echo $name; ?> </li>
+                    <li style="color:white; padding-top: 16px;" >Logged in as  <?php echo $name; ?> </li>
                     <!-- END TOGGLE NAVIGATION -->                    
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                     
@@ -159,9 +159,9 @@ $propic=$_SESSION["propic"];
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Edulink</a></li>                    
-                    <li class="active">Profile</li>
+                    <li class="active">Profile </li>
                 </ul>
-                <!-- END BREADCRUMB -->                
+                <!-- END BREADCRUMB -->               
 
 
 
@@ -195,7 +195,7 @@ $propic=$_SESSION["propic"];
 
 
                                     if ($profile_data->num_rows() > 0) {
-foreach ($profile_data ->result_array() as $row3) {
+                                        foreach ($profile_data ->result_array() as $row3) {
 
 ?>
 
@@ -205,7 +205,7 @@ foreach ($profile_data ->result_array() as $row3) {
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input type="text" class="form-control" readonly value="<?php echo $row3['first_name'];?>"/ >
+                                                <input type="text" class="form-control" readonly value="<?php echo $row3['firstname'];?>"/ >
                                             </div>                                            
 
                                         </div>
@@ -215,7 +215,7 @@ foreach ($profile_data ->result_array() as $row3) {
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input type="text" class="form-control" readonly value="<?php echo $row3['last_name'];?>"/>
+                                                <input type="text" class="form-control" readonly value="<?php echo $row3['lastname'];?>"/>
                                             </div>                                            
                                            
                                         </div>
@@ -255,17 +255,27 @@ foreach ($profile_data ->result_array() as $row3) {
                                     </div>
                                     
                                      <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">T.P</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Telephone No1</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="text" class="form-control" readonly value="<?php echo $row3['TP'];?>"/>
+                                                <input type="text" class="form-control" readonly value="<?php echo $row3['tpnumber'];?>"/>
                                             </div>                                            
                                            
                                         </div>
                                     </div>
 
-                                    
+                                     <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Telephone No2</label><button class="btn btn-primary"><span class="fa fa-pencil"></span> Edit</button>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+                                                <input type="text" class="form-control" readonly value="<?php echo $row3['tpnumber2'];?>"/>
+                                            </div>                                            
+                                           
+                                        </div>
+                                    </div>
+                                                                        
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Profile picture</label>
                                         <span class="help-block">Click to change profile picture</span>
@@ -275,7 +285,7 @@ foreach ($profile_data ->result_array() as $row3) {
                                             
 
                                 <div class="profile" style="width:30%; height:150px; ">
-                                <img id=proimg src="<?php echo base_url($row3['profilepicture']);?>" style="width:100%; height:120px; " alt="No image">
+                                <img id=proimg src="<?php echo base_url($row3['propic']);?>" style="width:100%; height:120px; " alt="No image">
                                 </div>
 
 

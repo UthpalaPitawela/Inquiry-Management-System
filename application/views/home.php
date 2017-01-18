@@ -15,8 +15,6 @@
         
         <!-- CSS INCLUDE -->       
 
-
-
         
         
         <!-- EOF CSS INCLUDE -->
@@ -61,13 +59,6 @@ $propic=$_SESSION["propic"];
                            
                         </div>                                                                        
                     </li>
-
-
-
-
-
-
-
 
 
 
@@ -130,7 +121,7 @@ $propic=$_SESSION["propic"];
                     <li class="xn-icon-button">
                         <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
                     </li>
-                    <li style="color:white; padding-top: 16px;" >Loged in as  <?php echo $name?></li>
+                    <li style="color:white; padding-top: 16px;" >Logged in as  <?php echo $name?></li>
                     <!-- END TOGGLE NAVIGATION -->                    
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                     

@@ -197,7 +197,7 @@
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
                                                 <td style="text-align: center">
-                                                <button class="btn btn-info btn-rounded btn-sm">Following</button>
+                                                <button class="btn btn-info btn-rounded btn-sm" onclick="changetab('<?php echo $post->Contactno; ?>')">Following</button>
                                                 <button class="btn btn-success btn-rounded btn-sm" onClick="#">Completed</button>
                                                 </td>
                                             </tr>
@@ -210,7 +210,18 @@
                                 </div>
                             </div>
                             <!-- END DATATABLE EXPORT -->        
+                            <!-- <script type="text/javascript">
 
+                                function changetab(contact){
+                                    var url = "http://localhost/edulink/index.php/";
+                                    $.get(url,{contact:contact},function(data){
+                                        document.getElementById("test1").innerHTML = "<tr><td>Test</td><td>System Architect</td><td>Edinburgh</td><td>61</td><td>2011/04/25</td><td>$320,800</td></tr>";
+                                        $('.nav-tabs a[href=#tab-second]').tab('show');
+
+                                    });
+                                    
+                                }
+                            </script> -->
 
                 
                         </div> 
@@ -270,8 +281,57 @@
                         </div> 
                                     </div>
                                     <div class="tab-pane" id="tab24">
-                                        <p>Vestibulum cursus augue sed leo tempor, at aliquam orci dictum. Sed mattis metus id velit aliquet, et interdum nulla porta. Etiam euismod pellentesque purus, in fermentum eros venenatis ut. Praesent vitae nibh ac augue gravida lacinia non a ipsum. Aenean vestibulum eu turpis eu posuere. Sed eget lacus lacinia, mollis urna et, interdum dui. Donec sed diam ut metus imperdiet malesuada. Maecenas tincidunt ultricies ipsum, lobortis pretium dolor sodales ut. Donec nec fringilla nulla. In mattis sapien lorem, nec tincidunt elit scelerisque tempus.</p>
-                                        <p>Nam a nisi et nisi tristique lacinia non sit amet orci. Duis blandit leo odio, eu varius nulla fringilla adipiscing. Praesent posuere blandit diam, sit amet suscipit justo consequat sed. Duis cursus volutpat ante at convallis. Integer posuere a enim eget imperdiet. Nulla consequat dui quis purus molestie fermentum. Donec faucibus sapien eu nisl placerat auctor. Pellentesque quis justo lobortis, tempor sapien vitae, dictum orci.</p>
+                                        <div class="col-md-12">
+                            <!-- START DATATABLE EXPORT -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Student Info</h3>                                   
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <table id="customers2" class="table datatable">
+                                        <thead>
+                                            <tr>
+                                                <th width="100" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
+                                                <th width="100" style="text-align: center">OL</th>
+                                                <th width="100" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">Contact No.</th>
+                                                <th width="200" style="text-align: center">Email</th>
+                                                <th width="100" style="text-align: center">Potential Date</th>
+                                                <th width="200" style="text-align: center">Actions</th>
+                                            </tr>
+                                        </thead>
+                                    <?php
+                                    if($posts2) {foreach($posts2 as $post){ ?>
+
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Grade1; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                                <td style="text-align: center">
+                                                <button class="btn btn-info btn-rounded btn-sm">Following</button>
+                                                <button class="btn btn-success btn-rounded btn-sm" onClick="#">Completed</button>
+                                                </td>
+                                            </tr>
+                            
+                                        </tbody>
+
+                                        <?php }} ?>
+                                    </table>                                    
+                                    
+                                </div>
+                            </div>
+                            <!-- END DATATABLE EXPORT -->        
+
+
+                
+                        </div> 
                                     </div>                        
                                 </div>
                             </div>                        
@@ -299,7 +359,7 @@
                                                 <th>Inquiry Mode</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="test1">
                                             <tr>
                                                 <td>Tiger Nixon</td>
                                                 <td>System Architect</td>

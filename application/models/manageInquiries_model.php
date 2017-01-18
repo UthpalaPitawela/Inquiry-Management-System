@@ -26,6 +26,16 @@ class manageInquiries_model extends CI_Model{
 		return $query->result();
 	}
 
+	function getPostsLow(){
+		//Select the fields
+		$intake = "low";
+		$this->db->select("Fname,Lname,OL,Grade1,Contactno,Email,Pdate");
+		$query = $this->db->get_where('register',array('intake'=>$intake));
+		
+
+		return $query->result();
+	}
+
 
 
 }

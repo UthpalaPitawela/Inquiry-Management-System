@@ -13,9 +13,11 @@ class manageInquiries_controller extends CI_Controller{
 	public function index()
 	{
 		$this->data['posts'] = $this->manageInquiries_model->getPostsHigh();
-		$this->load->view('manageInquiries_view', $this->data);
+		//$this->data['posts'] = $this->manageInquiries_model->getPostsHigh();
+		//$this->load->view('manageInquiries_view', $this->data);
 
 		$this->data['posts1'] = $this->manageInquiries_model->getPostsMedium();
+		$this->data['posts2'] = $this->manageInquiries_model->getPostsLow();
 		$this->load->view('manageInquiries_view', $this->data);
 	}
 

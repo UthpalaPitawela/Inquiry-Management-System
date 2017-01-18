@@ -51,7 +51,7 @@
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
                             <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
-                            <li><a href="manageInquiries.php"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
+                            <li><a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
                             
                         </ul>
                         
@@ -70,7 +70,7 @@
                     </li>
 
                     <li>
-                        <a href="#"><span class="fa fa-user"></span> <span class="xn-text">Student Profiles</span></a>   
+                        <a href="<?php echo base_url();?>index.php/addStudentAcc_controller"><span class="fa fa-user"></span> <span class="xn-text">Student Profiles</span></a>   
                     </li>
 
                     

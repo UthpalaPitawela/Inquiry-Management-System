@@ -22,11 +22,6 @@
 
     </head>
     <body>
-    	<?php if($this->session->flashdata('message')){?>
-          <div align="center" class="alert alert-success">      
-            <?php echo $this->session->flashdata('message')?>
-          </div>
-        <?php } ?>
         
 
         <!-- START PAGE CONTAINER -->
@@ -70,7 +65,7 @@
                         
                     </li>
 
-                    <li class="active">
+                    <li>
                         <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
                     </li>
 
@@ -82,7 +77,7 @@
                         <a href="#"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="<?php echo base_url();?>index.php/addStudentAcc_controller"><span class="fa fa-user"></span> <span class="xn-text">Student Profiles</span></a>   
                     </li>
 
@@ -131,105 +126,130 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="<?php echo base_url();?>index.php/Database">Databases</a></li>
+                    <li><a href="#">Student Profiles</a></li>
+
                 </ul>
                 <!-- END BREADCRUMB -->
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-                
-                    <div class="row">
-                    	<!-- FORM -->
-                        <div class="col-md-5">
-                            
-                            <form class="form-horizontal" style="border-color: #808080;" action="<?php echo base_url();?>index.php/database/bulk_input" method="post" name="add_bulk" enctype="multipart/form-data">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Bulk Input</strong></h3>
-                                </div>
-                            
-                                <div class="panel panel-default"  style="border-top-color:#2b73ef; border-top-width:2px; ">
-                                    <div class="panel-heading" >
-                                        <h2 class="panel-title"><strong>Create Bulk</strong></h2>
-                                 	</div>
-                                    <div class="panel-body"> 
-                                         
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Bulk Name</label>
-                                                    <div class="col-md-9">                                            
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                            <input type="text" id="bulk_name" name="bulk_name" class="form-control"/>
-                                                        </div> 
-                                                    </div>
-                                                    
-                                                </div>
+                <div class = "col-md-12">
+                  <div class="panel panel-default tabs">
+                                <ul class="nav nav-tabs nav-justified">
+                                    <li class="active"><a href="#tab8" data-toggle="tab">Create Student Account</a></li>
+                                    <li><a href="#tab9" data-toggle="tab">View Student Profiles</a></li>
+                                </ul>
+                                <div class="panel-body tab-content">
 
-                                                <div class="form-group">                                        
-                                                    <label class="col-md-3 control-label">Date</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                            <input type="text" name="bulk_date" id="bulk_date" class="form-control datepicker" value="">                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">                                        
-                                                    <label class="col-md-3 control-label">Bulk Input</label>
-                                                    <div class="col-md-6">                                            
-                                                        <input type="file"  name="file" >
-                                                    </div>
-                                                    
-                                                </div>
-                                                
-                                                <div class="panel-footer">
-                                   					 <button type="reset" class="btn btn-default">Clear Form</button>                                    
-                                   					 <button type="submit" name="create_bulk" style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary pull-right" >Create Bulk</button>
-                                				</div>
-                                                                                          
-                                            </div>
-                                                                                    
+                                <!--First tab -->
+                                    <div class="tab-pane active" id="tab8">
+                                        
+
+                        <!-- Form to create student profile -->
+                        <div class="row">
+                        <div class="col-md-12">
+                            
+                            <form class="form-horizontal" method="POST" action="<?php echo base_url('index.php/addStudentAcc_controller/addstudent');?>">
+                            <div class="panel panel-default">
+
+                                <div class="panel-body">                                                                        
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Username</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name="username" required/>
+                                            </div>                                            
+                                            <span class="help-block">Username for the student account</span>
+                                        </div>
                                     </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Password</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+                                                <input type="password" class="form-control" name="password" required/>
+                                            </div>            
+                                            <span class="help-block">Password for the student account</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">First Name</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name="firstname">                                            
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Last Name</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name="lastname">                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Email</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+                                                <input type="text" class="form-control" name="email">                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Date of Birth</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                <input type="date" class="form-control" name="dob">                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Contact No.</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+                                                <input type="number" class="form-control" name="contact" required>                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
+                                <div class="panel-footer">
+                                    <button type="reset" class="btn btn-default">Clear Form</button>                              
+                                    <button type="submit" class="btn btn-primary pull-right">Create Account</button>
+                                </div>
+                            </div>
                             </form>
                             
                         </div>
-                        <!-- END FORM -->
-                        <div class="col-md-7">
-                            <form class="form-horizontal" style="border-color: #808080;" action="<?php echo base_url();?>index.php/database/bulk_input" method="post" name="add_bulk" enctype="multipart/form-data">
-                                <div class="panel panel-default"  style="top:39px; border-top-color:#2b73ef; border-top-width:2px; "> 
-                                	<div class="panel-heading" >
-                                        <h2 class="panel-title"><strong>View Bulk Details</strong></h2>
-                                 	</div>
-	                                    <div class="panel-body"> 
-	                                            <!-- FIRST COLUMN -->
-	                                            <div class="col-md-12">
-	                                                <div class="form-group">
-	                                                    <label class="col-md-2 control-label">Bulk Name</label>
-                                                    	<div class="col-md-9">                                        
-	                                                        <select name="bulk_type" id="bulk_type" class="form-control select">
-	                                                            <option>Select Bulk</option>
-	                                                            <option>Walk-in</option>
-	                                                            <option>Call</option>
-	                                                            <option>E-mail</option>
-	                                                            <option>SMS</option>
-	                                                            <option>Bulk</option>
-	                                                        </select>
-                                                    	</div>
-	                                                    
-	                                                </div>                                               
-	                                            </div>
-	                                                                                    
-	                                    </div>
-                                </div>
-                            </form>
-                            
-                        </div>
-                        
                     </div> 
 
+                                    </div>
 
-                    <!-- END PAGE CONTENT WRAPPER --> 
+                                    <!--Second tab -->
+                                    <div class="tab-pane" id="tab9">
+                                        <p>Donec tristique eu sem et aliquam. Proin sodales elementum urna et euismod. Quisque nisl nisl, venenatis eget dignissim et, adipiscing eu tellus. Sed nulla massa, luctus id orci sed, elementum consequat est. Proin dictum odio quis diam gravida facilisis. Sed pharetra dolor a tempor tristique. Sed semper sed urna ac dignissim. Aenean fermentum leo at posuere mattis. Etiam vitae quam in magna viverra dictum. Curabitur feugiat ligula in dui luctus, sed aliquet neque posuere.</p>
+                                    </div>
+                                                            
+                                </div>
+                            </div>  
+                    </div>
+
+
+                <!-- END PAGE CONTENT WRAPPER --> 
 
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->                                                

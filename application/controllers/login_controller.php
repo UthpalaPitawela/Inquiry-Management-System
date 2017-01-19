@@ -23,9 +23,15 @@
     	$password = $this->input->post('password');
 
     	$result = $this->Login_Model->check_login($username, $password);
+        $rowcount = $result->num_rows();
+       // $numrows=mysqli_num_rows($result);
+        if($rowcount>0){
 
-        if($result->num_rows>0){
-
+  ?>
+            <script type="text/javascript">
+                alert("fdfdfd");
+            </script>
+            <?php
 
                foreach ($result->result_array() as $row) {
 
@@ -59,15 +65,16 @@
 
 
         }else{
+          
 
 
             // checking whether the student account
 
             $resultstudent = $this->Login_Model->check_login_student($username, $password);
 
-
-
-            if(($resultstudent->num_rows)>=0){
+            $rowcount2 = $resultstudent->num_rows();
+           
+            if($rowcount2>0){
 
                foreach ($resultstudent->result_array() as $rowstudent) {
 

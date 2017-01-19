@@ -12,8 +12,11 @@ class profile_controller extends CI_Controller{
 
 	public function index()
 	{
-		
-		$this->load->view('profile_view');
+		$user_ID = $_SESSION["user_ID"];
+		//echo $user_ID;
+		 $data['posts'] = $this->profile_model->getData($user_ID);
+		 $this->load->view('profile_view',$data);
+		//$this->load->view('profile_view');
 	}
 
 	public function uploadpropic()
@@ -38,6 +41,12 @@ class profile_controller extends CI_Controller{
     	}
 	}
 
+	public function getuserData()
+	{
+		$user_ID = $_SESSION("user_ID");
+		$data['posts'] = $this->profile_model->getData($user_ID);
+		$this->load->view('profile_view',$data);
+	}
 	
 
 

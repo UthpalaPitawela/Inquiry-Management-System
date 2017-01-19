@@ -2,7 +2,7 @@
  class user extends CI_Controller{
 
 
-     function user(){
+     function __construct(){
          parent::__construct();
          $this->view_data['base_url'] = base_url();
 
@@ -23,7 +23,8 @@
          $this->form_validation->set_rules('fname','First Name','trim|required|alpha_numeric|min_length[3]|xss_clean');
          $this->form_validation->set_rules('lname','Last Name','trim|required|alpha_numeric|min_length[3]|xss_clean');
          $this->form_validation->set_rules('email','Email','trim|required|min_length[3]|xss_clean|valid_email');
-
+         //$this->form_validation->set_rules('password','Password','trim|required|alpha_numeric|min_length[6]|xss_clean');
+         //$this->form_validation->set_rules('cpassword','Confirm Password','trim|required|alpha_numeric|min_length[6]|matches[password]|xss_clean');
 
 
 
@@ -56,21 +57,76 @@
              $intake = $this->input->post('intake');
              $pdate = $this->input->post('pdate');
              $counsellorname = $this->input->post('counsellorname');
+            // $total=  $this->input->post('grade1' + 'grade2' + 'grade3');
+
+             //$activation_code = $this->_random_string(10);
 
 
 
-
-             $status = $this->user_model->register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,
+             $this->user_model->register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,
                  $subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname);
-            redirect('user/register',$this->view_data);
 
 
 
           }
 
 
-
+        // $this->load->view('view_register',$this->view_data);
      }
+
+
+
+
+
+     //function  register_confirm(){
+        // $registration_code = $this->uri->segment(3);
+
+         //if($registration_code == ''){
+             //echo "Error no registration code in URL";
+             //exit();
+
+         //}
+
+         //$registration_confirmed = $this->user_model->confirm_registration($registration_code);
+
+         //if($registration_confirmed){
+            // echo "You have successfully registered";
+
+         //}else{
+            //echo "You have failed to register- no record found for that activation code";
+
+         //}
+     //}
+
+
+
+
+
+
+
+    // function  username_not_exists($username){
+         //$this->form_validation->set_message('username_not_exists','That %s already exits.please choose different username');
+
+         //if($this->user_model->check_exists_username($username)){
+             //return false;
+        // }else{
+             //return true;
+        // }
+
+     //}
+
+    // function _random_string($length){
+         //$len = $length;
+         //$base = 'ABCDEFGHIJKLMNOPQRSTWXYZabcdefghijklmnopqrstwxyz123456789';
+         //$max = strlen($base)-1;
+         //$activatecode='';
+         //mt_srand((double)microtime()*1000000);
+         //while(strlen($activatecode)<$len +1)
+             //$activatecode.=$base{mt_rand(0,$max)};
+
+         //return $activatecode;
+     //}
+
 
 
      public function geteligbledata($id){
@@ -86,6 +142,7 @@
              echo $dd->Programme7;
 
         }
+         //$this->load->view('view_register',$data);
 
 
 

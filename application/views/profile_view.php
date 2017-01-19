@@ -20,6 +20,12 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <!-- JS INCLUDE --> 
 
+        <style>
+       input[type="text"][disabled] {
+            color: black;
+        }
+        </style>
+
     </head>
     <body>
 
@@ -45,7 +51,7 @@
                     <li class="xn-profile">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?php echo base_url('public/assets/images/users/user2.jpg');?>" alt="Viduni"/>
+                                <img src="<?php echo base_url(). $propic ?>" alt="Viduni"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $name ?></div>
@@ -138,20 +144,100 @@
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
+
+                
                     <div class="col-md-12">
                         
-                        <div>
-                        <?php echo "<img src=\n".$propic." style='height:200px;width:200px;border-radius:50%;'/\n>"; ?>
+                        <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4" style="text-align: center">
+                        <img src="<?php echo base_url($propic);?>" style='height:200px;width:200px;' alt="No image">
                         
                         <form action="<?php echo base_url('index.php/profile_controller/uploadpropic'); ?>" method="post" enctype="multipart/form-data">
                         Select image to upload:
-                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <br>
+                        
                         <input type="submit" value="Upload Image" name="submit" style="width:150px" class="btn btn-info btn-md">
+                        <input type="file" name="fileToUpload" id="fileToUpload">
                         </form>
+                        </div>
+                        <div class="col-md-4"></div>
                         </div>
 
                         
                     </div>
+                    <br><br><br>
+
+                    <?php
+                    // if(is_array($posts) || is_object($posts)){
+
+                    foreach($posts -> result() as $row){    ?>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <form class="form-horizontal" method="POST" action="<?php echo base_url('index.php/addStudentAcc_controller/addstudent');?>">
+                            <div class="panel panel-default">
+
+                                <div class="panel-body">                                                                        
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-5 col-xs-12 control-label">First Name</label>
+                                        <div class="col-md-3 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name="firstname" disabled value="<?php echo $row->first_name;?>"/>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-5 col-xs-12 control-label">Last Name</label>
+                                        <div class="col-md-3 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name="lastname" disabled value="<?php echo $row->last_name;?>"/>
+                                            </div>            
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">                                        
+                                        <label class="col-md-5 col-xs-12 control-label">Email</label>
+                                        <div class="col-md-3 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+                                                <input type="text" class="form-control" name="email" disabled value="<?php echo $row->email;?>"/>                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-5 col-xs-12 control-label">Date of Birth</label>
+                                        <div class="col-md-3 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                <input type="text" class="form-control" name="fob" disabled value="<?php echo $row->dob;?>"/>                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <label class="col-md-5 col-xs-12 control-label">Telephone No.</label>
+                                        <div class="col-md-3 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+                                                <input type="text" class="form-control" name="TP" disabled value="<?php echo $row->TP;?>"/>                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            </form>
+                            
+                        </div>
+                    </div> 
+                    <?php } ?>
                 
                     
 

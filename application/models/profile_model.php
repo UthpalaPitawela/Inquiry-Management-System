@@ -20,7 +20,13 @@ class profile_model extends CI_Model{
     if(isset($_POST["submit"])) {
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
+            ?>
+             <script>
+             alert('Image uploaded successfully');
+             window.location='<?php echo site_url("profile_controller/index");?>'
+             </script>
+            //echo "File is an image - " . $check["mime"] . ".";
+            <?php
             $uploadOk = 1;
         }else {
             echo "File is not an image.";
@@ -99,6 +105,18 @@ class profile_model extends CI_Model{
 
 
 }
+    public function getData($user_ID)
+    {
+        $user = "$user_ID";
+        // $this->db->select("first_name,last_name,email,profilepicture,dob,TP");
+        // $query = $this->db->get_where('user',array('u_id'=>$user));
+        $this->db->where('u_id',$user);
+        $query = $this->db->get('user');
+
+        return $query;
+
+    }
+
 }
 
 ?>

@@ -21,6 +21,10 @@
     overflow-y: scroll;
 }
 
+.disabledInput {
+    color: black;
+}
+
 /* PREDEFINED CLASSES */
 .clearfix {
   zoom: 1;

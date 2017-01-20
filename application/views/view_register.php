@@ -23,6 +23,13 @@
     </head>
     <body>
 
+    <?php
+
+    $name = $_SESSION["first_username"];
+    $propic = $_SESSION["propic"];
+
+    ?>
+
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -37,14 +44,14 @@
                     <li class="xn-profile">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?php echo base_url('public/assets/images/users/user2.jpg');?>" alt="Viduni"/>
+                                <img src="<?php echo base_url(). $propic ?>" alt="noimage"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">Name</div>
-                                <div class="profile-data-title">Designation</div>
+                                <div class="profile-data-name"><?php echo $name ?></div>
+                                <!-- <div class="profile-data-title">Designation</div> -->
                             </div>
                             <div class="profile-controls">
-                                <a href="#" class="profile-control-left"><span class="fa fa-info"></span></a>
+                                <a href="<?php echo base_url();?>index.php/profile_controller" class="profile-control-left"><span class="fa fa-info"></span></a>
                                 <a href="#" class="profile-control-right"><span class="fa fa-cog"></span></a>
                             </div>
                         </div>                                                                        

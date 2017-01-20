@@ -57,7 +57,7 @@
                                 <div class="profile-data-name"><?php echo $name ?></div>
                             </div>
                             <div class="profile-controls">
-                                <a href="#" class="profile-control-left"><span class="fa fa-info"></span></a>
+                                <a href="<?php echo base_url();?>index.php/profile_controller" class="profile-control-left"><span class="fa fa-info"></span></a>
                                 <a href="#" class="profile-control-right"><span class="fa fa-cog"></span></a>
                             </div>
                         </div>                                                                        
@@ -154,13 +154,15 @@
                         <img src="<?php echo base_url($propic);?>" style='height:200px;width:200px;' alt="No image">
                         
                         <form action="<?php echo base_url('index.php/profile_controller/uploadpropic'); ?>" method="post" enctype="multipart/form-data">
+                        <br>
                         Select image to upload:
                         <br>
                         
                         <input type="submit" value="Upload Image" name="submit" style="width:150px" class="btn btn-info btn-md">
-                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <br><br><input type="file" name="fileToUpload" id="fileToUpload" style="margin-left: 32%;"><br>
                         </form>
                         </div>
+
                         <div class="col-md-4"></div>
                         </div>
 

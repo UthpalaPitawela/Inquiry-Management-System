@@ -126,6 +126,24 @@
                               
                     <div class="col-md-6">
                         <div class="row">
+
+                        <?php
+                            $sum = 0;
+                            foreach ($result as $row) {
+                                $sum = $sum + $row['count'];
+                                # code...
+                            }
+
+                            $val1 = $result[2];
+                            $pending = ($val1['count']/$sum)*100;
+
+                            $val2 = $result[1];
+                            $following = ($val2['count']/$sum)*100;
+
+                            $val3 = $result[0];
+                            $completed = ($val3['count']/$sum)*100;
+
+                        ?>
                         <!--This is the activity summary section-->
                             <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -134,19 +152,32 @@
                                     <div class="panel-body">
 
                                         <div class="progress">
-                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                                80% Pending
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $pending?>%">
+
+                                                <?php
+                                                    
+                                                 
+                                                    
+                                                    echo $pending."% Pending";
+                                                          
+                                                ?>
                                             </div>
                                         </div>
 
                                          <div class="progress">
-                                            <div class="progress-bar progress-bar-colorful" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                75% Following
+                                            <div class="progress-bar progress-bar-colorful" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $following?>%">
+                                                <?php
+                                                     
+                                                    echo $following."% Following";   
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="progress">
-                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                                60% Complete
+                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $completed?>%">
+                                               <?php
+                                               
+                                                    echo $completed."% Completed";
+                                                ?>
                                             </div>
                                         </div>
                                         

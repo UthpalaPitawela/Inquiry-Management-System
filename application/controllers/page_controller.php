@@ -37,7 +37,8 @@ $this->load->model("Student_Data_Model");
     $this->load->view('contact');
 }elseif ($page=='home') {
 
-$data['programme'] = $this->Login_Model->getCourses($user_Id);
+
+$data['programme'] = $this->Login_Model->getCourses($username);
 
                     $this->load->view('home',$data);
 

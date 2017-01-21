@@ -27,6 +27,11 @@
        // $numrows=mysqli_num_rows($result);
         if($rowcount>0){
 
+  ?>
+            <script type="text/javascript">
+                alert("You have succesfully logged in!");
+            </script>
+            <?php
 
                foreach ($result->result_array() as $row) {
 
@@ -36,7 +41,10 @@
                     $_SESSION["status"]=$row['status'];
 
                     if ($row['status']==0) {
-                        $this->load->view("Manager_Profile");
+                        $this->load->model('Manager_Profile_Model');
+                        $data['result'] = $this->Manager_Profile_Model->index();
+                       // print_r($data);
+                        $this->load->view("manager_profile",$data);
                         /*$data = array(
                             'is_logged' => true,
                             'username' => $this->input->post('username')
@@ -74,10 +82,6 @@
 
             $rowcount2 = $resultstudent->num_rows();
            
-
-        
-
-
             if($rowcount2>0){
 
                foreach ($resultstudent->result_array() as $rowstudent) {
@@ -86,11 +90,9 @@
                     $_SESSION["user_ID"]=$rowstudent['email'];
                     $_SESSION["propic"]=$rowstudent['propic'];
 
-
                     $data['programme'] = $this->Login_Model->getCourses($username);
 
                     $this->load->view('home',$data);
-
 
 
                 }
@@ -110,4 +112,5 @@
 
 
  }
+
 ?>

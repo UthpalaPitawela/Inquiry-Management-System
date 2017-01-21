@@ -23,7 +23,7 @@ $this->load->model("Student_Data_Model");
         
    
  $s_data['current_results'] = $this->Results_model->load_results($student_id);
- $s_data['profile_data'] = $this->Student_Data_Model->get_User_Data($student_id);
+ $s_data['profile_data'] = $this->Student_Data_Model->get_Student_Data($student_id);
 
  print $this->load->view('studentfor_admission_officer',$s_data,true);
 

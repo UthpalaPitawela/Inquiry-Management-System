@@ -17,8 +17,14 @@ class Student_Data_Model extends CI_Model{
 
   function get_Student_Data($user_Id){
     
+    // $this->db->select('firstname,email,propic')->from('student_table')->where('email', $username)->where('password',$password);
+    
 
-    $querystu = $this->db->query("SELECT first_name,last_name,u_id,email FROM user WHERE status= 1");
+    // $query =$this->db->get();
+    //     return $query;
+        
+
+    $querystu = $this->db->query("SELECT firstname,lastname,user_name,email FROM student_table");
         return $querystu;
         //if ($query->num_rows() > 0) {
           //  return true;

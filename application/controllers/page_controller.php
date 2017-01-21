@@ -9,6 +9,8 @@ $this->load->model("Results_model");
 $this->load->model("Student_Data_Model");
  $this->load->helper('url_helper');
 
+    $this->load->model("Login_Model");
+
 
 }
  	public function index(){
@@ -35,7 +37,10 @@ $this->load->model("Student_Data_Model");
     $this->load->view('contact');
 }elseif ($page=='home') {
 
-    $this->load->view('home');
+$data['programme'] = $this->Login_Model->getCourses($user_Id);
+
+                    $this->load->view('home',$data);
+
 }elseif ($page=='logout') {
 
     $this->load->view('login_view');

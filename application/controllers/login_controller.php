@@ -27,11 +27,7 @@
        // $numrows=mysqli_num_rows($result);
         if($rowcount>0){
 
-  ?>
-            <script type="text/javascript">
-                alert("fdfdfd");
-            </script>
-            <?php
+
 
                foreach ($result->result_array() as $row) {
 
@@ -74,6 +70,10 @@
 
             $rowcount2 = $resultstudent->num_rows();
            
+
+        
+
+
             if($rowcount2>0){
 
                foreach ($resultstudent->result_array() as $rowstudent) {
@@ -82,7 +82,10 @@
                     $_SESSION["user_ID"]=$rowstudent['email'];
                     $_SESSION["propic"]=$rowstudent['propic'];
 
-                    $this->load->view('home');
+
+                    $data['programme'] = $this->Login_Model->getCourses($username);
+
+                    $this->load->view('home',$data);
 
 
 

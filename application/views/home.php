@@ -156,14 +156,67 @@ $propic=$_SESSION["propic"];
 You can proceed to upload from <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>" style="color:blue; ">here</a> or you can select "Upload results" from menu</h3>
 
 
-
 <br><br><br><br><br><br><br><br>
 <h1>You are eligible to following Degrees</h1>
 <br><br>
+
+    <?php
+
+
+if(isset($programme)){
+
+foreach ($programme ->result_array() as $degrees) {
+?>
 <ol>
-    <li><h4> BSc (Hons) Computing </h4> </li>
-    <li><h4>HND in Computer Science</h4> </li>
-</ol>
+<?php
+
+    if($degrees['Programme1']!=NULL){
+  ?>  <li><h4><?php echo $degrees['Programme1']; ?></h4> </li>
+
+<?php
+    }
+    if($degrees['Programme2']!=NULL){
+  ?>  <li><h4><?php echo $degrees['Programme2']; ?></h4> </li>
+
+<?php
+    }
+    if($degrees['Programme3']!=NULL){
+  ?>  <li><h4><?php echo $degrees['Programme3']; ?></h4> </li>
+
+<?php
+    }
+    if($degrees['Programme4']!=NULL){
+  ?>  <li><h4><?php echo $degrees['Programme4']; ?></h4> </li>
+
+<?php
+    }
+    if($degrees['Programme5']!=NULL){
+  ?>  <li><h4><?php echo $degrees['Programme5']; ?></h4> </li>
+
+<?php
+    }
+    if($degrees['Programme6']!=NULL){
+  ?>  <li><h4><?php echo $degrees['Programme6']; ?></h4> </li>
+
+<?php
+    }
+    if($degrees['Programme7']!=NULL){
+  ?>  <li><h4><?php echo $degrees['Programme7']; ?></h4> </li>
+
+<?php
+    }
+?>
+    </ol>
+<?php
+}
+
+
+}
+ 
+?>
+
+
+
 
 
 

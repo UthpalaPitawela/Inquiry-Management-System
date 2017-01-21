@@ -177,10 +177,10 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
 
                                             <tr>
                                             <form>
-                                                <td><?php echo $studentrow['first_name']."  ".$studentrow['last_name'];?></td>
+                                                <td><?php echo $studentrow['firstname']."  ".$studentrow['lastname'];?></td>
                                                 <td><?php echo $studentrow['email'];?></td>
-                                                <td><?php echo $studentrow['u_id'];?></td>
-                                                <td><a href="javascript:selectStudent('<?php echo $studentrow['u_id'];?>')"><span class="fa fa-user"></span> View Profile</a></td>
+                                                <td><?php echo $studentrow['user_name'];?></td>
+                                                <td><a href="javascript:selectStudent('<?php echo $studentrow['email'];?>')"><span class="fa fa-user"></span> View Profile</a></td>
                                                 </form>
                                             </tr>
 

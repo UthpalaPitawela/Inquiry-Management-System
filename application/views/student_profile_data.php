@@ -201,7 +201,6 @@ function checktp2(){
 $name=$_SESSION["first_username"];
 //$_SESSION['name'];
 $propic=$_SESSION["propic"];
-echo"<script> alert(".$propic.");</script>";
 ?>
 
 

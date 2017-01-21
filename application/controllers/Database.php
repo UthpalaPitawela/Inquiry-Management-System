@@ -48,10 +48,10 @@ class Database extends CI_Controller {
 			           }                    
 		            fclose($file);
 				    $this->session->set_flashdata('message', 'Data inserted successfully..');
-				    redirect('shoutout/index');
+				    redirect('database/index');
 				}else{
 				    $this->session->set_flashdata('message', 'Something went wrong..');
-					redirect('shoutout/index');
+					redirect('database/index');
 		    	}
 		    }
 		}

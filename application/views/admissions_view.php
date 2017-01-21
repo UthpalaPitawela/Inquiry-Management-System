@@ -20,23 +20,17 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <!-- JS INCLUDE --> 
 
-        <style>
-       input[type="text"][disabled] {
-            color: black;
-        }
-        </style>
-
     </head>
     <body>
 
-    <?php
+     <?php
 
     $name = $_SESSION["first_username"];
     $propic = $_SESSION["propic"];
 
     ?>
         
-
+    
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -55,6 +49,7 @@
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $name ?></div>
+                                <!-- <div class="profile-data-title">Designation</div> -->
                             </div>
                             <div class="profile-controls">
                                 <a href="<?php echo base_url();?>index.php/profile_controller" class="profile-control-left"><span class="fa fa-info"></span></a>
@@ -68,7 +63,7 @@
                     </li>                    
                     <li class="xn-openable">
                         
-                        <a href="<?php echo base_url();?>index.php/admissions_controller"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
+                        <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
                             <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
                             <li><a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
@@ -85,8 +80,8 @@
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
                     </li>
 
-                    <li>
-                        <a href="#"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
+                    <li class="active">
+                        <a href="<?php echo base_url();?>index.php/admissions_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                     </li>
 
                     <li>
@@ -127,124 +122,78 @@
                     <li class="xn-icon-button pull-right">
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
-                    <!-- END SIGN OUT -->
-
-                   
-
-                    
+                    <!-- END SIGN OUT -->    
                 </ul>
-                <!-- END X-NAVIGATION VERTICAL -->                                      
+                <!-- END X-NAVIGATION VERTICAL -->           
+
                 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">View Profile</a></li>
+                    <li><a href="#">Admissions</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
+
+
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-
+                <div class="page-content-wrap">
                 
-                    <div class="col-md-12">
-                        
-                        <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4" style="text-align: center">
-                        <img src="<?php echo base_url($propic);?>" style='height:200px;width:200px;' alt="No image">
-                        
-                        <form action="<?php echo base_url('index.php/profile_controller/uploadpropic'); ?>" method="post" enctype="multipart/form-data">
-                        <br>
-                        Select image to upload:
-                        <br>
-                        
-                        <input type="submit" value="Upload Image" name="submit" style="width:150px" class="btn btn-info btn-md">
-                        <br><br><input type="file" name="fileToUpload" id="fileToUpload" style="margin-left: 32%;"><br>
-                        </form>
-                        </div>
-
-                        <div class="col-md-4"></div>
-                        </div>
-
-                        
-                    </div>
-                    <br><br><br>
-
-                    <?php
-                    // if(is_array($posts) || is_object($posts)){
-
-                    foreach($posts -> result() as $row){    ?>
-
                     <div class="row">
                         <div class="col-md-12">
-                            
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url('index.php/addStudentAcc_controller/addstudent');?>">
+            
+            
+                            <!-- START DATATABLE -->
                             <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title"><strong>Registered Students</strong></h2>                               
+                                </div>
 
-                                <div class="panel-body">                                                                        
-                                    
-                                    <div class="form-group">
-                                        <label class="col-md-5 col-xs-12 control-label">First Name</label>
-                                        <div class="col-md-3 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="firstname" disabled value="<?php echo $row->first_name;?>"/>
-                                            </div>                                            
+                                <div class="panel-body">
+                                    <table id="customers2" class="table datatable">
+                                        <thead>
+                                            <tr>
+                                                <th width="100" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
+                                                <th width="100" style="text-align: center">OL</th>
+                                                <th width="100" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">Contact No.</th>
+                                                <th width="200" style="text-align: center">Email</th>
+                                                <th width="200" style="text-align: center">Actions</th>
+                                            </tr>
+                                        </thead>
+                                    <?php
+                                    foreach($posts as $post){ ?>
+                                    <div>
+                                        <tbody id='table'>
+                                            <tr id="<?php  echo $post->r_id; ?>">
+                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
+                                                <td style="text-align: center">
+                                                <button type="button" class="btn btn-danger btn-rounded btn-sm" onclick="deleteStudent('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Delete</button>
+                                                </td>
+                                            </tr>
+                            
+                                        </tbody>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-5 col-xs-12 control-label">Last Name</label>
-                                        <div class="col-md-3 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="lastname" disabled value="<?php echo $row->last_name;?>"/>
-                                            </div>            
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group">                                        
-                                        <label class="col-md-5 col-xs-12 control-label">Email</label>
-                                        <div class="col-md-3 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
-                                                <input type="text" class="form-control" name="email" disabled value="<?php echo $row->email;?>"/>                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-5 col-xs-12 control-label">Date of Birth</label>
-                                        <div class="col-md-3 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input type="text" class="form-control" name="fob" disabled value="<?php echo $row->dob;?>"/>                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-5 col-xs-12 control-label">Telephone No.</label>
-                                        <div class="col-md-3 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="text" class="form-control" name="TP" disabled value="<?php echo $row->TP;?>"/>                                            
-                                            </div>
-                                        </div>
-                                    </div>
+                                        <?php } ?>
+                                    </table>                                    
                                     
                                 </div>
-                            </div>
-                            </form>
+                            </div>      
                             
-                        </div>
-                    </div> 
-                    <?php } ?>
+
                 
+                        </div> 
+                    </div>
+                                    
                     
-
-
-                    <!-- END PAGE CONTENT WRAPPER --> 
 
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->                                                
@@ -271,11 +220,35 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-file-input.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-select.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/tableExport.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jquery.base64.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/html2canvas.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/jspdf.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script> 
+
+        <!-- To delete an admission -->
+        <script type="text/javascript">
+
+        function deleteStudent(email,r_id){
+                $.ajax({             
+                    type:"post",
+                    url : 'admissions_controller/deleteStudent/',
+                    data : {id:r=email},
+                    success: function(data) {
+                        $('#deleted').html(data);
+                    }
+                });
+                $('#'+r_id).hide();
+        }
+        
+       </script>
+
         <!-- END THIS PAGE PLUGINS -->       
         
         <!-- START TEMPLATE -->
-        
-        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>        
         <!-- END TEMPLATE -->

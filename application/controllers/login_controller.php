@@ -28,12 +28,12 @@
         if($rowcount>0){
 
 
-
                foreach ($result->result_array() as $row) {
 
                     $_SESSION["first_username"]=$row['first_name'];
                     $_SESSION["user_ID"]=$row['u_id'];
                     $_SESSION["propic"]=$row['profilepicture'];
+                    $_SESSION["status"]=$row['status'];
 
                     if ($row['status']==0) {
                         $this->load->view("Manager_Profile");
@@ -44,16 +44,20 @@
 
                         $this->session->set_userdata($data);*/
 
-                    
                     }elseif ($row['status']==2) {
-                        
                         $this->load->view('Admission_Officer');
-                    
-                    } else {
-                        echo "vwrv";
+        
+                    }elseif ($row['status']==3) {
+                        $this->load->view('Counsellor_Profile');
+            
+            
+                    }elseif($row['status'] == 4){
+                        $this->load->view('Assistant_Manager_Profile');
+                    }else{
+                        echo("wrong");
+                    }
                         /*$this->form_validation->set_message('validate_user', $this->lang->line('error_login'));
                     return false;*/
-                    }
                 
                 }
 

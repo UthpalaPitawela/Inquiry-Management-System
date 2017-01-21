@@ -41,7 +41,10 @@
                     $_SESSION["status"]=$row['status'];
 
                     if ($row['status']==0) {
-                        $this->load->view("Manager_Profile");
+                        $this->load->model('Manager_Profile_Model');
+                        $data['result'] = $this->Manager_Profile_Model->index();
+                       // print_r($data);
+                        $this->load->view("manager_profile",$data);
                         /*$data = array(
                             'is_logged' => true,
                             'username' => $this->input->post('username')

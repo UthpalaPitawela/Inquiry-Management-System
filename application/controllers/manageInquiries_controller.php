@@ -18,6 +18,8 @@ class manageInquiries_controller extends CI_Controller{
 
 		$this->data['posts1'] = $this->manageInquiries_model->getPostsMedium();
 		$this->data['posts2'] = $this->manageInquiries_model->getPostsLow();
+		$this->data['posts3'] = $this->manageInquiries_model->getFollowing();
+		$this->data['posts4'] = $this->manageInquiries_model->getCompleted();
 		$this->load->view('manageInquiries_view', $this->data);
 	}
 

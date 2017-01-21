@@ -8,9 +8,10 @@ class manageInquiries_model extends CI_Model{
 
 	function getPostsHigh(){
 		//Select the fields
+		$status = "Pending";
 		$intake = "high";
-		$this->db->select("Fname,Lname,OL,Grade1,Contactno,Email,Pdate");
-		$query = $this->db->get_where('register',array('intake'=>$intake));
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate");
+		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
 		
 
 		return $query->result();
@@ -18,9 +19,10 @@ class manageInquiries_model extends CI_Model{
 
 	function getPostsMedium(){
 		//Select the fields
+		$status = "Pending";
 		$intake = "medium";
-		$this->db->select("Fname,Lname,OL,Grade1,Contactno,Email,Pdate");
-		$query = $this->db->get_where('register',array('intake'=>$intake));
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate");
+		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
 		
 
 		return $query->result();
@@ -28,10 +30,27 @@ class manageInquiries_model extends CI_Model{
 
 	function getPostsLow(){
 		//Select the fields
+		$status = "Pending";
 		$intake = "low";
-		$this->db->select("Fname,Lname,OL,Grade1,Contactno,Email,Pdate");
-		$query = $this->db->get_where('register',array('intake'=>$intake));
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate");
+		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
 		
+
+		return $query->result();
+	}
+
+	function getFollowing(){
+		$status = "Following";
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Intake,Pdate");
+		$query = $this->db->get_where('register',array('status'=>$status));
+
+		return $query->result();
+	}
+
+	function getCompleted(){
+		$status = "Completed";
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate");
+		$query = $this->db->get_where('register',array('status'=>$status));
 
 		return $query->result();
 	}

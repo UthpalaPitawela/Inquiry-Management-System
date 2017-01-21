@@ -194,23 +194,24 @@
                                         </thead>
                                     <?php
                                     foreach($posts as $post){ ?>
-
-                                        <tbody>
-                                            <tr>
+                                    <div>
+                                        <tbody id='table'>
+                                            <tr id="<?php  echo $post->r_id; ?>">
                                                 <td style="text-align: center"><?php echo $post->Fname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Grade1; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
                                                 <td style="text-align: center">
-                                                <button class="btn btn-info btn-rounded btn-sm" onclick="changetab('<?php echo $post->Contactno; ?>')">Following</button>
-                                                <button class="btn btn-success btn-rounded btn-sm" onClick="#">Completed</button>
+                                                <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Following</button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
                                                 </td>
                                             </tr>
                             
                                         </tbody>
+                                        </div>
 
                                         <?php } ?>
                                     </table>                                    
@@ -234,9 +235,8 @@
                         </div> 
                                     </div>
                                     <div class="tab-pane" id="tab23">
-                                        <!-- +++++++++++++++++ Student info table - pending(High) ++++++++++++++++++++++++  -->
+                                        <!-- +++++++++++++++++ Student info table - pending(Medium) ++++++++++++++++++++++++  -->
                         <div class="col-md-12">
-                            <!-- START DATATABLE EXPORT -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Student Info</h3>                                   
@@ -259,8 +259,8 @@
                                     <?php
                                     if($posts1) {foreach($posts1 as $post){ ?>
 
-                                        <tbody>
-                                            <tr>
+                                        <tbody id='table'>
+                                            <tr id="<?php  echo $post->r_id; ?>">
                                                 <td style="text-align: center"><?php echo $post->Fname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
@@ -269,8 +269,8 @@
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
                                                 <td style="text-align: center">
-                                                <button class="btn btn-info btn-rounded btn-sm">Following</button>
-                                                <button class="btn btn-success btn-rounded btn-sm" onClick="#">Completed</button>
+                                                <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Following</button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
                                                 </td>
                                             </tr>
                             
@@ -286,7 +286,7 @@
                         </div>
 
 
-            <!-- +++++++++++++++++ Student info table - pending(Medium) ++++++++++++++++++++++++  -->
+            <!-- +++++++++++++++++ Student info table - pending(Low) ++++++++++++++++++++++++  -->
                                     <div class="tab-pane" id="tab24">
                                         <div class="col-md-12">
                             <div class="panel panel-default">
@@ -311,8 +311,8 @@
                                     <?php
                                     if($posts2) {foreach($posts2 as $post){ ?>
 
-                                        <tbody>
-                                            <tr>
+                                        <tbody id='table'>
+                                            <tr id="<?php  echo $post->r_id; ?>">
                                                 <td style="text-align: center"><?php echo $post->Fname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
@@ -321,8 +321,8 @@
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
                                                 <td style="text-align: center">
-                                                <button class="btn btn-info btn-rounded btn-sm">Following</button>
-                                                <button class="btn btn-success btn-rounded btn-sm" onClick="#">Completed</button>
+                                                <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Following</button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
                                                 </td>
                                             </tr>
                             
@@ -333,7 +333,7 @@
                                     
                                 </div>
                             </div>
-                            <!-- END DATATABLE EXPORT -->        
+                                 
 
                         </div> 
                                     </div>                        
@@ -343,169 +343,106 @@
                         </div>                     
                     </div>
 
-                    <div class="tab-pane" id="tab-second">
-                                          
-                                             <!-- START DEFAULT DATATABLE -->
-                            <div class="panel panel-default">
-                                                               
-                                
+                    <!-- 'Following' tab -->
+                    <div class="tab-pane" id="tab-second">               
+                            <div class="panel panel-default"> 
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Student Info</h3>                                    
+                                </div>
+
                                 <div class="panel-body">
-                                    <table class="table datatable">
+                                    <table id="customers2" class="table datatable">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Mobile No.</th>
-                                                <th>OL results</th>
-                                                <th>AL results</th>
-                                                <th>Inquiry Mode</th>
+                                                <th width="100" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
+                                                <th width="60" style="text-align: center">OL</th>
+                                                <th width="60" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">Contact No.</th>
+                                                <th width="200" style="text-align: center">Email</th>
+                                                <th width="100" style="text-align: center">Potential Level</th>
+                                                <th width="100" style="text-align: center">Potential Date</th>
+                                                <th width="100" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="test1">
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
+                                        <div id="followed">
+                                    <?php
+                                    if($posts3) {foreach($posts3 as $post){ ?>
+
+                                        <tbody id='table'>
+                                            <tr id="<?php  echo $post->r_id; ?>">
+                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Grade1; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Intake; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                                <td style="text-align: center">
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
+                                                </td>
                                             </tr>
-                                       
-                                            <tr>
-                                                <td>Hermione Butler</td>
-                                                <td>Regional Director</td>
-                                                <td>London</td>
-                                                <td>47</td>
-                                                <td>2011/03/21</td>
-                                                <td>$356,250</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Lael Greer</td>
-                                                <td>Systems Administrator</td>
-                                                <td>London</td>
-                                                <td>21</td>
-                                                <td>2009/02/27</td>
-                                                <td>$103,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jonas Alexander</td>
-                                                <td>Developer</td>
-                                                <td>San Francisco</td>
-                                                <td>30</td>
-                                                <td>2010/07/14</td>
-                                                <td>$86,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Shad Decker</td>
-                                                <td>Regional Director</td>
-                                                <td>Edinburgh</td>
-                                                <td>51</td>
-                                                <td>2008/11/13</td>
-                                                <td>$183,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Michael Bruce</td>
-                                                <td>Javascript Developer</td>
-                                                <td>Singapore</td>
-                                                <td>29</td>
-                                                <td>2011/06/27</td>
-                                                <td>$183,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>New York</td>
-                                                <td>27</td>
-                                                <td>2011/01/25</td>
-                                                <td>$112,000</td>
-                                            </tr>
+                            
                                         </tbody>
-                                    </table>
+
+                                        <?php }} ?>
+                                        </div>
+                                    </table>  
                                 </div>
                             </div>
                             <!-- END DEFAULT DATATABLE -->
                                          
                                             
-                                        </div>                                        
+                                        </div>    
+
+                                        <!-- 'Completed' tab -->                                    
                                         <div class="tab-pane" id="tab-third">
                                                                                         
-                                             <!-- START DEFAULT DATATABLE -->
-                            <div class="panel panel-default">
-                                                               
+                                <div class="panel panel-default"> 
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Student Info</h3>                                    
+                                    </div>
                                 
                                 <div class="panel-body">
-                                    <table class="table datatable">
+                                    <table id="customers2" class="table datatable">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Mobile No.</th>
-                                                <th>OL results</th>
-                                                <th>AL results</th>
-                                                <th>Inquiry Mode</th>
+                                                <th width="100" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
+                                                <th width="100" style="text-align: center">OL</th>
+                                                <th width="100" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">Contact No.</th>
+                                                <th width="200" style="text-align: center">Email</th>
+                                                <th width="100" style="text-align: center">Potential Date</th>
+                                                <th width="200" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
+                                        <div id="completed">
+                                    <?php
+                                    if($posts4) {foreach($posts4 as $post){ ?>
+
+                                        <tbody id='table'>
+                                            <tr id="<?php  echo $post->r_id; ?>">
+                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Grade1; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                                <td style="text-align: center">
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="registered('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Registered</button>
+                                                </td>
                                             </tr>
-                                       
-                                            <tr>
-                                                <td>Hermione Butler</td>
-                                                <td>Regional Director</td>
-                                                <td>London</td>
-                                                <td>47</td>
-                                                <td>2011/03/21</td>
-                                                <td>$356,250</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Lael Greer</td>
-                                                <td>Systems Administrator</td>
-                                                <td>London</td>
-                                                <td>21</td>
-                                                <td>2009/02/27</td>
-                                                <td>$103,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jonas Alexander</td>
-                                                <td>Developer</td>
-                                                <td>San Francisco</td>
-                                                <td>30</td>
-                                                <td>2010/07/14</td>
-                                                <td>$86,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Shad Decker</td>
-                                                <td>Regional Director</td>
-                                                <td>Edinburgh</td>
-                                                <td>51</td>
-                                                <td>2008/11/13</td>
-                                                <td>$183,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Michael Bruce</td>
-                                                <td>Javascript Developer</td>
-                                                <td>Singapore</td>
-                                                <td>29</td>
-                                                <td>2011/06/27</td>
-                                                <td>$183,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>New York</td>
-                                                <td>27</td>
-                                                <td>2011/01/25</td>
-                                                <td>$112,000</td>
-                                            </tr>
+                            
                                         </tbody>
-                                    </table>
+
+                                        <?php }} ?>
+                                        </div>
+                                    </table>  
                                 </div>
+                            </div>
                             </div>
                             <!-- END DEFAULT DATATABLE -->
                                             
@@ -555,11 +492,51 @@
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/jspdf.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script> 
+
+        <!-- To switch through buckets -->
+        <script type="text/javascript">
+
+        function follow(email,r_id){
+                $.ajax({             
+                    type:"post",
+                    url : 'inquirybutton_controller/following/',
+                    data : {id:r=email},
+                    success: function(data) {
+                        $('#followed').html(data);
+                    }
+                });
+                $('#'+r_id).hide();
+        }
+
+        function complete(email,r_id){
+                $.ajax({             
+                    type:"post",
+                    url : 'inquirybutton_controller/completed/',
+                    data : {id:r=email},
+                    success: function(data) {
+                        $('#completed').html(data);
+                    }
+                });
+                $('#'+r_id).hide();
+        }
+
+        function registered(email,r_id){
+                $.ajax({             
+                    type:"post",
+                    url : 'inquirybutton_controller/registered/',
+                    data : {id:r=email},
+                    success: function(data) {
+                        $('#registered').html(data);
+                    }
+                });
+                $('#'+r_id).hide();
+        }
+        
+       </script>
+
         <!-- END THIS PAGE PLUGINS -->       
         
         <!-- START TEMPLATE -->
-        
-        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>        
         <!-- END TEMPLATE -->

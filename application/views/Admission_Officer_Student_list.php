@@ -177,11 +177,17 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
 ?>
 
                                             <tr>
-                                            <form>
+                                            <form action="">
                                                 <td><?php echo $studentrow['firstname']."  ".$studentrow['lastname'];?></td>
                                                 <td><?php echo $studentrow['email'];?></td>
                                                 <td><?php echo $studentrow['user_name'];?></td>
-                                                <td><a href="javascript:selectStudent('<?php echo $studentrow['email'];?>')"><span class="fa fa-user"></span> View Profile</a></td>
+                                               <?php
+                                                $email=$studentrow['email'];
+                                                $email=urlencode($email);
+
+
+                                               ?>
+     <td><a href="<?php echo base_url();?>index.php/Student_Data_Controller/loadingdetails/<?php echo $email;?>"><span class="fa fa-user"></span> View Profile</a></td>
                                                 </form>
                                             </tr>
 
@@ -265,19 +271,18 @@ function selectStudent(s_Id){
  show();
 var ss=s_Id;
 
-$('#studiv').load("<?php echo site_url(); ?>/Student_Data_Controller/loadingdetails/"+ss);
+$('#studiv').load("<?php echo site_url();?>Student_Data_Controller/loadingdetails/"+ss);
  
 
 
-
-  //  $.ajax({
-    //    type: 'POST',
-      //  url: "<?php //echo site_url(); ?>/Student_Data_Controller/loadingdetails/"+ss,
-        //dataType: 'html',
-        //success: function (data) {
-          // $('#studiv').innerHTML = data;
-        //}
-    //});
+   // $.ajax({
+   //     type: 'POST',
+   //     url: "<?php echo site_url(); ?>/Student_Data_Controller/loadingdetails/"+ss,
+   //      dataType: 'html',
+   //      success: function (data) {
+   //        $('#studiv').innerHTML = data;
+   //      }
+   //  });
 
 
 
@@ -285,6 +290,8 @@ $('#studiv').load("<?php echo site_url(); ?>/Student_Data_Controller/loadingdeta
 
 
 }
+
+
 
 
 

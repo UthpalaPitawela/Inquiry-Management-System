@@ -18,14 +18,15 @@ $this->load->model("Student_Data_Model");
  	}
 
 
-    public function loadingdetails(){
-        $student_id=$this->uri->segment(3);
-        
-   
- $s_data['current_results'] = $this->Results_model->load_results($student_id);
- $s_data['profile_data'] = $this->Student_Data_Model->get_Student_Data($student_id);
+    public function loadingdetails($student_id){
 
- print $this->load->view('studentfor_admission_officer',$s_data,true);
+        //$student_id=$this->uri->segment(3);
+$student_id=urldecode($student_id);     
+ $s_data['current_results'] = $this->Results_model->load_results($student_id);
+ $s_data['profile_data'] = $this->Student_Data_Model->get_individual_Student_Data($student_id);
+ $s_data['admissionstudent'] = $this->Student_Data_Model->get_Student_Data($student_id);
+
+ $this->load->view('studentfor_admission_officer',$s_data);
 
 
    }

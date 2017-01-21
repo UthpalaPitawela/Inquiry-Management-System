@@ -131,6 +131,8 @@
                     </li> 
                     <!-- END SIGN OUT -->
 
+                    <li class="pull-right" style="color:grey; padding-top: 16px; padding-right: 20px" >Logged in as <?php echo $name; ?> </li>
+
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->              
                 

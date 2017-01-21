@@ -28,9 +28,7 @@
         if($rowcount>0){
 
   ?>
-            <script type="text/javascript">
-                alert("You have succesfully logged in!");
-            </script>
+          
             <?php
 
                foreach ($result->result_array() as $row) {

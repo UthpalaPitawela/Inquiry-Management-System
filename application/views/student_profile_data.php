@@ -47,10 +47,15 @@
 // changing attributes of the profile
 function TP2edit(){
 
-   document.getElementById("telephone2").readOnly = false;
+   document.getElementById("telephone2").disabled = false;
    document.getElementById("submitbutton").style.display = 'block';
 }
 
+function Passwordedit(){
+
+   document.getElementById("passwordeditbox").style.display = 'block';
+   document.getElementById("submitbutton").style.display = 'block';
+}
 
 </script>
 
@@ -343,7 +348,7 @@ $propic=$_SESSION["propic"];
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input type="text" class="form-control" readonly value="<?php echo $row3['firstname'];?>"/ >
+                                                <input type="text" class="form-control" disabled value="<?php echo $row3['firstname'];?>"/ >
                                             </div>                                            
 
                                         </div>
@@ -353,18 +358,18 @@ $propic=$_SESSION["propic"];
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                                <input type="text" class="form-control" readonly value="<?php echo $row3['lastname'];?>"/>
+                                                <input type="text" class="form-control" disabled value="<?php echo $row3['lastname'];?>"/>
                                             </div>                                            
                                            
                                         </div>
                                     </div>
                                     
                                     <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Password</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Password</label><button class="btn btn-primary" onclick="Passwordedit();" type="button" ><span class="fa fa-pencil"></span> Edit</button>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" class="form-control" readonly value="<?php echo $row3['password'];?>" />
+                                                <input type="password" id=password class="form-control" disabled value="<?php echo $row3['password'];?>" />
                                             </div>            
                                             
                                         </div>
@@ -375,7 +380,7 @@ $propic=$_SESSION["propic"];
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input type="text" class="form-control datepicker" readonly value="<?php echo $row3['dob'];?>"">                                            
+                                                <input type="text" class="form-control datepicker" disabled value="<?php echo $row3['dob'];?>"">                                            
                                             </div>
                                             
                                         </div>
@@ -386,7 +391,7 @@ $propic=$_SESSION["propic"];
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
-                                                <input type="email" class="form-control" readonly value="<?php echo $row3['email'];?>"/>
+                                                <input type="email" class="form-control" disabled value="<?php echo $row3['email'];?>"/>
                                             </div>                                            
                                            
                                         </div>
@@ -397,7 +402,7 @@ $propic=$_SESSION["propic"];
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="text" class="form-control" readonly value="<?php echo $row3['tpnumber'];?>"/>
+                                                <input type="text" class="form-control" disabled value="<?php echo $row3['tpnumber'];?>"/>
                                             </div>                                            
                                            
                                         </div>
@@ -408,7 +413,7 @@ $propic=$_SESSION["propic"];
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="text" id="telephone2" name="tpnumber2" class="form-control" readonly value="<?php echo $row3['tpnumber2'];?>"/>
+                                                <input type="text" id="telephone2" name="tpnumber2" class="form-control" disabled value="<?php echo $row3['tpnumber2'];?>"/>
                                             </div>                                            
                                            
                                         </div>
@@ -528,32 +533,84 @@ $propic=$_SESSION["propic"];
         <!-- end danger -->
 
 
-<!-- info -->
-<!--         <div class="message-box message-box-info animated fadeIn" id="message-box-info" style="display: none;">
+<!-- password changing box -->
+<div class="message-box animated fadeIn open" id="passwordeditbox" style="display: none;">
             <div class="mb-container">
                 <div class="mb-middle">
-                    <div class="mb-title"><span class="fa fa-info"></span> Information</div>
+                    <div class="mb-title"><span class="fa fa-unlock-alt"></span> Password <strong>Change</strong></div>
                     <div class="mb-content">
-                        <p>Confirm ?</p>
+
+
+                    <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return checkpropic();" action="<?php echo site_url("update_Profile/update_Data")?>" method="POST">
+                        
+                   <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Old Password</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+                                                <input type="password" id=password class="form-control" placeholder="Type old password" value="" />
+                                            </div>            
+                                            
+                                        </div>
+                                    </div>
+ 
+
+                   <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">New Password</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+                                                <input type="password" id=password class="form-control" placeholder="Type new password"  value="" />
+                                            </div>            
+                                            
+                                        </div>
+                                    </div>
+
+
+                   <div class="form-group">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Retype New Password</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+                                                <input type="password" id=password class="form-control" placeholder="Retype new password"  value="" />
+                                            </div>            
+                                            
+                                        </div>
+                                    </div> 
+
+
+
+                    </form>                                  
+
                     </div>
                     <div class="mb-footer">
-                        <button class="btn btn-default btn-lg pull-right mb-control-close">Yes</button>
-                        <button type="button" class="btn btn-default btn-lg pull-right mb-control-close" onclick="    document.getElementById('message-box-info').style.display = 'none';"">No</button>
+
+                        <button class="btn btn-default btn-lg pull-right pull up mb-control-close" id="submitbutton" style="display: block;" onsubmit="">Submit</button>
+
+
+                        <button class="btn btn-default btn-lg pull-right pull up mb-control-close"onclick="    document.getElementById('passwordeditbox').style.display = 'none';" >Close</button>
                     </div>
                 </div>
             </div>
         </div>
- -->        <!-- end info -->
-        
 
 
-              <?php
+
+
+
+
+
+
+
+
+
+<?php
 
       include 'imports.php';
 
 
 
-      ?>
+?>
 
 
 
@@ -563,6 +620,23 @@ $propic=$_SESSION["propic"];
         
 
             <!-- THIS PAGE PLUGINS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

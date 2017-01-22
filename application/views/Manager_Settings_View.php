@@ -227,6 +227,18 @@
                                             
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Email</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+                                                <input type="text" class="form-control" name="email" />
+                                                <?php echo form_error('email');?>
+                                            </div>                                            
+                                            
+                                        </div>
+                                    </div>
                                    
                                     
                                      <div class="form-group">

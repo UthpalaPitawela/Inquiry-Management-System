@@ -6,6 +6,7 @@
 
     parent::__construct();
     $this->load->model("Login_Model");
+    $this->load->helper('url_helper');
 
 
     }
@@ -107,6 +108,16 @@
 
 
 }
+
+    public function logout()
+    {
+        $this->load->driver('cache'); #load cache
+        $this->session->sess_destroy(); # Destroy the current session
+        $this->cache->clean();  # Clean the cache
+        redirect('index.php/login_controller'); #  Default controller name 
+        ob_clean(); 
+
+    }
 
 
  }

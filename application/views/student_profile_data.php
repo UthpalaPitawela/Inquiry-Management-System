@@ -261,7 +261,7 @@ $propic=$_SESSION["propic"];
   </li>
                       <li class="xn-icon-button pull-right">
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> <span class="xn-text"> Logout</span></a>                        
-                    </li> 
+                    </li>
 
 
 

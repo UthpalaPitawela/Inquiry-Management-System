@@ -173,7 +173,7 @@ $propic=$_SESSION["propic"];
  if ($profile_data->num_rows() > 0) {
 foreach ($profile_data ->result_array() as $row3) {
 ?>
-<div class="col-md-3"
+<div class="col-md-3">
                             <!-- CONTACT ITEM -->
                             <div class="panel panel-default" >
                                 <div class="panel-body profile">

@@ -53,7 +53,7 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/managerhome') ?>"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
                     <li class="xn-openable">
                         
@@ -143,6 +143,15 @@
                 <div class="page-content-wrap">
                     
                     <!-- ADDING A TARGET -->  
+                    <?php
+
+                    foreach($users as $row)
+                    {
+                        $firstname = $row->first_name;
+                        $email = $row->email;
+                        $userID = $row->u_id;
+                    }
+                    ?>
                     
                     <form class = "form-horizontal" method="POST" action="<?php echo base_url('index.php/TargetsController/setTarget');?>">
                     <div class="row">
@@ -157,7 +166,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Employee ID</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="EID"/>
+                                            <input type="text" class="form-control" name="EID" value="<?php echo $userID ?>"/>
                                         </div>
                                     </div>
 
@@ -165,7 +174,15 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Name</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="E_Name"/>
+                                            <select class="form-control" name="E_Name">
+                                            <?php
+
+                                            foreach($users as $row)
+                                            {
+                                                echo '<option value = "'.$row->first_name.'">'.$row->first_name.'</option>';
+                                            }
+                                            ?>
+                                            </select>
                                         </div>
                                     </div>
 

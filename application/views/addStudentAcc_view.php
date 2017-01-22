@@ -69,7 +69,7 @@
                     </li>
 
                     <li>
-                        <a href="#"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
                     <li class="xn-openable">
                         

@@ -45,7 +45,7 @@
                             </div>
                             <div class="profile-controls">
                                 <a href="<?php echo base_url();?>index.php/profile_controller" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="#" class="profile-control-right"><span class="fa fa-cog"></span></a>
+                                <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller" class="profile-control-right"><span class="fa fa-cog"></span></a>
                             </div>
                         </div>                                                                        
                     </li>

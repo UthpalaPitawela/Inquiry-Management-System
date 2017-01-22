@@ -14,7 +14,10 @@ class TargetsController extends CI_Controller{
 	{
 		
 		$data["fetch_data"] = $this->TargetsModel->get_table(); 
+		$data["users"] = $this->TargetsModel->get_users();
 		$this->load->view('TargetsView',$data);
+
+
 	}
 
 	//Submit data

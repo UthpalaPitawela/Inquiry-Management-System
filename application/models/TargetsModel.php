@@ -18,6 +18,12 @@ class TargetsModel extends CI_Model{
 		return $query;
 	}
 
+	function get_Users()
+	{
+		$query = $this->db->query("SELECT first_name,email,u_id FROM user WHERE status=3 or status=4");
+		return $query->result();
+	}
+
 
 
 }

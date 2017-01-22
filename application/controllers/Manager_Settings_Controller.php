@@ -42,6 +42,7 @@ parent::__construct();
         $this->form_validation->set_rules('fname', 'First Name', 'required');
         $this->form_validation->set_rules('lname', 'Last Name', 'required');
         $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('addusername', 'Username', 'required|is_unique[user.email]');
         $this->form_validation->set_rules('addusername', 'Username', 'required|is_unique[user.username]');
         $this->form_validation->set_rules('addpassword', 'Password', 'required');
         $this->form_validation->set_rules('addconfirmpassword', 'Password Confirmation', 'required|matches[addpassword]');
@@ -57,16 +58,23 @@ parent::__construct();
     				$fname = $this->input->post('fname');
     				$lname = $this->input->post('lname');
     				$role = $this->input->post('role');
+                    $email = $this->input->post('email');
     				if($role == 'counsellor' | 'Counsellor'){
     					$status = '3';
-    				}
+    				}elseif($role == 'manager' | 'Manager'){
+                        $status = '0';
+                    }elseif($role == 'assistant manager' | 'Assistant Manager'){
+                        $status = '4';
+                    }elseif($role == 'admissions officer' | 'Admissions Officer'){
+                        $status = '2';
+                    }
     				$username = $this->input->post('addusername');
     				$password = $this->input->post('addpassword');
 
 
 					$this->load->model('Manager_Settings_Model');
 
-    				$this->Manager_Settings_Model->addUser($fname,$lname,$status,$username,$password);
+    				$this->Manager_Settings_Model->addUser($fname,$lname,$status,$email,$username,$password);
 				}
 
 

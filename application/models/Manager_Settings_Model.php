@@ -11,11 +11,12 @@ class Manager_Settings_Model extends CI_Model{
 
 	}
 	//The database code to add user functions 
-	function addUser($fname,$lname,$status,$username,$password){
+	function addUser($fname,$lname,$status,$email,$username,$password){
 		$data = array(
 			'first_name' => $fname,
 			'last_name' => $lname,
 			'status' => $status,
+			'email'=> $email,
 			'username' => $username,
 			'password' => $password
 

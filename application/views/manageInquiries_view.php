@@ -59,7 +59,7 @@
                     </li>
 
                     <li>
-                        <a href="#"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
                     <li class="xn-openable active">
                         
@@ -120,7 +120,7 @@
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="<?php echo base_url();?>index.php/logout_controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->    
 
@@ -140,7 +140,6 @@
 
                 
                 <!-- PAGE CONTENT WRAPPER -->
-                <div class="page-content-wrap">
                 <div class="page-content-wrap">
                 
                     <div class="row">
@@ -451,7 +450,7 @@
                                         </div>
                                     </div>
                                    
-                                </div>                                
+                                                        
                             
                             </form>
                             
@@ -459,20 +458,39 @@
                     </div>                    
                     
                 </div>
-                    
+                <!-- END PAGE CONTENT WRAPPER -->
 
                 </div>
-                <!-- END PAGE CONTENT WRAPPER -->                                                
-            </div>            
             <!-- END PAGE CONTENT -->
         </div>
         <!-- END PAGE CONTAINER -->
+
+        <!-- MESSAGE BOX-->
+       <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>                    
+                        <p><strong>Press No if you want to continue work.</strong> Press Yes to logout.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="<?php echo base_url('index.php/login_controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of message box-->
         
         
                   
         
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
+
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap.min.js"></script>                
@@ -493,7 +511,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/html2canvas.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/jspdf.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script> 
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script>
 
         <!-- To switch through buckets -->
         <script type="text/javascript">
@@ -533,8 +551,14 @@
                 });
                 $('#'+r_id).hide();
         }
+        </script>
+
+        <script>
+        $('.mb-control').click(function(e){
+            e.preventDefault()
+        })
         
-       </script>
+        </script>
 
         <!-- END THIS PAGE PLUGINS -->       
         

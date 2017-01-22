@@ -25,7 +25,7 @@
                
                 <div class="login-body">
                     <div class="login-title"><strong>Welcome</strong>, Please login</div>
-                    <form action="index.php/login_controller/validate_user" class="form-horizontal" method="post">
+                    <form action="<?php echo base_url('index.php/login_controller/validate_user');?>" class="form-horizontal" method="post">
                     <div class="form-group">
                         <div class="col-md-12">
                             <input type="text" class="form-control" placeholder="Username" name="username" />

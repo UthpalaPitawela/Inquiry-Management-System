@@ -45,7 +45,7 @@
                             </div>
                             <div class="profile-controls">
                                 <a href="<?php echo base_url();?>index.php/profile_controller" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                <a href="#" class="profile-control-right"><span class="fa fa-cog"></span></a>
+                                <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller" class="profile-control-right"><span class="fa fa-cog"></span></a>
                             </div>
                         </div>                                                                        
                     </li>
@@ -112,9 +112,10 @@
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="<?php echo base_url();?>index.php/logout_controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
-                    <!-- END SIGN OUT -->
+                    <!-- END SIGN OUT -->    
+
 
                     <li class="pull-right" style="color:grey; padding-top: 16px; padding-right: 20px" >Logged in as <?php echo $name; ?> </li>
                     
@@ -226,6 +227,18 @@
                                             
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Email</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+                                                <input type="text" class="form-control" name="email" />
+                                                <?php echo form_error('email');?>
+                                            </div>                                            
+                                            
+                                        </div>
+                                    </div>
                                    
                                     
                                      <div class="form-group">
@@ -286,25 +299,25 @@
         </div>
         <!-- END PAGE CONTAINER -->
 
-        <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+       <!-- MESSAGE BOX-->
+       <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
                     <div class="mb-content">
                         <p>Are you sure you want to log out?</p>                    
-                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                        <p><strong>Press No if you want to continue work.</strong> Press Yes to logout.</p>
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                            <a href="<?php echo base_url('index.php/login_controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END MESSAGE BOX-->
+        <!--end of message box-->
 
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
@@ -336,14 +349,21 @@
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/daterangepicker/daterangepicker.js"></script>
         <!-- END THIS PAGE PLUGINS-->        
 
-        <!-- START TEMPLATE -->
+        
         
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script>
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/demo_dashboard.js"></script>
-        <!-- END TEMPLATE -->
+
+        <script>
+        $('.mb-control').click(function(e){
+            e.preventDefault()
+        })
+        
+        </script>
+       
     <!-- END SCRIPTS -->         
     </body>
 </html>

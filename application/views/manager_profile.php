@@ -208,6 +208,9 @@
                                        
                                     </div>                            
                             </div>
+
+                            
+                        <a href="<?php echo base_url();?>index.php/Assign_Inquiries_Controller"><button>ADd</button></a> 
                       
                         </div>
                                       

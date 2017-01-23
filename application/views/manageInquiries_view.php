@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
     <head> 
 
@@ -424,6 +424,7 @@
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="200" style="text-align: center">Email</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
+                                                <th width="100" style="text-align: center">Handled By</th>
                                                 <th width="200" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
@@ -440,8 +441,9 @@
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                                <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
                                                 <td style="text-align: center">
-                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="registered('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Registered</button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" style="background-color: white;color: #6f22b6; border: 2px solid #6f22b6; /* Purple */" onclick="registered('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Registered</button>
                                                 </td>
                                             </tr>
                             

@@ -252,7 +252,7 @@
                                     <?php foreach($status as $row){     ?>
 
                                         <ul class="list-group border-bottom">
-                                            <li class="list-group-item"><?php echo $row->CounsellorName;  ?><span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="Pending"><?php echo $row->pending; ?></span><span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Completed"><?php echo $row->completed; ?></span></li>
+                                            <li class="list-group-item"><?php if($row->CounsellorName!=NULL) echo $row->CounsellorName;  ?><span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="Pending"><?php echo $row->pending; ?></span><span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Completed"><?php echo $row->completed; ?></span></li>
                                         </ul>   
 
                                     <?php } ?>                             

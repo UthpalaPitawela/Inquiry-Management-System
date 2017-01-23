@@ -143,15 +143,6 @@
                 <div class="page-content-wrap">
                     
                     <!-- ADDING A TARGET -->  
-                    <?php
-
-                    foreach($users as $row)
-                    {
-                        $firstname = $row->first_name;
-                        $email = $row->email;
-                        $userID = $row->u_id;
-                    }
-                    ?>
                     
                     <form class = "form-horizontal" method="POST" action="<?php echo base_url('index.php/TargetsController/setTarget');?>">
                     <div class="row">
@@ -162,24 +153,16 @@
                                 </div>
                                 <div class="panel-body">
 
-                                    <form class="form-horizontal" role="form">                                   
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Employee ID</label>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" name="EID" value="<?php echo $userID ?>"/>
-                                        </div>
-                                    </div>
-
                                     <form class="form-horizontal" role="form">                                    
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Name</label>
                                         <div class="col-md-9">
-                                            <select class="form-control" name="E_Name">
+                                            <select name="E_Name" class="form-control">
                                             <?php
 
                                             foreach($users as $row)
                                             {
-                                                echo '<option value = "'.$row->first_name.'">'.$row->first_name.'</option>';
+                                                echo '<option value = "'.$row->first_name." ".$row->last_name.'">'.$row->first_name.'</option>';
                                             }
                                             ?>
                                             </select>
@@ -227,7 +210,15 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Assigned By</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="Assigned_By"/>
+                                            <select class="form-control" name="Assigned_By">
+                                            <?php
+
+                                            foreach($manager as $row)
+                                            {
+                                                echo '<option value = "'.$row->first_name.'">'.$row->first_name.'</option>';
+                                            }
+                                            ?>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -257,12 +248,14 @@
                                 <!-- LIST GROUP WITH BADGES -->
                                 <div class="panel panel-default">
                                     <div class="panel-body">
+
+                                    <?php foreach($status as $row){     ?>
+
                                         <ul class="list-group border-bottom">
-                                            <li class="list-group-item">Harini<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="Pending">10</span><span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Conversions">5</span></li>
-                                            <li class="list-group-item">Uthpala<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="Pending">12</span><span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Conversions">10</span></li>
-                                            <li class="list-group-item">Malshan<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="Pending">8</span><span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Conversions">5</span></li>
-                                            <li class="list-group-item">Ridmi<span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="Pending">8</span><span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Conversions">2</span></li>
-                                        </ul>                                
+                                            <li class="list-group-item"><?php if($row->CounsellorName!=NULL) echo $row->CounsellorName;  ?><span class="badge badge-info" data-toggle="tooltip" data-placement="top" title="Pending"><?php echo $row->pending; ?></span><span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Completed"><?php echo $row->completed; ?></span></li>
+                                        </ul>   
+
+                                    <?php } ?>                             
                                     </div>
                                 </div>
                                 </div>
@@ -294,8 +287,8 @@
                                                         <thead>
                                                             <tr>
                                                                 <!--<th width="50">TID</th>-->
-                                                                <th width="50">EID</th>
-                                                                <th>Name</th>
+                                                                <!-- <th width="50">EID</th> -->
+                                                                <th width="200">Name</th>
                                                                 <th width="100">Role</th>
                                                                 <th width="60">Target</th>
                                                                 <th width="100">Start Date</th>
@@ -309,7 +302,7 @@
                                                         if(is_array($fetch_data) || is_object($fetch_data)){
                                                             foreach($fetch_data -> result_array() as $row){
                                                                 //$TID = $row['TID'];
-                                                                $EID = $row['EID'];
+                                                                // $EID = $row['EID'];
                                                                 $E_Name = $row['E_Name'];
                                                                 $Role = $row['Role'];
                                                                 $Target = $row['Target'];
@@ -323,7 +316,7 @@
                                                         <tbody>                                            
                                                             <tr id="trow_1">
                                                                 <!--<td class="text-center"><?php echo $TID;   ?></td>-->
-                                                                <td class="text-center"><?php echo $EID;   ?></td>
+                                                                <!-- <td class="text-center"><?php echo $EID;   ?></td> -->
                                                                 <td><strong><?php echo $E_Name;   ?></strong></td>
                                                                 <td><span class="label label-success"><?php echo $Role;   ?></span></td>
                                                                 <td><?php echo $Target;   ?></td>

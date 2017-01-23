@@ -15,6 +15,9 @@ class TargetsController extends CI_Controller{
 		
 		$data["fetch_data"] = $this->TargetsModel->get_table(); 
 		$data["users"] = $this->TargetsModel->get_users();
+		$data["manager"] = $this->TargetsModel->get_Managers();
+		$data["status"] = $this->TargetsModel->assigned_targets();
+		//print_r($data);
 		$this->load->view('TargetsView',$data);
 
 
@@ -25,7 +28,7 @@ class TargetsController extends CI_Controller{
 	{
 		$data = array(
 			//'TID' => $this->input->post('TID'),
-			'EID' => $this->input->post('EID'),
+			// 'EID' => $this->input->post('EID'),
 			'E_Name' => $this->input->post('E_Name'),
 			'Role' => $this->input->post('Role'),
 			'Target' => $this->input->post('Target'),
@@ -46,7 +49,7 @@ class TargetsController extends CI_Controller{
 		}
 		*/
 		//Go back to index after inserting
-		redirect("TargetsController/index");
+		redirect("index.php/TargetsController/index");
 
 
 	}

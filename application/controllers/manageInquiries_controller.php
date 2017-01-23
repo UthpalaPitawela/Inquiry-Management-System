@@ -26,4 +26,5 @@ class manageInquiries_controller extends CI_Controller{
 }
 
 
+
 ?>

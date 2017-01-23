@@ -10,7 +10,7 @@ class manageInquiries_model extends CI_Model{
 		//Select the fields
 		$status = "Pending";
 		$intake = "high";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
 		
 
@@ -21,18 +21,19 @@ class manageInquiries_model extends CI_Model{
 		//Select the fields
 		$status = "Pending";
 		$intake = "medium";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
 		
 
 		return $query->result();
 	}
 
+
 	function getPostsLow(){
 		//Select the fields
 		$status = "Pending";
 		$intake = "low";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
 		
 
@@ -41,7 +42,7 @@ class manageInquiries_model extends CI_Model{
 
 	function getFollowing(){
 		$status = "Following";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Intake,Pdate");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Intake,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('status'=>$status));
 
 		return $query->result();
@@ -49,7 +50,7 @@ class manageInquiries_model extends CI_Model{
 
 	function getCompleted(){
 		$status = "Completed";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('status'=>$status));
 
 		return $query->result();

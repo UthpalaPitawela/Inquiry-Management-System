@@ -20,7 +20,22 @@ class TargetsModel extends CI_Model{
 
 	function get_Users()
 	{
-		$query = $this->db->query("SELECT first_name,email,u_id FROM user WHERE status=3 or status=4");
+		$query = $this->db->query("SELECT first_name,last_name,email,u_id FROM user WHERE status=3 or status=4");
+		return $query->result();
+	}
+
+	function get_Managers()
+	{
+		$query = $this->db->query("SELECT first_name,last_name,email,u_id FROM user WHERE status=0");
+		return $query->result();
+	}
+
+	function assigned_targets()
+	{
+		$query = $this->db->query("SELECT CounsellorName, (SELECT COUNT(Status) FROM register WHERE Status='Pending') AS pending, (SELECT COUNT(Status) FROM register WHERE Status='Completed') AS completed FROM register  GROUP BY CounsellorName");
+		// $this->db->select('CounsellorName, (SELECT COUNT(register.Status) FROM register WHERE register.Status="Pending") AS pending',false);
+		// $query = $this->db->get('register');
+
 		return $query->result();
 	}
 

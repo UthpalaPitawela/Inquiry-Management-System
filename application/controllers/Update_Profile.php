@@ -28,7 +28,7 @@ $this->load->model("Student_Profile_Model");
         ?>
         <script>
         
-        window.location='<?php echo site_url("page_controller/loadingpages/student_profile");?>'
+        window.location='<?php echo base_url("index.php/Page_Controller/loadingpages/student_profile");?>'
         </script> 
         <?php
     }

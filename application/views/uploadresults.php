@@ -161,7 +161,7 @@ function checkSizeAssignment(upimage,i){
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>">Edulink</a>
+                        <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/home') ?>">Edulink</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
 
@@ -212,24 +212,21 @@ $propic=$_SESSION["propic"];
                     <li class="xn-title">Navigation</li>
                     
                        
-
-
 <li>
-  <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
+  <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
   </li>
   <li>
-  <a href="<?php echo site_url('page_controller/loadingpages/student_profile') ?>"><span class="fa fa-user"></span>  <span class="xn-text"> Profile</span> </a>
+  <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/student_profile') ?>"><span class="fa fa-user"></span>  <span class="xn-text"> Profile</span> </a>
   </li>
   <li class="active">
-  <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-floppy-o"></span>  <span class="xn-text"> Upload results </span> </a>
+  <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/uploadresults') ?>"><span class="fa fa-floppy-o"></span>  <span class="xn-text"> Upload results </span> </a>
   </li>
   <li>
-  <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-envelope"></span>  <span class="xn-text"> Contact</span> </a>
+  <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/contact') ?>"><span class="fa fa-envelope"></span>  <span class="xn-text"> Contact</span> </a>
   </li>
                       <li class="xn-icon-button pull-right">
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> <span class="xn-text"> Logout</span></a>                        
                     </li> 
-
 
 
 
@@ -338,7 +335,7 @@ foreach ($current_results ->result_array() as $row3) {
 
 
 
-<form enctype="multipart/form-data" action="<?php echo site_url("upload_result/update_Result")?>" method="POST" onsubmit="return checkimage();">
+<form enctype="multipart/form-data" action="<?php echo base_url("index.php/Upload_result/update_Result")?>" method="POST" onsubmit="return checkimage();">
 
 
 
@@ -417,7 +414,7 @@ foreach ($current_results ->result_array() as $row3) {
 
 
       
-    <button class="btn btn-primary pull-right" type="button" id="deleteresult" name="deleteresults"  onclick="window.location='<?php echo site_url("upload_result/delete_Result");?>'" > Delete </button>
+    <button class="btn btn-primary pull-right" type="button" id="deleteresult" name="deleteresults"  onclick="window.location='<?php echo base_url("index.php/Upload_result/delete_Result");?>'" > Delete </button>
 
 
 <input  class="btn btn-primary pull-right" type="submit" id="resultsubmit" name="submitresults"  value="Update">
@@ -452,7 +449,7 @@ foreach ($current_results ->result_array() as $row3) {
 
 
 
-<form enctype="multipart/form-data" style="" action="<?php echo site_url("upload_result/insert_Result")?>"  method="POST" onsubmit="return checkimage();">
+<form enctype="multipart/form-data" style="" action="<?php echo base_url("index.php/Upload_result/insert_Result")?>"  method="POST" onsubmit="return checkimage();">
 
 <table>
     <tr>
@@ -614,7 +611,7 @@ foreach ($current_results ->result_array() as $row3) {
         </div>
         <!-- END PAGE CONTAINER -->
 
-        <!-- MESSAGE BOX-->
+         <!-- MESSAGE BOX-->
         <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
@@ -625,14 +622,13 @@ foreach ($current_results ->result_array() as $row3) {
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo site_url('login_controller../../../') ?>" class="btn btn-success btn-lg">Yes</a>
+                            <a href="<?php echo base_url('Login_Controller../../') ?>" class="btn btn-success btn-lg">Yes</a>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
         <!-- END MESSAGE BOX-->
 
 

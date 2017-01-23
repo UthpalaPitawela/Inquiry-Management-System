@@ -195,7 +195,7 @@ function checktp2(){
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>">Edulink</a>
+                        <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/home') ?>">Edulink</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
 
@@ -246,24 +246,21 @@ $propic=$_SESSION["propic"];
                     
                        
 
-
 <li>
-  <a href="<?php echo base_url('index.php/page_controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
+  <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/home') ?>"><span class="fa fa-desktop"></span>  <span class="xn-text"> Home</span> </a>
   </li>
-  <li class="active">
-  <a href="<?php echo site_url('page_controller/loadingpages/student_profile') ?>"><span class="fa fa-user"></span>  <span class="xn-text"> Profile</span> </a>
-  </li>
-  <li>
-  <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>"><span class="fa fa-floppy-o"></span>  <span class="xn-text"> Upload results </span> </a>
+  <li  class="active">
+  <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/student_profile') ?>"><span class="fa fa-user"></span>  <span class="xn-text"> Profile</span> </a>
   </li>
   <li>
-  <a href="<?php echo site_url('page_controller/loadingpages/contact') ?>"><span class="fa fa-envelope"></span>  <span class="xn-text"> Contact</span> </a>
+  <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/uploadresults') ?>"><span class="fa fa-floppy-o"></span>  <span class="xn-text"> Upload results </span> </a>
+  </li>
+  <li>
+  <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/contact') ?>"><span class="fa fa-envelope"></span>  <span class="xn-text"> Contact</span> </a>
   </li>
                       <li class="xn-icon-button pull-right">
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> <span class="xn-text"> Logout</span></a>                        
-                    </li>
-
-
+                    </li> 
 
 
 
@@ -327,7 +324,7 @@ $propic=$_SESSION["propic"];
                                 </div>
                         
                         
-                        <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return checkpropic();" action="<?php echo site_url("update_Profile/update_Data")?>" method="POST">
+                        <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return checkpropic();" action="<?php echo base_url("index.php/Update_Profile/update_Data")?>" method="POST">
                            
 
 
@@ -491,7 +488,7 @@ $propic=$_SESSION["propic"];
         <!-- END PAGE CONTAINER -->
 
         <!-- MESSAGE BOX-->
-       <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
@@ -501,15 +498,14 @@ $propic=$_SESSION["propic"];
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo site_url('login_controller../../../') ?>" class="btn btn-success btn-lg">Yes</a>
+                            <a href="<?php echo base_url('Login_Controller../../') ?>" class="btn btn-success btn-lg">Yes</a>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--end of message box-->
-
+        <!-- END MESSAGE BOX-->
 
 
 
@@ -541,7 +537,7 @@ $propic=$_SESSION["propic"];
                     <div class="mb-content">
 
 
-                    <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return checkpropic();" action="<?php echo site_url("update_Profile/update_Data")?>" method="POST">
+                    <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return checkpropic();" action="<?php echo site_url("Update_Profile/update_Data")?>" method="POST">
                         
                    <div class="form-group">                                        
                                         <label class="col-md-3 col-xs-12 control-label">Old Password</label>

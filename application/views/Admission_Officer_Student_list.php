@@ -51,9 +51,7 @@ $propic=$_SESSION["propic"];
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>
-                    <li class="">
-                        <a href="<?php echo base_url();?>index.php/page_controller/loadingpages/admission_officer"><span class="fa fa-desktop"></span> <span class="xn-text">Home</span></a>                        
-                    </li>                    
+                 
                 
                   
 
@@ -247,7 +245,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo base_url('index.php/login_controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <a href="<?php echo base_url('index.php/Login_Controller../../') ?>" class="btn btn-danger btn-lg">Yes</a>
                             <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>

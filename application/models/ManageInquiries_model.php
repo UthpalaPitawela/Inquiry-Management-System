@@ -1,6 +1,6 @@
 <?php
 
-class manageInquiries_model extends CI_Model{
+class ManageInquiries_model extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}

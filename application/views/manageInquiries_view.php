@@ -380,6 +380,7 @@
                                     if($posts3) {foreach($posts3 as $post){ ?>
 
                                         <tbody id='table'>
+                                        <form>
                                             <tr id="<?php  echo $post->r_id; ?>">
                                                 <td style="text-align: center"><?php echo $post->Fname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
@@ -390,12 +391,13 @@
                                                 <td style="text-align: center"><?php echo $post->Intake; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
                                                 <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
+                                        
                                                 <td style="text-align: center">
-                                                <a data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-rounded btn-sm">Summary</a>
+                                                <a data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-rounded btn-sm" onclick="assignID(<?php  echo $post->r_id ?>)" >Summary</a>
                                                 <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
                                                 </td>
                                             </tr>
-                            
+                                        </form>
                                         </tbody>
 
                                         <?php }} ?>
@@ -501,6 +503,18 @@
 
         <!-- ++++++++++++++++++++++++++++++ POPUP FOR SUMMARY +++++++++++++++++++++++++++++++ -->
 
+<script type="text/javascript">
+    
+        function assignID(registerID) {  
+              
+
+ var registerID=registerID;
+ document.getElementById("regid").value = registerID;
+ 
+}
+</script>
+    
+
             <div id="myModal" class="modal fade">
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -512,7 +526,9 @@
                 <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/summary_controller/updateSummary">
+                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+
+                            <input type="text" name="regid" id="regid" hidden="hidden">
                                                             
                                 <div class="panel panel-default tabs">                            
                                     <ul class="nav nav-tabs" role="tablist">
@@ -528,7 +544,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary 1:</label>
                                                 <div class="col-md-8 col-xs-12">
-                                   
+                                                    
                                                     <textarea class="form-control" rows="5" name="summary1"></textarea>
                                                 </div>
                                             </div>
@@ -579,7 +595,7 @@
                                 </div> 
                                 <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
                                     </div>                               
                             
                             </form>

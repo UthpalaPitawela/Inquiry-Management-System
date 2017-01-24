@@ -1,39 +1,44 @@
 <?php
- class user extends CI_Controller{
+ class User extends CI_Controller{
 
 
      function __construct(){
          parent::__construct();
          $this->view_data['base_url'] = base_url();
 
-         $this->load->model('user_model');
+         $this->load->model('User_model');
 
 
      }
 
      function  index(){
-         $this->register();
+        $this->load->view('view_register');
+//         $this->register();
      }
 
      function register(){
 
-         $this->load->library('form_validation');
+         // $this->load->library('form_validation');
 
-         //$this->form_validation->set_rules('username','Username','trim|required|alpha_numeric|min_length[6]|xss_clean|strtolower|callback_username_not_exists');
-         $this->form_validation->set_rules('fname','First Name','trim|required|alpha_numeric|min_length[3]|xss_clean');
-         $this->form_validation->set_rules('lname','Last Name','trim|required|alpha_numeric|min_length[3]|xss_clean');
-         $this->form_validation->set_rules('email','Email','trim|required|min_length[3]|xss_clean|valid_email');
-         //$this->form_validation->set_rules('password','Password','trim|required|alpha_numeric|min_length[6]|xss_clean');
+         // //$this->form_validation->set_rules('username','Username','trim|required|alpha_numeric|min_length[6]|xss_clean|strtolower|callback_username_not_exists');
+         // $this->form_validation->set_rules('fname','First Name','trim|required|alpha_numeric|min_length[3]|xss_clean');
+         // $this->form_validation->set_rules('lname','Last Name','trim|required|alpha_numeric|min_length[3]|xss_clean');
+         // $this->form_validation->set_rules('email','Email','trim|required|min_length[3]|xss_clean|valid_email');
+         // //$this->form_validation->set_rules('password','Password','trim|required|alpha_numeric|min_length[6]|xss_clean');
          //$this->form_validation->set_rules('cpassword','Confirm Password','trim|required|alpha_numeric|min_length[6]|matches[password]|xss_clean');
 
 
+         // if($this->form_validation->run() != FALSE){
 
-         if($this->form_validation->run() == FALSE){
 
-             //hasn't been run or there are validation errors
-             $this->load->view('view_register',$this->view_data);
 
-         }else{
+         //     //hasn't been run or there are validation errors
+         //     $this->load->view('view_register',$this->view_data);
+
+         // }else{
+
+
+
 
              //everything is good-process the form- write the data into the registration database
              $fname = $this->input->post('fname');
@@ -57,21 +62,23 @@
              $intake = $this->input->post('intake');
              $pdate = $this->input->post('pdate');
              $counsellorname = $this->input->post('counsellorname');
-            // $total=  $this->input->post('grade1' + 'grade2' + 'grade3');
-
-             //$activation_code = $this->_random_string(10);
-
-
-
-             $this->user_model->register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,
-                 $subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname);
-
+      
+             if($remark==""){
+                $remark="No remark";
+             }
+             if($other==""){
+                $other="No Description";
+             }
 
 
-          }
+             $this->User_model->register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname);
 
 
-        // $this->load->view('view_register',$this->view_data);
+
+          //}
+
+
+             $this->index();
      }
 
 

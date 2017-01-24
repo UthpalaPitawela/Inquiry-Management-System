@@ -598,7 +598,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
         <!-- END MESSAGE BOX-->
      <?php
 
-      include 'imports.php'
+      include 'imports.php';
       ?>
 
 

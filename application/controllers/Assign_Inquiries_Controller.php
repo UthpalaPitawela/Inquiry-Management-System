@@ -12,6 +12,8 @@ class Assign_Inquiries_Controller extends CI_Controller{
 	function index(){
 		$data['result'] = $this->Assign_Inquiries_Model->getUsers();
 		$data['inquiries'] = $this->Assign_Inquiries_Model->getInquiries();
+		$data['view_pending'] = $this->Assign_Inquiries_Model->viewPending();
+		$data['view_following'] = $this->Assign_Inquiries_Model->viewFollowing();
 		//print_r($data);
 		$this->load->view('Assign_Inquiries',$data);
 	}
@@ -22,6 +24,8 @@ class Assign_Inquiries_Controller extends CI_Controller{
 		$this->Assign_Inquiries_Model->updateInquiries($counsellorname,$rid);
 		
 	}
+
+
 }
 
 

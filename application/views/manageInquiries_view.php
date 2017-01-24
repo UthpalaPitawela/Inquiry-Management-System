@@ -13,11 +13,13 @@
         <!-- END META SECTION -->
          <link rel="icon" href="<?php echo base_url(); ?>EDULINK logo1.ico" type="image/x-icon" />               
         <!-- CSS INCLUDE --> 
-             
+        <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/jquery/jquery-ui.min.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
+        
         <!-- EOF CSS INCLUDE --> 
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script> 
+        
         <!-- JS INCLUDE --> 
 
     </head> 
@@ -59,7 +61,7 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controllers"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
                     <li class="xn-openable active">
                         
@@ -173,14 +175,14 @@
                                     <div class="tab-pane active" id="tab22" >
             <!-- +++++++++++++++++++++++++ Student info table - pending(High) ++++++++++++++++++++++++  -->
                         <div class="col-md-12">
-                            <!-- START DATATABLE EXPORT -->
+                            
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Student Info</h3>                               
                                 </div>
 
                                 <div class="panel-body">
-                                    <table id="customers2" class="table datatable">
+                                    <table id="customers2" class="table datatable table-hover">
                                         <thead>
                                             <tr>
                                                 <th width="100" style="text-align: center">First Name</th>
@@ -246,7 +248,7 @@
                                     
                                 </div>
                                 <div class="panel-body">
-                                    <table id="customers2" class="table datatable">
+                                    <table id="customers2" class="table datatable table-hover">
                                         <thead>
                                             <tr>
                                                 <th width="100" style="text-align: center">First Name</th>
@@ -300,7 +302,7 @@
                                     
                                 </div>
                                 <div class="panel-body">
-                                    <table id="customers2" class="table datatable">
+                                    <table id="customers2" class="table datatable table-hover">
                                         <thead>
                                             <tr>
                                                 <th width="100" style="text-align: center">First Name</th>
@@ -358,16 +360,16 @@
                                 </div>
 
                                 <div class="panel-body">
-                                    <table id="customers2" class="table datatable">
+                                    <table id="mydata" class="table datatable table-hover">
                                         <thead>
-                                            <tr>
-                                                <th width="100" style="text-align: center">First Name</th>
-                                                <th width="100" style="text-align: center">Last Name</th>
+                                            <tr role="row">
+                                                <th width="70" style="text-align: center">First Name</th>
+                                                <th width="70" style="text-align: center">Last Name</th>
                                                 <th width="60" style="text-align: center">OL</th>
                                                 <th width="60" style="text-align: center">AL</th>
-                                                <th width="100" style="text-align: center">Contact No.</th>
-                                                <th width="200" style="text-align: center">Email</th>
-                                                <th width="100" style="text-align: center">Potential Level</th>
+                                                <th width="70" style="text-align: center">Contact No.</th>
+                                                <th width="100" style="text-align: center">Email</th>
+                                                <th data-sortable="true" width="100" style="text-align: center">Potential Level</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
                                                 <th width="100" style="text-align: center">Handled By</th>
                                                 <th width="100" style="text-align: center">Actions</th>
@@ -389,6 +391,7 @@
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
                                                 <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
                                                 <td style="text-align: center">
+                                                <a data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-rounded btn-sm">Summary</a>
                                                 <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
                                                 </td>
                                             </tr>
@@ -400,7 +403,7 @@
                                     </table>  
                                 </div>
                             </div>
-                            <!-- END DEFAULT DATATABLE -->
+                            
                                          
                                             
                                         </div>    
@@ -414,7 +417,7 @@
                                     </div>
                                 
                                 <div class="panel-body">
-                                    <table id="customers2" class="table datatable">
+                                    <table id="customers2" class="table datatable table-hover">
                                         <thead>
                                             <tr>
                                                 <th width="100" style="text-align: center">First Name</th>
@@ -465,8 +468,8 @@
                             </form>
                             
                         </div>
-                    </div>                    
-                    
+                    </div> 
+   
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->
 
@@ -475,8 +478,9 @@
         </div>
         <!-- END PAGE CONTAINER -->
 
+
         <!-- MESSAGE BOX-->
-       <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+       <div class="message-box animated fadeIn" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
@@ -493,7 +497,98 @@
                 </div>
             </div>
         </div>
-        <!--end of message box-->
+        <!-- End of message box-->
+
+        <!-- ++++++++++++++++++++++++++++++ POPUP FOR SUMMARY +++++++++++++++++++++++++++++++ -->
+
+            <div id="myModal" class="modal fade">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Follow-Up Summary</h4>
+                      </div>
+                
+                <div class="row">
+                        <div class="col-md-12">
+                            
+                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/summary_controller/updateSummary">
+                                                            
+                                <div class="panel panel-default tabs">                            
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="active"><a href="#first-tab" role="tab" data-toggle="tab">Summary 1</a></li>
+                                        <li><a href="#second-tab" role="tab" data-toggle="tab">Summary 2</a></li>
+                                        <li><a href="#third-tab" role="tab" data-toggle="tab">Summary 3</a></li>
+                                        <li><a href="#fourth-tab" role="tab" data-toggle="tab">Summary 4</a></li>
+                                    </ul>
+
+                                    <div class="panel-body tab-content">
+
+                                        <div class="tab-pane active" id="first-tab">
+                                            <div class="form-group">
+                                                <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary 1:</label>
+                                                <div class="col-md-8 col-xs-12">
+                                   
+                                                    <textarea class="form-control" rows="5" name="summary1"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane" id="second-tab">
+                                            <div class="form-group">
+                                                <label class="col-md-3 col-xs-12 control-label" style="margin-left: 10px" for="summary2">Enter Summary 2:</label>
+                                                <div class="col-md-8 col-xs-12">     
+                                                    
+                                                    <textarea class="form-control" rows="5" name="summary2"></textarea>
+                                                </div>
+                                            </div>   
+                                        </div>   
+
+                                        <div class="tab-pane" id="third-tab">
+                                            <div class="form-group">
+                                                <label class="col-md-3 col-xs-12 control-label" for="summary3">Enter Summary 3:</label>
+                                                <div class="col-md-8 col-xs-12">     
+                                                    
+                                                    <textarea class="form-control" rows="5" name="summary3"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane" id="fourth-tab">
+                                            <div class="form-group">
+                                                <label class="col-md-3 col-xs-12 control-label" for="summary4">Enter Summary 4:</label>
+                                                <div class="col-md-8 col-xs-12">     
+                                                    
+                                                    <textarea class="form-control" rows="5" name="summary4"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane" id="fourth-tab">
+                                            <div class="form-group">
+                                                <label class="col-md-3 col-xs-12 control-label" for="summary4">Enter Summary 5:</label>
+                                                <div class="col-md-8 col-xs-12">     
+                                                    <input type="hidden" name="id" value=$id />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    
+                                </div> 
+                                <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>                               
+                            
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
         
         
                   
@@ -503,25 +598,32 @@
 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap.min.js"></script>                
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap.min.js"></script>                 
         <!-- END PLUGINS -->
         
         <!-- THIS PAGE PLUGINS -->
         <script type='text/javascript' src='<?php echo base_url(); ?>public/js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-datepicker.js"></script>                
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-file-input.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-select.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
 
-        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/tableExport.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jquery.base64.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/html2canvas.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/jspdf.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script>
+
+         <!-- START TEMPLATE -->
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>  
+ 
+        
+
+      
+        <!-- END TEMPLATE -->
 
         <!-- To switch through buckets -->
         <script type="text/javascript">
@@ -563,6 +665,8 @@
         }
         </script>
 
+ 
+
         <script>
         $('.mb-control').click(function(e){
             e.preventDefault()
@@ -570,12 +674,14 @@
         
         </script>
 
+        
+
+       
+    
+
         <!-- END THIS PAGE PLUGINS -->       
         
-        <!-- START TEMPLATE -->
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>        
-        <!-- END TEMPLATE -->
+       
     <!-- END SCRIPTS -->                   
     </body>
 </html>

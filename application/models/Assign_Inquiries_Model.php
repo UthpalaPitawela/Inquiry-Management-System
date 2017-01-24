@@ -11,7 +11,7 @@ class Assign_Inquiries_Model extends CI_Model{
 	}
 
 	function getInquiries(){
-		$query = $this->db->query("SELECT Fname,Lname,Email,Contactno,Intake,r_id FROM register WHERE CounsellorName IS NULL AND Status = 'Pending'");
+		$query = $this->db->query("SELECT Fname,Lname,Email,Intake,r_id FROM register WHERE CounsellorName IS NULL AND Status = 'Pending'");
 		return $query;
 	}
 
@@ -23,6 +23,16 @@ class Assign_Inquiries_Model extends CI_Model{
 
 		$this->db->where('r_id', $rid);
 		$this->db->update('register', $data); 
+	}
+
+	function viewPending(){
+		$query = $this->db->query("SELECT Fname,Lname,Email,Intake,CounsellorName FROM register WHERE Status = 'Pending' AND CounsellorName IS NOT NULL");
+		return $query;
+	}
+
+	function viewFollowing(){
+		$query = $this->db->query("SELECT Fname,Lname,Email,Intake,CounsellorName FROM register WHERE Status = 'Following' AND CounsellorName IS NOT NULL");
+		return $query;
 	}
 
 }

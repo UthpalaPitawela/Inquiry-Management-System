@@ -20,6 +20,7 @@
                             //var counsellorname = document.getElementById('counsellorname').value;
                             //alert(counsellorname);
                             var value = document.getElementById("counsellorname").value;
+                            //alert(rid);
                             $.ajax({
                                 url : '<?php echo base_url('index.php/Assign_Inquiries_Controller/assignInquiries'); ?>',
                                 method : 'get',
@@ -182,6 +183,7 @@
                                 <div class="col-md-2"></div>
                             </div>
                             <div class="row">
+                                <div class="ScrollStyle">
                                     <div class="panel-body panel-body-table">
 
                                                 <div class="table-responsive">
@@ -213,8 +215,8 @@
                                                         <tbody>                                            
                                                             <tr id="">
                                                                 
-                                                                <td><strong><?php echo $fname;   ?></strong></td>
-                                                                <td><span class="label label-success"><?php echo $lname;   ?></span></td>
+                                                                <td><?php echo $fname;   ?></td>
+                                                                <td><?php echo $lname;   ?></td>
                                                                 <td><?php echo $email;   ?></td>
                                                                 <td><?php echo $intake;   ?></td>
                                                                 <td><label class="switch">
@@ -230,14 +232,136 @@
                                                             
                                                         </tbody>
                                                     </table>
-                                        </div>    
+                                        </div>
+                                    </div>    
                             </div>
                         </div>
+                    </div>
+                        <div class="col-md-6">
+                                <h4 align="center"> Assigned Inquiries</h4><br>
+                                 <div class="panel panel-default tabs">                            
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Pending </a></li>
+                                        <li><a href="#tab-second" role="tab" data-toggle="tab">Following</a></li>
+                                       
+                                    </ul>
 
-                        <div class="col-md-6"></div>
+
+                                     <div class="panel-body tab-content">
+                                        <div class="tab-pane active" id="tab-first">
+                                        <div class="ScrollStyle">
+                                            <div class="panel-body panel-body-table">
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-striped table-actions">
+                                                        <thead>
+                                                            <tr>
+                                                                
+                                                                <th width="100">First Name</th>
+                                                                <th width="100">LastName</th>
+                                                                <th width="60">Email</th>
+                                                                <th width="100">Intake</th>
+                                                                <th width="100">Counsellor Name</th>
+                                                                
+                                                            </tr>
+                                                        </thead>
+
+                                                        <?php
+                                                        if(is_array($view_pending) || is_object($view_pending)){
+                                                            foreach($view_pending -> result_array() as $row){
+                                                             
+                                                                $fname = $row['Fname'];
+                                                                $lname = $row['Lname'];
+                                                                $email = $row['Email'];
+                                                                $intake = $row['Intake'];
+                                                                $counsellorname = $row['CounsellorName'];
+                                                               
+                                                            
+                                                        ?>
+
+                                                        <tbody>                                            
+                                                            <tr id="">
+                                                                
+                                                                <td><?php echo $fname;   ?></td>
+                                                                <td><?php echo $lname;   ?></td>
+                                                                <td><?php echo $email;   ?></td>
+                                                                <td><?php echo $intake;   ?></td>
+                                                                <td><?php echo $counsellorname;?></td>
+                                                                
+                                                               
+                                                               
+                                                            </tr>
+                                                            <?php }
+                                                            }
+                                                             ?>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                        </div>    
+                            </div>
+                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab-second">
+
+                                        <div class="ScrollStyle">
+                                            <div class="panel-body panel-body-table">
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-striped table-actions">
+                                                        <thead>
+                                                            <tr>
+                                                                
+                                                                <th width="100">First Name</th>
+                                                                <th width="100">LastName</th>
+                                                                <th width="60">Email</th>
+                                                                <th width="100">Intake</th>
+                                                                <th width="100">Counsellor Name</th>
+                                                                
+                                                            </tr>
+                                                        </thead>
+
+                                                        <?php
+                                                        if(is_array($view_following) || is_object($view_following)){
+                                                            foreach($view_following -> result_array() as $row){
+                                                             
+                                                                $fname = $row['Fname'];
+                                                                $lname = $row['Lname'];
+                                                                $email = $row['Email'];
+                                                                $intake = $row['Intake'];
+                                                                $counsellorname = $row['CounsellorName'];
+                                                               
+                                                            
+                                                        ?>
+
+                                                        <tbody>                                            
+                                                            <tr id="">
+                                                                
+                                                                <td><?php echo $fname;   ?></td>
+                                                                <td><?php echo $lname;   ?></td>
+                                                                <td><?php echo $email;   ?></td>
+                                                                <td><?php echo $intake;   ?></td>
+                                                                <td><?php echo $counsellorname;   ?></td>
+                                                                
+                                                               
+                                                               
+                                                            </tr>
+                                                            <?php }
+                                                            }
+                                                             ?>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                        </div>    
+                            </div>
+                            </div>
+                                        </div>                                        
+                                        
+                                    </div>
+                                </div>
+                        </div>
 
 
-                    </div>  
+                     
                     
                     
                 </div>

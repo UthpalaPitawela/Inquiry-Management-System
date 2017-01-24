@@ -22,9 +22,6 @@ class manageInquiries_controller extends CI_Controller{
 		$this->data['posts4'] = $this->manageInquiries_model->getCompleted();
 		$this->load->view('manageInquiries_view', $this->data);
 	}
-
 }
-
-
 
 ?>

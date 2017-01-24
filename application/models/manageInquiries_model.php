@@ -26,7 +26,7 @@ class manageInquiries_model extends CI_Model{
 		
 
 		return $query->result();
-	}
+	} 
 
 
 	function getPostsLow(){

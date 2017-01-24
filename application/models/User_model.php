@@ -95,6 +95,12 @@
 
     }
 
+    function get_Users()
+    {
+        $query = $this->db->query("SELECT first_name,last_name FROM user WHERE status=3 or status=4");
+        return $query->result();
+    }
+
 
 
  }

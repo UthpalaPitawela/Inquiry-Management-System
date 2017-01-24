@@ -287,11 +287,11 @@
                 <div class="col-md-5">
                     <div class="input-group">
                         <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                        <input type="text" name="subject1" class="form-control" placeholder="Subject" >
+                        <input type="text" name="subject1" class="form-control" placeholder="Subject" />
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <select class="form-control select" name="grade1" id="res1" />
+                    <select class="form-control select" name="grade1" id="res1" >
 
                     <option value=120>A</option>
                     <option value=100>B</option>
@@ -307,11 +307,11 @@
                 <div class="col-md-5">
                     <div class="input-group">
                         <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                        <input type="text" name="subject2" class="form-control" placeholder="Subject" >
+                        <input type="text" name="subject2" class="form-control" placeholder="Subject" />
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <select class="form-control select" name="grade2" id="res2" />
+                    <select class="form-control select" name="grade2" id="res2" >
 
                     <option value=120>A</option>
                     <option value=100>B</option>
@@ -328,12 +328,12 @@
                 <div class="col-md-5">
                     <div class="input-group">
                         <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                        <input type="text" name="subject3" class="form-control" placeholder="Subject" >
+                        <input type="text" name="subject3" class="form-control" placeholder="Subject" />
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <select class="form-control select" name="grade3" id="res3" />
+                    <select class="form-control select" name="grade3" id="res3" >
 
                     <option value=120>A</option>
                     <option value=100>B</option>
@@ -415,7 +415,15 @@
          <div class="col-md-6 col-xs-12">
              <div class="input-group">
                  <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                 <input name="counsellorname" type="text" class="form-control" />
+                 <select name="counsellorname" class="form-control">
+                    <?php
+
+                    foreach($users as $row)
+                    {
+                        echo '<option value = "'.$row->first_name." ".$row->last_name.'">'.$row->first_name.'</option>';
+                    }
+                    ?>
+                 </select>
             </div>
  
          </div>

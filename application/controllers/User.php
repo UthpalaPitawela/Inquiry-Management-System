@@ -1,5 +1,5 @@
 <?php
- class User extends CI_Controller{
+class User extends CI_Controller{
 
 
      function __construct(){
@@ -12,7 +12,10 @@
      }
 
      function  index(){
-        $this->load->view('view_register');
+        
+        $data["users"] = $this->User_model->get_users();
+        $this->load->view('view_register',$data);
+
 //         $this->register();
      }
 
@@ -155,7 +158,9 @@
 
      }
 
- }
+
+
+}
 
 
 

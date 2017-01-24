@@ -12,7 +12,31 @@
         
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('public/css/theme-default.css'); ?>"/>
-        <!-- EOF CSS INCLUDE -->                                    
+        <!-- EOF CSS INCLUDE -->  
+
+        <script type="text/javascript">
+            function handleInquiry(rid){
+                  if (document.getElementById('assign').checked) {
+                            //var counsellorname = document.getElementById('counsellorname').value;
+                            //alert(counsellorname);
+                            var value = document.getElementById("counsellorname").value;
+                            $.ajax({
+                                url : '<?php echo base_url('index.php/Assign_Inquiries_Controller/assignInquiries'); ?>',
+                                method : 'get',
+                                data : {'rid': rid, 'counsellorname' : value},
+                                success : function(){
+                                    //alert("hiii");
+                                    
+
+                                }
+
+
+                            });
+                            $('#'+rid).hide();
+                        }
+
+            }
+        </script>                                  
     </head>
 
     <body>
@@ -133,29 +157,86 @@
                 <div class="page-content-wrap">
                         <div class="row">
                         <div class="col-md-6">
-                            <div class="btn-group">
-                                <select id = "counsellorname" name="counsellornamename" class="btn btn-default dropdown-toggle">
-                                    
-
-                                
-                                    
-                                        <?php
-
-                                        foreach($result as $row){
-                                            echo "<option value = ".$row['first_name'].">".$row['first_name']." "."</option>";
-
-                                            /* echo "<option value = ".$row['email'].">".$row['first_name']." ".$row['last_name']."</option>";*/
-                                            }
-                                        ?>
-                                </select>
+                            <div class="row">
+                                <h4 align="center"> Unassigned Inquiries</h4><br>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-9">
+                                <div class="btn-group">
                                
-                                                                                                       
-                                  
+                                    <select id = "counsellorname" name="counsellornamename" class="btn btn-primary dropdown-toggle">
+                                    <?php
+
+                                        foreach($result as $row)
+                                        {
+                                            $name = $row->first_name." ".$row->last_name;
+                                            echo '<option value = "'.$name.'">'.$row->first_name." ".$row->last_name.'</option>';
+                                        }
+                                    ?>
+                                    </select>
+                                    <br><br>
+                                
+                                </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                            <div class="row">
+                                    <div class="panel-body panel-body-table">
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-striped table-actions">
+                                                        <thead>
+                                                            <tr>
+                                                                
+                                                                <th width="100">First Name</th>
+                                                                <th width="100">LastName</th>
+                                                                <th width="60">Email</th>
+                                                                <th width="100">Intake</th>
+                                                                <th width="100">Assign</th>
+                                                                
+                                                            </tr>
+                                                        </thead>
+
+                                                        <?php
+                                                        if(is_array($inquiries) || is_object($inquiries)){
+                                                            foreach($inquiries -> result_array() as $row){
+                                                             
+                                                                $fname = $row['Fname'];
+                                                                $lname = $row['Lname'];
+                                                                $email = $row['Email'];
+                                                                $intake = $row['Intake'];
+                                                                $rid = $row['r_id']
+                                                            
+                                                        ?>
+
+                                                        <tbody>                                            
+                                                            <tr id="">
+                                                                
+                                                                <td><strong><?php echo $fname;   ?></strong></td>
+                                                                <td><span class="label label-success"><?php echo $lname;   ?></span></td>
+                                                                <td><?php echo $email;   ?></td>
+                                                                <td><?php echo $intake;   ?></td>
+                                                                <td><label class="switch">
+                                                    <input type="checkbox" value="1" id="assign" name="assign"onchange="handleInquiry(<?php echo $rid?>);"/>
+                                                    <span></span>
+                                                </label></td>
+                                                               
+                                                               
+                                                            </tr>
+                                                            <?php }
+                                                            }
+                                                             ?>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                        </div>    
                             </div>
                         </div>
+
                         <div class="col-md-6"></div>
 
-                       
+
                     </div>  
                     
                     

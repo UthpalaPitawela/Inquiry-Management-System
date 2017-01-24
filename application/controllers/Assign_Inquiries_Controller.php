@@ -1,11 +1,26 @@
 <?php
 class Assign_Inquiries_Controller extends CI_Controller{
-	function index(){
-		$this->load->model('Assign_Inquiries_Model');
-		$data['result'] = $this->Assign_Inquiries_Model->index();
-		//print_r($data);
+	function __construct(){
+		parent::__construct();
 
+		//Load the model of assign_inquiries
+		$this->load->model('Assign_Inquiries_Model');
+
+		
+	}
+
+	function index(){
+		$data['result'] = $this->Assign_Inquiries_Model->getUsers();
+		$data['inquiries'] = $this->Assign_Inquiries_Model->getInquiries();
+		//print_r($data);
 		$this->load->view('Assign_Inquiries',$data);
+	}
+
+	function assignInquiries(){
+		$counsellorname = $this->input->get('counsellorname');
+		$rid = $this->input->get('rid');
+		$this->Assign_Inquiries_Model->updateInquiries($counsellorname,$rid);
+		
 	}
 }
 

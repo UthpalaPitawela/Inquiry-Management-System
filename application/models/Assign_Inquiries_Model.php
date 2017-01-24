@@ -1,23 +1,30 @@
 <?php
 class Assign_Inquiries_Model extends CI_Model{
-	function index(){
-	/*	$this->db->select('first_name,last_name,email');
-		
-		$this->db->where('status',3);
-		$query = $this->db->get('user');
-		foreach ($query -> result() as $row) {
-			$data[] = array(
-				'fname' => $row->first_name,
-				'lname' => $row->last_name,
-				'email' => $row->email
-				);
-		}
-		return $data;*/
-		    $this->db->select('first_name,last_name,email');
-        $this->db->where('status',3);
-        $query = $this->db->get('user');
-        return $query ->result_array();
+	function __construct(){
+		parent::__construct();
 	}
+
+	function getUsers()
+	{
+		$query = $this->db->query("SELECT first_name,last_name,email FROM user WHERE status=3 or status=4");
+		return $query->result();
+	}
+
+	function getInquiries(){
+		$query = $this->db->query("SELECT Fname,Lname,Email,Contactno,Intake,r_id FROM register WHERE CounsellorName IS NULL AND Status = 'Pending'");
+		return $query;
+	}
+
+	function updateInquiries($counsellorname,$rid){
+		$data = array(
+               'CounsellorName' => $counsellorname
+              
+            );
+
+		$this->db->where('r_id', $rid);
+		$this->db->update('register', $data); 
+	}
+
 }
 
 

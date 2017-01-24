@@ -173,7 +173,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Role</label>
                                         <div class="col-md-9">
-                                            <input type="radio" name="Role" id="optionsRadios2" value="Assistant Manager"/> &nbsp; Assistant Manager &nbsp;
+                                            <input type="radio" name="Role" id="optionsRadios2" value="Assistant Manager" required/> &nbsp; Assistant Manager &nbsp;
                                             <input type="radio" name="Role" id="optionsRadios2" value="Counsellor"/> &nbsp;Counsellor
                                         </div>
                                     </div>
@@ -182,7 +182,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Target</label>
                                         <div class="col-md-9">
-                                            <input type="number" class="form-control" name="Target"/>
+                                            <input type="number" class="form-control" name="Target" required/>
                                         </div>
                                     </div>
 
@@ -190,7 +190,7 @@
                                         <label class="col-md-3 control-label">Start Date</label>
                                         <div class="col-md-5">
                                             <div class="input-group">
-                                                <input type="date" id="dp-3" class="form-control" value="06-06-2014" data-date="06-06-2014" data-date-format="dd-mm-yyyy" data-date-viewmode="years" name="Start_Date"/>
+                                                <input id="datepicker" class="form-control" value="<?php echo date('d-m-Y'); ?>" data-date-format="dd-mm-yyyy" data-date-viewmode="years" name="Start_Date" required/>
                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                             </div>
                                         </div>
@@ -200,7 +200,7 @@
                                         <label class="col-md-3 control-label">Deadline</label>
                                         <div class="col-md-5">
                                             <div class="input-group">
-                                                <input type="date" id="dp-3" class="form-control" value="06-06-2014" data-date="06-06-2014" data-date-format="dd-mm-yyyy" data-date-viewmode="years" name="End_Date"/>
+                                                <input id="datepicker1" class="form-control" value="dd-mm-yyyy" data-date-format="dd-mm-yyyy" data-date-viewmode="years" name="End_Date" required />
                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                             </div>
                                         </div>
@@ -425,6 +425,26 @@
         })
         
         </script>    
+
+
+        <script>
+        //For selecting starting date of target
+          $( function() {
+            $( "#datepicker" ).datepicker();
+          } );
+        </script>
+
+        <script>
+        //disable selecting past dates
+        $(function() {
+            $( "#datepicker1" ).datepicker({ 
+                startDate: '-0d',
+            });
+          
+          });
+        </script>
+
+
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->        
     </body>

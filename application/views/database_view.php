@@ -168,7 +168,7 @@
                                                     <div class="col-md-9">                                            
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                            <input type="text" id="bulk_name" name="bulk_name" class="form-control"/>
+                                                            <input type="text" id="bulk_name" name="bulk_name" class="form-control" required/>
                                                         </div> 
                                                     </div>
                                                     
@@ -179,7 +179,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                            <input type="text" name="bulk_date" id="bulk_date" class="form-control datepicker" value="">                                            
+                                                            <input type="text" name="bulk_date" id="datepicker" value="<?php echo date('d-m-Y'); ?>" data-date-format="dd-mm-yyyy" data-date-viewmode="years" class="form-control" required>                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -298,7 +298,14 @@
             e.preventDefault()
         })
         
-        </script>       
+        </script>  
+
+        <script>
+        //To select date of insertion
+          $( function() {
+            $( "#datepicker" ).datepicker();
+          } );
+        </script>     
         
     <!-- END SCRIPTS -->                   
     </body>

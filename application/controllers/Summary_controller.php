@@ -19,45 +19,43 @@ class Summary_controller extends CI_Controller{
 	
 	
 
-	
+	 
 
 	public function updateSummary()
 	{
 
+		$update = array('Summary1' => $this->input->post('summary1'),'Summary2' => $this->input->post('summary2'), 'Summary3' => $this->input->post('summary3'), 'Summary4' => $this->input->post('summary4'));
+
+		
+		
+			// $update = array('Summary1' => $this->input->post('summary1'));
+
+		
+		
+			// $update = array(
+			// 	'Summary2' => $this->input->post('summary2')
+			// );
+
+		
+			// $update = array(
+			// 	'Summary3' => $this->input->post('summary3')
+			// );
+
 		
 
-		if($this->input->post('summary1')!=""){
-					
+			// $update = array(
+			// 	'Summary4' => $this->input->post('summary4')
+			// );
+
 		
-				$update = array(
-			'Summary1' => $this->input->post('summary1')
-			
-		);
-
-		}
-		if($this->input->post('summary2')!=""){
-
-			$update = array(
-				'Summary2' => $this->input->post('summary2')
-			);
-
-		}
-		if($this->input->post('summary3')!=""){
-
-
-			$update = array(
-				'Summary3' => $this->input->post('summary3')
-			);
-
-		}
-
+		//print_r($update);
 
 		
 		$regid = $this->input->post('regid');
 			
 
 		$this->Summary_model->updateSummary($update,$regid);
-		 redirect("index.php/ManageInquiries_controller/index");
+		redirect("index.php/ManageInquiries_controller#tab-second");
 	}
 }
 

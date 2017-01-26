@@ -15,14 +15,16 @@ class Assign_Inquiries_Model extends CI_Model{
 		return $query;
 	}
 
-	function updateInquiries($counsellorname,$rid){
+	function updateInquiries($counsellorname,$val){
+		foreach($val as $num){
 		$data = array(
                'CounsellorName' => $counsellorname
               
             );
-
-		$this->db->where('r_id', $rid);
-		$this->db->update('register', $data); 
+													
+		$this->db->where('r_id', $num);
+		$this->db->update('register', $data);
+		} 
 	}
 
 	function viewPending(){

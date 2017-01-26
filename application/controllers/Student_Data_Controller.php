@@ -31,5 +31,55 @@ $student_id=urldecode($student_id);
 
    }
 
+   public function searchStudent($skey){
+   	
+ //  	echo "<script>".$skey."=encodeURI(".$skey.")</script>";
+   	//echo "<script>alert(".$skey.")</script>";
+   //	echo "<script>".$skey."=decodeURI(".$skey.")</script>";
+
+
+//   	$searchkey = $this->input->post('search');
+	$searchresult = $this->Student_Data_Model->searchStudent($skey);
+
+
+?>
+<table class="table datatable">
+
+<?php
+
+foreach($searchresult as $sch){
+	 	$base=base_url();
+	 
+
+?>
+<tr>
+<?php
+$email=$sch->email;
+	 	$email=urlencode($email);
+
+?>
+<td>
+<?php
+echo "<li><a href=".$base."index.php/Student_Data_Controller/loadingdetails/".$email."><span class='fa fa-user'></span>&nbsp $sch->firstname</a></li>";
+	 	
+	 	?>
+</td>
+</tr>
+<?php
+}
+?>
+	
+</table>
+	 	
+
+
+
+<?php           
+
+        
+
+
+   }
+
  }
 ?>

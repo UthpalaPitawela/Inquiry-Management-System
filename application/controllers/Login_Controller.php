@@ -12,10 +12,14 @@ $this->load->model("Student_Data_Model");
 
 
     }
+
+
      
 
     public function index(){
-     		
+
+
+//        session_destroy();     		
         $this->load->view("Login_View");
      	
 
@@ -24,6 +28,14 @@ $this->load->model("Student_Data_Model");
  	public function validate_user(){
  		$username = $this->input->post('username');
     	$password = $this->input->post('password');
+
+        if(isset($_SESSION["username"])){
+            $username=$_SESSION["username"];
+            $password=$_SESSION["password"];
+        }else{
+            $_SESSION["username"]=$username;
+            $_SESSION["password"]=$password;
+        }
 
     	$result = $this->Login_Model->check_login($username, $password);
         $rowcount = $result->num_rows();
@@ -105,6 +117,7 @@ $this->load->model("Student_Data_Model");
 
              }else{
                 echo "no account";
+                echo $_SESSION["username"];
              }
 
      
@@ -117,10 +130,11 @@ $this->load->model("Student_Data_Model");
 
     public function logout()
     {
+       
         $this->load->driver('cache'); #load cache
         $this->session->sess_destroy(); # Destroy the current session
         $this->cache->clean();  # Clean the cache
-        redirect('index.php/login_controller'); #  Default controller name 
+        redirect('index.php/'); #  Default controller name 
         ob_clean(); 
 
     }

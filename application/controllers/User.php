@@ -140,6 +140,7 @@ class User extends CI_Controller{
 
 
      public function geteligbledata($id){
+      
         $this->load->model('user_model');
          $data = $this->user_model->getdata($id);
          foreach($data as $dd){

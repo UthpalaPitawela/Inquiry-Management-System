@@ -1,6 +1,6 @@
 <?php
 
-class addStudentAcc_model extends CI_Model{
+class AddStudentAcc_model extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}

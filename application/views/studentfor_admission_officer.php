@@ -220,9 +220,7 @@ if($row2['other']!='nolink'){
 <div class="panel-body col-md-8">
                                     
                                    
-    <div class="container">
-    <div class="row">
-        <h4>Student's other details attached</h4>
+        <p><strong> Student's other details attached</strong></p>
        
 
 
@@ -283,10 +281,6 @@ if($row2['other']!='nolink'){
 
 
 
-
-    </div>
-</div>
-          
 
 
 
@@ -367,7 +361,7 @@ if($row2['other']!='nolink'){
                                     </ul>                                                                    
                                 </div>
                                 <div class="meta">
-                                    <strong>A/L Certificate Image 1</strong>
+                                    <strong>A/L Certificate Image 2</strong>
                      
                                 </div>                                
                             </a>                            
@@ -480,9 +474,30 @@ if($row2['other']!='nolink'){
                                 <div class="panel-heading">                                
                                     <h3 class="panel-title">Student List</h3>
                                     <ul class="panel-controls">
-                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+
+
+                                    <li>
+                                    <div class="panel-body">
+                                    <div class="col-md-6">
+                                    <div class="input-group push-down-10">
+                                                <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                                                 <input type="text" name="search" class="form-control" id="searchid" onkeyup="getStudent()" placeholder="Search Student..."/>
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-primary">Search</button>
+                                                </div>
+                                            </div>
+                                      <div id="studentdiv">
+
+                            No Result
+                                
+                            </div>
+                                    </div>
+                                    </div>
+                                    </li>
+
+                                        <li class="pull-right"><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                        <li class="pull-right"><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                        <li class="pull-right"><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>                                
                                 </div>
                                 <div class="panel-body">
@@ -588,7 +603,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo base_url('index.php/Login_Controller../../') ?>" class="btn btn-success btn-lg">Yes</a>
+                            <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="btn btn-success btn-lg">Yes</a>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
@@ -658,6 +673,47 @@ show = function(){
 
      </script>
         
+
+<script type="text/javascript">
+    
+
+
+function getStudent(){
+
+    var skey = document.getElementById("searchid").value;
+    
+    $('#studentdiv').html("");
+     // alert(skey);
+
+    if(skey!=""){
+
+            $.ajax({
+
+                type:"get",
+                url : '<?php echo base_url();?>index.php/Student_Data_Controller/searchStudent/'+skey,
+                success: function (searchresult) {
+
+
+                    $('#studentdiv').html(searchresult);
+ 
+                }
+            })
+
+
+    }
+
+
+
+}
+
+     
+
+
+</script>
+
+
+
+
 
 
 

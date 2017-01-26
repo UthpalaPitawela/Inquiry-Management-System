@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
+         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <link rel="icon" href="<?php echo base_url('public/Assets/EDULINK-Logo1.ico'); ?>" type="image/x-icon" />
         <!-- END META SECTION -->
         
@@ -14,7 +14,7 @@
                  <style type="text/css">
                      #loading {width: 100%;height: 100%;margin-top: 10%;left: 40%;position: fixed;display: none; z-index: 99}
 
-/               </style>
+               </style>
           
         <!-- EOF CSS INCLUDE -->                                    
     </head>
@@ -56,7 +56,7 @@ $propic=$_SESSION["propic"];
                   
 
                     <li class="active">
-                        <a href="<?php echo base_url();?>index.php/page_controller/loadingpages/admission_officer_student_list"><span class="fa fa-users"></span> <span class="xn-text">Student Profiles</span></a>
+                        <a href="<?php echo base_url();?>index.php/Page_controller/loadingpages/admission_officer_student_list"><span class="fa fa-users"></span> <span class="xn-text">Student Profiles</span></a>
                         
                     </li>                
                 
@@ -77,16 +77,11 @@ $propic=$_SESSION["propic"];
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
                   
                     <!-- SEARCH -->
-                    <li class="xn-search">
-                        <form role="form">
-                            <input type="text" name="search" placeholder="Search Student..."/>
-                        </form>
-                    </li>   
                     <!-- END SEARCH -->
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="<?php echo base_url();?>index.php/logout_controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->  
                     
@@ -145,10 +140,34 @@ $propic=$_SESSION["propic"];
                     <div class="panel panel-default">
                                 <div class="panel-heading">                                
                                     <h3 class="panel-title">Student List</h3>
+
                                     <ul class="panel-controls">
-                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+
+                                    <li>
+                                    <div class="panel-body">
+                                    <div class="col-md-6">
+                                    <div class="input-group push-down-10">
+                                                <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                                                 <input type="text" name="search" class="form-control" id="searchid" onkeyup="getStudent()" placeholder="Search Student..."/>
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-primary">Search</button>
+                                                </div>
+                                            </div>
+                                      <div id="studentdiv">
+
+                            No Result
+                                
+                            </div>
+                                    </div>
+                                    </div>
+                                    </li>
+
+                                          
+                          
+  
+                                        <li class="pull-right"><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                        <li class="pull-right"><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                        <li class="pull-right"><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>                                
                                 </div>
                                 <div class="panel-body">
@@ -245,7 +264,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo base_url('index.php/Login_Controller../../') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="btn btn-danger btn-lg">Yes</a>
                             <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
@@ -312,6 +331,53 @@ show = function(){
         
         </script>
         
+
+
+
+<script type="text/javascript">
+    
+
+
+function getStudent(){
+
+    var skey = document.getElementById("searchid").value;
+
+
+    $('#studentdiv').html("");
+     // alert(skey);
+
+    if(skey!=""){
+
+            $.ajax({
+
+                type:"get",
+                url : '<?php echo base_url();?>index.php/Student_Data_Controller/searchStudent/'+skey,
+                success: function (searchresult) {
+
+
+                    $('#studentdiv').html(searchresult);
+ 
+                }
+            })
+
+
+    }
+
+
+
+}
+
+     
+
+
+</script>
+
+
+
+
+
+
+
 
 
 

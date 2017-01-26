@@ -1,19 +1,29 @@
 <?php
 if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class addStudentAcc_controller extends CI_Controller{
+class AddStudentAcc_controller extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 
 		//Load the model of manage_inquiries
-		$this->load->model('addStudentAcc_model');
+		$this->load->model('AddStudentAcc_model');
+		$this->load->model("Student_Data_Model");
 		
 	}
 
 	public function index()
 	{
-		//load the view
-		$this->load->view('addStudentAcc_view');
+		  $user_Id= $_SESSION["user_ID"];
+
+
+		$data['admissionstudent'] = $this->Student_Data_Model->get_Student_Data($user_Id);
+   
+        // $this->load->view('Admission_Officer_Student_list',$data);
+
+
+		$this->load->view('addStudentAcc_view',$data);
+
+
 	}
 
 	public function addstudent()
@@ -29,9 +39,9 @@ class addStudentAcc_controller extends CI_Controller{
 			'tpnumber' => $this->input->post('contact'));
 
 		//transferring data to model
-		$this->addStudentAcc_model->insertdata($data);
+		$this->AddStudentAcc_model->insertdata($data);
 
-		redirect("addStudentAcc_controller/index");
+		redirect("AddStudentAcc_controller/index");
 	}
 
 }

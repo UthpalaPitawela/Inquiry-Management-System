@@ -95,7 +95,7 @@
                     </li>
 
                     <li class="active">
-                        <a href="<?php echo base_url();?>index.php/addStudentAcc_controller"><span class="fa fa-user"></span> <span class="xn-text">Student Profiles</span></a>   
+                        <a href="<?php echo base_url();?>index.php/AddStudentAcc_controller"><span class="fa fa-user"></span> <span class="xn-text">Student Profiles</span></a>   
                     </li>
 
                     
@@ -164,7 +164,7 @@
                         <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url('index.php/addStudentAcc_controller/addstudent');?>">
+                            <form class="form-horizontal" method="POST" action="<?php echo base_url('index.php/AddStudentAcc_controller/addstudent');?>">
                             <div class="panel panel-default">
 
                                 <div class="panel-body">                                                                        
@@ -256,7 +256,76 @@
 
                                     <!--Second tab -->
                                     <div class="tab-pane" id="tab9">
-                                        <p>Donec tristique eu sem et aliquam. Proin sodales elementum urna et euismod. Quisque nisl nisl, venenatis eget dignissim et, adipiscing eu tellus. Sed nulla massa, luctus id orci sed, elementum consequat est. Proin dictum odio quis diam gravida facilisis. Sed pharetra dolor a tempor tristique. Sed semper sed urna ac dignissim. Aenean fermentum leo at posuere mattis. Etiam vitae quam in magna viverra dictum. Curabitur feugiat ligula in dui luctus, sed aliquet neque posuere.</p>
+                                       
+
+
+
+
+
+                    <div class="panel panel-default">
+                                <div class="panel-heading">                                
+                                    <h3 class="panel-title">Student List</h3>
+                                    <ul class="panel-controls">
+                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                                    </ul>                                
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>ID</th>
+                                                <th>Profile</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+<?php
+
+
+                                    if ($admissionstudent->num_rows() > 0) {
+foreach ($admissionstudent ->result_array() as $studentrow) {
+
+?>
+
+                                            <tr>
+                                            <form action="">
+                                                <td><?php echo $studentrow['firstname']."  ".$studentrow['lastname'];?></td>
+                                                <td><?php echo $studentrow['email'];?></td>
+                                                <td><?php echo $studentrow['user_name'];?></td>
+                                               <?php
+                                                $email=$studentrow['email'];
+                                                $email=urlencode($email);
+
+
+                                               ?>
+     <td><a href="<?php echo base_url();?>index.php/Student_Data_Controller/loadingdetails/<?php echo $email;?>"><span class="fa fa-user"></span> View Profile</a></td>
+                                                </form>
+                                            </tr>
+
+<?php
+}
+}else{
+    ?><h2>No Data</h2><?php
+}
+?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
                                     </div>
                                                             
                                 </div>

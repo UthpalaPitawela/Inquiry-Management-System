@@ -50,5 +50,15 @@ class Student_Data_Model extends CI_Model{
           //  return false;
         //}
   }
+
+  function searchStudent($searchkey){
+
+
+     $searchresult = $this->db->like('firstname', $searchkey,'after')->or_like('lastname',$searchkey,'after')->or_like('email', $searchkey,'after')->get('student_table');
+
+    return $searchresult->result();
+
+
+  }
 }
 ?>

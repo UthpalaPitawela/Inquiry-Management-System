@@ -14,30 +14,18 @@
         <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('public/css/theme-default.css'); ?>"/>
         <!-- EOF CSS INCLUDE -->  
 
-        <script type="text/javascript">
-            function handleInquiry(rid){
-                  if (document.getElementById('assign').checked) {
-                            //var counsellorname = document.getElementById('counsellorname').value;
-                            //alert(counsellorname);
-                            var value = document.getElementById("counsellorname").value;
-                            //alert(rid);
-                            $.ajax({
-                                url : '<?php echo base_url('index.php/Assign_Inquiries_Controller/assignInquiries'); ?>',
-                                method : 'get',
-                                data : {'rid': rid, 'counsellorname' : value},
-                                success : function(){
-                                    //alert("hiii");
-                                    
 
-                                }
+       
 
+         
 
-                            });
-                            $('#'+rid).hide();
-                        }
-
-            }
-        </script>                                  
+        <style>
+        .ScrollStyle {
+            
+            max-height: 400px;
+            overflow-y: scroll;
+        }                 
+        </style>                
     </head>
 
     <body>
@@ -157,13 +145,18 @@
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                         <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-7">
                             <div class="row">
                                 <h4 align="center"> Unassigned Inquiries</h4><br>
                             </div>
                             <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-9">
+                                
+                                <div class="col-md-6">
+                                    <label>Select the counsellor to assign inquiries</label>
+                                </div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-6">
                                 <div class="btn-group">
                                
                                     <select id = "counsellorname" name="counsellornamename" class="btn btn-primary dropdown-toggle">
@@ -180,7 +173,7 @@
                                 
                                 </div>
                                 </div>
-                                <div class="col-md-2"></div>
+                                
                             </div>
                             <div class="row">
                                 <div class="ScrollStyle">
@@ -191,11 +184,12 @@
                                                         <thead>
                                                             <tr>
                                                                 
-                                                                <th width="100">First Name</th>
-                                                                <th width="100">LastName</th>
-                                                                <th width="60">Email</th>
-                                                                <th width="100">Intake</th>
-                                                                <th width="100">Assign</th>
+                                                                <th width="120" align="center">First Name</th>
+                                                                <th width="120" align="center">Last Name</th>
+                                                                <th width="120" align="center">Email</th>
+                                                                <th width="60" align="center">Intake</th>
+                                                                <th width="80" align="center">Assign</th>
+                                                                
                                                                 
                                                             </tr>
                                                         </thead>
@@ -215,14 +209,15 @@
                                                         <tbody>                                            
                                                             <tr id="">
                                                                 
-                                                                <td><?php echo $fname;   ?></td>
-                                                                <td><?php echo $lname;   ?></td>
-                                                                <td><?php echo $email;   ?></td>
-                                                                <td><?php echo $intake;   ?></td>
-                                                                <td><label class="switch">
-                                                    <input type="checkbox" value="1" id="assign" name="assign"onchange="handleInquiry(<?php echo $rid?>);"/>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $fname;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $lname;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $email;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $intake;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><label class="switch switch-small" style="height:20px">
+                                                    <input type="checkbox" class = "chk" id="assign" name="assign"  value="<?php echo $rid?>"  />
                                                     <span></span>
                                                 </label></td>
+                                                                
                                                                
                                                                
                                                             </tr>
@@ -231,134 +226,52 @@
                                                              ?>
                                                             
                                                         </tbody>
+
                                                     </table>
+                                                    
+                                                   
                                         </div>
                                     </div>    
+                                
+                                 
                             </div>
+                            <br><br>
+                            <button onclick="handleInquiry();" style="float: right;" id="doneBtn" name="doneBtn" class="btn btn-success" >Done</button>
+                            
+                              <script type="text/javascript">
+                                function handleInquiry(){
+                                    var counsellorname = document.getElementById('counsellorname').value; 
+                                    var selected_value = []; // initialize empty array 
+                                    $(".chk:checked").each(function(){
+                                        selected_value.push($(this).val());
+                                });
+                                    //console.log(selected_value);
+                                    //alert(selected_value);
+                                    //alert(counsellorname);
+
+                 
+                             $.ajax({
+                                url : '<?php echo base_url('index.php/Assign_Inquiries_Controller/assignInquiries'); ?>',
+                                method : 'get',
+                                data : {'result':JSON.stringify(selected_value), 'counsellorname' : counsellorname },
+                                success : function(){
+                                    //alert("hiii");
+                                    
+
+                                }
+
+
+                            });
+                          
+}
+
+
+        </script>
                         </div>
                     </div>
-                        <div class="col-md-6">
-                                <h4 align="center"> Assigned Inquiries</h4><br>
-                                 <div class="panel panel-default tabs">                            
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Pending </a></li>
-                                        <li><a href="#tab-second" role="tab" data-toggle="tab">Following</a></li>
-                                       
-                                    </ul>
-
-
-                                     <div class="panel-body tab-content">
-                                        <div class="tab-pane active" id="tab-first">
-                                        <div class="ScrollStyle">
-                                            <div class="panel-body panel-body-table">
-
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered table-striped table-actions">
-                                                        <thead>
-                                                            <tr>
-                                                                
-                                                                <th width="100">First Name</th>
-                                                                <th width="100">LastName</th>
-                                                                <th width="60">Email</th>
-                                                                <th width="100">Intake</th>
-                                                                <th width="100">Counsellor Name</th>
-                                                                
-                                                            </tr>
-                                                        </thead>
-
-                                                        <?php
-                                                        if(is_array($view_pending) || is_object($view_pending)){
-                                                            foreach($view_pending -> result_array() as $row){
-                                                             
-                                                                $fname = $row['Fname'];
-                                                                $lname = $row['Lname'];
-                                                                $email = $row['Email'];
-                                                                $intake = $row['Intake'];
-                                                                $counsellorname = $row['CounsellorName'];
-                                                               
-                                                            
-                                                        ?>
-
-                                                        <tbody>                                            
-                                                            <tr id="">
-                                                                
-                                                                <td><?php echo $fname;   ?></td>
-                                                                <td><?php echo $lname;   ?></td>
-                                                                <td><?php echo $email;   ?></td>
-                                                                <td><?php echo $intake;   ?></td>
-                                                                <td><?php echo $counsellorname;?></td>
-                                                                
-                                                               
-                                                               
-                                                            </tr>
-                                                            <?php }
-                                                            }
-                                                             ?>
-                                                            
-                                                        </tbody>
-                                                    </table>
-                                        </div>    
-                            </div>
-                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="tab-second">
-
-                                        <div class="ScrollStyle">
-                                            <div class="panel-body panel-body-table">
-
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered table-striped table-actions">
-                                                        <thead>
-                                                            <tr>
-                                                                
-                                                                <th width="100">First Name</th>
-                                                                <th width="100">LastName</th>
-                                                                <th width="60">Email</th>
-                                                                <th width="100">Intake</th>
-                                                                <th width="100">Counsellor Name</th>
-                                                                
-                                                            </tr>
-                                                        </thead>
-
-                                                        <?php
-                                                        if(is_array($view_following) || is_object($view_following)){
-                                                            foreach($view_following -> result_array() as $row){
-                                                             
-                                                                $fname = $row['Fname'];
-                                                                $lname = $row['Lname'];
-                                                                $email = $row['Email'];
-                                                                $intake = $row['Intake'];
-                                                                $counsellorname = $row['CounsellorName'];
-                                                               
-                                                            
-                                                        ?>
-
-                                                        <tbody>                                            
-                                                            <tr id="">
-                                                                
-                                                                <td><?php echo $fname;   ?></td>
-                                                                <td><?php echo $lname;   ?></td>
-                                                                <td><?php echo $email;   ?></td>
-                                                                <td><?php echo $intake;   ?></td>
-                                                                <td><?php echo $counsellorname;   ?></td>
-                                                                
-                                                               
-                                                               
-                                                            </tr>
-                                                            <?php }
-                                                            }
-                                                             ?>
-                                                            
-                                                        </tbody>
-                                                    </table>
-                                        </div>    
-                            </div>
-                            </div>
-                                        </div>                                        
-                                        
-                                    </div>
-                                </div>
-                        </div>
+                    <div class="col-md-3">
+                    </div>
+                       
 
 
                      

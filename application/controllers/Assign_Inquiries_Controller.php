@@ -20,8 +20,9 @@ class Assign_Inquiries_Controller extends CI_Controller{
 
 	function assignInquiries(){
 		$counsellorname = $this->input->get('counsellorname');
-		$rid = $this->input->get('rid');
-		$this->Assign_Inquiries_Model->updateInquiries($counsellorname,$rid);
+		$data = $this->input->get('result');
+		$data = json_decode("$data",true);
+		$this->Assign_Inquiries_Model->updateInquiries($counsellorname,$data);
 		
 	}
 

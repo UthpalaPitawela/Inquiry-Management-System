@@ -7,19 +7,12 @@
     parent::__construct();
     $this->load->model("Login_Model");
 
-$this->load->model("Student_Data_Model");
-    $this->load->helper('url_helper');
-
 
     }
-
-
      
 
     public function index(){
-
-
-//        session_destroy();     		
+     		
         $this->load->view("Login_View");
      	
 
@@ -29,21 +22,15 @@ $this->load->model("Student_Data_Model");
  		$username = $this->input->post('username');
     	$password = $this->input->post('password');
 
-        if(isset($_SESSION["username"])){
-            $username=$_SESSION["username"];
-            $password=$_SESSION["password"];
-        }else{
-            $_SESSION["username"]=$username;
-            $_SESSION["password"]=$password;
-        }
-
     	$result = $this->Login_Model->check_login($username, $password);
         $rowcount = $result->num_rows();
        // $numrows=mysqli_num_rows($result);
         if($rowcount>0){
 
   ?>
-          
+            <script type="text/javascript">
+                alert("You have succesfully logged in!");
+            </script>
             <?php
 
                foreach ($result->result_array() as $row) {
@@ -66,14 +53,16 @@ $this->load->model("Student_Data_Model");
                         $this->session->set_userdata($data);*/
 
                     }elseif ($row['status']==2) {
-                        $user_Id=$_SESSION["user_ID"];
-                        $data['admissionstudent'] = $this->Student_Data_Model->get_Student_Data($user_Id);
-   
-        $this->load->view('Admission_Officer_Student_list',$data);
-//                        $this->load->view('Admission_Officer');
+                        $this->load->view('Admission_Officer');
         
                     }elseif ($row['status']==3) {
-                        $this->load->view('Counsellor_Profile');
+                        //$this->load->model('Counsellor_Profile_Model');
+                       // $data['result'] = $this->Counsellor_Profile_Model->index();
+                       //print_r($data);
+                        //$this->load->view("counsellor_profile",$data);
+                       /*$data['result'] = $this->Counsellor_Profile_Model->index($username);
+                        //print_r($data);**/
+                        $this->load->view('counsellor_profile',$data);
             
             
                     }elseif($row['status'] == 4){
@@ -117,7 +106,6 @@ $this->load->model("Student_Data_Model");
 
              }else{
                 echo "no account";
-                echo $_SESSION["username"];
              }
 
      
@@ -127,17 +115,6 @@ $this->load->model("Student_Data_Model");
 
 
 }
-
-    public function logout()
-    {
-       
-        $this->load->driver('cache'); #load cache
-        $this->session->sess_destroy(); # Destroy the current session
-        $this->cache->clean();  # Clean the cache
-        redirect('index.php/'); #  Default controller name 
-        ob_clean(); 
-
-    }
 
 
  }

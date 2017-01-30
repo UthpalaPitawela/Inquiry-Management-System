@@ -26,7 +26,7 @@ $student_id=urldecode($student_id);
  $s_data['profile_data'] = $this->Student_Data_Model->get_individual_Student_Data($student_id);
  $s_data['admissionstudent'] = $this->Student_Data_Model->get_Student_Data($student_id);
 
-print $this->load->view('studentfor_admission_officer',$s_data);
+$this->load->view('studentfor_admission_officer',$s_data);
 
 
    }

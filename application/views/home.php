@@ -247,7 +247,7 @@ foreach ($programme ->result_array() as $degrees) {
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo base_url('Login_Controller../../') ?>" class="btn btn-success btn-lg">Yes</a>
+                            <a href="<?php echo base_url('index.php/Login_Controller/logout') ?>" class="btn btn-success btn-lg">Yes</a>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>

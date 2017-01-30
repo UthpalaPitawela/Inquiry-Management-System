@@ -31,7 +31,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/managerhome') ?>">Edulink IMS</a>
+                        <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/managerhome') ?>">Edulink IMS</a>
                         
                     </li>
                     <li class="xn-profile">
@@ -242,6 +242,99 @@
                         
                    
                     </div>
+
+
+                    <br><br>      <br><br> 
+
+
+                    <div class="col-md-5">
+
+                            <!-- CONTACTS WITH STATUS -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading ui-draggable-handle">
+                                    <h3 class="panel-title">Reminders</h3>         
+                                </div>
+                                <div class="panel-body list-group list-group-contacts">
+<?php
+                                 $countremider = $remiderstudent->num_rows();
+           
+            if($countremider>0){
+
+               foreach ($remiderstudent->result_array() as $onestudent) {
+
+                    date_default_timezone_set('Asia/Colombo');
+                    $today = date('Y-m-d ');
+                    $mday= date('Y-m-d', strtotime('+1 month'));
+                    $spotential=$onestudent['Pdate'] ;
+
+                    $tday=date_create($today);
+                  //  $mday=date_create($monthdate);
+                    $sday=date_create($spotential);
+
+                       $diff=date_diff($tday,$sday);
+
+                    // echo "<script>alert(".$today.")</script>";
+                    // echo $mday;
+                    // echo $spotentail;
+
+                    if( (strtotime($mday) > strtotime($spotential)) && (strtotime($spotential)> strtotime($today))){
+                        ?>
+                         <a href="#" class="list-group-item" >         
+                                        <div class="list-group-status status-online"></div>
+
+                                        <img src="<?php echo base_url() ;?>public/assets/images/users/no-image.jpg" class="pull-left" alt="Student">
+                                        <span class="contacts-title"><?php echo $onestudent['Fname']; ?>&nbsp&nbsp&nbsp <?php echo $onestudent['Lname']; ?></span>
+                                        <p>Mail : <?php echo $onestudent['Email']; ?></p>
+                                        <p>                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Potential Date : <?php echo $onestudent['Pdate'];?>&nbsp/&nbsp<?php  echo $diff->format('%a days remaining'); ?></p>                      
+                                    </a>                                
+                               
+                        <?php
+                    }
+                }
+            }
+                ?>
+                                            
+                                </div>
+                            </div>
+                            <!-- END CONTACTS WITH STATUS -->
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <div class="col-md-1"></div>                
                     
                     

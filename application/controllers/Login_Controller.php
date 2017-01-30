@@ -79,12 +79,15 @@ $this->load->model("Student_Data_Model");
 //                        $this->load->view('Admission_Officer');
         
                     }elseif ($row['status']==3) {
+
+                         $user_Id=$_SESSION["user_ID"];
+                          $data['remiderstudent'] = $this->Student_Data_Model->get_Student_For_Counsellor($user_Id);
                 
                         if($this->input->post('username') && $this->input->post('password')) {
                             redirect('index.php/Login_Controller/validate_user');
                         }
 
-                        $this->load->view('Counsellor_Profile');
+                        $this->load->view('Counsellor_Profile',$data);
             
             
                     }elseif($row['status'] == 4){

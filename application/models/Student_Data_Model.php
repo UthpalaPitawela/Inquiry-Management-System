@@ -33,6 +33,13 @@ class Student_Data_Model extends CI_Model{
         //}
   }
 
+function get_Student_For_Counsellor($user_Id){
+
+     $this->db->select('Fname,Lname,Email,Pdate')->from('register')->where('CounsellorName', "$user_Id")->where('Status',"Pending");
+        $counquery =$this->db->get(); 
+        return $counquery;
+
+}
   function get_individual_Student_Data($user_Id){
     
     // $this->db->select('firstname,email,propic')->from('student_table')->where('email', $username)->where('password',$password);

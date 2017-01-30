@@ -266,9 +266,29 @@
                                 <div class="panel-heading">                                
                                     <h3 class="panel-title">Student List</h3>
                                     <ul class="panel-controls">
-                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+
+                                    <li>
+                                    <div class="panel-body">
+                                    <div class="col-md-6">
+                                    <div class="input-group push-down-10">
+                                                <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                                                 <input type="text" name="search" class="form-control" id="searchid" onkeyup="getStudent()" placeholder="Search Student..."/>
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-primary">Search</button>
+                                                </div>
+                                            </div>
+                                      <div id="studentdiv">
+
+                            No Result
+                                
+                            </div>
+                                    </div>
+                                    </div>
+                                    </li>
+
+                                        <li class="pull-right"><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                        <li class="pull-right"><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                        <li class="pull-right"><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>                                
                                 </div>
                                 <div class="panel-body">
@@ -303,7 +323,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
 
 
                                                ?>
-     <td><a href="<?php echo base_url();?>index.php/Student_Data_Controller/loadingdetails/<?php echo $email;?>"><span class="fa fa-user"></span> View Profile</a></td>
+     <td><a href="<?php echo base_url();?>index.php/Student_Data_Controller/loadingdetailsformanager/<?php echo $email;?>"><span class="fa fa-user"></span> View Profile</a></td>
                                                 </form>
                                             </tr>
 
@@ -394,6 +414,70 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
         })
         
         </script>    
+
+
+
+        <script type="text/javascript">
+    
+
+
+function getStudent(){
+
+    var skey = document.getElementById("searchid").value;
+
+
+    $('#studentdiv').html("");
+     // alert(skey);
+
+    if(skey!=""){
+
+            $.ajax({
+
+                type:"get",
+                url : '<?php echo base_url();?>index.php/Student_Data_Controller/searchStudentformanager/'+skey,
+                success: function (searchresult) {
+
+
+                    $('#studentdiv').html(searchresult);
+ 
+                }
+            })
+
+
+    }
+
+
+
+}
+
+
+
+     
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->                   
     </body>

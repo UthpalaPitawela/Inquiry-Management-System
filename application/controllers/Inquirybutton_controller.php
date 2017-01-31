@@ -1,7 +1,7 @@
 <?php
 if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class inquirybutton_controller extends CI_Controller{
+class Inquirybutton_controller extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 
@@ -18,8 +18,8 @@ class inquirybutton_controller extends CI_Controller{
 	public function following()
 	{
 		$id = $this->input->post('id');
-		$this->load->model('inquirybutton_model');
-		$this->inquirybutton_model->following($id);
+		$this->load->model('Inquirybutton_model');
+		$this->Inquirybutton_model->following($id);
 		//echo "string";
 
 		//$this->data['posts3'] = $this->manageInquiries_model->getFollowing();
@@ -49,15 +49,30 @@ class inquirybutton_controller extends CI_Controller{
 	public function completed()
 	{
 		$id = $this->input->post('id');
-		$this->load->model('inquirybutton_model');
-		$this->inquirybutton_model->completed($id);
+		$this->load->model('Inquirybutton_model');
+		$this->Inquirybutton_model->completed($id);
 	}
 
 	public function registered()
 	{
+
 		$id = $this->input->post('id');
-		$this->load->model('inquirybutton_model');
-		$this->inquirybutton_model->registered($id);
+		$this->load->model('Inquirybutton_model');
+		$this->Inquirybutton_model->registered($id);
+	}
+
+		public function registeredforadmissionofficer($id)
+	{
+
+		$id=urldecode($id);     
+		?>
+		<script type="text/javascript">
+			alert("kk");
+		</script>
+		<?php
+
+		$this->load->model('Inquirybutton_model');
+		$this->Inquirybutton_model->registered($id);
 	}
 
 }

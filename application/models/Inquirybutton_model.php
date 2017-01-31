@@ -1,6 +1,6 @@
 <?php
 
-class inquirybutton_model extends CI_Model{
+class Inquirybutton_model extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}

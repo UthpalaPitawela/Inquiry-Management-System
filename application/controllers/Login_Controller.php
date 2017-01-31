@@ -79,6 +79,7 @@ $this->load->model("Student_Data_Model");
 //                        $this->load->view('Admission_Officer');
         
                     }elseif ($row['status']==3) {
+                        /*don't delete. this is for reminder*/
 
                          $user_Id=$_SESSION["user_ID"];
                           $data['remiderstudent'] = $this->Student_Data_Model->get_Student_For_Counsellor($user_Id);
@@ -86,6 +87,7 @@ $this->load->model("Student_Data_Model");
                         if($this->input->post('username') && $this->input->post('password')) {
                             redirect('index.php/Login_Controller/validate_user');
                         }
+
 
                         $this->load->view('Counsellor_Profile',$data);
             

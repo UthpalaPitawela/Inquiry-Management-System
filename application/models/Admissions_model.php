@@ -1,6 +1,6 @@
 <?php
 
-class admissions_model extends CI_Model{
+class Admissions_model extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}

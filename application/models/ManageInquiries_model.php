@@ -56,6 +56,14 @@ class ManageInquiries_model extends CI_Model{
 		return $query->result();
 	}
 
+	function getCompletedforadmissionofficer(){
+		$status = "Completed";
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName,Summary1,Summary2,Summary3,Summary4");
+		$query = $this->db->get_where('register',array('status'=>$status));
+
+		return $query;
+	}
+
 
 
 }

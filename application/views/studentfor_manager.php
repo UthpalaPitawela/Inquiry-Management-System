@@ -576,7 +576,7 @@ if($row2['other']!='nolink'){
     <?php
 }
 }else{
-     echo "<h4><strong>Result proofs are not available</strong></h4>";
+     echo "<h4><strong>Results verification details - Not available</strong></h4>";
 }
 
 

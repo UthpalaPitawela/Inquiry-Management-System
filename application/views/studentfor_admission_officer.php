@@ -52,6 +52,7 @@
               <?php
 $name=$_SESSION["first_username"];
 $propic=$_SESSION["propic"];
+$status = $_SESSION["status"];
 
           ?>
     <body>
@@ -130,7 +131,7 @@ $propic=$_SESSION["propic"];
                     <!-- END SEARCH -->
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->
                     <li class="pull-right" style="color:grey; padding-top: 16px; padding-right: 20px" >Logged in as <?php echo $name; ?> </li>
@@ -421,7 +422,7 @@ if($row2['other']!='nolink'){
     <?php
 }
 }else{
-     echo "<h4><strong>Result proofs are not available</strong></h4>";
+     echo "<h4><strong>Results verification details - Not available</strong></h4>";
 }
 
 

@@ -18,10 +18,9 @@
     <body>
 
     <?php
-
     $name = $_SESSION["first_username"];
     $propic = $_SESSION["propic"];
-
+    $status = $_SESSION["status"];
     ?>
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
@@ -81,7 +80,7 @@
                     </li>
 
                     
-
+                    <?php if($status==0){ ?>
                     <li class="xn-title">Administration</li>
                     <li class>
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
@@ -93,7 +92,8 @@
 
                     <li>
                         <a href="<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
-                    </li>               
+                    </li>   
+                    <?php } ?>            
 
                     
                 </ul>
@@ -131,7 +131,6 @@
                             method : post,
                             data : {username : $name},
                             success : function(){
-
                             }
                         });
                     });
@@ -142,23 +141,24 @@
                         <div class="row">
 
                         <?php
-                            $sum = 0;
-                            foreach ($result as $row) {
-                                $sum = $sum + $row['count'];
-                                # code...
-                            }
+                          
+                           
+                            $sum = $result['pending'] + $result['following']+$result['completed'];
+                                
+                            
 
-                            $val1 = $result[2];
-                            $pending = ($val1['count']/$sum)*100;
+                        
+                            $pending =round( ($result['pending']/$sum)*100 , 0);
 
-                            $val2 = $result[1];
-                            $following = ($val2['count']/$sum)*100;
+                            
+                            $following = round(($result['following']/$sum)*100 , 0);
 
-                            $val3 = $result[0];
-                            $completed = ($val3['count']/$sum)*100;
+                            
+                            $completed = round(($result['completed']/$sum)*100 , 0);
 
                         ?>
                         <!--This is the activity summary section-->
+                        <br>
                             <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Activity Summary</h3>
@@ -223,24 +223,16 @@
                             
                         </div>
                       
-                           
-                        
-
-                        <a href="<?php echo base_url();?>index.php/Assign_Inquiries_Controller"><button>ADd</button></a>      
                     </div>
+
+                    <br>
+                    <!-- Calendar -->
                     <div class="col-md-5" >
-                    
-                        
-                        
-                           
-                                <div id="alert_holder"></div>
-                                <div class="calendar">                                
-                                    <div id="calendar"></div>                            
-                                </div>
-                           
-                        
-                        
-                   
+                
+                        <div id="alert_holder"></div>
+                            <div class="calendar">                                
+                                <div id="calendar"></div>                            
+                            </div>
                     </div>
 
 
@@ -259,33 +251,28 @@
                                  $countremider = $remiderstudent->num_rows();
            
             if($countremider>0){
-
                foreach ($remiderstudent->result_array() as $onestudent) {
-
                     date_default_timezone_set('Asia/Colombo');
                     $today = date('Y-m-d ');
                     $mday= date('Y-m-d', strtotime('+1 month'));
                     $spotential=$onestudent['Pdate'] ;
-
                     $tday=date_create($today);
                   //  $mday=date_create($monthdate);
                     $sday=date_create($spotential);
-
                        $diff=date_diff($tday,$sday);
-
                     // echo "<script>alert(".$today.")</script>";
                     // echo $mday;
                     // echo $spotentail;
-
                     if( (strtotime($mday) > strtotime($spotential)) && (strtotime($spotential)> strtotime($today))){
                         ?>
                          <a href="#" class="list-group-item" >         
                                         <div class="list-group-status status-online"></div>
 
                                         <img src="<?php echo base_url() ;?>public/assets/images/users/no-image.jpg" class="pull-left" alt="Student">
-                                        <span class="contacts-title"><?php echo $onestudent['Fname']; ?>&nbsp&nbsp&nbsp <?php echo $onestudent['Lname']; ?></span>
-                                        <p>Mail : <?php echo $onestudent['Email']; ?></p>
-                                        <p>                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Potential Date : <?php echo $onestudent['Pdate'];?>&nbsp/&nbsp<?php  echo $diff->format('%a days remaining'); ?></p>                      
+                                        <span class="contacts-title"><?php echo $onestudent['Fname']; ?>&nbsp;<?php echo $onestudent['Lname']; ?></span>
+                                        <p>Email : <?php echo $onestudent['Email']; ?></p>
+                                        <p>                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Potential Date : <?php echo $onestudent['Pdate'];?></p>
+                                        <p>                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php  echo $diff->format('%a days remaining'); ?></p>                      
                                     </a>                                
                                
                         <?php
@@ -301,64 +288,6 @@
                         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="col-md-1"></div>                
-                    
-                    
-                    <div class="row">
-                       
-                        <div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-content">
-                                <ul class="list-inline item-details">
-                                    <li><a href="http://themifycloud.com/downloads/janux-premium-responsive-bootstrap-admin-dashboard-template/">Admin templates</a></li>
-                                    <li><a href="http://themescloud.org">Bootstrap themes</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                      
-                    </div>
-                    
-                    <!-- START DASHBOARD CHART 
-                    <div class="chart-holder" id="dashboard-area-1" style="height: 200px;"></div>
-                    <div class="block-full-width">
-                                                                       
-                    </div>                    
-                     END DASHBOARD CHART -->
-                    
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->                                
             </div>            
@@ -366,25 +295,25 @@
         </div>
         <!-- END PAGE CONTAINER -->
 
-        <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+          <!-- MESSAGE BOX-->
+       <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
                     <div class="mb-content">
                         <p>Are you sure you want to log out?</p>                    
-                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                        <p><strong>Press No if you want to continue work.</strong> Press Yes to logout.</p>
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                            <a href="<?php echo base_url('index.php/Login_Controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END MESSAGE BOX-->
+        <!--end of message box-->
 
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>

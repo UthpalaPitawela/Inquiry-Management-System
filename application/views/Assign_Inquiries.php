@@ -128,7 +128,7 @@
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->
 
@@ -140,7 +140,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active"><a href="#">Settings</li>
+                    <li class="active"><a href="#">Assign Inquiries</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 

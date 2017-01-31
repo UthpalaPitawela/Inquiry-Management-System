@@ -365,7 +365,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
         <!-- END PAGE CONTAINER -->
 
          <!-- MESSAGE BOX-->
-       <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+       <div class="message-box animated fadeIn" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>

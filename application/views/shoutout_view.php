@@ -157,7 +157,7 @@
                                     <h3 class="panel-title"><strong>Email/SMS Dashboard</strong></h3>
                                 </div>
                             
-                                <div class="panel panel-default"  style="border-top-color:#1caf9a; border-top-width:2px; ">
+                                <div class="panel panel-default"  style="border-top-color:#2b73ef; border-top-width:2px; ">
                                     <div class="panel-heading" >
                                         <h2 class="panel-title"><strong>Create Campaign</strong></h2>
                                     </div>
@@ -196,7 +196,7 @@
                                                 <div class="form-group">                                        
                                                     <label class="col-md-3 control-label"></label>
                                                     <div class="col-md-9" >                             
-                                                        <button type="submit" name="evaluate" style="background-color:#1caf9a; border-color:#1caf9a; font-size: 14;" class="btn btn-primary" 
+                                                        <button type="submit" name="evaluate" style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary" 
                                                         onclick="update_campaign()">Evaluate Contacts </button>
                                                     </div>
                                                 </div>
@@ -282,7 +282,7 @@
 
                             <!-- START FORM1 -->
                             <form class="form-horizontal" style="border-color:#808080;">
-                            <div class="panel panel-default"   style="border-top-color:#1caf9a; border-top-width:2px; " >
+                            <div class="panel panel-default"   style="border-top-color:#2b73ef; border-top-width:2px; " >
                                 <div class="panel-heading">
                                     <h2 class="panel-title"><strong>SMS</strong></h2> 
                                 </div>
@@ -315,7 +315,7 @@
                                     <div class="form-group">                                        
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-9" >                             
-                                                    <button style="background-color:#1caf9a; border-color:#1caf9a; font-size: 14;" class="btn btn-primary">Send SMS</button>
+                                                    <button style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary">Send SMS</button>
                                                 </div>
                                     </div>                                                         
                                 </div>
@@ -326,7 +326,7 @@
                         <div class="col-md-6">
                             <!-- START FORM2 -->
                             <form class="form-horizontal" style="border-color: #808080;">
-                            <div class="panel panel-default"   style="border-top-color:#1caf9a; border-top-width:2px; ">
+                            <div class="panel panel-default"   style="border-top-color:#2b73ef; border-top-width:2px; ">
                                 <div class="panel-heading">
                                     <h2 class="panel-title"><strong>Email</strong></h2> 
                                 </div>
@@ -367,7 +367,7 @@
                                     <div class="form-group">                                        
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-9" >                             
-                                                    <button style="background-color:#1caf9a; border-color:#1caf9a; font-size: 14;" class="btn btn-primary">Send Email</button>
+                                                    <button style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary">Send Email</button>
                                                 </div>
                                     </div>                                                          
                                 </div>

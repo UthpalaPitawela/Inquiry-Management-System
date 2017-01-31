@@ -142,16 +142,17 @@
                             }
 
                             $val1 = $result[2];
-                            $pending = ($val1['count']/$sum)*100;
+                            $pending = round(($val1['count']/$sum)*100,0);
 
                             $val2 = $result[1];
-                            $following = ($val2['count']/$sum)*100;
+                            $following = round(($val2['count']/$sum)*100,0);
 
                             $val3 = $result[0];
-                            $completed = ($val3['count']/$sum)*100;
+                            $completed = round(($val3['count']/$sum)*100,0);
 
                         ?>
                         <!--This is the activity summary section-->
+                        <br>
                             <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Activity Summary</h3>
@@ -213,50 +214,27 @@
                                        
                                     </div>                            
                             </div>
-
-                            
-                        <a href="<?php echo base_url();?>index.php/Assign_Inquiries_Controller"><button>ADd</button></a> 
-                      
                         </div>
-                                      
-                    </div>
-                    <div class="col-md-5" >
-                    
-                        
-                        
-                           
-                                <div id="alert_holder"></div>
-                                <div class="calendar">                                
-                                    <div id="calendar"></div>                            
-                                </div>
-                           
-                        
-                        
-                   
-                    </div>
-                    <div class="col-md-1"></div>                
-                    
-                    
-                    <div class="row">
-                       
-                        <div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-content">
-                                <ul class="list-inline item-details">
-                                    <li><a href="http://themifycloud.com/downloads/janux-premium-responsive-bootstrap-admin-dashboard-template/">Admin templates</a></li>
-                                    <li><a href="http://themescloud.org">Bootstrap themes</a></li>
-                                </ul>
+
+                        <!-- Assign Inquiries button -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="<?php echo base_url();?>index.php/Assign_Inquiries_Controller"><button class="btn btn-primary btn-block">Assign Inquiries</button></a>
                             </div>
                         </div>
-                        
-                      
+                              
+                                      
                     </div>
+
+                    <br>
+                    <div class="col-md-5" >
                     
-                    <!-- START DASHBOARD CHART 
-                    <div class="chart-holder" id="dashboard-area-1" style="height: 200px;"></div>
-                    <div class="block-full-width">
-                                                                       
-                    </div>                    
-                     END DASHBOARD CHART -->
+                        <div id="alert_holder"></div>
+                        <div class="calendar">                                
+                            <div id="calendar"></div>                            
+                        </div>
+                        
+                    </div>
                     
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->                                

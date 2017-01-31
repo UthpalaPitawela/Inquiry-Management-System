@@ -141,19 +141,24 @@
                         <div class="row">
 
                         <?php
-                            $sum = 0;
-                            foreach ($result as $row) {
-                                $sum = $sum + $row['count'];
-                                # code...
-                            }
-                            $val1 = $result[2];
-                            $pending = ($val1['count']/$sum)*100;
-                            $val2 = $result[1];
-                            $following = ($val2['count']/$sum)*100;
-                            $val3 = $result[0];
-                            $completed = ($val3['count']/$sum)*100;
+                          
+                           
+                            $sum = $result['pending'] + $result['following']+$result['completed'];
+                                
+                            
+
+                        
+                            $pending =round( ($result['pending']/$sum)*100 , 0);
+
+                            
+                            $following = round(($result['following']/$sum)*100 , 0);
+
+                            
+                            $completed = round(($result['completed']/$sum)*100 , 0);
+
                         ?>
                         <!--This is the activity summary section-->
+                        <br>
                             <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Activity Summary</h3>
@@ -219,19 +224,15 @@
                         </div>
                       
                     </div>
+
+                    <br>
+                    <!-- Calendar -->
                     <div class="col-md-5" >
-                    
-                        
-                        
-                           
-                                <div id="alert_holder"></div>
-                                <div class="calendar">                                
-                                    <div id="calendar"></div>                            
-                                </div>
-                           
-                        
-                        
-                   
+                
+                        <div id="alert_holder"></div>
+                            <div class="calendar">                                
+                                <div id="calendar"></div>                            
+                            </div>
                     </div>
 
 

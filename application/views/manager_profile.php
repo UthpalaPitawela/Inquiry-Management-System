@@ -21,6 +21,7 @@
 
     $name = $_SESSION["first_username"];
     $propic = $_SESSION["propic"];
+    $status = $_SESSION["status"];
 
     ?>
         <!-- START PAGE CONTAINER -->
@@ -31,13 +32,16 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/managerhome') ?>">Edulink IMS</a>
+                        <a href="<?php if($status==0)
+                                            echo base_url('index.php/Page_Controller/loadingpages/managerhome');
+                                       elseif($status==3)
+                                            echo base_url('index.php/Manager_Profile_Controller'); ?>">Edulink IMS</a>
                         
                     </li>
                     <li class="xn-profile">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?php echo base_url(). $propic ?>" alt="Viduni"/>
+                                <img src="<?php echo base_url(). $propic ?>" alt="noimage"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $name ?></div>
@@ -81,7 +85,7 @@
                     </li>
 
                     
-
+                    <?php if($status==0){ ?>
                     <li class="xn-title">Administration</li>
                     <li class>
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
@@ -93,7 +97,8 @@
 
                     <li>
                         <a href="<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
-                    </li>               
+                    </li>  
+                    <?php } ?>             
 
                     
                 </ul>

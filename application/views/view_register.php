@@ -27,6 +27,7 @@
 
     $name = $_SESSION["first_username"];
     $propic = $_SESSION["propic"];
+    $status = $_SESSION["status"];
 
     ?>
 
@@ -88,7 +89,7 @@
                     </li>
 
                     
-
+                    <?php if($status==0){ ?>
                     <li class="xn-title">Administration</li>
                     <li class>
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
@@ -100,7 +101,8 @@
 
                     <li>
                         <a href="<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
-                    </li>               
+                    </li>            
+                    <?php } ?>   
 
                     
                 </ul>

@@ -52,6 +52,7 @@
               <?php
 $name=$_SESSION["first_username"];
 $propic=$_SESSION["propic"];
+$status = $_SESSION["status"];
 
           ?>
     <body>

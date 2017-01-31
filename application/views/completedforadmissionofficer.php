@@ -256,7 +256,7 @@
         
 
         function registered(email,r_id){
-            alert(email);
+           
                 $.ajax({             
                     type:"get",
                     url : '<?php echo base_url();?>index.php/Inquirybutton_controller/registeredforadmissionofficer/'+email,

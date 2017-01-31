@@ -65,12 +65,7 @@ class Inquirybutton_controller extends CI_Controller{
 	{
 
 		$id=urldecode($id);     
-		?>
-		<script type="text/javascript">
-			alert("kk");
-		</script>
-		<?php
-
+		
 		$this->load->model('Inquirybutton_model');
 		$this->Inquirybutton_model->registered($id);
 	}

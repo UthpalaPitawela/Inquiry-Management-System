@@ -154,7 +154,21 @@
                                                 <td style="text-align: center"><?php echo $post['Pdate']; ?></td>
                                                 <td style="text-align: center"><?php echo $post['CounsellorName']; ?></td>
                                                 <td style="text-align: center">
-                                                <button type="button" class="btn btn-success btn-rounded btn-sm" style="background-color: white;color: #6f22b6; border: 2px solid #6f22b6; /* Purple */" onclick="registered('<?php echo urlencode($post['Email']); ?>','<?php echo $post['r_id']; ?>')">Registered</button>
+                                                <button type="button"  class="btn btn-success" style="border: solid;" onclick="registered('<?php echo urlencode($post['Email']); ?>','<?php echo $post['r_id']; ?>')">&nbsp&nbsp&nbsp&nbsp&nbsp Registered &nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                                                <?php
+                                                if($post['account_created']==1){
+                                                    ?>
+                                                    <button type="button" class="btn btn-danger" style="border: solid;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Resend &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+
+                                                    <?php                                                    
+                                                }else{
+?>
+                                                <button type="button" class="btn btn-info" style="border: solid;" onclick="createAndSend('<?php echo urlencode($post['Email']); ?>','<?php echo $post['r_id']; ?>')" >Create and Send</button>
+
+<?php                                                    
+                                                }
+                                                ?>
+
                                                 </td>
                                             </tr>
                                             
@@ -267,7 +281,27 @@
                 });
                 $('#'+r_id).hide();
         }
-        </script>
+        
+
+        function createAndSend(email,r_id){
+
+//            alert(email)
+
+                $.ajax({
+                    type:"get",
+                    url: '<?php echo base_url();?>index.php/AddStudentAcc_controller/addstudentforadmissionofficer/'+email,
+                    success: function(data) {
+                        //alert("dd");
+                        window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
+                        //location.href=""
+                    }
+
+                });
+
+        }
+
+
+</script>
 
         <!-- END THIS PAGE PLUGINS -->       
         

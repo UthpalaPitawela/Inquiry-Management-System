@@ -44,6 +44,15 @@ class AddStudentAcc_controller extends CI_Controller{
 		redirect("AddStudentAcc_controller/index");
 	}
 
+	public function addstudentforadmissionofficer($email){
+		
+//		redirect('index.php/ManageInquiries_controller/completedforadmissionofficer');
+
+		$email=urldecode($email); 
+
+		$this->AddStudentAcc_model->insertdatabyadmissionofficer($email);
+	}
+
 }
 
 

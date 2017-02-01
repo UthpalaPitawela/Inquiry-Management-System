@@ -8,9 +8,9 @@ class ManageInquiries_model extends CI_Model{
 
 	function getPostsHigh(){
 		//Select the fields
-		$status = "Pending";
+		$status = "Following";
 		$intake = "high";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName,Summary1,Summary2,Summary3,Summary4");
 		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
 		
 
@@ -19,9 +19,9 @@ class ManageInquiries_model extends CI_Model{
 
 	function getPostsMedium(){
 		//Select the fields
-		$status = "Pending";
+		$status = "Following";
 		$intake = "medium";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName,Summary1,Summary2,Summary3,Summary4");
 		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
 		
 
@@ -31,17 +31,17 @@ class ManageInquiries_model extends CI_Model{
 
 	function getPostsLow(){
 		//Select the fields
-		$status = "Pending";
+		$status = "Following";
 		$intake = "low";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName,Summary1,Summary2,Summary3,Summary4");
 		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
 		
 
 		return $query->result();
 	}
 
-	function getFollowing(){
-		$status = "Following";
+	function getPending(){
+		$status = "Pending";
 		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Intake,Pdate,CounsellorName,Summary1,Summary2,Summary3,Summary4");
 		$query = $this->db->get_where('register',array('status'=>$status));
 

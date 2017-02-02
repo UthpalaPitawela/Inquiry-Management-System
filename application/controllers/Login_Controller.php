@@ -97,7 +97,7 @@ $this->load->model("Student_Data_Model");
             if($rowcount2>0){
                foreach ($resultstudent->result_array() as $rowstudent) {
                     $_SESSION["first_username"]=$rowstudent['firstname'];
-                    $_SESSION["user_ID"]=$rowstudent['email'];
+                    $_SESSION["user_ID"]=$rowstudent['tpnumber'];
                     $_SESSION["propic"]=$rowstudent['propic'];
                     $data['programme'] = $this->Login_Model->getCourses($username);
                     if($this->input->post('username') && $this->input->post('password')) {

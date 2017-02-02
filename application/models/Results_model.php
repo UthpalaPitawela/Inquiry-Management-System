@@ -4,7 +4,7 @@ class Results_model extends CI_Model{
 		
 		//
 		$this->load->helper('url');	
-		$sql3 = "SELECT * FROM resultimages WHERE email='$user_Id'";
+		$sql3 = "SELECT * FROM resultimages WHERE tpnumber='$user_Id'";
 
 		$resultquery = $this->db->query($sql3);
 
@@ -79,7 +79,7 @@ if(!empty($_FILES['file5']['name'])){
 			        //$this->input->post('file4'),
 			        'other' => $link5,
 			        //$this->input->post('file5'),
-			        'email'=>$user_Id
+			        'tpnumber'=>$user_Id
 			    );
 
 		return $this->db->insert('resultimages', $data);
@@ -107,7 +107,7 @@ function rmdir_recursive($dir) {
 	function  delete_Result($user_Id){
 
 
-$deleteresult="DELETE FROM resultimages WHERE email='$user_Id'  "; 
+$deleteresult="DELETE FROM resultimages WHERE tpnumber='$user_Id'  "; 
 ?>
 <?php
 $this->rmdir_recursive('public/assets/results/'.$user_Id);
@@ -184,7 +184,7 @@ if(!empty($_FILES['file5']['name'])){
 
 				if($link1!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set olimage1='$link1' WHERE email='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set olimage1='$link1' WHERE tpnumber='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 
@@ -199,7 +199,7 @@ if(!empty($_FILES['file5']['name'])){
 				}
 				if($link2!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set olimage2='$link2' WHERE email='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set olimage2='$link2' WHERE tpnumber='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 
@@ -218,7 +218,7 @@ if(!empty($_FILES['file5']['name'])){
 				}
 				if($link3!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set alimage1='$link3' WHERE email='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set alimage1='$link3' WHERE tpnumber='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 
@@ -229,7 +229,7 @@ if(!empty($_FILES['file5']['name'])){
 				}
 				if($link4!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set alimage2='$link4' WHERE email='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set alimage2='$link4' WHERE tpnumber='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 
@@ -240,7 +240,7 @@ if(!empty($_FILES['file5']['name'])){
 				}
 				if($link5!='nolink'){
 
-					$sqlupdate="UPDATE resultimages set other='$link5' WHERE email='$user_Id' "; 
+					$sqlupdate="UPDATE resultimages set other='$link5' WHERE tpnumber='$user_Id' "; 
 
 					$this->db->query($sqlupdate);
 

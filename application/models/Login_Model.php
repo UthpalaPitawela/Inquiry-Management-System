@@ -13,7 +13,7 @@ class Login_Model extends CI_Model{
 
 				// $query = $this->db->query("SELECT firstname,user_name,propic FROM student_table WHERE user_name= '$username' AND password = '$password'");
 
-		$this->db->select('firstname,email,propic')->from('student_table')->where('email', $username)->where('password',$password);
+		$this->db->select('firstname,email,propic,tpnumber')->from('student_table')->where('tpnumber', $username)->where('password',$password);
 		
 
 		$query =$this->db->get();
@@ -25,7 +25,7 @@ class Login_Model extends CI_Model{
 
 				// $query = $this->db->query("SELECT firstname,user_name,propic FROM student_table WHERE user_name= '$username' AND password = '$password'");
 
-		$this->db->select('id')->from('register')->where('Email',$username);
+		$this->db->select('id')->from('register')->where('Contactno',$username);
 		
 
 		$queryprogid =$this->db->get();

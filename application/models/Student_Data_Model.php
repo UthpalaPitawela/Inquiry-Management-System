@@ -3,7 +3,7 @@ class Student_Data_Model extends CI_Model{
 	function get_User_Data($user_Id){
 		
 
-    $this->db->select('*')->from('student_table')->where('email', "$user_Id");
+    $this->db->select('*')->from('student_table')->where('tpnumber', "$user_Id");
         $query =$this->db->get();  
 
 
@@ -49,7 +49,7 @@ function get_Student_For_Counsellor($user_Id){
     //     return $query;
         
 
-    $queryindividualstu = $this->db->query("SELECT * FROM student_table WHere email='$user_Id' ");
+    $queryindividualstu = $this->db->query("SELECT * FROM student_table WHere tpnumber='$user_Id' ");
         return $queryindividualstu;
         //if ($query->num_rows() > 0) {
           //  return true;
@@ -61,7 +61,7 @@ function get_Student_For_Counsellor($user_Id){
   function searchStudent($searchkey){
 
 
-     $searchresult = $this->db->like('firstname', $searchkey,'after')->or_like('lastname',$searchkey,'after')->or_like('email', $searchkey,'after')->get('student_table');
+     $searchresult = $this->db->like('firstname', $searchkey,'after')->or_like('lastname',$searchkey,'after')->or_like('tpnumber', $searchkey,'after')->get('student_table');
 
     return $searchresult->result();
 

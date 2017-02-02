@@ -56,7 +56,7 @@ class Student_Profile_Model extends CI_Model{
 			}
 
 
-			$this->db->where('email', $user_Id);
+			$this->db->where('tpnumber', $user_Id);
 			$_SESSION["propic"]=$link1;
 			return $this->db->update('student_table', $data); 
 

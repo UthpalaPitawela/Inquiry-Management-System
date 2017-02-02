@@ -11,9 +11,9 @@ class AddStudentAcc_model extends CI_Model{
 		$this->db->insert('student_table',$data);
 	}
 
-	function insertdatabyadmissionofficer($email){
-		$this->db->select("Fname,Lname,Contactno");
-		$query = $this->db->get_where('register',array('Email'=>$email));
+	function insertdatabyadmissionofficer($Contactno){
+		$this->db->select("Fname,Lname,Email");
+		$query = $this->db->get_where('register',array('Contactno'=>$Contactno));
 
 		if ($query->num_rows() > 0) {
 
@@ -22,20 +22,20 @@ class AddStudentAcc_model extends CI_Model{
 
 
 				$data = array(
-			'user_name'=>$email,		
+			'user_name'=>$Contactno,		
 			'password' => "edulink123",
 			'firstname' => $insertstudent['Fname'],
 			'lastname' => $insertstudent['Lname'],
-			'email' => $email,
+			'email' => $insertstudent['Email'],
 			'propic'=>"public/assets/images/users/no-image.jpg",
 									//'dob' => $this->input->post('dob'),
-			'tpnumber' => $insertstudent['Contactno'],);
+			'tpnumber' => $Contactno,);
 
 				$this->db->insert('student_table',$data);			 
 
 			
 				$acc = array('account_created'=>1);
-		$this->db->where('Email',$email);
+		$this->db->where('Contactno',$Contactno);
 		$this->db->update('register',$acc);
 
 

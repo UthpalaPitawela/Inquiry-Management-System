@@ -153,7 +153,7 @@ $propic=$_SESSION["propic"];
 
                                     <li>
                                     <div class="panel-body">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                     <div class="input-group push-down-10">
                                                 <span class="input-group-addon"><span class="fa fa-search"></span></span>
                                                  <input type="text" name="search" class="form-control" id="searchid" onkeyup="getStudent()" placeholder="Search Student..."/>
@@ -185,7 +185,9 @@ $propic=$_SESSION["propic"];
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>ID</th>
+                                                <th>Primary TP number</th>
                                                 <th>Profile</th>
+
                                                 
                                             </tr>
                                         </thead>
@@ -204,13 +206,14 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                                                 <td><?php echo $studentrow['firstname']."  ".$studentrow['lastname'];?></td>
                                                 <td><?php echo $studentrow['email'];?></td>
                                                 <td><?php echo $studentrow['user_name'];?></td>
+                                                <td><?php echo $studentrow['tpnumber'];?></td>
                                                <?php
-                                                $email=$studentrow['email'];
-                                                $email=urlencode($email);
+                                                $tpnumber=$studentrow['tpnumber'];
+                                                $tpnumber=urlencode($tpnumber);
 
 
                                                ?>
-     <td><a href="<?php echo base_url();?>index.php/Student_Data_Controller/loadingdetails/<?php echo $email;?>"><span class="fa fa-user"></span> View Profile</a></td>
+     <td><a href="<?php echo base_url();?>index.php/Student_Data_Controller/loadingdetails/<?php echo $tpnumber;?>"><span class="fa fa-user"></span> View Profile</a></td>
                                                 </form>
                                             </tr>
 

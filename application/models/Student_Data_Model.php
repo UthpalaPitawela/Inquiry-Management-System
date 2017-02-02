@@ -61,7 +61,7 @@ function get_Student_For_Counsellor($user_Id){
   function searchStudent($searchkey){
 
 
-     $searchresult = $this->db->like('firstname', $searchkey,'after')->or_like('lastname',$searchkey,'after')->or_like('tpnumber', $searchkey,'after')->get('student_table');
+     $searchresult = $this->db->like('firstname', $searchkey,'after')->or_like('lastname',$searchkey,'after')->or_like('email',$searchkey,'after')->or_like('tpnumber', $searchkey,'after')->get('student_table');
 
     return $searchresult->result();
 

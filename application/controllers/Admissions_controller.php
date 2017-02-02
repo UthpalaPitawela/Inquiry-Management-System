@@ -9,7 +9,7 @@ class Admissions_controller extends CI_Controller{
 		$this->load->model('Admissions_model');
 		
 	}
-
+ 
 	public function index()
 	{
 		$this->data['posts'] = $this->Admissions_model->getRegistered();

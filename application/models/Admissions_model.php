@@ -18,7 +18,7 @@ class Admissions_model extends CI_Model{
 		//Select the fields
 		$newStatus = "Deleted";
 		$data = array('Status'=>$newStatus);
-		$this->db->where('Email',$id);
+		$this->db->where('Contactno',$id);
 		$this->db->update('register',$data);
 	}
 

@@ -146,7 +146,7 @@
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center">
-                                                <button type="button" class="btn btn-danger btn-rounded btn-sm" onclick="deleteStudent('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Delete</button>
+                                                <button type="button" class="btn btn-danger btn-rounded btn-sm" onclick="deleteStudent('<?php echo $post->Contactno; ?>','<?php echo $post->r_id; ?>')">Delete</button>
                                                 </td>
                                             </tr>
                             
@@ -224,11 +224,11 @@
         <!-- To delete an admission -->
         <script type="text/javascript">
 
-        function deleteStudent(email,r_id){
+        function deleteStudent(Contactno,r_id){
                 $.ajax({             
                     type:"post",
-                    url : 'admissions_controller/deleteStudent/',
-                    data : {id:r=email},
+                    url : '<?php echo base_url();?>index.php/Admissions_controller/deleteStudent/',
+                    data : {id:r=Contactno},
                     success: function(data) {
                         $('#deleted').html(data);
                     }

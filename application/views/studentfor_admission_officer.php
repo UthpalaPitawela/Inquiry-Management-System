@@ -122,13 +122,6 @@ $status = $_SESSION["status"];
                         <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
                     </li>
                     <!-- END TOGGLE NAVIGATION -->
-                    <!-- SEARCH -->
-                    <li class="xn-search">
-                        <form role="form">
-                            <input type="text" name="search" placeholder="Search Student..."/>
-                        </form>
-                    </li>   
-                    <!-- END SEARCH -->
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
                         <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
@@ -198,7 +191,7 @@ foreach ($profile_data ->result_array() as $row3) {
                                 </div>                                
                                 <div class="panel-body">                                    
                                     <div class="contact-info">
-                                        <p><small>Mobile</small><br><?php echo $row3['tpnumber'];?></p>
+                                        <p><small>Primary Mobile</small><br><?php echo $row3['tpnumber'];?></p>
                                         <p><small>Mobile</small><br><?php echo $row3['tpnumber2'];?></p>
                                         <p><small>Email</small><br><?php echo $row3['email'];?></p>
                                                                           
@@ -489,7 +482,7 @@ if($row2['other']!='nolink'){
 
                                     <li>
                                     <div class="panel-body">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                     <div class="input-group push-down-10">
                                                 <span class="input-group-addon"><span class="fa fa-search"></span></span>
                                                  <input type="text" name="search" class="form-control" id="searchid" onkeyup="getStudent()" placeholder="Search Student..."/>
@@ -518,6 +511,7 @@ if($row2['other']!='nolink'){
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>ID</th>
+                                                <th>Primary TP number</th>
                                                 <th>Profile</th>
                                                 
                                             </tr>
@@ -536,14 +530,14 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                                             <form action="">
                                                 <td><?php echo $studentrow['firstname']."  ".$studentrow['lastname'];?></td>
                                                 <td><?php echo $studentrow['email'];?></td>
-                                                <td><?php echo $studentrow['user_name'];?></td>
+                                                <td><?php echo $studentrow['user_name'];?></td> <td><?php echo $studentrow['tpnumber'];?></td>
                                                <?php
-                                                $email=$studentrow['email'];
-                                                $email=urlencode($email);
+                                                $tpnumber=$studentrow['tpnumber'];
+                                                $tpnumber=urlencode($tpnumber);
 
 
                                                ?>
-     <td><a href="<?php echo base_url();?>index.php/Student_Data_Controller/loadingdetails/<?php echo $email;?>"><span class="fa fa-user"></span> View Profile</a></td>
+     <td><a href="<?php echo base_url();?>index.php/Student_Data_Controller/loadingdetails/<?php echo $tpnumber;?>"><span class="fa fa-user"></span> View Profile</a></td>
                                                 </form>
                                             </tr>
 

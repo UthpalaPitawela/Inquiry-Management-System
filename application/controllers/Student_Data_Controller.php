@@ -68,13 +68,13 @@ foreach($searchresult as $sch){
 ?>
 <tr>
 <?php
-$email=$sch->email;
-	 	$email=urlencode($email);
+$tpnumber=$sch->tpnumber;
+	 	$tpnumber=urlencode($tpnumber);
 
 ?>
 <td>
 <?php
-echo "<li><a id='studentmanager' href=".$base."index.php/Student_Data_Controller/loadingdetailsformanager/".$email."><span class='fa fa-user'></span>&nbsp $sch->firstname</a></li>";
+echo "<li><a id='studentmanager' href=".$base."index.php/Student_Data_Controller/loadingdetailsformanager/".$tpnumber."><span class='fa fa-user'></span>&nbsp $sch->firstname</a></li>";
 	 	
 	 	?>
 </td>
@@ -122,13 +122,13 @@ foreach($searchresult as $sch){
 ?>
 <tr>
 <?php
-$email=$sch->email;
-	 	$email=urlencode($email);
+$tpnumber=$sch->tpnumber;
+	 	$tpnumber=urlencode($tpnumber);
 
 ?>
 <td>
 <?php
-echo "<li><a href=".$base."index.php/Student_Data_Controller/loadingdetails/".$email."><span class='fa fa-user'></span>&nbsp $sch->firstname</a></li>";
+echo "<li><a href=".$base."index.php/Student_Data_Controller/loadingdetails/".$tpnumber."><span class='fa fa-user'></span>&nbsp $sch->firstname</a></li>";
 	 	
 	 	?>
 </td>

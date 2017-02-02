@@ -26,7 +26,7 @@ class Inquirybutton_model extends CI_Model{
 		//Select the fields
 		$newStatus = "Registered";
 		$data = array('Status'=>$newStatus);
-		$this->db->where('Email',$id);
+		$this->db->where('Contactno',$id);
 		$this->db->update('register',$data);
 	}
 

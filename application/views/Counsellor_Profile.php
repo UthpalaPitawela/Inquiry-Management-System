@@ -278,6 +278,10 @@
                         <?php
                     }
                 }
+            }else{
+                ?>
+                <h2>No Reminders</h2>
+            <?php
             }
                 ?>
                                             

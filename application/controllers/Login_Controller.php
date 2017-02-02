@@ -59,13 +59,14 @@ $this->load->model("Student_Data_Model");
         
                     }elseif ($row['status']==3) {
                         $user_Id=$_SESSION["user_ID"];
-                        $data['remiderstudent'] = $this->Student_Data_Model->get_Student_For_Counsellor($user_Id);
+                       
                         $this->load->model('Counsellor_Profile_Model');
                         $data1 = $this->Counsellor_Profile_Model->index($username);
                         $fname = $data1[0];
                         $lname = $data1[1];
                         $counsellorname = $fname." ".$lname;
                         ///print_r($counsellorname);
+                         $data['remiderstudent'] = $this->Student_Data_Model->get_Student_For_Counsellor($counsellorname);
                        $val = $this->Counsellor_Profile_Model->getActivitySummary($counsellorname);
                         $data['result'] = $val[0];
                         if($this->input->post('username') && $this->input->post('password')) {

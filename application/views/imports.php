@@ -58,7 +58,6 @@
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script>
-         <script type="text/javascript" src="<?php echo base_url();?>public/js/settings.js"></script>
       <!--  
         <script type="text/javascript" src="<?php echo base_url();?>public/js/demo_dashboard.js"></script>
 -->
@@ -66,9 +65,7 @@
         <audio id="audio-fail" src="<?php echo base_url();?>public/audio/fail.mp3" preload="auto"></audio>
 
 
-          <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js'></script>
-        <script type="text/javascript" src='<?php echo base_url();?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js'></script>
-        <script type="text/javascript" src='<?php echo base_url();?>public/js/plugins/summernote/summernote.js'></script>    
+
         
 
             <!-- THIS PAGE PLUGINS -->

@@ -16,10 +16,18 @@
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/jquery/jquery-ui.min.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
-        
         <!-- EOF CSS INCLUDE --> 
+
+        <style type="text/css">
+            input:focus{
+                outline: none;
+            }
+            *:focus {
+                outline: none;
+            }
+        </style>
+
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script> 
-        
         <!-- JS INCLUDE --> 
 
     </head> 
@@ -180,8 +188,8 @@
                                                 <th width="100" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="200" style="text-align: center">Email</th>
-                                                <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="100" style="text-align: center">Handled By</th>
+                                                <th width="80" style="text-align: center">Potential Date</th>
+                                                <th width="120" style="text-align: center">Handled By</th>
                                                 <th width="200" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
@@ -190,14 +198,14 @@
                                     <div>
                                         <tbody id='table'>
                                             <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $post->Fname; ?>" id="Fname" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $post->Lname; ?>" id="Lname" /></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
-                                                <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $post->Email; ?>" id="Email" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $post->Pdate; ?>" id="Pdate" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center; width: 100%" value="<?php echo $post->CounsellorName; ?>" id="CounsellorName" /></td>
                                                 <td style="text-align: center">
                                                 <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Following</button>
                                                 <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>

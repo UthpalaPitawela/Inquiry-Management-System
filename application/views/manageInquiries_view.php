@@ -29,6 +29,7 @@
 
     $name = $_SESSION["first_username"];
     $propic = $_SESSION["propic"];
+    $status = $_SESSION["status"];
 
     ?>
         
@@ -83,15 +84,15 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/admissions_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
+                        <a href="<?php echo base_url();?>index.php/Admissions_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/addStudentAcc_controller"><span class="fa fa-user"></span> <span class="xn-text">Student Profiles</span></a>   
+                        <a href="<?php echo base_url();?>index.php/AddStudentAcc_controller"><span class="fa fa-user"></span> <span class="xn-text">Student Profiles</span></a>   
                     </li>
 
                     
-
+                    <?php if($status==0){ ?>
                     <li class="xn-title">Administration</li>
                     <li class>
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
@@ -103,7 +104,8 @@
 
                     <li>
                         <a href="<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
-                    </li>               
+                    </li>     
+                    <?php } ?>          
 
                     
                 </ul>
@@ -122,7 +124,7 @@
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="<?php echo base_url();?>index.php/logout_controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Login_controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->    
 
@@ -143,7 +145,6 @@
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-                
                     <div class="row">
                         <div class="col-md-12">
             <!-- ++++++++++++++++++++++++ Tabbed page  ++++++++++++++++++++++ -->
@@ -162,20 +163,8 @@
                                        
 
                         <div class="col-md-12">
-            <!--+++++++++++++++++++++++++++++ START VERTICAL TABS +++++++++++++++++++++++++++++ -->
-                            <div class="panel panel-default tabs nav-tabs-vertical">                   
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab22" data-toggle="tab"><strong><font size="4" color="red">High</font></strong></a></li>
-                                    <li><a href="#tab23" data-toggle="tab"><strong><font size="4" color="#f9e504">Medium</font></strong></a></li>
-                                    <li><a href="#tab24" data-toggle="tab"><strong><font size="4" color="#0ed11b">Low</font></strong></a></li>
-                                </ul>                    
 
-
-                                <div class="panel-body tab-content">
-                                    <div class="tab-pane active" id="tab22" >
-            <!-- +++++++++++++++++++++++++ Student info table - pending(High) ++++++++++++++++++++++++  -->
-                        <div class="col-md-12">
-                            
+                            <!-- Start of Pending tab -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Student Info</h3>                               
@@ -197,7 +186,7 @@
                                             </tr>
                                         </thead>
                                     <?php
-                                    foreach($posts as $post){ ?>
+                                    foreach($posts3 as $post){ ?>
                                     <div>
                                         <tbody id='table'>
                                             <tr id="<?php  echo $post->r_id; ?>">
@@ -223,164 +212,55 @@
                                     
                                 </div>
                             </div>      
-                            <!-- <script type="text/javascript">
-
-                                function changetab(contact){
-                                    var url = "http://localhost/edulink/index.php/";
-                                    $.get(url,{contact:contact},function(data){
-                                        document.getElementById("test1").innerHTML = "<tr><td>Test</td><td>System Architect</td><td>Edinburgh</td><td>61</td><td>2011/04/25</td><td>$320,800</td></tr>";
-                                        $('.nav-tabs a[href=#tab-second]').tab('show');
-
-                                    });
-                                    
-                                }
-                            </script> -->
-
                 
                         </div> 
-                                    </div>
-                                    <div class="tab-pane" id="tab23">
-                                        <!-- +++++++++++++++++ Student info table - pending(Medium) ++++++++++++++++++++++++  -->
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Student Info</h3>                                   
-                                    
-                                </div>
-                                <div class="panel-body">
-                                    <table id="customers2" class="table datatable table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th width="100" style="text-align: center">First Name</th>
-                                                <th width="100" style="text-align: center">Last Name</th>
-                                                <th width="100" style="text-align: center">OL</th>
-                                                <th width="100" style="text-align: center">AL</th>
-                                                <th width="100" style="text-align: center">Contact No.</th>
-                                                <th width="200" style="text-align: center">Email</th>
-                                                <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="100" style="text-align: center">Handled By</th>
-                                                <th width="200" style="text-align: center">Actions</th>
-                                            </tr>
-                                        </thead>
-                                    <?php
-                                    if($posts1) {foreach($posts1 as $post){ ?>
-
-                                        <tbody id='table'>
-                                            <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
-                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
-                                                <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
-                                                <td style="text-align: center">
-                                                <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Following</button>
-                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
-                                                </td>
-                                            </tr>
-                            
-                                        </tbody>
-
-                                        <?php }} ?>
-                                    </table>                                    
-                                    
-                                </div>
-                            </div>      
-
-                        </div> 
-                        </div>
+                        </div> <!-- End of tab-first -->
 
 
-            <!-- +++++++++++++++++ Student info table - pending(Low) ++++++++++++++++++++++++  -->
-                                    <div class="tab-pane" id="tab24">
-                                        <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Student Info</h3>                                   
-                                    
-                                </div>
-                                <div class="panel-body">
-                                    <table id="customers2" class="table datatable table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th width="100" style="text-align: center">First Name</th>
-                                                <th width="100" style="text-align: center">Last Name</th>
-                                                <th width="100" style="text-align: center">OL</th>
-                                                <th width="100" style="text-align: center">AL</th>
-                                                <th width="100" style="text-align: center">Contact No.</th>
-                                                <th width="200" style="text-align: center">Email</th>
-                                                <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="100" style="text-align: center">Handled By</th>
-                                                <th width="200" style="text-align: center">Actions</th>
-                                            </tr>
-                                        </thead>
-                                    <?php
-                                    if($posts2) {foreach($posts2 as $post){ ?>
-
-                                        <tbody id='table'>
-                                            <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
-                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
-                                                <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
-                                                <td style="text-align: center">
-                                                <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Following</button>
-                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
-                                                </td>
-                                            </tr>
-                            
-                                        </tbody>
-
-                                        <?php }} ?>
-                                    </table>                                    
-                                    
-                                </div>
-                            </div>
-                                 
-
-                        </div> 
-                                    </div>                        
-                                </div>
-                            </div>                        
-                            <!-- END VERTICAL TABS -->
-                        </div>                     
-                    </div>
-
-                    <!-- 'Following' tab -->
-                    <div class="tab-pane" id="tab-second">               
+                        <!-- Start of Following Tab  -->
+                        <div class="tab-pane" id="tab-second">               
                             <div class="panel panel-default"> 
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Student Info</h3>                                    
                                 </div>
 
-                                <div class="panel-body">
+                            <!-- Start of vertical tabs -->
+                            <div class="panel panel-default tabs nav-tabs-vertical">  
+                            <div class = "col-md-12">
+
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab22" data-toggle="tab"><strong><font size="4" color="red">High</font></strong></a></li>
+                                    <li><a href="#tab23" data-toggle="tab"><strong><font size="4" color="#f9e504">Medium</font></strong></a></li>
+                                    <li><a href="#tab24" data-toggle="tab"><strong><font size="4" color="#0ed11b">Low</font></strong></a></li>
+                                </ul>                    
+
+
+                        <div class="panel-body tab-content">
+
+                        <!-- +++++++++++++++++++++++++ Following (High) ++++++++++++++++++++++++  -->
+                        <div class="tab-pane active" id="tab22" >
+                        <div class="col-md-12">
+                            
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
                                                 <th width="70" style="text-align: center">First Name</th>
-                                                <th width="70" style="text-align: center">Last Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
                                                 <th width="60" style="text-align: center">OL</th>
                                                 <th width="60" style="text-align: center">AL</th>
-                                                <th width="70" style="text-align: center">Contact No.</th>
-                                                <th width="100" style="text-align: center">Email</th>
-                                                <th data-sortable="true" width="100" style="text-align: center">Potential Level</th>
+                                                <th width="100" style="text-align: center">Contact No.</th>
+                                                <th width="150" style="text-align: center">Email</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="100" style="text-align: center">Handled By</th>
-                                                <th width="100" style="text-align: center">Actions</th>
+                                                <th width="250" style="text-align: center">Handled By</th>
+                                                <th width="300" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
 
-                                        <tbody id='table'>
+                                        <tbody>
                                         <form>
                                     <?php
-                                   // if($posts3) {
-                                        foreach($posts3 as $post){ ?>
+                                   
+                                        foreach($posts as $post){ ?>
 
                                         
                                             <tr id="<?php  echo $post->r_id; ?>">
@@ -390,12 +270,151 @@
                                                 <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Intake; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
                                                 <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
                                         
                                                 <td style="text-align: center">
-                                                <a data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" class="btn btn-warning btn-rounded btn-sm" onclick="assignID('<?php  echo $post->r_id; ?>')">Summary</a>
+                                                <!-- <a data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" class="btn btn-warning btn-rounded btn-sm" onclick="assignID('<?php  echo $post->r_id; ?>')">Summary</a> -->
+                                                <a class="btn btn-primary btn-rounded btn-sm" data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
+                                                <button class="btn btn-danger btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="SMS" data-target="#myModal1<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-phone red"></span></button>
+                                                <button class="btn btn-info btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Email" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></button>
+                                                <button class="btn btn-warning btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Other" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
+                                                </td>
+                                            </tr>
+                                        </form>
+                                        
+                                      <!-- POPUP for call summary -->
+                                      <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Follow-Up Summary</h4>
+                                              </div>
+                                              <br>
+                                        
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Call Summary:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                        <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" id="save" class="btn btn-primary">Save changes</button>
+                                                        </div>                               
+                                                    
+                                                    </form>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                  </div>
+                                </div>
+
+                                <!-- POPUP for SMS -->
+                                      <div id="myModal1<?php echo $post->r_id; ?>" class="modal fade">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Follow-Up Summary</h4>
+                                              </div>
+                                              <br>
+                                        
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Contactno; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                        <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" id="save" class="btn btn-primary">Save Text Message</button>
+                                                        </div>                               
+                                                    
+                                                    </form>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                  </div>
+                                </div> 
+
+                                    <?php } ?>
+                                    </tbody> 
+                                    </table>
+
+                        </div>
+                        </div>              
+
+                        <!-- +++++++++++++++++++++++++ Following (Medium) ++++++++++++++++++++++++  -->
+                        <div class="tab-pane" id="tab23" >
+                                <div class="col-md-12">
+                                    <table id="mydata" class="table datatable table-hover">
+                                        <thead>
+                                            <tr role="row">
+                                                <th width="70" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
+                                                <th width="60" style="text-align: center">OL</th>
+                                                <th width="60" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">Contact No.</th>
+                                                <th width="150" style="text-align: center">Email</th>
+                                                <th width="100" style="text-align: center">Potential Date</th>
+                                                <th width="250" style="text-align: center">Handled By</th>
+                                                <th width="300" style="text-align: center">Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <form>
+                                    <?php
+                                   
+                                        foreach($posts1 as $post){ ?>
+
+                                        
+                                            <tr id="<?php  echo $post->r_id; ?>">
+                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                                <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
+                                        
+                                                <td style="text-align: center">
+                                                <!-- <a data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" class="btn btn-warning btn-rounded btn-sm" onclick="assignID('<?php  echo $post->r_id; ?>')">Summary</a> -->
+                                                <button class="btn btn-primary btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Call Summary"><span class="glyphicon glyphicon-earphone"></span></button>
+                                                <button class="btn btn-danger btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="SMS"><span class="glyphicon glyphicon-phone red"></span></button>
+                                                <button class="btn btn-info btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Email"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></button>
+                                                <button class="btn btn-warning btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Other"><span class="glyphicon glyphicon-plus" style="color:orange"></span></button>
                                                 <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
                                                 </td>
                                             </tr>
@@ -405,7 +424,7 @@
 
                                         <!-- First POPUP -->
 
-                                        <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
+                            <!--            <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -472,14 +491,146 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <!-- <div class="tab-pane" id="fourth-tab">
+                                                            </div>
+                                                            
+                                                        </div> 
+                                                        <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" id="save" class="btn btn-primary">Save changes</button>
+                                                        </div>                               
+                                                    
+                                                    </form>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                  </div>
+                                </div> -->
+
+                                    <?php } ?>
+                                    </tbody> 
+                                    </table>
+
+                                </div>
+                            </div> <!-- End of Following Medium -->
+
+
+                        <!-- +++++++++++++++++++++++++ Following (Low) ++++++++++++++++++++++++  -->
+                        <div class="tab-pane" id="tab24" >
+                                <div class="col-md-12">
+                                    <table id="mydata" class="table datatable table-hover">
+                                        <thead>
+                                            <tr role="row">
+                                                <th width="70" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
+                                                <th width="60" style="text-align: center">OL</th>
+                                                <th width="60" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">Contact No.</th>
+                                                <th width="150" style="text-align: center">Email</th>
+                                                <th width="100" style="text-align: center">Potential Date</th>
+                                                <th width="250" style="text-align: center">Handled By</th>
+                                                <th width="300" style="text-align: center">Actions</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <form>
+                                    <?php
+                                   // if($posts3) {
+                                        foreach($posts2 as $post){ ?>
+
+                                        
+                                            <tr id="<?php  echo $post->r_id; ?>">
+                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
+                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
+                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                                <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
+                                        
+                                                <td style="text-align: center">
+                                                <!-- <a data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" class="btn btn-warning btn-rounded btn-sm" onclick="assignID('<?php  echo $post->r_id; ?>')">Summary</a> -->
+                                                <button class="btn btn-primary btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Call Summary"><span class="glyphicon glyphicon-earphone"></span></button>
+                                                <button class="btn btn-danger btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="SMS"><span class="glyphicon glyphicon-phone red"></span></button>
+                                                <button class="btn btn-info btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Email"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></button>
+                                                <button class="btn btn-warning btn-rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Other"><span class="glyphicon glyphicon-plus" style="color:orange"></span></button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
+                                                </td>
+                                            </tr>
+                                        </form>
+                                        
+                                      
+
+                                        <!-- First POPUP -->
+
+                                  <!--      <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Follow-Up Summary</h4>
+                                              </div>
+                                        
+                                        <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                                                    
+                                                        <div class="panel panel-default tabs">                            
+                                                            <ul class="nav nav-tabs" role="tablist">
+
+                                                                <li class="active"><a href="#first-tab<?php echo $post->r_id; ?>" role="tab" data-toggle="tab">Summary 1</a></li>
+
+                                                                <li><a href="#second-tab<?php echo $post->r_id; ?>" role="tab" data-toggle="tab">Summary 2</a></li>
+                                                                <li><a href="#third-tab<?php echo $post->r_id; ?>" role="tab" data-toggle="tab">Summary 3</a></li>
+                                                                <li><a href="#fourth-tab<?php echo $post->r_id; ?>" role="tab" data-toggle="tab">Summary 4</a></li>
+                                                            </ul>
+
+                                                            <div class="panel-body tab-content">
+
+                                                                <div class="tab-pane active" id="first-tab<?php echo $post->r_id; ?>">
                                                                     <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary4">Enter Summary 5:</label>
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary 1:</label>
                                                                         <div class="col-md-8 col-xs-12">     
-                                                                            <input type="hidden" name="id" value=$id />
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="summary1" id="summary1"><?php echo $post->Summary1; ?></textarea>
                                                                         </div>
                                                                     </div>
-                                                                </div> -->
+                                                                </div>
+
+                                                                <div class="tab-pane" id="second-tab<?php echo $post->r_id; ?>">
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary2">Enter Summary 2:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="summary2" id="summary2"><?php echo $post->Summary2; ?></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="tab-pane" id="third-tab<?php echo $post->r_id; ?>">
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary3">Enter Summary 3:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="summary3" id="summary3"><?php echo $post->Summary3; ?></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="tab-pane" id="fourth-tab<?php echo $post->r_id; ?>">
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary4">Enter Summary 4:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="summary4" id="summary4"><?php echo $post->Summary4; ?></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
 
                                                             </div>
@@ -494,23 +645,34 @@
                                                     
                                                 </div>
                                             </div>
-                                        </div><!-- /.modal-content -->
-                                  </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
+                                        </div>
+                                  </div>
+                                </div> -->
 
                                     <?php } ?>
                                     </tbody> 
                                     </table>
 
                                 </div>
-                            </div>
+                        </div> <!-- End of Following Low -->
                             
                                          
                                             
-                                        </div>    
+                        </div> 
+                        </div>                        
+                            <!-- END VERTICAL TABS -->
+                            </div>
+                        </div>                     
+                    </div> <!-- End of tab-second -->
 
-                                        <!-- 'Completed' tab -->                                    
-                                        <div class="tab-pane" id="tab-third">
+
+
+
+
+
+
+                        <!-- Start of 'Completed' tab -->                                    
+                        <div class="tab-pane" id="tab-third">
                                                                                         
                                 <div class="panel panel-default"> 
                                     <div class="panel-heading">
@@ -548,116 +710,32 @@
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
                                                 <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
                                                 <td style="text-align: center">
-                                                <a data-toggle="modal" data-target="#mysecondModal<?php echo $post->r_id;?>" class="btn btn-warning btn-rounded btn-sm" onclick="assignID('<?php  echo $post->r_id; ?>')">View Summary</a>
+                                                <!-- <a data-toggle="modal" data-target="#mysecondModal<?php echo $post->r_id;?>" class="btn btn-warning btn-rounded btn-sm" onclick="assignID('<?php  echo $post->r_id; ?>')">View Summary</a> -->
                                                 <button type="button" class="btn btn-success btn-rounded btn-sm" style="background-color: white;color: #6f22b6; border: 2px solid #6f22b6; /* Purple */" onclick="registered('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Registered</button>
                                                 </td>
                                             </tr>
-                                            </form>
-
-                                            <!-- POPUP -->
-
-                                        <div id="mysecondModal<?php echo $post->r_id; ?>" class="modal fade">
-                                          <div class="modal-dialog">
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                <h4 class="modal-title">Follow-Up Summary</h4>
-                                              </div>
-                                              <br>
-                                        
-                                        <div class="row">
-                                                <div class="col-md-12">
-
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
-                                                                                    
-                                                        <div class="panel panel-default tabs">                            
-                                                            <ul class="nav nav-tabs" role="tablist">
-
-                                                                <li class="active"><a href="#first-tab<?php echo $post->r_id; ?>" role="tab" data-toggle="tab">Summary 1</a></li>
-
-                                                                <li><a href="#second-tab<?php echo $post->r_id; ?>" role="tab" data-toggle="tab">Summary 2</a></li>
-                                                                <li><a href="#third-tab<?php echo $post->r_id; ?>" role="tab" data-toggle="tab">Summary 3</a></li>
-                                                                <li><a href="#fourth-tab<?php echo $post->r_id; ?>" role="tab" data-toggle="tab">Summary 4</a></li>
-                                                            </ul>
-
-                                                            <div class="panel-body tab-content">
-
-                                                                <div class="tab-pane active" id="first-tab<?php echo $post->r_id; ?>">
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary 1:</label>
-                                                                        <div class="col-md-8 col-xs-12"> 
-
-                                                                            <textarea type="text" class="form-control" style="height:100px; color: black; align-items: top;" name="summary1" id="summary1" readonly><?php echo $post->Summary1; ?></textarea>   
-                                                                            
-                                                                            <!-- <textarea class="form-control" rows="5" name="summary1" id="summary1" readonly><?php echo $post->Summary1; ?></textarea> -->
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="tab-pane" id="second-tab<?php echo $post->r_id; ?>">
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary2">Enter Summary 2:</label>
-                                                                        <div class="col-md-8 col-xs-12">     
-                                                                            
-                                                                            <textarea type="text" class="form-control" style="height:100px; color: black; align-items: top;" name="summary2" id="summary2" readonly><?php echo $post->Summary2; ?></textarea> 
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="tab-pane" id="third-tab<?php echo $post->r_id; ?>">
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary3">Enter Summary 3:</label>
-                                                                        <div class="col-md-8 col-xs-12">     
-                                                                            
-                                                                            <textarea type="text" class="form-control" style="height:100px; color: black; align-items: top;" name="summary3" id="summary3" readonly><?php echo $post->Summary3; ?></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="tab-pane" id="fourth-tab<?php echo $post->r_id; ?>">
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary4">Enter Summary 4:</label>
-                                                                        <div class="col-md-8 col-xs-12">     
-                                                                            
-                                                                            <textarea type="text" class="form-control" style="height:100px; color: black; align-items: top;" name="summary4" id="summary4" readonly><?php echo $post->Summary4; ?></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            
-                                                        </div>                               
-                                                    
-                                                    </form>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                  </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
-
-                            
                                         </tbody>
 
                                         <?php } ?>
+                                        </form>
                                         </div>
                                     </table>  
                                 </div>
                             </div>
                             </div>
-                            <!-- END DEFAULT DATATABLE -->
-                                            
-                                        </div>
+                            <!-- End of completed tab (tab-third) -->
+
+
+
+
+                    </div> <!-- End of tab content -->
                                     </div>
-                                   
-                                                        
-                            
-                            </form>
-                            
-                        </div>
-                    </div> 
-   
-                </div>
+                                </form>
+                            </div>
+                        </div> <!-- End of row  -->
+                
+                    
+                </div> 
                 <!-- END PAGE CONTENT WRAPPER -->
 
                 </div>
@@ -677,7 +755,7 @@
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo base_url('index.php/login_controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <a href="<?php echo base_url('index.php/Login_controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
                             <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
@@ -803,6 +881,12 @@
             var registerID=registerID;
             document.getElementById("regid").value = registerID; 
         }
+        </script>
+
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
         </script>
 
         <!-- <script type="text/javascript">

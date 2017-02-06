@@ -8,7 +8,7 @@ class ManageInquiries_model extends CI_Model{
 
 	function getPostsHigh(){
 		//Select the fields
-		$status = "Pending";
+		$status = "Following";
 		$intake = "high";
 		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
@@ -19,7 +19,7 @@ class ManageInquiries_model extends CI_Model{
 
 	function getPostsMedium(){
 		//Select the fields
-		$status = "Pending";
+		$status = "Following";
 		$intake = "medium";
 		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
@@ -31,7 +31,7 @@ class ManageInquiries_model extends CI_Model{
 
 	function getPostsLow(){
 		//Select the fields
-		$status = "Pending";
+		$status = "Following";
 		$intake = "low";
 		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('intake'=>$intake,'status'=>$status));
@@ -40,9 +40,9 @@ class ManageInquiries_model extends CI_Model{
 		return $query->result();
 	}
 
-	function getFollowing(){
-		$status = "Following";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Intake,Pdate,CounsellorName,Summary1,Summary2,Summary3,Summary4");
+	function getPending(){
+		$status = "Pending";
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Intake,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('status'=>$status));
 
 		return $query->result();
@@ -50,10 +50,18 @@ class ManageInquiries_model extends CI_Model{
 
 	function getCompleted(){
 		$status = "Completed";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName,Summary1,Summary2,Summary3,Summary4");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
 		$query = $this->db->get_where('register',array('status'=>$status));
 
 		return $query->result();
+	}
+
+	function getCompletedforadmissionofficer(){
+		$status = "Completed";
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
+		$query = $this->db->get_where('register',array('status'=>$status));
+
+		return $query;
 	}
 
 

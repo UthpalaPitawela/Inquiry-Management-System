@@ -18,9 +18,15 @@ class ManageInquiries_controller extends CI_Controller{
 
 		$this->data['posts1'] = $this->ManageInquiries_model->getPostsMedium();
 		$this->data['posts2'] = $this->ManageInquiries_model->getPostsLow();
-		$this->data['posts3'] = $this->ManageInquiries_model->getFollowing();
+		$this->data['posts3'] = $this->ManageInquiries_model->getPending();
 		$this->data['posts4'] = $this->ManageInquiries_model->getCompleted();
 		$this->load->view('manageInquiries_view', $this->data);
+	}
+
+	public function completedforadmissionofficer(){
+
+		$this->data['posts4'] = $this->ManageInquiries_model->getCompletedforadmissionofficer();
+		$this->load->view('completedforadmissionofficer', $this->data);	
 	}
 }
 

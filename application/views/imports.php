@@ -7,6 +7,8 @@
 
  <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery-ui.min.js"></script>
+             <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/jquery.noty.js'></script>
+       
          <!-- START PLUGINS -->
         
         
@@ -66,11 +68,31 @@
 
 
 
+            <audio id="audio-alert" src="<?php echo base_url();?>public/audio/alert.mp3" preload="auto"></audio>
+        <audio id="audio-fail" src="<?php echo base_url();?>public/audio/fail.mp3" preload="auto"></audio>
+        <!-- END PRELOADS -->              
         
+    <!-- START SCRIPTS -->
+        <!-- START PLUGINS -->
+      
+        <!-- START THIS PAGE PLUGINS-->        
+        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js'></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/summernote/summernote.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap-select.js"></script>        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap-file-input.js"></script>
+        <!-- END THIS PAGE PLUGINS-->        
+
+        <!-- START TEMPLATE -->
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/settings.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script>   
+
 
             <!-- THIS PAGE PLUGINS -->
         
-            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/jquery.noty.js'></script>
             <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topCenter.js'></script>
             <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topLeft.js'></script>
             <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topRight.js'></script>            

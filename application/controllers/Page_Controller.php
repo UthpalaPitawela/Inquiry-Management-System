@@ -64,6 +64,10 @@ $data['programme'] = $this->Login_Model->getCourses($user_Id);
 
     $this->load->view('manager_profile');
 
+}elseif($page=='mailview'){
+
+ $this->load->view('mailview',true);
+
 }
 
              }

@@ -141,11 +141,10 @@ $propic=$_SESSION["propic"];
 
 
 
-
-
-
-
                     <div class="panel panel-default">
+
+
+
                                 <div class="panel-heading">                                
                                     <h3 class="panel-title">Student List</h3>
 

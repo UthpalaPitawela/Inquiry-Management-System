@@ -8,6 +8,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
+
+
+        <!-- END META SECTION -->
+        
+        <!-- CSS INCLUDE -->        
+        <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url();?>public/css/theme-default.css"/>
+        <!-- EOF CSS INCLUDE -->                                     
+   
         <link rel="icon" href="<?php echo base_url('public/Assets/EDULINK-Logo1.ico'); ?>" type="image/x-icon" />
         <!-- END META SECTION -->
         
@@ -42,8 +50,12 @@
         filter: alpha(opacity=80);
     }
 
-
+#mailbox{
+    display: none;
+}
 </style>
+
+
 
 
           
@@ -194,7 +206,8 @@ foreach ($profile_data ->result_array() as $row3) {
                                         <p><small>Primary Mobile</small><br><?php echo $row3['tpnumber'];?></p>
                                         <p><small>Mobile</small><br><?php echo $row3['tpnumber2'];?></p>
                                         <p><small>Email</small><br><?php echo $row3['email'];?></p>
-                                                                          
+                                             <?php $addressforrmail =$row3['email'];
+                                                   $tpnum1= $row3['tpnumber']; ?>                            
                                     </div>
                                 </div>                                
                             </div>
@@ -222,14 +235,73 @@ if($row2['other']!='nolink'){
 
 
 <div class="panel-body col-md-8">
-                                    
+
+
+
+
+
+
+
+
+
+
+
+                    
+          
+                        <div class="block" id="mailbox">
+                        <form role="form" class="form-horizontal" action="<?php echo base_url("index.php/EmailtoDB_Controller/offerletter")?>" method="POST">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">From:</label>
+                                <div class="col-md-10">                                        
+                                    <select class="form-control select" name="sender">
+                                        <option>Dmitry (dmitryivaniuk@domain.com)</option>
+                                        <option>Incognito (otheremail@domain.com)</option>                                        
+                                    </select>
+                                </div>
+                            </div>                        
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">To:</label>
+                                <div class="col-md-10">                                        
+                                    <input type="text" class="form-control" name="receivermail" value="<?php echo $addressforrmail; ?>" data-placeholder="Add email"/> 
+                                    <input type="text" name="primarytp" hidden="hidden" value="<?php echo $tpnum1; ?>">                               
+                                </div>
+                              
+                            </div>
+                           
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Subject:</label>
+                                <div class="col-md-10">                                        
+                                    <input type="text"  name="subject" class="form-control" value="Lorem ipsum dolor sit amet"/>                                
+                                </div>                                
+                            </div>
+                           
+                            <div class="form-group">
+                                <div class="col-md-12">                            
+                                    <textarea class="summernote_email" name="content">                  
+                                    </textarea>                            
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="pull-left">
+                                        <button class="btn btn-default"><span class="fa fa-trash-o"></span> Delete Draft</button>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button class="btn btn-danger" type="submit" id="send" onclick="showtext();"> <span class="fa fa-envelope"></span> Send Message</button>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                        
+
+        <!-- END TEMPLATE -->
+    <!-- END SCRIPTS -->             
+
+
+
                                    
         <p><strong> Student's other details attached</strong></p>
-       
-
-
-
-
 
 
 
@@ -238,11 +310,9 @@ if($row2['other']!='nolink'){
 
 
         <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "document.getElementById('newslight').style.display='block';document.getElementById('newsfade').style.display='block'" ><span>View PDF</span></button>
-    
-    
-    
-    
 
+
+    <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "document.getElementById('mailbox').style.display='block';" ><span>Send Mail</span></button>
 
 <!-- div for black over lay -->
 <div id="newsfade" class="black_overlay"></div>
@@ -616,10 +686,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
             </div>
         </div>
         <!-- END MESSAGE BOX-->
-     <?php
-
-      include 'imports.php';
-      ?>
+    
 
 
       <script type="text/javascript">
@@ -654,16 +721,6 @@ $('#studiv').load("<?php echo site_url();?>Student_Data_Controller/loadingdetail
 
 
 
-
-show = function(){
-
-        myDiv.style.display = "block";
-        setTimeout(hide, 3000); // 5 seconds
-      }
-
-      hide = function(){
-        myDiv.style.display = "none";
-      }
 
    
 
@@ -717,14 +774,92 @@ function getStudent(){
 </script>
 
 
+<script type="text/javascript">
 
 
-
-
-
-
+</script>
 
 
 
     </body>
 </html>
+   <!-- START PRELOADS -->
+            <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap.min.js"></script>        
+        <!-- END PLUGINS -->
+
+        <!-- START THIS PAGE PLUGINS-->        
+        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js'></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/summernote/summernote.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/tagsinput/jquery.tagsinput.min.js"></script>       
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap-select.js"></script>        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap-file-input.js"></script>
+        <!-- END THIS PAGE PLUGINS-->        
+
+        <!-- START TEMPLATE -->
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/settings.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script>        
+ 
+
+
+
+
+
+       
+       
+
+
+             <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/jquery.noty.js'></script>
+       
+         <!-- START PLUGINS -->
+        
+        
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/moment.min.js"></script>
+
+        <!-- START THIS PAGE PLUGINS-->        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/morris/raphael-min.js"></script>
+       <!-- <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/morris/morris.min.js"></script>       
+        --><script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/rickshaw/d3.v3.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/rickshaw/rickshaw.min.js"></script>
+        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
+        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>                
+        <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap-datepicker.js'></script>                
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/owl/owl.carousel.min.js"></script>                 
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/moment.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/daterangepicker/daterangepicker.js"></script>
+        <!-- END THIS PAGE PLUGINS-->    
+
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
+        <!-- END THIS PAGE PLUGINS-->    
+
+        <!-- START TEMPLATE -->
+        
+        
+        
+    <!-- START SCRIPTS -->
+        <!-- START PLUGINS -->
+      
+        <!-- START THIS PAGE PLUGINS-->        
+        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap-select.js"></script>        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap-file-input.js"></script>
+        <!-- END THIS PAGE PLUGINS-->        
+
+           <!-- THIS PAGE PLUGINS -->
+        
+            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topCenter.js'></script>
+            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topLeft.js'></script>
+            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topRight.js'></script>            
+            
+            <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/themes/default.js'></script>
+

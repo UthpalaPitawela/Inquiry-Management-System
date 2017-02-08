@@ -64,31 +64,15 @@ class ManageInquiries_model extends CI_Model{
 		return $query;
 	}
 
-	function updateChanges($data){
-		$id = $data['id'];
-		$Fname = $data['Fname'];
-		$Lname = $data['Lname'];
-		$Email = $data['Email'];
-		$Intake = $data['Intake'];
-		$Pdate = $data['Pdate'];
-		$CounsellorName = $data['CounsellorName'];
-
-		$data1 = array(
-               'Fname' => $Fname,
-               'Lname' => $Lname,
-               'Email' => $Email,
-               'Intake' => $Intake,
-               'Pdate' => $Pdate,
-               'CounsellorName' => $CounsellorName
-            );
-
-		$this->db->where('id', $id);
-		$this->db->update('register', $data1); 
+	function updateChanges($data,$id){
+	
+		$this->db->where('r_id', $id);
+		$this->db->update('register', $data); 
 
 	}
 
 
-
+ 
 }
 
 ?>

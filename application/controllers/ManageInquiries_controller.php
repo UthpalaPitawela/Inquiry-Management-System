@@ -31,21 +31,28 @@ class ManageInquiries_controller extends CI_Controller{
 
 	//Making the pending entry editable
 	public function updateChanges(){
+?>
+
+<script type="text/javascript">
+	alert("haha");
+</script>
+
+<?php
+		$id = $this->input->post('rid');
 		$data = array(
-			'id' => $this->input->post('id'),
+			
 			'Fname' => $this->input->post('Fname'),
 			'Lname' => $this->input->post('Lname'),
 			'Email' => $this->input->post('Email'),
 			'Intake' => $this->input->post('Intake'),
 			'Pdate' => $this->input->post('Pdate'),
 			'CounsellorName' => $this->input->post('CounsellorName'));
-		print_r($data);
 
 		//Transfering data to model
-		//$this->ManageInquiries_model->updateChanges($data);
+		$this->ManageInquiries_model->updateChanges($data,$id);
 
 		//Go back to index after inserting
-		//redirect("index.php/ManageInquiries_controller/index");
+	redirect("index.php/ManageInquiries_controller");
 	}
 }
 

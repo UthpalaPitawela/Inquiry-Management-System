@@ -2,7 +2,7 @@
 <html lang="en"> 
 
     <head> 
-
+ 
         <!-- META SECTION -->
         <title>Edulink IMS</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -77,7 +77,7 @@
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
                             <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
-                            <li class="active"><a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
+                            <li class="active"><a href="<?php echo base_url();?>index.php/ManageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
                             
                         </ul>
                         
@@ -194,33 +194,35 @@
                                                 <th width="300" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
+                                    <tbody id='table'>
+                                        
                                     <?php
-                                    foreach($posts3 as $post){ ?>
-                                    <div>
-                                        <tbody id='table'>
-                                            <!-- <form action="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges" method="POST"> -->
-                                            <tr id="<?php  echo $post->r_id; ?>">
-                                                <input type="hidden" style="border:none; text-align: center;" value="<?php echo $post->r_id; ?>" id="id" />
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $post->Fname; ?>" id="Fname" /></td>
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $post->Lname; ?>" id="Lname" /></td>
-                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $post->Email; ?>" id="Email" /></td>
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $post->Intake; ?>" id="Intake" /></td>
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $post->Pdate; ?>" id="Pdate" /></td>
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center; width: 100%" value="<?php echo $post->CounsellorName; ?>" id="CounsellorName" /></td>
+
+                                    foreach($posts3 as $postt){ ?>
+                                            <tr id="<?php  echo $postt->r_id; ?>">
+                                               <form method="post" action="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges" > 
+                                            
+                                                <input type="hidden" style="border:none; text-align: center;" value="<?php echo $postt->r_id; ?>" id="id" name="rid" />
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Fname; ?>" id="Fname" name="Fname" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Lname; ?>" id="Lname" name="Lname" /></td>
+                                                <td style="text-align: center"><?php echo $postt->OL; ?></td>
+                                                <td style="text-align: center"><?php echo $postt->Grade1+$postt->Grade2+$postt->Grade3; ?></td>
+                                                <td style="text-align: center"><?php echo $postt->Contactno; ?></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Email; ?>" id="Email" name="Email" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Intake; ?>" id="Intake" name="Intake" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Pdate; ?>" id="Pdate" name="Pdate" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center; width: 100%" value="<?php echo $postt->CounsellorName; ?>" id="CounsellorName" name="CounsellorName" /></td>
                                                 <td style="text-align: center">
-                                                <a href="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges"><button class="btn btn-primary btn-rounded btn-sm" data-tooltip="tooltip" title="Update Changes" data-toggle="top">Save</button></a>
-                                                <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Following</button>
-                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
+                                            
+                                                <input type="submit" name="submit" class="btn btn-primary btn-rounded btn-sm" data-tooltip="tooltip" title="Update Changes" data-toggle="top" value="Save" />
+                                                <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Following</button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Completed</button>
                                                 </td>
+                                            </form>
                                             </tr>
-                                            <!-- </form> -->
+                                            
                             
                                         </tbody>
-                                        </div>
-
                                         <?php } ?>
                                     </table>                                    
                                     

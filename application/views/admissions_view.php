@@ -67,7 +67,17 @@
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
                             <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
-                            <li><a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
+                            <li>
+
+                            <?php if($status==0){ ?>
+                            <a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a>
+                            <?php  } ?>
+
+                            <?php if($status==3){ ?>
+                            <a href="<?php echo base_url();?>index.php/manageInquiriesCoun_controller"><span class="fa fa-phone"></span> Manage Inquiries</a>
+                            <?php  } ?>
+
+                            </li> 
                             
                         </ul>
                         
@@ -82,7 +92,13 @@
                     </li>
 
                     <li class="active">
+                        <?php if($status==0){ ?>
                         <a href="<?php echo base_url();?>index.php/admissions_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
+                        <?php  } ?>
+
+                        <?php if($status==3){ ?>
+                        <a href="<?php echo base_url();?>index.php/admissionsCoun_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
+                        <?php  } ?>
                     </li>
 
                     <li>

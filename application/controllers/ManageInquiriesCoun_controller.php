@@ -24,11 +24,11 @@ class ManageInquiriesCoun_controller extends CI_Controller{
 		$this->load->view('manageInquiriesCoun_view', $this->data);
 	}
 
-	public function completedforadmissionofficer(){
+	// public function completedforadmissionofficer(){
 
-		$this->data['posts4'] = $this->ManageInquiries_model->getCompletedforadmissionofficer();
-		$this->load->view('completedforadmissionofficer', $this->data);	
-	}
+	// 	$this->data['posts4'] = $this->ManageInquiries_model->getCompletedforadmissionofficer();
+	// 	$this->load->view('completedforadmissionofficer', $this->data);	
+	// }
 
 	//Making the pending entry editable
 	public function updateChanges(){
@@ -52,7 +52,7 @@ class ManageInquiriesCoun_controller extends CI_Controller{
 		$this->ManageInquiriesCoun_model->updateChanges($data,$id);
 
 		//Go back to index after inserting
-	redirect("index.php/ManageInquiries_controller/index");
+	redirect("index.php/ManageInquiriesCoun_controller/index");
 	}
 }
 

@@ -93,7 +93,7 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/Admissions_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
+                        <a href="<?php echo base_url();?>index.php/AdmissionsCoun_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                     </li>
 
                     <li>
@@ -259,14 +259,14 @@
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
-                                                <th width="70" style="text-align: center">First Name</th>
-                                                <th width="100" style="text-align: center">Last Name</th>
-                                                <th width="60" style="text-align: center">OL</th>
-                                                <th width="60" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">First Name</th>
+                                                <th width="150" style="text-align: center">Last Name</th>
+                                                <th width="100" style="text-align: center">OL</th>
+                                                <th width="100" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="150" style="text-align: center">Email</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="300" style="text-align: center">Actions</th>
+                                                <th width="400" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
 
@@ -477,14 +477,14 @@
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
-                                                <th width="70" style="text-align: center">First Name</th>
-                                                <th width="100" style="text-align: center">Last Name</th>
-                                                <th width="60" style="text-align: center">OL</th>
-                                                <th width="60" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">First Name</th>
+                                                <th width="150" style="text-align: center">Last Name</th>
+                                                <th width="100" style="text-align: center">OL</th>
+                                                <th width="100" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="150" style="text-align: center">Email</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="300" style="text-align: center">Actions</th>
+                                                <th width="400" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
 
@@ -694,14 +694,14 @@
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
-                                                <th width="70" style="text-align: center">First Name</th>
-                                                <th width="100" style="text-align: center">Last Name</th>
-                                                <th width="60" style="text-align: center">OL</th>
-                                                <th width="60" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">First Name</th>
+                                                <th width="150" style="text-align: center">Last Name</th>
+                                                <th width="100" style="text-align: center">OL</th>
+                                                <th width="100" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="150" style="text-align: center">Email</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="300" style="text-align: center">Actions</th>
+                                                <th width="400" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
 

@@ -31,6 +31,7 @@ $this->load->model("Student_Data_Model");
             <?php
                foreach ($result->result_array() as $row) {
                     $_SESSION["first_username"]=$row['first_name'];
+                    $_SESSION["last_username"]=$row['last_name'];
                     $_SESSION["user_ID"]=$row['u_id'];
                     $_SESSION["propic"]=$row['profilepicture'];
                     $_SESSION["status"]=$row['status'];

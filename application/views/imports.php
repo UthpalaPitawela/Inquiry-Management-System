@@ -85,7 +85,6 @@
         <!-- END THIS PAGE PLUGINS-->        
 
         <!-- START TEMPLATE -->
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/settings.js"></script>
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script>   

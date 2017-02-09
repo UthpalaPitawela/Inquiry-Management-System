@@ -151,140 +151,29 @@
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                 <div class = "col-md-12">
-                  <div class="panel panel-default tabs">
-                                <ul class="nav nav-tabs nav-justified">
-                                    <li class="active"><a href="#tab8" data-toggle="tab">Create Student Account</a></li>
-                                    <li><a href="#tab9" data-toggle="tab">View Student Profiles</a></li>
-                                </ul>
-                                <div class="panel-body tab-content">
-
-                                <!--First tab -->
-                                    <div class="tab-pane active" id="tab8">
-                                        
-
-                        <!-- Form to create student profile -->
-                        <div class="row">
-                        <div class="col-md-12">
-                            
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url('index.php/AddStudentAcc_controller/addstudent');?>">
-                            <div class="panel panel-default">
-
-                                <div class="panel-body">                                                                        
-                                    
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Username</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="username" required/>
-                                            </div>                                            
-                                            <span class="help-block">Username for the student account</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Password</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" class="form-control" name="password" required/>
-                                            </div>            
-                                            <span class="help-block">Password for the student account</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">First Name</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="firstname">                                            
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Last Name</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="lastname">                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Email</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
-                                                <input type="text" class="form-control" name="email">                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Date of Birth</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input type="date" class="form-control" name="dob">                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Contact No.</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="number" class="form-control" name="contact" required>                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="panel-footer">
-                                    <button type="reset" class="btn btn-default">Clear Form</button>                              
-                                    <button type="submit" class="btn btn-primary pull-right">Create Account</button>
-                                </div>
-                            </div>
-                            </form>
-                            
-                        </div>
-                    </div> 
-
-                                    </div>
-
-                                    <!--Second tab -->
-                                    <div class="tab-pane" id="tab9">
-                                       
-
-
-
-
-
+                  
                     <div class="panel panel-default">
                                 <div class="panel-heading">                                
                                     <h3 class="panel-title">Student List</h3>
                                     <ul class="panel-controls">
 
                                     <li>
+
                                     <div class="panel-body">
-                                    <div class="col-md-12">
-                                    <div class="input-group push-down-10">
+                                        <div class="col-md-12">
+                                            <div class="input-group push-down-10">
                                                 <span class="input-group-addon"><span class="fa fa-search"></span></span>
                                                  <input type="text" name="search" class="form-control" id="searchid" onkeyup="getStudent()" placeholder="Search Student..."/>
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-primary">Search</button>
                                                 </div>
                                             </div>
-                                      <div id="studentdiv">
+                                            <div id="studentdiv">
 
-                            No Result
-                                
-                            </div>
-                                    </div>
+                                                No Result
+                                                
+                                            </div>
+                                        </div>
                                     </div>
                                     </li>
 
@@ -307,13 +196,10 @@
                                         </thead>
                                         <tbody>
 
-<?php
-
-
+                                    <?php
                                     if ($admissionstudent->num_rows() > 0) {
-foreach ($admissionstudent ->result_array() as $studentrow) {
-
-?>
+                                        foreach ($admissionstudent ->result_array() as $studentrow) {
+                                    ?>
 
                                             <tr>
                                             <form action="">
@@ -350,10 +236,10 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
 
 
 
-                                    </div>
+                            
                                                             
                                 </div>
-                            </div>  
+                            
                     </div>
 
 

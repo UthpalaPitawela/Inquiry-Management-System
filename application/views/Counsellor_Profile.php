@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('public/css/theme-default.css'); ?>"/>
         <!-- EOF CSS INCLUDE -->                                    
     </head>
-
+ 
     <body>
 
     <?php

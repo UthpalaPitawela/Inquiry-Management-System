@@ -133,7 +133,7 @@
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="<?php echo base_url();?>index.php/Login_controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->    
 
@@ -200,7 +200,7 @@
 
                                     foreach($posts3 as $postt){ ?>
                                             <tr id="<?php  echo $postt->r_id; ?>">
-                                               <form method="post" action="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges" > 
+                                               <form method="post" action="<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/updateChanges" > 
                                             
                                                 <input type="hidden" style="border:none; text-align: center;" value="<?php echo $postt->r_id; ?>" id="id" name="rid" />
                                                 <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Fname; ?>" id="Fname" name="Fname" /></td>
@@ -1002,7 +1002,7 @@
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo base_url('index.php/Login_controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <a href="<?php echo base_url('index.php/Login_Controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
                             <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>

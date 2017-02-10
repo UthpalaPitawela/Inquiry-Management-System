@@ -32,12 +32,7 @@ class ManageInquiriesCoun_controller extends CI_Controller{
 
 	//Making the pending entry editable
 	public function updateChanges(){
-?>
 
-<script type="text/javascript">
-	alert("Your changes have been succesfully saved!");
-</script>
-<?php
 		$id = $this->input->post('rid');
 		$data = array(
 			
@@ -45,8 +40,8 @@ class ManageInquiriesCoun_controller extends CI_Controller{
 			'Lname' => $this->input->post('Lname'),
 			'Email' => $this->input->post('Email'),
 			'Intake' => $this->input->post('Intake'),
-			'Pdate' => $this->input->post('Pdate'),
-			'CounsellorName' => $this->input->post('CounsellorName'));
+			'Pdate' => $this->input->post('Pdate'));
+	//		'CounsellorName' => $this->input->post('CounsellorName'));
 
 		//Transfering data to model
 		$this->ManageInquiriesCoun_model->updateChanges($data,$id);

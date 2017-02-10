@@ -53,6 +53,14 @@ class ManageInquiries_controller extends CI_Controller{
 		//Go back to index after inserting
 	redirect("index.php/ManageInquiries_controller/index");
 	}
+	public function viewSummary($rid)
+	{
+		$data['summary']= $this->ManageInquiries_model->viewSummary($rid);
+		$data['details'] = $this->ManageInquiries_model->viewStudentDetails($rid);
+		//print_r($rid);
+		$this->load->view('Summary_Timeline_View',$data);
+
+	}
 }
 
 ?>

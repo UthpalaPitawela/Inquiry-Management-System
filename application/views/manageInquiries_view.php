@@ -280,7 +280,7 @@
 
                                         
                                             <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
@@ -499,7 +499,7 @@
 
                                         
                                             <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
@@ -718,7 +718,7 @@
 
                                         
                                             <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>

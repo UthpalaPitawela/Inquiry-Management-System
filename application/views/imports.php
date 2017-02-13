@@ -63,13 +63,10 @@
       <!--  
         <script type="text/javascript" src="<?php echo base_url();?>public/js/demo_dashboard.js"></script>
 -->
-         <audio id="audio-alert" src="<?php echo base_url();?>public/audio/alert.mp3" preload="auto"></audio>
-        <audio id="audio-fail" src="<?php echo base_url();?>public/audio/fail.mp3" preload="auto"></audio>
+         
 
 
 
-            <audio id="audio-alert" src="<?php echo base_url();?>public/audio/alert.mp3" preload="auto"></audio>
-        <audio id="audio-fail" src="<?php echo base_url();?>public/audio/fail.mp3" preload="auto"></audio>
         <!-- END PRELOADS -->              
         
     <!-- START SCRIPTS -->

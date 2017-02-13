@@ -61,17 +61,19 @@
                      <li>
                         <a href="<?php echo base_url();?>index.php/Page_Controller/loadingpages/admission_officer_student_list"><span class="fa fa-users"></span> <span class="xn-text">Student Profiles</span></a>
                         
-                    </li>  
+                    </li>
+
+                    <li class="active">
+                        <a href="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer"><span class="fa fa-phone"></span> <span class="xn-text">Completed Inquiries</span></a>
+                        
+                    </li>        
 
                      <li>
                         <a href="<?php echo base_url();?>index.php/Admissions_controller/admissionsofficeradmissions"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                         
                     </li>                
                     
-                    <li class="active">
-                        <a href="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer"><span class="fa fa-phone"></span> <span class="xn-text">Completed Inquiries</span></a>
-                        
-                    </li>         
+                       
                     
                 </ul>
                 <!-- END X-NAVIGATION -->
@@ -101,7 +103,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Admissions</a></li>
+                    <li><a href="#">Completed Inquiries</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
 

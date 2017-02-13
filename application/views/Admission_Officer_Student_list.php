@@ -56,22 +56,19 @@ $propic=$_SESSION["propic"];
                     <li class="active">
                         <a href="<?php echo base_url();?>index.php/Page_Controller/loadingpages/admission_officer_student_list"><span class="fa fa-users"></span> <span class="xn-text">Student Profiles</span></a>
                         
-                    </li>  
+                    </li> 
+
+                    <li>
+                        <a href="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer"><span class="fa fa-phone"></span> <span class="xn-text">Completed Inquiries</span></a>
+                        
+                    </li>    
 
                      <li>
                         <a href="<?php echo base_url();?>index.php/Admissions_controller/admissionsofficeradmissions"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                         
                     </li>                
                     
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer"><span class="fa fa-phone"></span> <span class="xn-text">Completed Inquiries</span></a>
                         
-                    </li>                
-                
-                  
-
-                 
-                    
                     
                 </ul>
                 <!-- END X-NAVIGATION -->
@@ -100,7 +97,7 @@ $propic=$_SESSION["propic"];
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active"></li>
+                    <li class="active">Student Profiles</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 <div>
@@ -113,34 +110,11 @@ $propic=$_SESSION["propic"];
 
 
                 <div class="page-content-wrap"  id='studiv' >
-                    
-
-
- 
-
-
+                 
                 </div>
                 <div class="page-content-wrap"  >
                               
                     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <div class="panel panel-default">
 
 
@@ -152,7 +126,7 @@ $propic=$_SESSION["propic"];
 
                                     <li>
                                     <div class="panel-body">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12" align="left">
                                     <div class="input-group push-down-10">
                                                 <span class="input-group-addon"><span class="fa fa-search"></span></span>
                                                  <input type="text" name="search" class="form-control" id="searchid" onkeyup="getStudent()" placeholder="Search Student..."/>
@@ -169,12 +143,6 @@ $propic=$_SESSION["propic"];
                                     </div>
                                     </li>
 
-                                          
-                          
-  
-                                        <li class="pull-right"><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                                        <li class="pull-right"><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                        <li class="pull-right"><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>                                
                                 </div>
                                 <div class="panel-body">
@@ -227,34 +195,6 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                                 </div>
                             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            
-
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->    
                 </div>                            
@@ -263,7 +203,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
         </div>
         <!-- END PAGE CONTAINER -->
 
-     <!-- MESSAGE BOX-->
+      <!-- MESSAGE BOX-->
        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
@@ -274,7 +214,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="btn btn-danger btn-lg">Yes</a>
+                            <a href="<?php echo base_url('index.php/Login_Controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
                             <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
@@ -311,16 +251,7 @@ $('#studiv').load("<?php echo site_url();?>Student_Data_Controller/loadingdetail
    //  });
 
 
-
-
-
-
 }
-
-
-
-
-
 
 show = function(){
 
@@ -381,19 +312,6 @@ function getStudent(){
 
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </body>
 </html>

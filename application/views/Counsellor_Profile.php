@@ -383,6 +383,13 @@
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/demo_dashboard.js"></script>
         <!-- END TEMPLATE -->
+
+        <script>
+        $('.mb-control').click(function(e){
+            e.preventDefault()
+        })
+        
+        </script> 
     <!-- END SCRIPTS -->         
     </body>
 </html>

@@ -106,15 +106,17 @@ $status = $_SESSION["status"];
                         
                     </li>  
 
+                    <li>
+                        <a href="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer"><span class="fa fa-phone"></span> <span class="xn-text">Completed Inquiries</span></a>
+                        
+                    </li>  
+
                      <li>
                         <a href="<?php echo base_url();?>index.php/Admissions_controller/admissionsofficeradmissions"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                         
                     </li>                
                     
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer"><span class="fa fa-phone"></span> <span class="xn-text">Completed Inquiries</span></a>
-                        
-                    </li>               
+                                 
                 
                   
 
@@ -140,7 +142,7 @@ $status = $_SESSION["status"];
                     <li class="xn-icon-button pull-right">
                         <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
-                    <!-- END SIGN OUT -->
+                    <!-- END SIGN OUT --> 
                     <li class="pull-right" style="color:grey; padding-top: 16px; padding-right: 20px" >Logged in as <?php echo $name; ?> </li>
                      </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                     
@@ -670,24 +672,24 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
         <!-- END PAGE CONTAINER -->
 
       <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout" style="z-index: 1001 !important;">
+       <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
                     <div class="mb-content">
                         <p>Are you sure you want to log out?</p>                    
-                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                        <p><strong>Press No if you want to continue work.</strong> Press Yes to logout.</p>
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="btn btn-success btn-lg">Yes</a>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                            <a href="<?php echo base_url('index.php/Login_Controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END MESSAGE BOX-->
+        <!--end of message box-->
     
 
 
@@ -776,10 +778,7 @@ function getStudent(){
 </script>
 
 
-<script type="text/javascript">
 
-
-</script>
 
 
 
@@ -864,4 +863,11 @@ function getStudent(){
             <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/layouts/topRight.js'></script>            
             
             <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/themes/default.js'></script>
+
+        <script>
+        $('.mb-control').click(function(e){
+            e.preventDefault()
+        })
+        
+        </script> 
 

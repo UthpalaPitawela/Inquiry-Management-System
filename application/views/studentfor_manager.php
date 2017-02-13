@@ -202,137 +202,12 @@
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                 <div class = "col-md-12">
-                  <div class="panel panel-default tabs">
-                                <ul class="nav nav-tabs nav-justified">
-                                    <li ><a href="#tab8" data-toggle="tab">Create Student Account</a></li>
-                                    <li class="active"><a href="#tab9" data-toggle="tab">View Student Profiles</a></li>
-                                </ul>
-                                <div class="panel-body tab-content">
-
-                                <!--First tab -->
-                                    <div class="tab-pane" id="tab8">
-                                        
-
-                        <!-- Form to create student profile -->
-                        <div class="row">
-                        <div class="col-md-12">
-                            
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url('index.php/AddStudentAcc_controller/addstudent');?>">
-                            <div class="panel panel-default">
-
-                                <div class="panel-body">                                                                        
-                                    
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Username</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="username" required/>
-                                            </div>                                            
-                                            <span class="help-block">Username for the student account</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Password</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" class="form-control" name="password" required/>
-                                            </div>            
-                                            <span class="help-block">Password for the student account</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">First Name</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="firstname">                                            
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Last Name</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="lastname">                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Email</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
-                                                <input type="text" class="form-control" name="email">                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Date of Birth</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input type="date" class="form-control" name="dob">                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Contact No.</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="number" class="form-control" name="contact" required>                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="panel-footer">
-                                    <button type="reset" class="btn btn-default">Clear Form</button>                              
-                                    <button type="submit" class="btn btn-primary pull-right">Create Account</button>
-                                </div>
-                            </div>
-                            </form>
-                            
-                        </div>
-                    </div> 
-
-                                    </div>
-
-                                    <!--Second tab -->
-                                    <div class="tab-pane active" id="tab9">
-                                       
-
-
-
-
-
+                                     
                     <div class="panel panel-default">
-
-
-
 
                                         <div class="page-content-wrap"  id='studiv' >
                     
-
-
-
 <br>
-
-
-
-
-
-
-
 
 <?php
  if ($profile_data->num_rows() > 0) {
@@ -433,42 +308,12 @@ if($row2['other']!='nolink'){
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
 
 
 <?php
 }
 ?>
-
-
-
 
 
 <!-- 
@@ -607,32 +452,6 @@ if($row2['other']!='nolink'){
 <?php
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 }else{
     echo "No data Available";
@@ -642,42 +461,8 @@ if($row2['other']!='nolink'){
 
 ?>
 
-
-
-
-
-
-
  
 </div>                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                 <div class="panel-heading">                                
                                     <h3 class="panel-title">Student List</h3>
@@ -754,19 +539,7 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                                     </table>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-                                    </div>
-                                                            
-                                </div>
-                            </div>  
+  
                     </div>
 
 
@@ -868,27 +641,7 @@ function getStudent(){
 }
 
 
-
-     
-
-
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   <?php

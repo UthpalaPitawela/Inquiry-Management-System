@@ -45,7 +45,7 @@ $propic=$_SESSION["propic"];
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $name;  ?></div>
-                                <div class="profile-data-title">Admission Officer</div>
+                                <div class="profile-data-title">Admissions Officer</div>
                             </div>
                            
                         </div>                                                                        

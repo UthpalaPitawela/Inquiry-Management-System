@@ -51,15 +51,9 @@
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $name ?></div>
-                                <div class="profile-data-title">
-                                    <!-- <?php  if($role==0){
-                                                echo "Manager";
-                                            }
-                                            elseif($role==2){
-                                                echo "Admissions Officer";
-
-                                            }
-                                         ?> -->
+                                <div class="profile-data-title"><?php if($status==0){echo 'Manager';}
+                                elseif($status==2){echo 'Admissions Officer';}
+                                elseif($status==3){echo 'Counsellor';}   ?>
                                 </div>
                             </div>
                             <div class="profile-controls">

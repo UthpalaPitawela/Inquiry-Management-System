@@ -36,9 +36,7 @@ class profile_controller extends CI_Controller{
 	    }
 	    $this->load->view('profile_view',$photo);
 
-		if($done){
-        redirect("profile_controller/index");
-    	}
+        //redirect("index.php/profile_controller/index");
 	}
 
 	public function getuserData()

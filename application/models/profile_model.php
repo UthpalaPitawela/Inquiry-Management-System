@@ -23,7 +23,7 @@ class profile_model extends CI_Model{
             ?>
              <script>
              alert('Image uploaded successfully');
-             window.location='<?php echo site_url("profile_controller/index");?>'
+             window.location='<?php echo site_url("index.php/profile_controller");?>'
              </script>
             //echo "File is an image - " . $check["mime"] . ".";
             <?php
@@ -38,7 +38,7 @@ class profile_model extends CI_Model{
          ?>
          <script>
          alert('Image uploaded successfully');
-         window.location='<?php echo site_url("profile_controller/index");?>'
+         window.location='<?php echo site_url("index.php/profile_controller");?>'
          </script>
          <?php
          //$uploadOk = 0;
@@ -59,7 +59,7 @@ class profile_model extends CI_Model{
          ?>
      	<script>
          alert('Only jpg/jpeg/png/gif file types can be uploaded.');
-         window.location='<?php echo site_url("profile_controller/index");?>'
+         window.location='<?php echo site_url("index.php/profile_controller");?>'
          </script>
          <?php
          $uploadOk = 0;
@@ -84,7 +84,7 @@ class profile_model extends CI_Model{
          ?>
          <script>
          alert('Sorry your upload failed');
-         window.location='<?php echo site_url("profile_controller/index");?>'
+         window.location='<?php echo site_url("index.php/profile_controller");?>'
          </script>
          <?php
      // if everything is ok, try to upload file
@@ -93,7 +93,7 @@ class profile_model extends CI_Model{
              ?>
              <script>
          alert('Image uploaded successfully');
-         window.location='<?php echo site_url("profile_controller/index");?>'
+         window.location='<?php echo site_url("index.php/profile_controller");?>'
          </script>
          <?php
          } else {

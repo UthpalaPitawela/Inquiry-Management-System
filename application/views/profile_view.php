@@ -231,7 +231,7 @@
                                         <div class="col-md-3 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
-                                                <input type="text" class="form-control" name="email" disabled value="<?php echo $row->email;?>"/>                                            
+                                                <input type="text" class="form-control" name="email" disabled id="email" value="<?php echo $row->email;?>"/>                                            
                                             </div>
                                         </div>
                                     </div>
@@ -241,7 +241,7 @@
                                         <div class="col-md-3 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input type="text" class="form-control" name="fob" disabled value="<?php echo $row->dob;?>"/>                                            
+                                                <input type="text" class="form-control" id="dob" disabled data-provide="datepicker" name="dob" value="<?php echo $row->dob;?>"/>                                            
                                             </div>
                                         </div>
                                     </div>
@@ -251,10 +251,25 @@
                                         <div class="col-md-3 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="text" class="form-control" name="TP" disabled value="<?php echo $row->TP;?>"/>                                            
+                                                <input type="text" class="form-control" name="TP" id="TP" disabled value="<?php echo $row->TP;?>"/>                                            
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="panel-footer">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6"></div>
+
+                                        <div class="col-md-1">
+                                        <button type="button" class="btn btn-primary" id="edit" style="width:100px" onclick="Edit();">Edit</button>
+                                        </div>
+
+                                        <div class="col-md-1">
+                                        <button class="btn btn-default" name="save" id="save" style="display: none">Save Changes</button>
+                                        </div>
+
+                                    </div>
+                                    </div> 
                                     
                                 </div>
                             </div>
@@ -326,7 +341,21 @@
             e.preventDefault()
         })
         
-        </script>       
+        </script> 
+
+        <script type="text/javascript">
+            $('.datepicker').datepicker();
+        </script>  
+
+        <script type="text/javascript">
+            function Edit(){
+
+               document.getElementById("email").disabled = false;
+               document.getElementById("dob").disabled = false;
+               document.getElementById("TP").disabled = false;
+               document.getElementById("save").style.display = 'block';
+            }
+        </script>    
         
     <!-- END SCRIPTS -->                   
     </body>

@@ -45,6 +45,21 @@ class profile_controller extends CI_Controller{
 		$data['posts'] = $this->profile_model->getData($user_ID);
 		$this->load->view('profile_view',$data);
 	}
+
+	public function changeDetails()
+	{
+		//get form data to an array named $data
+		$data = array(
+			'email' => $this->input->post('username'),
+			'dob' => $this->input->post('password'),
+			'tpnumber' => $this->input->post('firstname'));
+			
+
+		//transferring data to model
+		$this->profile_model->changeDetails($data);
+
+		redirect("index.php/profile_controller");
+	}
 	
 
 

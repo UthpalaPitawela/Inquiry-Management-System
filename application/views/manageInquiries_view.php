@@ -738,7 +738,7 @@
                                         </form>
                                         
                                       
-<!-- POPUP for call summary -->
+                                    <!-- POPUP for call summary -->
                                       <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
@@ -751,7 +751,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
                                                                 

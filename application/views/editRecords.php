@@ -467,7 +467,7 @@
                                          <div class="col-md-6 col-xs-12">
                                              <div class="input-group">
                                                  <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="nic" class="form-control" disabled value="<?php echo $post->CounsellorName;  ?>" />
+                                                <input type="text" name="CounsellorName" class="form-control" disabled value="<?php echo $post->CounsellorName;  ?>" />
                                             </div>
                                  
                                          </div>
@@ -510,9 +510,17 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Call Summary:</label>
@@ -520,10 +528,11 @@
                                                                             
                                                                             <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
                                                                         </div>
+                                                                        <input type="hidden" name="call_count" id="call_count" value="<?php echo $post->call_count; ?>" />
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                                                 <button type="submit" id="save" class="btn btn-primary">Save changes</button>
                                                         </div>                               
                                                     
@@ -548,7 +557,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -558,17 +567,26 @@
                                                                             <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Contactno; ?>" />
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
                                                                             <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                            <input type="hidden" name="sms_count" id="sms_count" value="<?php echo $post->sms_count; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                                                 <button type="submit" id="save" class="btn btn-primary">Send Text Message</button>
                                                         </div>                               
                                                     
@@ -593,7 +611,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateEmailSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -603,17 +621,26 @@
                                                                             <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Email; ?>" />
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter Email body:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="email1" id="email1"></textarea>
+                                                                            <input type="hidden" name="email_count" id="email_count" value="<?php echo $post->email_count; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                                                 <button type="submit" id="save" class="btn btn-primary">Send Email</button>
                                                         </div>                               
                                                     
@@ -638,20 +665,28 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateOtherSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
-                                                                
+
                                                                     <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="other">Enter Summary:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="other" id="other"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                                                 <button type="submit" id="save" class="btn btn-primary">Save changes</button>
                                                         </div>                               
                                                     

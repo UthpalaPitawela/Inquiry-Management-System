@@ -342,7 +342,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <select class="form-control select" name="grade1" id="res1" >
+                                                    <select class="form-control select" name="grade1" id="res1">
 
                                                     <option value=120>A</option>
                                                     <option value=100>B</option>
@@ -432,7 +432,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input id="datepicker" class="form-control datepicker" value="dd-mm-yyyy" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo $post->Pdate;  ?>"  name="pdate" required />
+                                                <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo $post->Pdate;  ?>"  name="pdate" required />
 
                                             </div>
 
@@ -473,22 +473,197 @@
                                          </div>
                                      </div>
 
-                                     <?php  } ?>
-
-
                                 </div>
 
                             </div>
 
                             </div>
                             <div class="panel-footer">
-                                <button type="reset" class="btn btn-default">Clear Form</button>
-                                <input type="submit" name="" class="btn btn-primary pull-right" value="Submit">
+
+                                
+                                <button type="reset" class="btn btn-default">Clear Form</button> &nbsp;&nbsp;
+                                
+                                <!-- Summary buttons -->
+                                <label>Enter Summary&nbsp; </label>
+                                <a class="btn btn-success btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" data-tooltip="tooltip" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
+                                <a class="btn btn-danger btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-placement="top" title="SMS" data-tooltip="tooltip" data-target="#myModal1<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-phone red"></span></a>
+                                <a class="btn btn-info btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></a>
+                                <a class="btn btn-warning btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></a>
+                                
+                                <input type="submit" name="" class="btn btn-primary pull-right" value="Save Changes">
                                 
                             </div>
 
                             </div>
                             </form>
+
+                            <!-- POPUP for call summary -->
+                                      <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Follow-Up Summary</h4>
+                                              </div>
+                                              <br>
+                                        
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Call Summary:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                        <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" id="save" class="btn btn-primary">Save changes</button>
+                                                        </div>                               
+                                                    
+                                                    </form>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                  </div>
+                                </div>
+
+                                <!-- POPUP for SMS -->
+                                      <div id="myModal1<?php echo $post->r_id; ?>" class="modal fade">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Follow-Up Summary</h4>
+                                              </div>
+                                              <br>
+                                        
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Contactno; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                        <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" id="save" class="btn btn-primary">Send Text Message</button>
+                                                        </div>                               
+                                                    
+                                                    </form>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                  </div>
+                                </div>
+
+                                <!-- POPUP for Email -->
+                                      <div id="myModal2<?php echo $post->r_id; ?>" class="modal fade">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Follow-Up Summary</h4>
+                                              </div>
+                                              <br>
+                                        
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Email:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Email; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter Email body:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                        <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" id="save" class="btn btn-primary">Send Email</button>
+                                                        </div>                               
+                                                    
+                                                    </form>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                  </div>
+                                </div>
+
+                                <!-- POPUP for call summary -->
+                                      <div id="myModal3<?php echo $post->r_id; ?>" class="modal fade">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Follow-Up Summary</h4>
+                                              </div>
+                                              <br>
+                                        
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                        <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="submit" id="save" class="btn btn-primary">Save changes</button>
+                                                        </div>                               
+                                                    
+                                                    </form>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                  </div>
+                                </div> 
+
+                            <?php  }  ?>
 
                         </div>
                     </div>
@@ -733,6 +908,31 @@ $(function(){
 
 
 </script>
+
+        <script type="text/javascript">
+    
+        function assignID(registerID) {  
+            var registerID=registerID;
+            document.getElementById("regid").value = registerID; 
+        }
+        </script>
+
+        <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+        </script>
+
+
+        <script type="text/javascript"> 
+        //For the tooltip
+        $(document).ready(function() {
+            $('body').tooltip({
+                selector: "[data-tooltip=tooltip]",
+                container: "body"
+            });
+        });
+        </script>
 
 
 

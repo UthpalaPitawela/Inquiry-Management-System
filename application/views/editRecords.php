@@ -35,6 +35,12 @@
         <!-- <script src="<?php echo base_url('public/alert/js/alert.js'); ?>"></script> -->
         <!-- JS INCLUDE --> 
 
+        <style>
+       input[type="text"][disabled] {
+            color: black;
+        }
+        </style>
+
     </head>
     <body>
 
@@ -83,8 +89,8 @@
                         
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
-                            <li class="active"><a href="<?php echo base_url();?>index.php/User"><span class="fa fa-pencil"></span> Data Entry</a></li>
-                            <li>
+                            <li><a href="<?php echo base_url();?>index.php/User"><span class="fa fa-pencil"></span> Data Entry</a></li>
+                            <li  class="active">
 
                             <?php if($status==0){ ?>
                             <a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a>
@@ -171,7 +177,7 @@
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Inquiries</a></li>
-                    <li><a href="<?php echo base_url();?>index.php/user">Data Entry</a></li>
+                    <li><a href="<?php echo base_url();?>index.php/user">Edit Records</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
                 
@@ -181,7 +187,7 @@
                     <div class="row">
                         <div class="col-md-12">
 <!--index.php/user/register-->
-                            <form action="<?php echo base_url();?>index.php/User/register" name="registerForm" class="form-horizontal" method="post">
+                            <form action="<?php echo base_url();?>index.php/EditRecords_controller/register" name="registerForm" class="form-horizontal" method="post">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Student Registation Form</h3>
@@ -195,13 +201,17 @@
                             <div class="row">
 
                                 <div class="col-md-6">
+                                <?php
+                                foreach($record as $post){ ?>
+
+                                <input name="rid" id="rid" type="hidden" class="form-control" value="<?php echo $post->r_id;  ?>" />
 
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">First Name*</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input name="fname" id="fname" type="text" class="form-control" required />
+                                                <input name="fname" id="fname" type="text" class="form-control" value="<?php echo $post->Fname;  ?>" required />
                                             </div>
                                             <span id="error_invalidFirstname" style="color: red;"></span>
 
@@ -213,7 +223,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input name="lname" id="lname" type="text" class="form-control" required />
+                                                <input name="lname" id="lname" type="text" class="form-control" value="<?php echo $post->Lname;  ?>" required />
                                             </div>
                                             <span id="error_invalidLastname" style="color: red;"></span>
 
@@ -223,7 +233,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Gender</label>
                                         <div class="col-md-6 col-xs-12">
-                                            <input type="radio" name="gender" value="Male"> Male
+                                            <input type="radio" name="gender" value="Male" value="<?php echo $post->Gender;  ?>"> Male
                                             <input type="radio" name="gender" value="Female"> Female
 
                                         </div>
@@ -234,7 +244,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input name="address" type="text" class="form-control" />
+                                                <input name="address" type="text" class="form-control" value="<?php echo $post->Address;  ?>" />
                                             </div>
 
                                         </div>
@@ -244,7 +254,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="country" class="form-control" />
+                                                <input type="text" name="country" class="form-control" value="<?php echo $post->Country;  ?>" />
                                                 
                                             </div>
 
@@ -255,7 +265,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="email" id="email" class="form-control" required />
+                                                <input type="text" name="email" id="email" class="form-control" value="<?php echo $post->Email;  ?>" required />
                                             </div>
                                             <span id="error_invalidEmail" style="color: red;"></span>
 
@@ -266,7 +276,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="contactno" id="contactno" class="form-control" placeholder="Contact number format : XXX XXX XXXX" required />
+                                                <input type="text" name="contactno" id="contactno" class="form-control" placeholder="Contact number format : XXX XXX XXXX" required value="<?php echo $post->Contactno;  ?>" />
                                             </div>
                                             <span id="error_invalidMobile" style="color: red;"></span>
 
@@ -279,7 +289,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="nic" class="form-control" />
+                                                <input type="text" name="nic" class="form-control" value="<?php echo $post->NIC;  ?>" />
                                             </div>
 
                                         </div>
@@ -403,13 +413,14 @@
                                             <input type="radio" name="mode" value="Walk-in"> &nbsp;Walk-in&nbsp;
                                             <input type="radio" name="mode" value="Call"> &nbsp;Call&nbsp;            
                                             <input type="radio" name="mode" value="Email"> &nbsp;Email / SMS&nbsp;
+                                            <input type="radio" name="mode" value="Database"> &nbsp;Database&nbsp;
 
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Potential Level* </label>
+                                        <label class="col-md-3 col-xs-12 control-label">Potential Level </label>
                                         <div class="col-md-6 col-xs-12" name="mode">
-                                            <input type="radio" name="intake" value="High" required> High&nbsp;
+                                            <input type="radio" name="intake" value="High"> High&nbsp;
                                             <input type="radio" name="intake" value="Medium"> Medium&nbsp;
                                             <input type="radio" name="intake" value="Low"> Low&nbsp;
 
@@ -417,11 +428,11 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Potential Date </label>
+                                        <label class="col-md-3 col-xs-12 control-label">Potential Date* </label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input id="datepicker" class="form-control datepicker" value="dd-mm-yyyy" data-date-format="dd-mm-yyyy" data-date-viewmode="years" name="pdate" required />
+                                                <input id="datepicker" class="form-control datepicker" value="dd-mm-yyyy" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo $post->Pdate;  ?>"  name="pdate" required />
 
                                             </div>
 
@@ -456,19 +467,13 @@
                                          <div class="col-md-6 col-xs-12">
                                              <div class="input-group">
                                                  <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                 <select name="counsellorname" class="form-control">
-                                                    <?php
-
-                                                    foreach($users as $row)
-                                                    {
-                                                        echo '<option value = "'.$row->first_name." ".$row->last_name.'">'.$row->first_name.'</option>';
-                                                    }
-                                                    ?>
-                                                 </select>
+                                                <input type="text" name="nic" class="form-control" disabled value="<?php echo $post->CounsellorName;  ?>" />
                                             </div>
                                  
                                          </div>
                                      </div>
+
+                                     <?php  } ?>
 
 
                                 </div>
@@ -579,7 +584,7 @@
              $.ajax({
      
                 type:"get",
-                url : 'User/geteligbledata/'+id,
+                url : 'EditRecords_controller/geteligbledata/'+id,
                 //url : 'view_register'+id,
                 success: function (data) {
 
@@ -736,17 +741,3 @@ $(function(){
         })
         
 </script>
-
-<!-- <script type="text/javascript">
-    function alert1(){
-        $.alert.open('info', 'Lorem ipsum dolor sit amet');
-    }
-
-</script>
- -->
-
-
-
-
-
-

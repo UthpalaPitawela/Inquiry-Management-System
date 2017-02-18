@@ -190,9 +190,10 @@
                                                 <th width="50" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="150" style="text-align: center">Email</th>
+                                                <th width="50" style="text-align: center">Potential Level</th>
                                                 <th width="80" style="text-align: center">Potential Date</th>
                                                 <th width="120" style="text-align: center">Handled By</th>
-                                                <!-- <th width="300" style="text-align: center">Actions</th> -->
+                                                <th width="300" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
                                     <tbody id='table'>
@@ -201,24 +202,25 @@
 
                                     foreach($posts3 as $postt){ ?>
                                             <tr id="<?php  echo $postt->r_id; ?>">
-                                               <!-- <form method="post" action="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges" >  -->
+                                               <form method="post" action="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges" > 
                                             
-                                                <!-- <input type="hidden" style="border:none; text-align: center;" value="<?php echo $postt->r_id; ?>" id="id" name="rid" /> -->
-                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/EditRecords_controller/index/'.$postt->r_id);?>"><?php echo $postt->Fname; ?></a></td>
-                                                <td style="text-align: center"><?php echo $postt->Lname; ?></td>
+                                                <input type="hidden" style="border:none; text-align: center;" value="<?php echo $postt->r_id; ?>" id="id" name="rid" />
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Fname; ?>" id="Fname" name="Fname" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Lname; ?>" id="Lname" name="Lname" /></td>
                                                 <td style="text-align: center"><?php echo $postt->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $postt->Grade1+$postt->Grade2+$postt->Grade3; ?></td>
                                                 <td style="text-align: center"><?php echo $postt->Contactno; ?></td>
-                                                <td style="text-align: center"><?php echo $postt->Email; ?></td>
-                                                <td style="text-align: center"><?php echo $postt->Pdate; ?></td>
-                                                <td style="text-align: center"><?php echo $postt->CounsellorName; ?></td>
-                                                <!-- <td style="text-align: center">
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Email; ?>" id="Email" name="Email" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Intake; ?>" id="Intake" name="Intake" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Pdate; ?>" id="Pdate" name="Pdate" /></td>
+                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center; width: 100%" value="<?php echo $postt->CounsellorName; ?>" id="CounsellorName" name="CounsellorName" /></td>
+                                                <td style="text-align: center">
                                             
                                                 <input type="submit" name="submit" class="btn btn-primary btn-rounded btn-sm" data-tooltip="tooltip" title="Update Changes" data-toggle="top" value="Save" />
                                                 <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Following</button>
                                                 <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Completed</button>
-                                                </td> -->
-                                          <!--   </form> -->
+                                                </td>
+                                            </form>
                                             </tr>
                                             
                             

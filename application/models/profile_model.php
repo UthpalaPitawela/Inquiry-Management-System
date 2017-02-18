@@ -22,11 +22,12 @@ class profile_model extends CI_Model{
         if($check !== false) {
             ?>
              <script>
-             alert('Image uploaded successfully');
+             //alert('Image uploaded successfully');
              window.location='<?php echo site_url("index.php/profile_controller");?>'
              </script>
+             <?php
             //echo "File is an image - " . $check["mime"] . ".";
-            <?php
+            
             $uploadOk = 1;
         }else {
             echo "File is not an image.";
@@ -37,7 +38,7 @@ class profile_model extends CI_Model{
      if (file_exists($target_file)) {
          ?>
          <script>
-         alert('Image uploaded successfully');
+         //alert('Image uploaded successfully');
          window.location='<?php echo site_url("index.php/profile_controller");?>'
          </script>
          <?php
@@ -92,7 +93,7 @@ class profile_model extends CI_Model{
          if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
              ?>
              <script>
-         alert('Image uploaded successfully');
+         //alert('Image uploaded successfully');
          window.location='<?php echo site_url("index.php/profile_controller");?>'
          </script>
          <?php

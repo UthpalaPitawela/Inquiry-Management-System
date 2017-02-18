@@ -155,13 +155,13 @@
                                            
                                         </div>
                                         <div class="col-md-6">
-                                            <?php if($details['intake'] == 'high'){?>
+                                            <?php if($details['intake'] == 'high'){ ?>
                                                 <button class="btn btn-primary btn-rounded btn-block" style="border-color:red;" ><font size="4" color="red"> High </font></button>
-                                            <?php }else if($details['intake'] == 'medium'){?>
+                                            <?php }else if($details['intake'] == 'medium'){ ?>
                                                 <button class="btn btn-primary btn-rounded btn-block" style="border-color:#f9e504;" ><font size="4" color="#f9e504"> Medium </font></button>
-                                            <?php}else{?>
+                                            <?php }else{ ?>
                                                 <button class="btn btn-primary btn-rounded btn-block" style="border-color:#f9e504;" ><font size="4" color="#0ed11b"> Low </font></button>
-                                            <?php }?>
+                                            <?php } ?>
                                             
                                         </div>
                                         <div class="col-md-3">

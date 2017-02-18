@@ -16,9 +16,21 @@
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
+
+        <!-- ALERT CSS -->
+        <link href="<?php echo base_url('public/alert/css/alert.css'); ?>" rel="stylesheet" />
+        <link href="<?php echo base_url('public/alert/themes/default/theme.css'); ?>" rel="stylesheet" />
         <!-- EOF CSS INCLUDE --> 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <!-- JS INCLUDE --> 
+
+        <!-- JQUERY -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+
+        <!-- ALERT -->
+        <script src="<?php echo base_url('public/alert/js/alert.js'); ?>"></script>
+
 
         <style>
        input[type="text"][disabled] {
@@ -316,6 +328,10 @@
         
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
+        <!-- JQUERY -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap.min.js"></script>                
@@ -335,6 +351,9 @@
         
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script> 
+
+        <!-- ALERT -->
+        <script src="<?php echo base_url('public/alert/js/alert.js'); ?>"></script>
 
         <script>
         $('.mb-control').click(function(e){

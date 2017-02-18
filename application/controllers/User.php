@@ -80,8 +80,10 @@ class User extends CI_Controller{
 
           //}
 
-
+             
              $this->index();
+
+
      }
 
 

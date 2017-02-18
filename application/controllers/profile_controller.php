@@ -31,6 +31,11 @@ class profile_controller extends CI_Controller{
 	    if (mysqli_num_rows($res)==1){
 	        while ($row = mysqli_fetch_assoc($res)){
 	            $photo = $row["profilepicture"];
+	            ?>
+	            <script type="text/javascript">
+	            	$.alert.open('info', 'Lorem ipsum dolor sit amet');
+	            </script>
+	            <?php
 	        }
 	        
 	    }

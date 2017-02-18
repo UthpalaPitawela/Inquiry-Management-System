@@ -40,7 +40,7 @@ $this->load->model("Student_Data_Model");
                         $data['result'] = $this->Manager_Profile_Model->index();
                        // print_r($data);
                             if($this->input->post('username') && $this->input->post('password')) {
-                                //redirect('index.php/Login_Controller/validate_user');
+                                redirect('index.php/Login_Controller/validate_user');
                              }
                         $this->load->view("manager_profile",$data);
                         /*$data = array(
@@ -53,7 +53,7 @@ $this->load->model("Student_Data_Model");
                         $data['admissionstudent'] = $this->Student_Data_Model->get_Student_Data($user_Id);
    
                         if($this->input->post('username') && $this->input->post('password')) {
-                                //redirect('index.php/Login_Controller/validate_user');
+                                redirect('index.php/Login_Controller/validate_user');
                         }
                         $this->load->view('Admission_Officer_Student_list',$data);
 //                        $this->load->view('Admission_Officer');
@@ -71,7 +71,7 @@ $this->load->model("Student_Data_Model");
                        $val = $this->Counsellor_Profile_Model->getActivitySummary($counsellorname);
                         $data['result'] = $val[0];
                         if($this->input->post('username') && $this->input->post('password')) {
-                            //redirect('index.php/Login_Controller/validate_user');
+                            redirect('index.php/Login_Controller/validate_user');
                         }
 
                         $this->load->view('Counsellor_Profile',$data);
@@ -79,7 +79,7 @@ $this->load->model("Student_Data_Model");
             
                     }elseif($row['status'] == 4){
                         if($this->input->post('username') && $this->input->post('password')) {
-                            //redirect('index.php/Login_Controller/validate_user');
+                            redirect('index.php/Login_Controller/validate_user');
                         }
                         $this->load->view('Assistant_Manager_Profile');
                     
@@ -103,13 +103,14 @@ $this->load->model("Student_Data_Model");
                     $_SESSION["propic"]=$rowstudent['propic'];
                     $data['programme'] = $this->Login_Model->getCourses($username);
                     if($this->input->post('username') && $this->input->post('password')) {
-                            //redirect('index.php/Login_Controller/validate_user');
+                            redirect('index.php/Login_Controller/validate_user');
                     }
                     $this->load->view('home',$data);
                 }
              }else{
                 echo "no account";
                 echo $_SESSION["username"];
+                $this->logout();
              }
      
         }
@@ -119,6 +120,7 @@ $this->load->model("Student_Data_Model");
        
         $this->load->driver('cache'); #load cache
         $this->session->sess_destroy(); # Destroy the current session
+        session_destroy();
         $this->cache->clean();  # Clean the cache
         redirect('index.php/'); #  Default controller name 
         ob_clean(); 

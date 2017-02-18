@@ -483,7 +483,8 @@
                             </div>
                             <div class="panel-footer">
                                 <button type="reset" class="btn btn-default">Clear Form</button>
-                                <button class="btn btn-primary pull-right">Submit</button>
+                                <input type="submit" name="" class="btn btn-primary pull-right" value="Submit">
+                                
                             </div>
 
                             </div>

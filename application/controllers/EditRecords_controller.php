@@ -14,6 +14,8 @@ class EditRecords_controller extends CI_Controller{
 
      function  index(){
         
+
+
         $data["users"] = $this->EditRecords_model->get_users();
         $rid = $this->uri->segment(3);
         $data["record"] = $this->EditRecords_model->getDetails($rid);
@@ -21,11 +23,12 @@ class EditRecords_controller extends CI_Controller{
 
 //         $this->register();
      }
-
+ 
      function register(){
+        
 
              //everything is good-process the form- write the data into the registration database
-             $rid = $this->input->post('id');
+             $rid = $this->input->post('rid');
              $fname = $this->input->post('fname');
              $lname = $this->input->post('lname');
              $address = $this->input->post('address');
@@ -59,7 +62,9 @@ class EditRecords_controller extends CI_Controller{
              $this->EditRecords_model->update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname);
 
              //redirect to the view
-             $this->index();
+
+             redirect("index.php/EditRecords_controller/index/$rid");
+             
 
 
      }

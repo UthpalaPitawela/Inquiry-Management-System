@@ -19,6 +19,7 @@
 
     <?php
     $name = $_SESSION["first_username"];
+    $lname = $_SESSION["last_username"];
     $propic = $_SESSION["propic"];
     $status = $_SESSION["status"];
     ?>
@@ -52,7 +53,7 @@
                     </li>
 
                     <li class="active">
-                        <a href="#"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <a href="<?php echo base_url('index.php/Counsellor_Profile_Controller/index/'. $name."/" .$lname);?>"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
                     </li>                    
                     <li class="xn-openable">
                         

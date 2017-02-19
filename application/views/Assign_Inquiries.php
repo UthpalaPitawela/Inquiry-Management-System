@@ -174,6 +174,7 @@
                                 
                                 <div class="col-md-6">
                                     <label>Select the counsellor to assign inquiries</label><br><br>
+                                    <label>Total number of unassigned inquiries</label><br><br>
                                     <label>Enter the number of inquiries</label>
                                 </div>
                                 <div class="col-md-2"></div>
@@ -190,6 +191,8 @@
                                         }
                                     ?>
                                     </select>
+                                    <br><br>
+                                    <label><?php echo $inquiries['count'];?></label>
                                     <br><br>
                                     <input type="text" name="inqcount" id="inqcount" style="width:190px;">
                                 

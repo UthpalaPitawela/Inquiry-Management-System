@@ -11,8 +11,18 @@ class Assign_Inquiries_Model extends CI_Model{
 	}
 
 	function getInquiries(){
+		
 		$query = $this->db->query("SELECT Fname,Lname,Email,Intake,r_id FROM register WHERE CounsellorName IS NULL AND Status = 'Pending'");
-		return $query;
+		$count = 0;
+		foreach($query->result() as $row){
+			$count++;
+		}
+		$data = array(
+			'count' => $count
+			);
+		return $data;
+	
+
 	}
 
 	function updateInquiries($counsellorname,$inqcount){

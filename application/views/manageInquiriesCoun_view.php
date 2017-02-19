@@ -36,7 +36,6 @@
      <?php
 
     $name = $_SESSION["first_username"];
-    $lastname = $_SESSION["last_username"];
     $propic = $_SESSION["propic"];
     $status = $_SESSION["status"];
 
@@ -80,7 +79,7 @@
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
                             <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
-                            <li class="active"><a href="<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/index"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
+                            <li class="active"><a href="<?php echo base_url();?>index.php/ManageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
                             
                         </ul>
                         
@@ -95,7 +94,7 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/AdmissionsCoun_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
+                        <a href="<?php echo base_url();?>index.php/Admissions_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                     </li>
 
                     <li>
@@ -135,7 +134,7 @@
 
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="<?php echo base_url();?>index.php/Login_controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->    
 
@@ -185,15 +184,15 @@
                                     <table id="customers2" class="table datatable table-hover">
                                         <thead>
                                             <tr>
-                                                <th width="50" style="text-align: center">First Name</th>
-                                                <th width="70" style="text-align: center">Last Name</th>
+                                                <th width="100" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
                                                 <th width="50" style="text-align: center">OL</th>
                                                 <th width="50" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
-                                                <th width="150" style="text-align: center">Email</th>
-                                                <th width="50" style="text-align: center">Potential Level</th>
+                                                <th width="100" style="text-align: center">Email</th>
                                                 <th width="80" style="text-align: center">Potential Date</th>
-                                                <th width="300" style="text-align: center">Actions</th>
+                                                <!-- <th width="120" style="text-align: center">Handled By</th> -->
+                                                <!-- <th width="300" style="text-align: center">Actions</th> -->
                                             </tr>
                                         </thead>
                                     <tbody id='table'>
@@ -202,24 +201,24 @@
 
                                     foreach($posts3 as $postt){ ?>
                                             <tr id="<?php  echo $postt->r_id; ?>">
-                                               <form method="post" action="<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/updateChanges" > 
+                                               <!-- <form method="post" action="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges" >  -->
                                             
-                                                <input type="hidden" style="border:none; text-align: center;" value="<?php echo $postt->r_id; ?>" id="id" name="rid" />
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Fname; ?>" id="Fname" name="Fname" /></td>
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Lname; ?>" id="Lname" name="Lname" /></td>
+                                                <!-- <input type="hidden" style="border:none; text-align: center;" value="<?php echo $postt->r_id; ?>" id="id" name="rid" /> -->
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/EditRecords_controller/index/'.$postt->r_id);?>"><?php echo $postt->Fname; ?></a></td>
+                                                <td style="text-align: center"><?php echo $postt->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $postt->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $postt->Grade1+$postt->Grade2+$postt->Grade3; ?></td>
                                                 <td style="text-align: center"><?php echo $postt->Contactno; ?></td>
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Email; ?>" id="Email" name="Email" /></td>
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Intake; ?>" id="Intake" name="Intake" /></td>
-                                                <td style="text-align: center"><input type="text" style="border:none; text-align: center;" value="<?php echo $postt->Pdate; ?>" id="Pdate" name="Pdate" /></td>
-                                                <td style="text-align: center">
+                                                <td style="text-align: center"><?php echo $postt->Email; ?></td>
+                                                <td style="text-align: center"><?php echo $postt->Pdate; ?></td>
+                                                <!-- <td style="text-align: center"><?php echo $postt->CounsellorName; ?></td> -->
+                                                <!-- <td style="text-align: center">
                                             
                                                 <input type="submit" name="submit" class="btn btn-primary btn-rounded btn-sm" data-tooltip="tooltip" title="Update Changes" data-toggle="top" value="Save" />
                                                 <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Following</button>
                                                 <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Completed</button>
-                                                </td>
-                                            </form>
+                                                </td> -->
+                                          <!--   </form> -->
                                             </tr>
                                             
                             
@@ -261,14 +260,15 @@
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
-                                                <th width="100" style="text-align: center">First Name</th>
-                                                <th width="150" style="text-align: center">Last Name</th>
-                                                <th width="100" style="text-align: center">OL</th>
-                                                <th width="100" style="text-align: center">AL</th>
+                                                <th width="70" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
+                                                <th width="60" style="text-align: center">OL</th>
+                                                <th width="60" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="150" style="text-align: center">Email</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="400" style="text-align: center">Actions</th>
+                                                <!-- <th width="250" style="text-align: center">Handled By</th> -->
+                                                <th width="300" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
 
@@ -280,14 +280,14 @@
 
                                         
                                             <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
-                                               
+                                                <!-- <td style="text-align: center"><?php echo $post->CounsellorName; ?></td> -->
                                         
                                                 <td style="text-align: center">
                                                 <!-- <a data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" class="btn btn-warning btn-rounded btn-sm" onclick="assignID('<?php  echo $post->r_id; ?>')">Summary</a> -->
@@ -479,14 +479,15 @@
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
-                                                <th width="100" style="text-align: center">First Name</th>
-                                                <th width="150" style="text-align: center">Last Name</th>
-                                                <th width="100" style="text-align: center">OL</th>
-                                                <th width="100" style="text-align: center">AL</th>
+                                                <th width="70" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
+                                                <th width="60" style="text-align: center">OL</th>
+                                                <th width="60" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="150" style="text-align: center">Email</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="400" style="text-align: center">Actions</th>
+                                                <!-- <th width="250" style="text-align: center">Handled By</th> -->
+                                                <th width="300" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
 
@@ -498,13 +499,14 @@
 
                                         
                                             <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                                <!-- <td style="text-align: center"><?php echo $post->CounsellorName; ?></td> -->
                                         
                                                 <td style="text-align: center">
                                                 <a class="btn btn-primary btn-rounded btn-sm" data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" data-tooltip="tooltip" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
@@ -696,14 +698,15 @@
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
-                                                <th width="100" style="text-align: center">First Name</th>
-                                                <th width="150" style="text-align: center">Last Name</th>
-                                                <th width="100" style="text-align: center">OL</th>
-                                                <th width="100" style="text-align: center">AL</th>
+                                                <th width="70" style="text-align: center">First Name</th>
+                                                <th width="100" style="text-align: center">Last Name</th>
+                                                <th width="60" style="text-align: center">OL</th>
+                                                <th width="60" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="150" style="text-align: center">Email</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
-                                                <th width="400" style="text-align: center">Actions</th>
+                                                <!-- <th width="250" style="text-align: center">Handled By</th> -->
+                                                <th width="300" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
 
@@ -715,13 +718,14 @@
 
                                         
                                             <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                                <!-- <td style="text-align: center"><?php echo $post->CounsellorName; ?></td> -->
                                         
                                                 <td style="text-align: center">
                                                 <a class="btn btn-primary btn-rounded btn-sm" data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" data-tooltip="tooltip" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
@@ -734,7 +738,7 @@
                                         </form>
                                         
                                       
-<!-- POPUP for call summary -->
+                                    <!-- POPUP for call summary -->
                                       <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
@@ -747,7 +751,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
                                                                 
@@ -941,6 +945,7 @@
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="200" style="text-align: center">Email</th>
                                                 <th width="100" style="text-align: center">Potential Date</th>
+                                                <!-- <th width="100" style="text-align: center">Handled By</th> -->
                                                 <th width="200" style="text-align: center">Actions</th>
                                             </tr>
                                         </thead>
@@ -958,6 +963,7 @@
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                                <!-- <td style="text-align: center"><?php echo $post->CounsellorName; ?></td> -->
                                                 <td style="text-align: center">
                                                 <!-- <a data-toggle="modal" data-target="#mysecondModal<?php echo $post->r_id;?>" class="btn btn-warning btn-rounded btn-sm" onclick="assignID('<?php  echo $post->r_id; ?>')">View Summary</a> -->
                                                 <button type="button" class="btn btn-success btn-rounded btn-sm" style="background-color: white;color: #6f22b6; border: 2px solid #6f22b6; /* Purple */" onclick="registered('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Registered</button>
@@ -1004,7 +1010,7 @@
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="<?php echo base_url('index.php/Login_Controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <a href="<?php echo base_url('index.php/Login_controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
                             <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>

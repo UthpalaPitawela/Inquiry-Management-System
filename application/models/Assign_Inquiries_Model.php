@@ -15,16 +15,18 @@ class Assign_Inquiries_Model extends CI_Model{
 		return $query;
 	}
 
-	function updateInquiries($counsellorname,$val){
-		foreach($val as $num){
-		$data = array(
-               'CounsellorName' => $counsellorname
-              
-            );
-													
-		$this->db->where('r_id', $num);
-		$this->db->update('register', $data);
-		} 
+	function updateInquiries($counsellorname,$inqcount){
+		for($i=0;$i<$inqcount;$i++){
+			$query = $this->db->query("SELECT * FROM register WHERE Status = 'Pending' AND CounsellorName IS NULL");
+			$count=0;
+			if($query->result()){
+				$count++;
+			}
+		}
+
+		for($j=0;$j<$count;$j++){
+			$query = $this->db->query("UPDATE register SET CounsellorName='$counsellorname' WHERE CounsellorName IS NULL AND Status = 'Pending'");
+		}
 	}
 
 	function viewPending(){

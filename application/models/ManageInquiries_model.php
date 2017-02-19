@@ -19,9 +19,9 @@ class ManageInquiries_model extends CI_Model{
 
 	function getAllFollowing(){
 
-		//$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
-		//$query = $this->db->get();
-		//return $query;
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
+		$query = $this->db->get('register');
+		return $query;
 	}
 
 

@@ -64,6 +64,7 @@
     $propic = $_SESSION["propic"];
     $status = $_SESSION["status"];
     //$role = $_SESSION["status"];
+    $lname = $_SESSION["last_username"];
 
     ?>
         
@@ -76,7 +77,12 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Edulink IMS</a>
+                        <?php if($status==0){   ?>
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller">Edulink IMS</a>
+                        <?php }  ?>
+                        <?php if($status==3){ ?>
+                        <a href="<?php echo base_url('index.php/Counsellor_Profile_Controller/index/'. $name."/" .$lname);?>">Edulink IMS</a>
+                        <?php }  ?>
                         
                     </li>
                     <li class="xn-profile">
@@ -100,7 +106,12 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                        <?php if($status==0){   ?>
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>
+                        <?php }  ?>
+                        <?php if($status==3){ ?>
+                        <a href="<?php echo base_url('index.php/Counsellor_Profile_Controller/index/'. $name."/" .$lname);?>"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>  
+                        <?php }  ?>                         
                     </li>                    
                     <li class="xn-openable">
                         

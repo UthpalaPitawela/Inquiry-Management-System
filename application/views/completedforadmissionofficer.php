@@ -39,7 +39,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Edulink IMS</a>
+                        <a href="#">Edulink IMS</a>
                         
                     </li>
                    <li class="xn-profile">

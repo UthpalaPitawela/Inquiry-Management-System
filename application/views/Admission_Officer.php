@@ -28,7 +28,7 @@ $propic=$_SESSION["propic"];
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Edulink IMS</a>
+                        <a href="#">Edulink IMS</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">

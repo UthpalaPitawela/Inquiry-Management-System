@@ -31,7 +31,12 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="<?php echo base_url('index.php/Page_Controller/loadingpages/managerhome') ?>">Edulink IMS</a>
+                        <?php if($status==0){   ?>
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller">Edulink IMS</a>
+                        <?php }  ?>
+                        <?php if($status==3){ ?>
+                        <a href="<?php echo base_url('index.php/Counsellor_Profile_Controller/index/'. $name."/" .$lname);?>">Edulink IMS</a>
+                        <?php }  ?>
                         
                     </li>
                     <li class="xn-profile">

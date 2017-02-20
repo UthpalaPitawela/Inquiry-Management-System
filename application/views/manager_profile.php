@@ -32,10 +32,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="<?php if($status==0)
-                                            echo base_url('index.php/Page_Controller/loadingpages/managerhome');
-                                       elseif($status==3)
-                                            echo base_url('index.php/Manager_Profile_Controller'); ?>">Edulink IMS</a>
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller">Edulink IMS</a>
                         
                     </li>
                     <li class="xn-profile">

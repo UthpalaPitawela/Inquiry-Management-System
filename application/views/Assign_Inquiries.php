@@ -174,13 +174,23 @@
                 <!-- END BREADCRUMB -->                       
                 
                 <!-- PAGE CONTENT WRAPPER -->
-                         <div class="page-content-wrap">
+                                   <div class="page-content-wrap">
                         <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-7">
                             <div class="row">
-                                <h4 align="center"> Unassigned Inquiries</h4><br>
+                                <br><br>
                             </div>
+                            <div class="panel panel-default">
+
+                            
+                            <div class="row">
+                                <div class="panel-heading text-center">
+                                    <h3><strong>Assign Inquiries</strong></h3>
+                                   
+                                </div>
+                            </div>
+                            <div class="panel-body">
                             <div class="row">
                                 
                                 <div class="col-md-6">
@@ -203,7 +213,7 @@
                                     ?>
                                     </select>
                                     <br><br>
-                                    <label><?php echo $inquiries['count'];?></label>
+                                    <label style="text-align:center;"><?php echo $inquiries['count'];?></label>
                                     <br><br>
                                     <input type="text" name="inqcount" id="inqcount" style="width:190px;">
                                 
@@ -244,6 +254,8 @@
 
 
         </script>
+                        </div>
+                        </div>
                         </div>
                     </div>
                     <div class="col-md-3">

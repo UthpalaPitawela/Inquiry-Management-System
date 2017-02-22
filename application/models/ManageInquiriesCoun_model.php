@@ -19,9 +19,9 @@ class ManageInquiriesCoun_model extends CI_Model{
 	}
 
 	function getAllFollowing(){
-
+				$status = "Following";
 		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
-		$query = $this->db->get('register');
+		$query = $this->db->get_where('register',array('status'=>$status));
 		return $query;
 	}
 

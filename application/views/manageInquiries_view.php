@@ -1184,7 +1184,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
         function complete(email,r_id){
                 $.ajax({             
                     type:"post",
-                    url : 'inquirybutton_controller/completed/',
+                    url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/completed/',
                     data : {id:r=email},
                     success: function(data) {
                         $('#completed').html(data);
@@ -1196,7 +1196,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
         function registered(email,r_id){
                 $.ajax({             
                     type:"post",
-                    url : 'inquirybutton_controller/registered/',
+                    url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/registered/',
                     data : {id:r=email},
                     success: function(data) {
                         $('#registered').html(data);

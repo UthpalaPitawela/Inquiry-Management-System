@@ -15,7 +15,7 @@ class EditRecords_controller extends CI_Controller{
      function  index(){
         
 
-
+ 
         $data["users"] = $this->EditRecords_model->get_users();
         $rid = $this->uri->segment(3);
         $data["record"] = $this->EditRecords_model->getDetails($rid);

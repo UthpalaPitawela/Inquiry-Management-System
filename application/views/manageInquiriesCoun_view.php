@@ -287,32 +287,60 @@
                                         <form>
                                     <?php
                                    
-                                        foreach($posts as $post){ ?>
+                                    foreach($following->result_array() as $post){ 
+
+                                            date_default_timezone_set('Asia/Colombo');
+
+                                            $today = date('Y-m-d ');
+                                            $thisyear=date('Y');
+                                            $thismonth = date('m'); 
+
+                                            $sepintake = "$thisyear-09-01";
+                                            $januaryforcompare= "$thisyear-01-31";
+                                            $septemberforcompare="$thisyear-09-30";
+                                            $nextyear=$thisyear+1;
+                                            $nextjanuaryforcompare="$nextyear-01-31";
+                                            
+                                            $sep = date('Y-m-d',strtotime($sepintake));
+                                            $thisjanend = date('Y-m-d',strtotime($januaryforcompare));
+                                            $thissepend=date('Y-m-d',strtotime($septemberforcompare));
+                                            $nextjan=date('Y-m-d',strtotime($nextjanuaryforcompare));
+
+                                            $janintake = "2010-01-12 13:57:01";
+                                           // $sep = date('m',strtotime($sepintake));
+
+                                            $potentialdate= $post['Pdate'];
+
+if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissepend) > strtotime($potentialdate)) && (strtotime($thisjanend) < strtotime($today))    ) || (  (strtotime($thissepend) < strtotime($today)) && (strtotime($nextjan) > strtotime($potentialdate))  ) || ( (strtotime($thisjanend) > strtotime($potentialdate)) )   ){
+
+
+?>
+
 
                                         
-                                            <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
-                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
-                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                            <tr id="<?php  echo $post['r_id']; ?>">
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post['r_id']);?>"><?php echo $post['Fname']; ?></a></td>
+                                                <td style="text-align: center"><?php echo $post['Lname']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['OL']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Grade1']+$post['Grade2']+$post['Grade3']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Contactno']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Email']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Pdate']; ?></td>
                                                 <!-- <td style="text-align: center"><?php echo $post->CounsellorName; ?></td> -->
                                         
                                                 <td style="text-align: center">
                                                 <!-- <a data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" class="btn btn-warning btn-rounded btn-sm" onclick="assignID('<?php  echo $post->r_id; ?>')">Summary</a> -->
-                                                <a class="btn btn-primary btn-rounded btn-sm" data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" data-tooltip="tooltip" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
-                                                <button class="btn btn-danger btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="SMS" data-tooltip="tooltip" data-target="#myModal1<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-phone red"></span></button>
-                                                <button class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></button>
-                                                <button class="btn btn-warning btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></button>
-                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
+                                                <a class="btn btn-primary btn-rounded btn-sm" data-toggle="modal" data-target="#myModal<?php echo $post['r_id'];?>" data-tooltip="tooltip" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
+                                                <button class="btn btn-danger btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="SMS" data-tooltip="tooltip" data-target="#myModal1<?php echo $post['r_id'];?>" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-phone red"></span></button>
+                                                <button class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post['r_id'];?>" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></button>
+                                                <button class="btn btn-warning btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post['r_id'];?>" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post['Email']; ?>','<?php echo $post['r_id']; ?>')">Completed</button>
                                                 </td>
                                             </tr>
                                         </form>
                                         
                                       <!-- POPUP for call summary -->
-                                      <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -326,7 +354,7 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Call Summary:</label>
@@ -350,7 +378,7 @@
                                 </div>
 
                                 <!-- POPUP for SMS -->
-                                      <div id="myModal1<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal1<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -364,7 +392,7 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
@@ -395,7 +423,7 @@
                                 </div>
 
                                 <!-- POPUP for Email -->
-                                      <div id="myModal2<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal2<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -409,12 +437,12 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Email:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Email; ?>" />
+                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post['Email']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -440,7 +468,7 @@
                                 </div>
 
                                 <!-- POPUP for call summary -->
-                                      <div id="myModal3<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal3<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -454,7 +482,7 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
@@ -477,7 +505,12 @@
                                   </div>
                                 </div>  
 
-                                    <?php } ?>
+<?php
+
+                                            }
+
+
+                                     } ?>
                                     </tbody> 
                                     </table>
 
@@ -506,31 +539,57 @@
                                         <form>
                                     <?php
                                    
-                                        foreach($posts1 as $post){ ?>
+                                                                              foreach($following->result_array() as $post){ 
+
+                                            date_default_timezone_set('Asia/Colombo');
+
+                                            $today = date('Y-m-d ');
+                                            $thisyear=date('Y');
+                                            $thismonth = date('m'); 
+
+                                            $sepintake = "$thisyear-09-01";
+                                            $januaryforcompare= "$thisyear-01-31";
+                                            $septemberforcompare="$thisyear-09-30";
+                                            $nextyear=$thisyear+1;
+                                            $nextjanuaryforcompare="$nextyear-01-31";
+                                            
+                                            $sep = date('Y-m-d',strtotime($sepintake));
+                                            $thisjanend = date('Y-m-d',strtotime($januaryforcompare));
+                                            $thissepend=date('Y-m-d',strtotime($septemberforcompare));
+                                            $nextjan=date('Y-m-d',strtotime($nextjanuaryforcompare));
+
+                                            $janintake = "2010-01-12 13:57:01";
+                                           // $sep = date('m',strtotime($sepintake));
+
+                                            $potentialdate= $post['Pdate'];
+
+
+if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < strtotime($thissepend) )  && ( strtotime($potentialdate) > strtotime($thissepend) ) ) ||  (( strtotime($today) > strtotime($thissepend) ) && ( strtotime($today) < strtotime($nextjan) ) &&  ( strtotime($potentialdate) > strtotime($nextjan) ) ) ){
+?>
 
                                         
-                                            <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
-                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
-                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                            <tr id="<?php  echo $post['r_id']; ?>">
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post['r_id']);?>"><?php echo $post['Fname']; ?></a></td>
+                                                <td style="text-align: center"><?php echo $post['Lname']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['OL']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Grade1']+$post['Grade2']+$post['Grade3']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Contactno']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Email']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Pdate']; ?></td>
                                                 <!-- <td style="text-align: center"><?php echo $post->CounsellorName; ?></td> -->
                                         
                                                 <td style="text-align: center">
-                                                <a class="btn btn-primary btn-rounded btn-sm" data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" data-tooltip="tooltip" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
-                                                <button class="btn btn-danger btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="SMS" data-tooltip="tooltip" data-target="#myModal1<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-phone red"></span></button>
-                                                <button class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></button>
-                                                <button class="btn btn-warning btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></button>
-                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
+                                                <a class="btn btn-primary btn-rounded btn-sm" data-toggle="modal" data-target="#myModal<?php echo $post['r_id'];?>" data-tooltip="tooltip" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
+                                                <button class="btn btn-danger btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="SMS" data-tooltip="tooltip" data-target="#myModal1<?php echo $post['r_id'];?>" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-phone red"></span></button>
+                                                <button class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post['r_id'];?>" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></button>
+                                                <button class="btn btn-warning btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post['r_id'];?>" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post['Email']; ?>','<?php echo $post['r_id']; ?>')">Completed</button>
                                                 </td>
                                             </tr>
                                         </form>
                                         
                                       <!-- POPUP for call summary -->
-                                      <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -544,7 +603,7 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Call Summary:</label>
@@ -568,7 +627,7 @@
                                 </div>
 
                                 <!-- POPUP for SMS -->
-                                      <div id="myModal1<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal1<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -582,7 +641,7 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
@@ -613,7 +672,7 @@
                                 </div>
 
                                 <!-- POPUP for Email -->
-                                      <div id="myModal2<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal2<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -627,12 +686,12 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Email:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Email; ?>" />
+                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post['Email']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -658,7 +717,7 @@
                                 </div>
 
                                 <!-- POPUP for call summary -->
-                                      <div id="myModal3<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal3<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -672,7 +731,7 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
@@ -695,7 +754,9 @@
                                   </div>
                                 </div>
 
-                                    <?php } ?>
+                                    <?php } 
+                                    }
+                                    ?>
                                     </tbody> 
                                     </table>
 
@@ -724,33 +785,59 @@
                                         <tbody>
                                         <form>
                                     <?php
-                                   // if($posts3) {
-                                        foreach($posts2 as $post){ ?>
+ foreach($following->result_array() as $post){ 
 
+                                            date_default_timezone_set('Asia/Colombo');
+
+                                            $today = date('Y-m-d ');
+                                            $thisyear=date('Y');
+                                            $thismonth = date('m'); 
+
+                                            $sepintake = "$thisyear-09-01";
+                                            $januaryforcompare= "$thisyear-01-31";
+                                            $septemberforcompare="$thisyear-09-30";
+                                            $nextyear=$thisyear+1;
+                                            $nextjanuaryforcompare="$nextyear-01-31";
+                                            $nextseptemberforcompare="$nextyear-09-31";
+                                            
+                                            $sep = date('Y-m-d',strtotime($sepintake));
+                                            $thisjanend = date('Y-m-d',strtotime($januaryforcompare));
+                                            $thissepend=date('Y-m-d',strtotime($septemberforcompare));
+                                            $nextjan=date('Y-m-d',strtotime($nextjanuaryforcompare));
+                                            $nextsep=date('Y-m-d',strtotime($nextseptemberforcompare));
+
+                                            $janintake = "2010-01-12 13:57:01";
+                                           // $sep = date('m',strtotime($sepintake));
+
+                                            $potentialdate= $post['Pdate'];
+
+
+if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < strtotime($thissepend) )  && ( strtotime($potentialdate) > strtotime($nextjan) ) ) ||  (( strtotime($today) > strtotime($thissepend) ) && ( strtotime($today) < strtotime($nextjan) ) &&  ( strtotime($potentialdate) > strtotime($nextsep) ) ) ){
+?>
                                         
-                                            <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
-                                                <td style="text-align: center"><?php echo $post->Lname; ?></td>
-                                                <td style="text-align: center"><?php echo $post->OL; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Contactno; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Email; ?></td>
-                                                <td style="text-align: center"><?php echo $post->Pdate; ?></td>
+                                            <tr id="<?php  echo $post['r_id']; ?>">
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post['r_id']);?>"><?php echo $post['Fname']; ?></a></td>
+                                                <td style="text-align: center"><?php echo $post['Lname']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['OL']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Grade1']+$post['Grade2']+$post['Grade3']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Contactno']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Email']; ?></td>
+                                                <td style="text-align: center"><?php echo $post['Pdate']; ?></td>
                                                 <!-- <td style="text-align: center"><?php echo $post->CounsellorName; ?></td> -->
                                         
                                                 <td style="text-align: center">
-                                                <a class="btn btn-primary btn-rounded btn-sm" data-toggle="modal" data-target="#myModal<?php echo $post->r_id;?>" data-tooltip="tooltip" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
-                                                <button class="btn btn-danger btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="SMS" data-tooltip="tooltip" data-target="#myModal1<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-phone red"></span></button>
-                                                <button class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></button>
-                                                <button class="btn btn-warning btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></button>
-                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Completed</button>
+                                                <a class="btn btn-primary btn-rounded btn-sm" data-toggle="modal" data-target="#myModal<?php echo $post['r_id'];?>" data-tooltip="tooltip" data-placement="top" title="Call Summary" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-earphone"></span></a>
+                                                <button class="btn btn-danger btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="SMS" data-tooltip="tooltip" data-target="#myModal1<?php echo $post['r_id'];?>" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-phone red"></span></button>
+                                                <button class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post['r_id'];?>" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></button>
+                                                <button class="btn btn-warning btn-rounded btn-sm" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post['r_id'];?>" onclick="assignID('<?php  echo $post['r_id']; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $post['Email']; ?>','<?php echo $post['r_id']; ?>')">Completed</button>
                                                 </td>
                                             </tr>
                                         </form>
                                         
                                       
                                     <!-- POPUP for call summary -->
-                                      <div id="myModal<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -764,7 +851,7 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Call Summary:</label>
@@ -788,7 +875,7 @@
                                 </div>
 
                                 <!-- POPUP for SMS -->
-                                      <div id="myModal1<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal1<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -802,7 +889,7 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
@@ -833,7 +920,7 @@
                                 </div>
 
                                 <!-- POPUP for Email -->
-                                      <div id="myModal2<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal2<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -847,12 +934,12 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Email:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Email; ?>" />
+                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post['Email']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -878,7 +965,7 @@
                                 </div>
 
                                 <!-- POPUP for call summary -->
-                                      <div id="myModal3<?php echo $post->r_id; ?>" class="modal fade">
+                                      <div id="myModal3<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -892,7 +979,7 @@
                                                     
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
 
-                                                        <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
@@ -915,7 +1002,9 @@
                                   </div>
                                 </div>
 
-                                    <?php } ?>
+                                    <?php } 
+                                    }
+                                    ?>
                                     </tbody> 
                                     </table>
 

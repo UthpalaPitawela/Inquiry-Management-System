@@ -15,6 +15,7 @@ class ManageInquiries_controller extends CI_Controller{
 
 		$this->data['following'] = $this->ManageInquiries_model->getAllFollowing();
 		$this->data['posts'] = $this->ManageInquiries_model->getPostsHigh();
+		
 		//$this->data['posts'] = $this->manageInquiries_model->getPostsHigh();
 		//$this->load->view('manageInquiries_view', $this->data);
 

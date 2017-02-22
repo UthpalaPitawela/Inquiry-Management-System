@@ -315,9 +315,25 @@
                                              &nbsp;
 
                                             <div class="row">
-                                                <div class="col-md-3">
-                                                    <input type="radio" name="ol" value="Yes" required> Yes
+                                                <div class="col-md-3"> 
+                                                <?php
+                                                    if($post->OL="Yes"){
+                                                            ?>
+                                                    <input type="radio" name="ol" value="Yes" checked required> Yes
                                                     <input type="radio" name="ol"  value="No">No
+
+
+                                                        <?php
+                                                    }else{
+                                                        ?>
+
+                                                    <input type="radio" name="ol" value="Yes" required> Yes
+                                                    <input type="radio" name="ol"  value="No" checked>No
+          
+
+                                                        <?php
+                                                    }
+                                                ?>
                                                 </div>
                                             </div>
 
@@ -349,17 +365,69 @@
                                                 <div class="col-md-5">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                        <input type="text" name="subject1" class="form-control" placeholder="Subject" />
+                                                        <input type="text" name="subject1" class="form-control" placeholder="Subject" value="<?php echo $post->Subject1;  ?>" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <select class="form-control select" name="grade1" id="res1">
 
+<?php
+        if($post->Grade1==120){
+?>
                                                     <option value=120>A</option>
                                                     <option value=100>B</option>
                                                     <option value=80>C</option>
                                                     <option value=60>S</option>
                                                     <option value=40>F</option>
+<?php
+        }elseif($post->Grade1==100){
+            ?>
+
+
+                                                    <option value=100>B</option>
+                                                    <option value=120>A</option>
+                                                    <option value=80>C</option>
+                                                    <option value=60>S</option>
+                                                    <option value=40>F</option>
+
+<?php
+        }elseif ($post->Grade1==80) {
+            ?>
+
+                                                    <option value=80>C</option>
+                                                     <option value=120>A</option>
+                                                    <option value=100>B</option>
+                                                    <option value=60>S</option>
+                                                    <option value=40>F</option>
+
+            <?php
+        }elseif($post->Grade1==60){
+            ?>
+                                                    <option value=60>S</option>
+                                                    
+                                                    <option value=120>A</option>
+                                                    <option value=100>B</option>
+                                                    <option value=80>C</option>
+                                                    <option value=40>F</option>
+                                                   
+
+            <?php
+        }else{
+            ?>
+
+                                                    <option value=40>F</option>
+                                                    <option value=120>A</option>
+                                                    <option value=100>B</option>
+                                                    <option value=80>C</option>
+                                                    <option value=60>S</option>
+                                                    
+            <?php
+
+        }
+
+
+?>
+                                                   
                                                     </select>
 
                                                 </div>
@@ -369,19 +437,72 @@
                                                 <div class="col-md-5">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                        <input type="text" name="subject2" class="form-control" placeholder="Subject" />
+                                                        <input type="text" name="subject2" class="form-control" placeholder="Subject" value="<?php echo $post->Subject2;  ?>" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <select class="form-control select" name="grade2" id="res2" >
 
+                                                
+<?php
+        if($post->Grade2==120){
+?>
                                                     <option value=120>A</option>
                                                     <option value=100>B</option>
                                                     <option value=80>C</option>
                                                     <option value=60>S</option>
                                                     <option value=40>F</option>
+<?php
+        }elseif($post->Grade2==100){
+            ?>
 
+
+                                                    <option value=100>B</option>
+                                                    <option value=120>A</option>
+                                                    <option value=80>C</option>
+                                                    <option value=60>S</option>
+                                                    <option value=40>F</option>
+
+<?php
+        }elseif ($post->Grade2==80) {
+            ?>
+
+                                                    <option value=80>C</option>
+                                                     <option value=120>A</option>
+                                                    <option value=100>B</option>
+                                                    <option value=60>S</option>
+                                                    <option value=40>F</option>
+
+            <?php
+        }elseif($post->Grade2==60){
+            ?>
+                                                    <option value=60>S</option>
+                                                    
+                                                    <option value=120>A</option>
+                                                    <option value=100>B</option>
+                                                    <option value=80>C</option>
+                                                    <option value=40>F</option>
+                                                   
+
+            <?php
+        }else{
+            ?>
+
+                                                    <option value=40>F</option>
+                                                    <option value=120>A</option>
+                                                    <option value=100>B</option>
+                                                    <option value=80>C</option>
+                                                    <option value=60>S</option>
+                                                    
+            <?php
+
+        }
+
+
+?>
+                                                   
                                                     </select>
+
 
                                                 </div>
                                             </div>
@@ -390,19 +511,71 @@
                                                 <div class="col-md-5">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                        <input type="text" name="subject3" class="form-control" placeholder="Subject" />
+                                                        <input type="text" name="subject3" class="form-control" placeholder="Subject" value="<?php echo $post->Subject3;  ?>" />
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <select class="form-control select" name="grade3" id="res3" >
 
+                             
+<?php
+        if($post->Grade3==120){
+?>
                                                     <option value=120>A</option>
                                                     <option value=100>B</option>
                                                     <option value=80>C</option>
                                                     <option value=60>S</option>
                                                     <option value=40>F</option>
+<?php
+        }elseif($post->Grade3==100){
+            ?>
 
+
+                                                    <option value=100>B</option>
+                                                    <option value=120>A</option>
+                                                    <option value=80>C</option>
+                                                    <option value=60>S</option>
+                                                    <option value=40>F</option>
+
+<?php
+        }elseif ($post->Grade3==80) {
+            ?>
+
+                                                    <option value=80>C</option>
+                                                     <option value=120>A</option>
+                                                    <option value=100>B</option>
+                                                    <option value=60>S</option>
+                                                    <option value=40>F</option>
+
+            <?php
+        }elseif($post->Grade3==60){
+            ?>
+                                                    <option value=60>S</option>
+                                                    
+                                                    <option value=120>A</option>
+                                                    <option value=100>B</option>
+                                                    <option value=80>C</option>
+                                                    <option value=40>F</option>
+                                                   
+
+            <?php
+        }else{
+            ?>
+
+                                                    <option value=40>F</option>
+                                                    <option value=120>A</option>
+                                                    <option value=100>B</option>
+                                                    <option value=80>C</option>
+                                                    <option value=60>S</option>
+                                                    
+            <?php
+
+        }
+
+
+?>
+                                                   
                                                     </select>
 
                                                 </div>
@@ -413,7 +586,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Other</label>
                                         <div class="col-md-6 col-xs-12">
-                                            <textarea class="form-control" rows="3" name="other"></textarea>
+                                            <textarea class="form-control" rows="3" name="other"><?php echo $post->Other;  ?></textarea>
 
                                         </div>
                                     </div>
@@ -464,7 +637,7 @@
                                         <label class="col-md-3 col-xs-12 control-label"></label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
-                                                <textarea class="form-control" rows="5" cols="50" name="ed" id="tt" disabled="disabled" style="font-style:bold; color: red;">
+                                                <textarea class="form-control" rows="5" cols="50" name="ed" id="tt"  style="font-style:bold; color: red;">
 
                                             </textarea>
 
@@ -806,7 +979,7 @@
              $.ajax({
      
                 type:"get",
-                url : 'EditRecords_controller/geteligbledata/'+id,
+                url : '<?php echo base_url();?>index.php/EditRecords_controller/geteligbledata/'+id,
                 //url : 'view_register'+id,
                 success: function (data) {
 

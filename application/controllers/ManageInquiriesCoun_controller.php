@@ -14,6 +14,7 @@ class ManageInquiriesCoun_controller extends CI_Controller{
 	{
 		$counsellorname = $_SESSION["first_username"]." ".$_SESSION["last_username"];
 		$this->data['posts'] = $this->ManageInquiriesCoun_model->getPostsHigh($counsellorname);
+		$this->data['following'] = $this->ManageInquiriesCoun_model->getAllFollowing();
 		//$this->data['posts'] = $this->manageInquiries_model->getPostsHigh();
 		//$this->load->view('manageInquiries_view', $this->data);
 

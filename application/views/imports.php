@@ -24,8 +24,7 @@
 
         <!-- START PLUGINS progress bars -->
         
-        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap.min.js"></script>        
+              
         <!-- END PLUGINS -->
 
         <!-- START THIS PAGE PLUGINS-->        
@@ -82,9 +81,7 @@
         <!-- END THIS PAGE PLUGINS-->        
 
         <!-- START TEMPLATE -->
-        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins.js"></script>        
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/actions.js"></script>   
+         
 
 
             <!-- THIS PAGE PLUGINS -->

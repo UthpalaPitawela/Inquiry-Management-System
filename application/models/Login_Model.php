@@ -62,6 +62,29 @@ class Login_Model extends CI_Model{
         
 	}
 
+		function verifyUser($email){
+		$this->db->select('username,password');
+		$query = $this->db->get_where('user',array('email'=>$email));
+		foreach($query -> result() as $row){
+			if($row != " "){
+				$data = array(
+				'uname' => $row->username,
+				'pword' => $row->password,
+				'status' => '1'
+				);
+			}else{
+				$data = array(
+				'status' => '0'
+				);
+			}
+			
+		}
+		
+
+		return $data;	
+
+	}
+
 
 }
 ?>

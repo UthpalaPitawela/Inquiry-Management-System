@@ -172,7 +172,7 @@
                                             <?php }else if($details['intake'] == 'medium'){ ?>
                                                 <button class="btn btn-primary btn-rounded btn-block" style="border-color:#f9e504;" ><font size="4" color="#f9e504"> Medium </font></button>
                                             <?php }else{ ?>
-                                                <button class="btn btn-primary btn-rounded btn-block" style="border-color:#f9e504;" ><font size="4" color="#0ed11b"> Low </font></button>
+                                                <button class="btn btn-primary btn-rounded btn-block" style="border-color:#0ed11b;" ><font size="4" color="#0ed11b"> Low </font></button>
                                             <?php } ?>
                                             
                                         </div>
@@ -212,7 +212,16 @@
                                     </div>
                                 </div>
                                 
-                    </div> 
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-10"></div>
+                            <div class="col-md-2">
+                                <a href="<?php echo base_url('index.php/EditRecords_controller/index/'.$details['rid']);?>"><button class="btn btn-primary btn-block">Edit Details</button></a>
+                            </div>
+                        </div>
+                    </div>     
                     
                     </div>
                     <div class="row">
@@ -226,7 +235,7 @@
                                 
                                 <!-- START TIMELINE ITEM -->
                                 <div class="timeline-item timeline-main">
-                                    <div class="timeline-date"><h3>Follow up Summary</h3></div>
+                                    <div class="timeline-date"><h4><strong>Follow up Summary</strong></h4></div>
                                 </div>
                                 <?php foreach ($summary as $row){
                                
@@ -261,7 +270,7 @@
                                         </div>
                                         <div class="comment-item">
                                           
-                                            <p><?php echo $row['summary']?></p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['summary']?></p>
                                             
                                                                                        
                                         </div>

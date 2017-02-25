@@ -25,7 +25,13 @@
             max-height: 400px;
             overflow-y: scroll;
         }                 
-        </style>                
+        </style> 
+
+         <style>
+       input[type="text"][disabled] {
+            color: black;
+        }
+        </style>               
     </head>
 
     <body>
@@ -73,7 +79,7 @@
                         </div>                                                                        
                     </li>
 
-                    <li>
+                    <li class="active">
                         <?php if($status==0){   ?>
                         <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>
                         <?php }  ?>
@@ -139,7 +145,7 @@
                         <a href="#"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Reports</span></a>                 
                     </li> --> 
 
-                    <li class="active">
+                    <li>
                         <a href="<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
                     </li>      
                     <?php  } ?>         
@@ -172,98 +178,79 @@
 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
+                    <li><a href="<?php echo base_url();?>index.php/Manager_Profile_Controller">Home</a></li>                    
                     <li class="active"><a href="#">Assign Inquiries</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 
                 <!-- PAGE CONTENT WRAPPER -->
-                                   <div class="page-content-wrap">
-                        <div class="row">
-                        <div class="col-md-2"></div>
+                <div class="page-content-wrap">
+
+                <div class="col-md-2"></div>
+                        
+                        <form class = "form-horizontal">
+                    <div class="row">
                         <div class="col-md-7">
-                            <div class="row">
-                                <br><br>
-                            </div>
-                            <div class="panel panel-default">
-
-                            
-                            <div class="row">
-                                <div class="panel-heading text-center">
-                                    <h3><strong>Assign Inquiries</strong></h3>
-                                   
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><strong>Assign Inquiries</strong></h3>
                                 </div>
-                            </div>
-                            <div class="panel-body">
-                            <div class="row">
-                                
-                                <div class="col-md-6">
-                                    <label>Select the counsellor to assign inquiries</label><br><br>
-                                    <label>Total number of unassigned inquiries</label><br><br>
-                                    <label>Enter the number of inquiries</label>
-                                </div>
-                                <div class="col-md-2"></div>
-                                <div class="col-md-6">
-                                <div class="btn-group">
-                               
-                                    <select id = "counsellorname" name="counsellornamename" class="btn btn-primary dropdown-toggle">
-                                    <?php
+                                <div class="panel-body">
 
-                                        foreach($result as $row)
-                                        {
-                                            $name = $row->first_name." ".$row->last_name;
-                                            echo '<option value = "'.$name.'">'.$row->first_name." ".$row->last_name.'</option>';
-                                        }
-                                    ?>
-                                    </select>
-                                    <br><br>
-                                    <label style="text-align:center;"><?php echo $inquiries['count'];?></label>
-                                    <br><br>
-                                    <input type="text" name="inqcount" id="inqcount" style="width:190px;">
-                                
-                                </div>
-                                </div>
-                                
-                            </div>
-                            <br><br>
-                            <div class="row">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4">
-                                     <button onclick="handleInquiry();" style="float: center;" id="doneBtn" name="doneBtn" class="btn btn-success">Assign</button>
-                                </div>
-                            </div>
+                                    <form class="form-horizontal" role="form">                                    
+                                     <div class="form-group">
+                                        
+                                    <label class="col-md-6 control-label">Select the counsellor to assign inquiries</label>
+                                    <div class="col-md-6">
+                                        <div class="btn-group">
+                                            <select id = "counsellorname" name="counsellornamename" class="btn btn-primary dropdown-toggle">
+                                            <?php
 
+                                                foreach($result as $row)
+                                                {
+                                                    $name = $row->first_name." ".$row->last_name;
+                                                    echo '<option value = "'.$name.'">'.$row->first_name." ".$row->last_name.'</option>';
+                                                }
+                                            ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    </div>
 
+                                    <form class="form-horizontal" role="form">
+                                    <!--Start of form group-->
+                                    <div class="form-group">
 
-                              <script type="text/javascript">
-                                function handleInquiry(){
-                                    var counsellorname = document.getElementById('counsellorname').value; 
-                                    var inqcount = document.getElementById('inqcount').value;
-                             
-                             $.ajax({
-                                url : '<?php echo base_url('index.php/Assign_Inquiries_Controller/assignInquiries'); ?>',
-                                method : 'get',
-                                data : {'counsellorname' : counsellorname , 'inqcount' : inqcount},
-                                success : function(){
-                                    //alert("hiii");
+                                    <label class="col-md-6 control-label">Total number of unassigned inquiries</label>
+                                    <div class="col-md-3">
+                                        <input class="form-control" style="color: black" value="<?php echo $inquiries['count'];?>" disabled />
+                                    </div>
+
+                                    </div>
+
+                                    <form class="form-horizontal" role="form">
+                                    <!--Start of form group-->
+                                    <div class="form-group">
+
+                                    <label class="col-md-6 control-label">Enter the number of inquiries</label>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" style="color: black" name="inqcount" id="inqcount" value="<?php echo $inquiries['count'];?>" />
+                                    </div>
+                                    </div>
+
                                     
 
-                                }
-
-
-                            });
-                          
-}
-
-
-        </script>
+                                </div>                            
+                                <div class="panel-footer">
+                                    <button class="btn btn-info pull-right" onclick="handleInquiry();" style="float: center;" id="doneBtn" name="doneBtn">Assign</button>
+                                </div>                              
+                            </div>
+                            
+                            
                         </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                    </div>
+                        </form>
+                    
+                    
                        
 
 
@@ -278,29 +265,26 @@
         <!-- END PAGE CONTAINER -->
 
         <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+       <div class="message-box animated fadeIn" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
                     <div class="mb-content">
                         <p>Are you sure you want to log out?</p>                    
-                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                        <p><strong>Press No if you want to continue work.</strong> Press Yes to logout.</p>
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                            <a href="<?php echo base_url('index.php/Login_Controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END MESSAGE BOX-->
+        <!--end of message box-->
 
-        <!-- START PRELOADS -->
-        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
-        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->                  
+                      
         
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
@@ -335,6 +319,37 @@
         
         <script type="text/javascript" src="<?php echo base_url();?>public/js/demo_dashboard.js"></script>
         <!-- END TEMPLATE -->
+
+
+        <script>
+        $('.mb-control').click(function(e){
+            e.preventDefault()
+        })
+        
+        </script> 
+
+        <script type="text/javascript">
+            function handleInquiry(){
+                var counsellorname = document.getElementById('counsellorname').value; 
+                var inqcount = document.getElementById('inqcount').value;
+                             
+                $.ajax({
+                    url : '<?php echo base_url('index.php/Assign_Inquiries_Controller/assignInquiries'); ?>',
+                    method : 'get',
+                    data : {'counsellorname' : counsellorname , 'inqcount' : inqcount},
+                        success : function(){
+                            //alert("hiii");
+                                    
+
+                    }
+
+
+                });
+                          
+            }
+
+
+        </script>
     <!-- END SCRIPTS -->         
     </body>
 </html>

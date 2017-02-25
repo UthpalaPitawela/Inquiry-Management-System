@@ -191,10 +191,11 @@ class ManageInquiries_model extends CI_Model{
 	}
 
 	function viewStudentDetails($rid){
-		$this->db->select('Fname,Lname,Country,Email,Contactno,Intake,Pdate');
+		$this->db->select('r_id,Fname,Lname,Country,Email,Contactno,Intake,Pdate');
 		$query = $this->db->get_where('register',array('r_id' => $rid));
 		foreach ($query -> result() as $row) {
 			$data = array(
+				'rid' =>$row->r_id,
 				'fname' =>$row->Fname,
 				'lname' => $row->Lname,
 				'country' => $row->Country,

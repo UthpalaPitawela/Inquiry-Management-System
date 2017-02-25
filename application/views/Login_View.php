@@ -14,7 +14,11 @@
         
         <!-- CSS INCLUDE -->        
         <!-- <link rel="stylesheet" type="text/css" id="theme" href="application/css/theme-default.css"/> --> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/css/theme-default.css'); ?>"> 
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/css/theme-default.css'); ?>">
+        <link href="<?php echo base_url('public/alert/css/alert.css');?>" rel="stylesheet" />
+        <link href="<?php echo base_url('public/alert/themes/default/theme.css');?>" rel="stylesheet" />
+        <script src="<?php echo base_url('public/alert/js/alert.js');?>"></script> 
+
         <!-- EOF CSS INCLUDE -->                                    
     </head>
     <body>
@@ -37,13 +41,15 @@
                         </div>
                     </div>
                     <div class="form-group">
+                      
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-link btn-block">Forgot your password?</a>
+                            <a href="" class="btn btn-link btn-block" data-toggle="modal" data-target="#myModal">Forgot your password?</a>
                         </div>
                         <div class="col-md-6">
                             <button class="btn btn-info btn-block">Log In</button><br>
                              <!-- <a href="#">Sign Up</a> -->
                         </div>
+
                     </div>
                     </form>
                 </div>
@@ -51,17 +57,56 @@
                     <div class="pull-left">
                         &copy; Edulink
                     </div>
-                   <!--  <div class="pull-right">
-                        <a href="#">About</a> |
-                        <a href="#">Privacy</a> |
-                        <a href="#">Contact Us</a>
-                    </div> -->
+                   
                 </div>
             </div>
             
         </div>
+    <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+    <form action="<?php echo base_url('index.php/email/ForgotPassword_Controller/sendPassword');?>" method="post">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Forgot Password</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+            
+            <div class="col-md-6">
+                <label>Enter email address:</label><br>
+               
+            </div>
+            <div class="col-md-6">
+                <textarea class="form-control" rows="1" name="summary1" id="summary1"></textarea>
+            </div>
+         
+        </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" id="save" class="btn btn-primary">Send Password</button>
+        </div>
+
+      </div>
+      </form>
+      
+    </div>
+  </div>
+      
+
         
     </body>
+   <style>
+        body.modal-open div.modal-backdrop { 
+            z-index: -1;
+    </style> 
+
+    
+    
+}
+    
 </html>
 
 <?php

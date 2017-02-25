@@ -67,12 +67,12 @@
                         <a href="<?php echo base_url('index.php/Counsellor_Profile_Controller/index/'. $name."/" .$lname);?>"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>  
                         <?php }  ?>                       
                     </li>                    
-                    <li class="xn-openable">
+                    <li class="xn-openable active">
                         
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
                             <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
-                            <li><a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
+                            <li class="active"><a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
                             
                         </ul>
                         
@@ -105,7 +105,7 @@
                         <a href="#"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Reports</span></a>                 
                     </li>  -->
 
-                    <li class="active">
+                    <li>
                         <a href="<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
                     </li>        
                     <?php } ?>       
@@ -139,8 +139,9 @@
 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
-                    <li class="active"><a href="#">Settings</li>
+                    <li><a href="#">Home</a></li> 
+                    <li><a href="#">Manage Inquiries</a></li>                    
+                    <li class="active"><a href="#">Summary Timeline</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 
@@ -171,7 +172,7 @@
                                             <?php }else if($details['intake'] == 'medium'){ ?>
                                                 <button class="btn btn-primary btn-rounded btn-block" style="border-color:#f9e504;" ><font size="4" color="#f9e504"> Medium </font></button>
                                             <?php }else{ ?>
-                                                <button class="btn btn-primary btn-rounded btn-block" style="border-color:#f9e504;" ><font size="4" color="#0ed11b"> Low </font></button>
+                                                <button class="btn btn-primary btn-rounded btn-block" style="border-color:#0ed11b;" ><font size="4" color="#0ed11b"> Low </font></button>
                                             <?php } ?>
                                             
                                         </div>
@@ -211,7 +212,16 @@
                                     </div>
                                 </div>
                                 
-                    </div> 
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-10"></div>
+                            <div class="col-md-2">
+                                <a href="<?php echo base_url('index.php/EditRecords_controller/index/'.$details['rid']);?>"><button class="btn btn-primary btn-block">Edit Details</button></a>
+                            </div>
+                        </div>
+                    </div>     
                     
                     </div>
                     <div class="row">
@@ -225,7 +235,7 @@
                                 
                                 <!-- START TIMELINE ITEM -->
                                 <div class="timeline-item timeline-main">
-                                    <div class="timeline-date"><h3>Follow up Summary</h3></div>
+                                    <div class="timeline-date"><h4><strong>Follow up Summary</strong></h4></div>
                                 </div>
                                 <?php foreach ($summary as $row){
                                
@@ -260,7 +270,7 @@
                                         </div>
                                         <div class="comment-item">
                                           
-                                            <p><?php echo $row['summary']?></p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['summary']?></p>
                                             
                                                                                        
                                         </div>

@@ -140,7 +140,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active"><a href="#">Settings</li>
+                    <li class="active">Settings</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 

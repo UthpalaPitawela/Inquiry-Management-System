@@ -179,7 +179,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="<?php echo base_url();?>index.php/Manager_Profile_Controller">Home</a></li>                    
-                    <li class="active"><a href="#">Assign Inquiries</li>
+                    <li class="active">Assign Inquiries</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 

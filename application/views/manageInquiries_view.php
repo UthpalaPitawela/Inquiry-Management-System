@@ -1176,7 +1176,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
         function follow(email,r_id){
                 $.ajax({             
                     type:"post",
-                    url : 'inquirybutton_controller/following/',
+                    url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
                     data : {id:r=email},
                     success: function(data) {
                         $('#followed').html(data);

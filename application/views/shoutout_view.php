@@ -12,15 +12,22 @@
         
         
         <!-- END META SECTION -->
-         <link rel="icon" href="<?php echo base_url(); ?>EDULINK-Logo1.ico" type="image/x-icon" />               
+         <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />              
         <!-- CSS INCLUDE --> 
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
+
+         <!-- ALERT CSS -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        
         <!-- EOF CSS INCLUDE --> 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
 
         <!-- JS INCLUDE --> 
+        <!-- ALERT -->
+        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        
 
     </head>
     <body>
@@ -107,6 +114,10 @@
                         <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
                     </li>
 
+                    <li>
+                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
+                    </li>
+
                     <li class="active">
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email / SMS</span></a>
                     </li>
@@ -185,226 +196,191 @@
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Email/SMS Dashboard</strong></h3>
                                 </div>
-                            
-                                <div class="panel panel-default"  style="border-top-color:#2b73ef; border-top-width:2px; ">
-                                    <div class="panel-heading" >
-                                        <h2 class="panel-title"><strong>Create Campaign</strong></h2>
-                                    </div>
-                                    <div class="panel-body"> 
-                                            <!-- FIRST COLUMN -->
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Campaign Name</label>
-                                                    <div class="col-md-9">                                            
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                            <input type="text" id="campaign_name" name="campaign_name" class="form-control"/>
-                                                        </div> 
-                                                    </div>
+                                         <div class="row">
+                                            <div class="col-md-12">
+                                <!-- ++++++++++++++++++++++++ Tabbed page  ++++++++++++++++++++++ -->
+                                                <form class="form-horizontal">
+                                                                                
+                                                    <div class="panel panel-default tabs">                            
+                                                        <ul class="nav nav-tabs" id="emailSMS_tabs" role="tablist">
+                                                            <li class="active"><a href="#tab-first" role="tab" data-toggle="tab"><strong>SMS</strong></a></li>
+                                                            <li><a href="#tab-second" role="tab" data-toggle="tab"><strong>Email</strong></a></li>
+                                                        </ul>
+
+
+                                        <div class="panel-body tab-content">
+                                            <div class="tab-pane active" id="tab-first">
+                                                           
+
+                                            <div class="col-md-12">
+
+                                                <!-- Start of SMS tab -->
+                                                <div class="panel panel-default">
                                                     
-                                                </div>
-
-                                                <div class="form-group">                                        
-                                                    <label class="col-md-3 control-label">Date</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                            <input type="text" name="inquiry_date" id="inquiry_date" class="form-control datepicker" value="">                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">                                        
-                                                    <label class="col-md-3 control-label"></label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                                                                        
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="form-group">                                        
-                                                    <label class="col-md-3 control-label"></label>
-                                                    <div class="col-md-9" >                             
-                                                        <button type="submit" name="evaluate" style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary" 
-                                                        onclick="update_campaign()">Evaluate Contacts </button>
-                                                    </div>
-                                                </div>
-                                                                                          
-                                            </div>
-                                            <!-- SECOND COLUMN -->
-                                            <div class="col-md-6">
-
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Type</label>
-                                                    <div class="col-md-9">                                        
-                                                        <select name="inquiry_type" id="inquiry_type" class="form-control select">
-                                                            <option>Select Type</option>
-                                                            <option>Walk-in</option>
-                                                            <option>Call</option>
-                                                            <option>E-mail</option>
-                                                            <option>SMS</option>
-                                                            <option>Bulk</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Course</label>
-                                                    <div class="col-md-9">                                        
-                                                        <select name="course" id="course" class="form-control select">
-                                                            <option>Select Course</option>
-                                                            <option>Dual Certificate Program </option>
-                                                            <option>    International Foundation Programme  </option>
-                                                            <option>HND in Business </option>
-                                                            <option>    HND in Computer Science </option>
-                                                            <option>Advanced Diploma in Information Security & Ethical Hacking</option>
-                                                            <option>    Advanced Diploma in Multimedia & Animation  </option>
-                                                            <option>BA (Hons) Accounting & Finance</option>
-                                                            <option>    BA (Hons) International Business    </option>
-                                                            <option>BA (Joint Hons) Business & Marketing</option>
-                                                            <option>    BA (Joint Hons) Business & Entrepreneurship </option>
-                                                            <option>BSc (Hons) Computing</option>
-                                                            <option>General MBA</option>
-                                                            <option>    Executive MBA   </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Status</label>
-                                                    <div class="col-md-9">                                        
-                                                        <select name="inquiry_status" id="inquiry_status" class="form-control select">
-                                                            <option>Select Status</option>
-                                                            <option>Pending</option>
-                                                            <option>Following</option>
-                                                            <option>Direct Admission</option>
-                                                            <option>Inquiry Admission</option>
-                                                            <option>Unassigned</option>
-                                                            <option>Direct Admission Offer Sent</option>
-                                                            <option>Indirect Admission Offer Sent</option>
+                                                    <div class="panel-body"> 
+                                                        <div class="col-md-9">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">SMS Number</label>
+                                                                    <div class="col-md-9">                                            
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                            <input type="text" id="sms_number" name="sms_number" class="form-control"/>
+                                                                        </div> 
+                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Text Message</label>
+                                                                <div class="col-md-9 col-xs-12">                                            
+                                                                    <textarea class="form-control" rows="5" id="text_body" name="text_body" placeholder="Text message body"></textarea>
+                                                                </div>
+                                                            </div>        
                                                             
-                                                        </select>
+                                                            <div class="form-group">                                        
+                                                                        <label class="col-md-3 control-label"></label>
+                                                                        <div class="col-md-9" >                             
+                                                                            <button type="button" onclick="check_sms()" class="btn btn-primary">Send SMS</button>
+                                                                        </div>
+                                                                       
+                                                                        <script>
+                                                                                        
+                                                                            function check_sms() {
+                                                                                $('#loading_image').show();
+                                                                                var recipient = $('#sms_number').val();
+                                                                                var message = $('#text_body').val();
+                                                                                 
+                                                                                if ( recipient!=="") {
+                                                                                    if(message!==""){
+                                                                                        $.ajax({
+                                                                                            type: "get",
+                                                                                            url: "<?php echo base_url(); ?>" +"index.php/sms/send_sms/send/"+recipient+"/"+message,
+                                                                                           
+                                                                                            success: function (msg) {
+                                                                                                $('#loading_image').hide();
+                                                                                                swal("SMS sent successfully", "You clicked the button!", "success")
+                                                                                            },
+                                                                                            error: function (error) {
+                                                                                                alert("Something went wrong");
+                                                                                            }
+                                                                                        }); 
+                                                                                                    
+
+                                                                                    }else{
+                                                                                        alert("Please fill the required field");
+                                                                                    } 
+                                                                                }else{
+                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                }
+                                                                            }        
+                                                                                    
+
+                                                                        </script> 
+                                                            </div>                                                         
+                                                        </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-md-3 control-label">Selected Contacts</label>
-                                                    <div class="col-md-3">
-                                                        <input type="text" class="form-control" readonly value=""/>
+                                            </div>
+
+                                            </div> <!-- End of tab-first -->
+
+
+                                            <!-- Start of second Tab  -->
+                                            <div class="tab-pane" id="tab-second">
+                                                           
+
+                                            <div class="col-md-12">
+
+                                                <!-- Start of Email tab -->
+                                                <div class="panel panel-default">
+                                                    
+                                                    <div class="panel-body"> 
+                                                        <div class="col-md-9">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Email Address</label>
+                                                                    <div class="col-md-9">                                            
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                            <input type="text" id="email" name="email" class="form-control" />
+                                                                        </div> 
+                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Subject</label>
+                                                                    <div class="col-md-9">                                            
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                            <input type="text" id="email_subj" name="email_subj" class="form-control"/>
+                                                                        </div> 
+                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Email Content</label>
+                                                                <div class="col-md-9 col-xs-12">                                            
+                                                                    <textarea class="form-control" id="email_body" name="email_body" rows="5" placeholder="Email message body"></textarea>
+                                                                </div>
+                                                            </div>        
+                                                            <div class="form-group">                                        
+                                                                        <label class="col-md-3 control-label"></label>
+                                                                        <div class="col-md-9" >                             
+                                                                            <button type="button" name="send_mail" class="btn btn-primary" onclick="check_email()">Send Email</button>
+                                                                        </div>
+
+                                                                        <script>
+                                                                                        
+                                                                                        function check_email() {
+                                                                                            $recipient = $('#email').val();
+                                                                                            $subject = $('#email_subj').val();
+                                                                                            $message = $('#email_body').val();
+                                                                                            
+                                                                                            if ( $recipient!=="" ) {
+                                                                                                if($subject!=="" && $message!==""){
+                                                                                                    $.ajax({
+                                                                                                        type: "post",
+                                                                                                        url: "<?php echo base_url(); ?>" +"index.php/email/send_email/send",
+                                                                                                        dataType: 'json',
+                                                                                                        data: {recp: $recipient, subj: $subject , message: $message},
+                                                                                                        success: function (msg) {
+                                                                                                            if (msg.status == "success") {
+                                                                                                                swal(msg,info, "You clicked the button!", "success");
+                                                                                                            } 
+                                                                                                        },
+                                                                                                        error: function (error) {
+                                                                                                            alert("Something went wrong");
+                                                                                                        }
+                                                                                                    }); 
+                                                                                                    
+
+                                                                                                }else{
+                                                                                                    alert("Please fill the required fields");
+                                                                                                } 
+                                                                                           }else{
+                                                                                               alert("Give a recipient");
+                                                                                            }
+                                                                                        }
+                                                                                       
+                                                                                    
+
+                                                                        </script>
+                                                            </div>                                                       
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
+
+                                            </div>
+                                             <!-- End of tab-second -->
+
+                                        </div> <!-- End of tab content -->
+                                                    </div>
+                                                </form>
+                                            </div>
+                    </div> <!-- End of row -->   
                                         
-                                    </div>
-                                </div>
                             </form>
                             
                         </div>
                     </div>  
-
-                    <!-- END PAGE CONTENT WRAPPER --> 
-
-                    <!-- PAGE CONTENT WRAPPER --> 
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <!-- START FORM1 -->
-                            <form class="form-horizontal" style="border-color:#808080;">
-                            <div class="panel panel-default"   style="border-top-color:#2b73ef; border-top-width:2px; " >
-                                <div class="panel-heading">
-                                    <h2 class="panel-title"><strong>SMS</strong></h2> 
-                                </div>
-                                <div class="panel-body"> 
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Campaign</label>
-                                            <div class="col-md-9">                                        
-                                                <select class="form-control select">
-                                                    <option>Select Campaign</option>
-                                                    
-                                                </select>
-                                            </div>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">SMS Number</label>
-                                            <div class="col-md-9">                                            
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                    <input type="text" class="form-control"/>
-                                                </div> 
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Text Message</label>
-                                        <div class="col-md-9 col-xs-12">                                            
-                                            <textarea class="form-control" rows="5" placeholder="Text message body"></textarea>
-                                        </div>
-                                    </div>        
-                                    
-                                    <div class="form-group">                                        
-                                                <label class="col-md-3 control-label"></label>
-                                                <div class="col-md-9" >                             
-                                                    <button style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary">Send SMS</button>
-                                                </div>
-                                    </div>                                                         
-                                </div>
-                            </div>
-                            </form>
-                            <!-- END FORM1 -->                       
-                        </div>
-                        <div class="col-md-6">
-                            <!-- START FORM2 -->
-                            <form class="form-horizontal" style="border-color: #808080;">
-                            <div class="panel panel-default"   style="border-top-color:#2b73ef; border-top-width:2px; ">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title"><strong>Email</strong></h2> 
-                                </div>
-                                <div class="panel-body"> 
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Campaign</label>
-                                            <div class="col-md-9">                                        
-                                                <select class="form-control select">
-                                                    <option>Select Campaign</option>
-                                                    
-                                                </select>
-                                            </div>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Email Address</label>
-                                            <div class="col-md-9">                                            
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                    <input type="text" class="form-control"/>
-                                                </div> 
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Subject</label>
-                                            <div class="col-md-9">                                            
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                    <input type="text" class="form-control"/>
-                                                </div> 
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Email Content</label>
-                                        <div class="col-md-9 col-xs-12">                                            
-                                            <textarea class="form-control" rows="5" placeholder="Email message body">Email message body</textarea>
-                                        </div>
-                                    </div>        
-                                    <div class="form-group">                                        
-                                                <label class="col-md-3 control-label"></label>
-                                                <div class="col-md-9" >                             
-                                                    <button style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary">Send Email</button>
-                                                </div>
-                                    </div>                                                          
-                                </div>
-                            </div>
-                            </form>
-                            <!-- END FORM2 --> 
-                        </div>                    
-                    </div>
 
                     
                 </div>

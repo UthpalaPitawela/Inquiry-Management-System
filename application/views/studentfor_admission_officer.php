@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url();?>public/css/theme-default.css"/>
         <!-- EOF CSS INCLUDE -->                                     
    
-        <link rel="icon" href="<?php echo base_url('public/Assets/EDULINK-Logo1.ico'); ?>" type="image/x-icon" />
+        <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />
         <!-- END META SECTION -->
         
         <style type="text/css">

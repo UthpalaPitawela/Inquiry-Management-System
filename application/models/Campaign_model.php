@@ -18,19 +18,49 @@ class Campaign_model extends CI_Model
         return $query->result();
     }
 
-    public function get_id($campaign){
-    	$this->db->insert('campaign',$campaign);
-    	//get id
-    	$this->db->select('campaign_id');
-    	$this->db->where('campaign_name',$campaign['campaign_name']);
-    	$query = $this->db->get('campaign');
-    	if ($query->num_rows() > 0) {
-    		$data = $query->result_array();
-    		return $data[0]['campaign_id'];
-		} else {
-		    return false;
-		}
+    public function insert_newCampaign($campaign){
+        $this->db->insert('campaign',$campaign);
+    }
 
+    public function get_id($camp_name){
+        $this->db->select('campaign_id');
+        $this->db->where('campaign_name',$camp_name);
+        $query = $this->db->get('campaign');
+        if ($query->num_rows() > 0) {
+            $data = $query->result_array();
+            return $data[0]['campaign_id'];
+        } else {
+            return false;
+        } 
+        
+    }
+    
+    public function update_id($camp_id,$campaign){
+        $arr = array('campaign_id'=> $camp_id);
+        if($campaign['inquiry']!=""){
+            $this->db->where('Inquiry',$campaign['inquiry']);
+        }
+        if($campaign['status']!=""){
+            $this->db->where('Status',$campaign['status']);
+        }
+
+        $this->db->update('register',$arr);
+        return $this->db->affected_rows() > 0 ;
+
+    }
+
+    public function get_camp($camp_id){
+        $this->db->where('campaign_id',$camp_id);
+        $query = $this->db->get('campaign');
+        return $query->result();
+    }
+
+    public function select_students($camp_name){
+        $this->db->select('book_id, book_name, author_name, category_name');
+        $this->db->from('books');
+        $this->db->join('category', 'category.category_id = books.category_id');
+        $this->db->where('category_name', 'Self Development');
+        $query = $this->db->get();
     }
 
     public function get_newCampaign($camp_id){
@@ -38,36 +68,6 @@ class Campaign_model extends CI_Model
         return $query->result();
     }
 
-    public function insert_selectionInput($selection)
-    {
- 		$str = '';
-    	$arr = array('campaign_id'=> $selection['id']);
-    	if(array_key_exists('type', $selection)){
-    		$str = $str.$selection['type'].'/ ';
-    		$this->db->where('Inquiry',$selection['type']);
-    		$this->db->update('register',$arr);
-    	}
-    	if(array_key_exists('course', $selection)){
-    		$str = $str.$selection['course'].'/ ';
-    		$this->db->where('course',$selection['course']);
-    		$this->db->update('register',$arr);
-    	}
-    	if(array_key_exists('status', $selection)){
-    		$str = $str.$selection['status'].'/ ';
-    		$this->db->where('Status',$selection['status']);
-    		$this->db->update('register',$arr);
-    	}
-
-    	//insert campaign table selection
-        //if($str!=''){
-           // $newStr=rtrim($str,"/ "); // remove the last slash
-        //}
-    	$in = array('selection'=>$str);
-    	$this->db->	where('campaign_id',$selection['id']);
-    	$this->db->update('campaign',$in);
-        return true;
-        
-    }
 
     public function select_campaign(){
         $this->db->select('campaign_id','campaign_name');
@@ -81,10 +81,11 @@ class Campaign_model extends CI_Model
 
     }
 
-    public function select_bulkEmail($id){
+    public function select_bulkEmail($camp_id){
 
-        $this->db->select("Email,Fname");
-        $query = $this->db->get_where('register',array('campaign_id'=>$id));
+        $this->db->select("Email,Fname,r_id");
+        $this->db->where('campaign_id',$camp_id);
+        $query = $this->db->get('register');
         
         return $query->result();
         

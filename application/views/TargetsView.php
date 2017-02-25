@@ -23,7 +23,7 @@
 
     $name = $_SESSION["first_username"];
     $propic = $_SESSION["propic"];
-    $status = $_SESSION["status"];
+    $status1 = $_SESSION["status"];
     $lname = $_SESSION["last_username"];
 
     ?>
@@ -35,10 +35,10 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <?php if($status==0){   ?>
+                        <?php if($status1==0){   ?>
                         <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller">Edulink IMS</a>
                         <?php }  ?>
-                        <?php if($status==3){ ?>
+                        <?php if($status1==3){ ?>
                         <a href="<?php echo base_url('index.php/Counsellor_Profile_Controller/index/'. $name."/" .$lname);?>">Edulink IMS</a>
                         <?php }  ?>
                         
@@ -50,9 +50,9 @@
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $name ?></div>
-                                <div class="profile-data-title"><?php if($status==0){echo 'Manager';}
-                                elseif($status==2){echo 'Admissions Officer';}
-                                elseif($status==3){echo 'Counsellor';}   ?></div> 
+                                <div class="profile-data-title"><?php if($status1==0){echo 'Manager';}
+                                elseif($status1==2){echo 'Admissions Officer';}
+                                elseif($status1==3){echo 'Counsellor';}   ?></div> 
                             </div>
                             <div class="profile-controls">
                                 <a href="<?php echo base_url();?>index.php/profile_controller" class="profile-control-left"><span class="fa fa-info"></span></a>
@@ -62,10 +62,10 @@
                     </li>
 
                     <li>
-                        <?php if($status==0){   ?>
+                        <?php if($status1==0){   ?>
                         <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>
                         <?php }  ?>
-                        <?php if($status==3){ ?>
+                        <?php if($status1==3){ ?>
                         <a href="<?php echo base_url('index.php/Counsellor_Profile_Controller/index/'. $name."/" .$lname);?>"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>  
                         <?php }  ?>                        
                     </li>                    
@@ -76,11 +76,11 @@
                             <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
                             <li>
 
-                            <?php if($status==0){ ?>
+                            <?php if($status1==0){ ?>
                             <a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a>
                             <?php  } ?>
 
-                            <?php if($status==3){ ?>
+                            <?php if($status1==3){ ?>
                             <a href="<?php echo base_url();?>index.php/manageInquiriesCoun_controller"><span class="fa fa-phone"></span> Manage Inquiries</a>
                             <?php  } ?>
 
@@ -95,15 +95,19 @@
                     </li>
 
                     <li>
+                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
+                    </li>
+
+                    <li>
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
                     </li>
 
                     <li>
-                        <?php if($status==0){ ?>
+                        <?php if($status1==0){ ?>
                         <a href="<?php echo base_url();?>index.php/admissions_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                         <?php  } ?>
 
-                        <?php if($status==3){ ?>
+                        <?php if($status1==3){ ?>
                         <a href="<?php echo base_url();?>index.php/admissionsCoun_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
                         <?php  } ?>
                     </li>
@@ -113,7 +117,7 @@
                     </li>
 
                     
-                    <?php if($status==0){ ?>
+                    <?php if($status1==0){ ?>
                     <li class="xn-title">Administration</li>
                     <li class="active">
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        

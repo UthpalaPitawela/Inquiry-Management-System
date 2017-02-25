@@ -11,15 +11,15 @@
         
         
         <!-- END META SECTION -->
-         <link rel="icon" href="<?php echo base_url(); ?>EDULINK logo1.ico" type="image/x-icon" />               
+        <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />            
         <!-- CSS INCLUDE --> 
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
 
         <!-- ALERT CSS -->
-        <link href="<?php echo base_url('public/alert/css/alert.css'); ?>" rel="stylesheet" />
-        <link href="<?php echo base_url('public/alert/themes/default/theme.css'); ?>" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        
         <!-- EOF CSS INCLUDE --> 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <!-- JS INCLUDE --> 
@@ -29,8 +29,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 
         <!-- ALERT -->
-        <script src="<?php echo base_url('public/alert/js/alert.js'); ?>"></script>
-
+        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        
 
         <style>
        input[type="text"][disabled] {
@@ -116,6 +116,10 @@
 
                     <li>
                         <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
                     </li>
 
                     <li>
@@ -257,33 +261,11 @@
                                                                     <div class="col-md-9">                                        
                                                                         <select name="inquiry_type" id="inquiry_type" class="form-control select">
                                                                             <option value="">Select Type</option>
-                                                                            <option value="">Walk-in</option>
-                                                                            <option value="">Call</option>
-                                                                            <option value="">E-mail</option>
-                                                                            <option value="">SMS</option>
-                                                                            <option value="">Bulk</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="col-md-3 control-label">Course</label>
-                                                                    <div class="col-md-9">                                        
-                                                                        <select name="course" id="course" class="form-control select">
-                                                                            <option value="">Select Course</option>
-                                                                            <option value="">Dual Certificate Program </option>
-                                                                            <option value="">    International Foundation Programme  </option>
-                                                                            <option value="">HND in Business </option>
-                                                                            <option value="">    HND in Computer Science </option>
-                                                                            <option value="">Advanced Diploma in Information Security & Ethical Hacking</option>
-                                                                            <option value="">    Advanced Diploma in Multimedia & Animation  </option>
-                                                                            <option value="">BA (Hons) Accounting & Finance</option>
-                                                                            <option value="">    BA (Hons) International Business    </option>
-                                                                            <option value="">BA (Joint Hons) Business & Marketing</option>
-                                                                            <option value="">    BA (Joint Hons) Business & Entrepreneurship </option>
-                                                                            <option value="">BSc (Hons) Computing</option>
-                                                                            <option value="">General MBA</option>
-                                                                            <option value="">    Executive MBA   </option>
+                                                                            <option >Walk-in</option>
+                                                                            <option >Call</option>
+                                                                            <option >Email</option>
+                                                                            <option >SMS</option>
+                                                                            <option >Bulk</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -293,14 +275,11 @@
                                                                     <div class="col-md-9">                                        
                                                                         <select name="inquiry_status" id="inquiry_status" class="form-control select">
                                                                             <option value="">Select Status</option>
-                                                                            <option value="">Pending</option>
-                                                                            <option value="">Following</option>
-                                                                            <option value="">Direct Admission</option>
-                                                                            <option value="">Inquiry Admission</option>
-                                                                            <option value="">Unassigned</option>
-                                                                            <option value="">Direct Admission Offer Sent</option>
-                                                                            <option value="">Indirect Admission Offer Sent</option>
-                                                                            
+                                                                            <option >Pending</option>
+                                                                            <option >Following</option>
+                                                                            <option >Registered</option>
+                                                                            <option >Completed</option>
+                                                                           
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -330,13 +309,14 @@
                                     <div class="panel-body">
                                         <div class="col-md-11">
                                         <!-- Start Campaigns Table --> 
+                                            <div style="overflow-y:scroll; height:450px;">
                                             <table id="mydata" class="table datatable table-hover">
                                                 <thead>
                                                     <tr role="row">
-                                                        <th width="20" style="text-align: center"></th>
-                                                        <th width="100" style="text-align: center">Campaign Name</th>
-                                                        <th width="100" style="text-align: center">Date Created</th>
-                                                        <th width="200" style="text-align: center">Selection</th>
+                                                        <th width="100" style="text-align: center"></th>
+                                                        <th width="150" style="text-align: center">Campaign Name</th>
+                                                        <th width="150" style="text-align: center">Date Created</th>
+                                                        <th width="200" colspan="2" style="text-align: center;">Selection</th>
                                                     </tr>
                                                 </thead>
 
@@ -347,14 +327,21 @@
                                                     foreach($campaigns as $campaign){ ?>
                                                         <tr id="<?php  echo $campaign->campaign_id; ?>">
                                                             <td style="text-align: center">
-                                                            <button class="btn btn-success btn-sm" style="border-radius: 25px" data-toggle="modal" data-placement="top" title="View Campaign Details" data-tooltip="tooltip" href="#viewModal<?php echo $campaign->campaign_id;?>" onclick="getDetails('<?php  echo $campaign->campaign_id; ?>')"><span class="glyphicon glyphicon-plus"></span></button> 
+                                                            <button type="button" class="btn btn-success btn-sm" style="border-radius: 25px" data-toggle="modal" data-placement="top" title="View Campaign Details" data-tooltip="tooltip" href="#viewModal<?php echo $campaign->campaign_id;?>" onclick="getDetails('<?php  echo $campaign->campaign_id; ?>')"><span class="glyphicon glyphicon-plus"></span></button> 
                                                             </td>
                                                             <td style="text-align: center"><?php echo $campaign->campaign_name; ?></td>
                                                             <td style="text-align: center"><?php echo $campaign->date; ?></td>
-                                                            <td style="text-align: center"><?php echo $campaign->selection; ?></td>
-                                                            
+                                                            <td style="text-align: center"><?php echo $campaign->inquiry; ?></td>
+                                                            <td style="text-align: center"><?php echo $campaign->status; ?></td>
                                                         </tr>
                                                 </form>
+                                            <?php } ?>
+
+
+                                                </tbody> 
+                                            </table>
+                                            <div> <!-- scroll bar -->
+                                            <!-- End Campaigns Table -->
 
                                                      <!-- Data Modal for each Campaign -->
                                                   <div id="viewModal<?php echo $campaign->campaign_id; ?>" class="modal fade">
@@ -380,9 +367,8 @@
                                                                             <input type="text" class="form-control" readonly value=""/>
                                                                         </div>
                                                                     </div>
-                                                                    <!--   
-                                                                    <div id="campaign_table" class="table-responsive" style="display:none">
-                                                                    <div>    
+                                                                    
+                                                                    <div id="campaign_table" class="table-responsive" style="display:none">    
                                                                     <table class="table datatable table-hover ">
                                                                         <thead>
                                                                             <tr role="row">
@@ -393,14 +379,10 @@
                                                                             </tr>
                                                                         </thead>
 
-                                                                        <tbody>
-                                                                
-                                                                      
-                                                                        </tbody> 
+                                                                         
                                                                     </table>
                                                                     </div>
-                                                                    </div>
-                                                                      -->  
+                                                                      
                                                                     <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                                     </div>                               
@@ -415,16 +397,6 @@
                                                     </div>
                                               </div> 
                                               <!-- End of Data Modal for Campaign -->
-
-
-                                            
-                                            <?php } ?>
-
-
-                                                </tbody> 
-                                            </table>
-                                            <!-- End Campaigns Table -->
-
                                            
                                         </div>      
                                         
@@ -485,6 +457,14 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-file-input.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-select.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/tableExport.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jquery.base64.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/html2canvas.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/jspdf.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script>
+
         <!-- END THIS PAGE PLUGINS -->       
         
         <!-- START TEMPLATE -->
@@ -507,25 +487,33 @@
                 $campaign_name = $('#campaign_name').val();
                 $date = $('#inquiry_date').val();
                 $type = $('#inquiry_type').val();
-                $course = $('#course').val();
                 $status = $('#inquiry_status').val();
                 
                 
-                if ($type!=="Select Type" || $course!=="Select Course" || $status!=="Select Status"){
+                if ($type!=="Select Type" || $status!=="Select Status"){
 
                     $.ajax({
                         type: "post",
-                        url: '<?php echo base_url();?>index.php/Campaign_Controller/evaluate_campaign"',
+                        url: "<?php echo base_url();?>index.php/Campaign_Controller/evaluate_campaign",
                         dataType: 'json',
-                        data: {name: $campaign_name, date: $date, type: $type , course: $course, status: $status},
+                        data: {name: $campaign_name, date: $date, type: $type ,status: $status},
                             success: function (data) {
                                 if (data.status == "success") {
-                                    alert(data.info);
-                                } 
-                                                                                                            
+                                    $('#newModal').modal('hide');
+                                    swal({title: data.info, text: "You clicked the button!", type: "success"},
+                                           function(){
+                                               var url = "<?php echo base_url();?>index.php/Campaign_Controller/send_campaign/"+data.id;
+                                               window.location.href = url;
+        
+                                           }
+                                        );
+                                }else{
+                                    swal(data.info);
+                                }
+                                                                                                    
                             },
                             error: function (error) {
-                                alert("No  was found");
+                                alert("Error in connection");
                             }
                     }); 
                                                                                                 
@@ -544,7 +532,7 @@
             $.ajax({
      
                 type:"post",
-                url : 'Campaign_Controller/get_campaignDetails/',
+                url : "<?php echo base_url();?>index.php/Campaign_Controller/get_campaignDetails",
                 data : {id: campID},
                 dataType: 'json',
                 success: function (data) {
@@ -559,14 +547,6 @@
         }
         </script>
 
-        <script>
-        $('.mb-control').click(function(e){
-            e.preventDefault()
-        })
-        
-        </script> 
-
-    
 
         <script type="text/javascript">
     

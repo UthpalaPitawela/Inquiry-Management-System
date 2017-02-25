@@ -11,7 +11,7 @@
         
         
         <!-- END META SECTION -->
-         <link rel="icon" href="<?php echo base_url(); ?>EDULINK logo1.ico" type="image/x-icon" />               
+         <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />            
         <!-- CSS INCLUDE --> 
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/jquery/jquery-ui.min.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
@@ -98,6 +98,10 @@
 
                     <li>
                         <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
                     </li>
 
                     <li>
@@ -1061,7 +1065,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
 
                                         <tbody id='table'>
                                             <tr id="<?php  echo $post->r_id; ?>">
-                                                <td style="text-align: center"><?php echo $post->Fname; ?></td>
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post->r_id);?>"><?php echo $post->Fname; ?></a></td>
                                                 <td style="text-align: center"><?php echo $post->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $post->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Grade1; ?></td>

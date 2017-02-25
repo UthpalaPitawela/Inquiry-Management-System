@@ -4,11 +4,18 @@ require 'PHPMailerAutoload.php';
 
 class Send_email extends CI_Controller {
 
-	public function send(){
+	public function send(){ 
        $campaign = $this->input->post('camp');
+       $campaign_id = $this->input->post('id');
        $recipient = $this->input->post('recp');
        $subject = $this->input->post('subj');
        $message = $this->input->post('message');
+       /*
+       $campaign = 'camp1';
+       $campaign_id = '1';
+       $recipient = '';
+       $subject = "regarding lecs";
+       $message = "lectures have been postponed"; */
 
         $mail = new PHPMailer;
         $mail->SMTPDebug = 0;                  
@@ -39,23 +46,24 @@ class Send_email extends CI_Controller {
             
         }else{
             $this->load->model('Campaign_model','campaign_model');
-            $id = $this->campaign_model->get_id($campaign);
-            $result = $this->campaign_model->select_bulkEmail($id);
-            //$result = array('harini.yasodhya@gmail.com','harini.yasodhya@gmail.com','harini.yasodhya@gmail.com');
-
+            $result = $this->campaign_model->select_bulkEmail($campaign_id);
+            $sent = array('campaign'=>$campaign);
+            
             foreach ($result as $row) {
-                $mail->addAddress($row['Email']);
+                $mail->addAddress($row->Email);
                 
                 if (!$mail->send()) {
-                    echo "Mailer Error (" . str_replace("@", "&#64;", $row['Email']) . ') ' . $mail->ErrorInfo . '<br />';
+                    $sent['error'] = "Mailer Error : ". $mail->ErrorInfo ;
+                    $sent[$row->r_id] = '0';
                     break; //Abandon sending
                 } else {
-                    print json_encode(array("status"=>"success","info"=>"Your message has been sent"));
+                    $sent[$row->r_id] = '1';
                 }
                 // Clear all addresses and attachments for next loop
                 $mail->clearAddresses();
-                $mail->clearAttachments();
-            }
+                $mail->clearAttachments(); 
+            } 
+            print json_encode($sent);
 
         }
        

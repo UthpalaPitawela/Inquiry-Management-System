@@ -5,8 +5,9 @@ parent::__construct();
 //$this->load->view("manager_settings_view");
 }
  	public function index(){
- 		
- 		$this->load->view("Manager_Settings_View");
+        $this->load->model('Manager_Settings_Model');
+        $data['result'] = $this->Manager_Settings_Model->getUsers();
+        $this->load->view("Manager_Settings_View",$data);
  	
  	}
     //The controller code to change password
@@ -20,17 +21,21 @@ parent::__construct();
                
                 if ($this->form_validation->run() == FALSE)
                 {
-                        $this->load->view('Manager_Settings_View');
+                        $this->load->model('Manager_Settings_Model');
+                        $data['result'] = $this->Manager_Settings_Model->getUsers();
+                        $this->load->view('Manager_Settings_View',$data);
                 }
                 else
                 {
-                        $this->load->view('Manager_Settings_View');
-                       
+                        $this->load->model('Manager_Settings_Model');
+                        $data['result'] = $this->Manager_Settings_Model->getUsers();
+                        $this->load->view('Manager_Settings_View',$data);
+                        $username = $this->input->post('disp_username');
     					$password = $this->input->post('newPwd');
+                        
+    					
 
-    					$this->load->model('Manager_Settings_Model');
-
-    					$this->Manager_Settings_Model->changePassword($password);
+    					$this->Manager_Settings_Model->changePassword($password,$username);
                       
                 }
  	}
@@ -80,6 +85,16 @@ parent::__construct();
 
 
  	}
+
+    public function getUsername(){
+        $uid = $this->input->get('uid');
+        $this->load->model('Manager_Settings_Model');
+        $data = $this->Manager_Settings_Model->getUsername($uid);
+        $val = $data['username'];
+        echo $val;
+
+
+    }
 
 
  }

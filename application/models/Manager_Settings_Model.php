@@ -1,12 +1,12 @@
 <?php
 class Manager_Settings_Model extends CI_Model{
 	//The database code to change password
-	function changePassword($password){
+	function changePassword($password,$username){
 		$data = array(
 			'password' => $password
 			);
 
-		$this->db->where('username', 'manager');
+		$this->db->where('username', $username);
 		$this->db->update('user', $data);
 
 	}
@@ -23,5 +23,26 @@ class Manager_Settings_Model extends CI_Model{
 			);
 		$this->db->insert('user',$data);
 	}
+
+	function getUsers(){
+		$this->db->select('first_name,last_name,u_id');
+		$query = $this->db->get('user');
+		return $query->result();
+	}
+
+	function getUsername($uid){
+		$this->db->select('username');
+		$query = $this->db->get_where('user',array('u_id'=>$uid));
+		foreach($query -> result() as $row){
+			$data = array(
+					'username' => $row->username,
+				
+
+					);
+				}
+		return $data;
+		
+	}
 }
+
 ?>

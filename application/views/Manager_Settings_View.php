@@ -83,10 +83,6 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
-                    </li>
-
-                    <li>
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
                     </li>
 
@@ -159,12 +155,28 @@
                                 <div class="panel panel-default tabs"> 
                                     <div class="panel-body content">
                                         <div class="tab-pane active" id="tab-first">
-                                            
-                                        
+                                            <div class="form-group">
+                                                <label class="col-md-3 col-xs-12 control-label">Select Name</label>
+                                                <div class="col-md-6 col-xs-12">                
+                                                     <select id = "name" name="name" class="btn btn-primary dropdown-toggle">
+                                    <?php
+
+                                        foreach($result as $row)
+                                        {
+                                            $name = $row->first_name." ".$row->last_name;
+                                            $uid = $row->u_id;
+                                            echo '<option value = "'.$uid.'">'.$row->first_name." ".$row->last_name.'</option>';
+                                        }
+                                    ?>
+                                    </select>                                                
+                                                </div>
+                                            </div>
+                                           
                                             <div class="form-group">
                                                 <label class="col-md-3 col-xs-12 control-label">Username</label>
                                                 <div class="col-md-6 col-xs-12">                
-                                                    <label>manager</label>                                                 
+                                                    <!-- <label id="disp_username"></label> -->
+                                                    <input type="text" class="form-control" style="color:black;text-align:center" id="disp_username" name="disp_username" readonly />                                              
                                                 </div>
                                             </div>
 
@@ -216,7 +228,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="fname" />
+                                                <input type="text" class="form-control" name="fname" id="fname" />
                                                 <?php echo form_error('fname');?>
                                             </div>                                            
                                             
@@ -228,7 +240,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name="lname" />
+                                                <input type="text" class="form-control" name="lname" id="lname" />
                                                 <?php echo form_error('lname');?>
                                             </div>                                            
                                             
@@ -382,6 +394,27 @@
         })
         
         </script>
+        <script type="text/javascript">
+            
+            $('#name').on('change',function(){
+                var uid = document.getElementById('name').value;
+                
+                $.ajax({
+                        url : '<?php echo base_url('index.php/Manager_Settings_Controller/getUsername');?>',
+                        method : 'get',
+                        data : {'uid' : uid },
+                       
+                        success : function(result){
+                                console.log(result);
+                               // $("#disp_username").text(result);
+                                $("#disp_username").val(result);
+
+                                }
+            });
+
+            });
+           
+        </script> 
        
     <!-- END SCRIPTS -->         
     </body>
@@ -390,5 +423,5 @@
 
 
 
-
+ 
 

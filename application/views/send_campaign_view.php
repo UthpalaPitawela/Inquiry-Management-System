@@ -18,8 +18,8 @@
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
 
         <!-- ALERT CSS -->
-        <link href="<?php echo base_url('public/alert/css/alert.css'); ?>" rel="stylesheet" />
-        <link href="<?php echo base_url('public/alert/themes/default/theme.css'); ?>" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        
         <!-- EOF CSS INCLUDE --> 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <!-- JS INCLUDE --> 
@@ -29,9 +29,9 @@
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 
         <!-- ALERT -->
-        <script src="<?php echo base_url('public/alert/js/alert.js'); ?>"></script>
 
-
+        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        
         <style>
        input[type="text"][disabled] {
             color: black;
@@ -40,7 +40,7 @@
 
     </head>
     <body>
-
+    
     <?php
 
     $name = $_SESSION["first_username"];
@@ -161,7 +161,7 @@
 <!-- ++++++++++++++++++++++++++++++++++++++   END OF SIDEBAR   +++++++++++++++++++++++++++++++++++++++++++++++++++++ -->    
 
 <!-- PAGE CONTENT -->
-            <div class="page-content">
+            <div class="page-content" >
                 
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
@@ -186,7 +186,8 @@
                     <li><a href="#">Create Campaign</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
-                
+                <div id="loading_image" style="display:none;position:absolute;top:10%;left:50%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="60" height="60" /><br>Loading..</div>
+
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                 
@@ -198,55 +199,40 @@
                                 <div class="panel panel-default"  style="border-top-width:2px; ">
                                     <div class="panel-heading" >
                                         <h2 class="panel-title"><strong>New Campaign</strong></h2>
+                                        <button type="button" onclick="" class="btn btn-primary pull-right" style="border-radius: 6px" >See Selected Contacts</button>
+                                                
                                     </div>
-
+                                    <?php foreach($campaign as $camp){ ?>
+                                    <input type="text" name="campaign_id" id="campaign_id" value="<?php echo $camp->campaign_id; ?>" hidden="hidden" />
+                                    <input type="text" name="campaign_name" id="campaign_name" value="<?php echo $camp->campaign_name; ?>" hidden="hidden" />
+                                                                
                                     <div class="panel-body"> 
                                             <!-- Campaign Details -->
+                                    <div class="row no-gutter">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Campaign Name</label>
-                                                <div class="col-md-9">                                            
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                        <input type="text" id="campaign_name" name="campaign_name" class="form-control"/>
-                                                    </div> 
-                                                </div>
-                                                    
-                                            </div>
-
-                                            <div class="form-group">                                        
-                                                <label class="col-md-3 control-label"></label>
-                                                <div class="col-md-9" >                             
-                                                    <button type="button" onclick="check_sms()" class="btn btn-primary">See Selected Contacts</button>
-                                                </div>
+                                                <label style="font-size: 15px; padding-right:1px; padding-left:1px; " class="col-md-6 control-label">Campaign Name: </label> 
+                                                <label style="font-size: 14px; padding-right:1px; padding-left: 7px; text-align: left; color: #737373" class="col-md-6 control-label" id="name" name="name"><u><?php echo $camp->campaign_name; ?></u></label>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Date</label>
-                                                <div class="col-md-9">                                            
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                        <input type="text" id="campaign_date" name="campaign_date"  class="form-control"/>
-                                                    </div> 
-                                                </div>
+                                                <label style="font-size: 15px; padding-right:1px; padding-left:1px; " class="col-md-6 control-label">Date: </label>
+                                                <label style="font-size: 14px; padding-right:1px; padding-left:7px;  text-align: left; color: #737373 " class="col-md-6 control-label" id="campaign_date" name="campaign_date">  <u><?php echo $camp->date; ?></u></label>
                                                     
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Selection</label>
-                                                <div class="col-md-9">                                            
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                        <input type="text" id="campaign_selection" name="campaign_selection"  class="form-control"/>
-                                                    </div> 
-                                                </div>
-                                                    
+                                                <label style="font-size: 15px; padding-right:1px; padding-left:1px; " class="col-md-6 control-label">Selection: </label>
+                                                <label style="font-size: 14px; padding-right:1px; padding-left:7px; text-align: left;  color: #737373" class="col-md-6 control-label" id="campaign_selection" name="campaign_selection">  <u><?php echo $camp->inquiry; ?>/<?php echo $camp->status; ?></u></label>
+                                                   
+                                    <?php } ?>    
                                             </div>
                                         </div>
+                                    </div>
                                         
 
                                     </div>
@@ -263,8 +249,8 @@
                                                             
                                 <div class="panel panel-default tabs">                            
                                     <ul class="nav nav-tabs" id="emailSMS_tabs" role="tablist">
-                                        <li class="active"><a href="#tab-first" role="tab" data-toggle="tab"><strong>SMS</strong></a></li>
-                                        <li><a href="#tab-second" role="tab" data-toggle="tab"><strong>Email</strong></a></li>
+                                        <li class="active"><a href="#tab-first" role="tab" data-toggle="tab"><strong>Bulk SMS</strong></a></li>
+                                        <li><a href="#tab-second" role="tab" data-toggle="tab"><strong>Bulk Email</strong></a></li>
                                     </ul>
 
 
@@ -279,15 +265,6 @@
                                 
                                 <div class="panel-body"> 
                                     <div class="col-md-9">
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">SMS Number</label>
-                                                <div class="col-md-9">                                            
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                        <input type="text" id="sms_number" name="sms_number" class="form-control"/>
-                                                    </div> 
-                                                </div>
-                                        </div>
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Text Message</label>
                                             <div class="col-md-9 col-xs-12">                                            
@@ -304,21 +281,19 @@
                                                     <script>
                                                                     
                                                         function check_sms() {
-                                                            $campaign = $('#campaign_sms').val();
-                                                            $recipient = $('#sms_number').val();
-                                                            $message = $('#text_body').val();
-                                                                        
-                                                            if ( ($recipient!=="" && $campaign==="Select Campaign") || ($recipient==="" && $campaign!=="Select Campaign")) {
-                                                                if($message!==""){
+                                                            $('#loading_image').show();
+                                                            var recipient = $('#sms_number').val();
+                                                            var message = $('#text_body').val();
+                                                             
+                                                            if ( recipient!=="") {
+                                                                if(message!==""){
                                                                     $.ajax({
-                                                                        type: "post",
-                                                                        url: "<?php echo base_url(); ?>" +"index.php/sms/send_sms/send",
-                                                                        dataType: 'json',
-                                                                        data: {camp: $campaign, recp: $recipient, message: $message},
+                                                                        type: "get",
+                                                                        url: "<?php echo base_url(); ?>" +"index.php/sms/send_sms/send/"+recipient+"/"+message,
+                                                                       
                                                                         success: function (msg) {
-                                                                            if (msg.status == "success") {
-                                                                                alert(msg.info);
-                                                                            } 
+                                                                            $('#loading_image').hide();
+                                                                            swal("SMS sent successfully", "You clicked the button!", "success")
                                                                         },
                                                                         error: function (error) {
                                                                             alert("Something went wrong");
@@ -332,8 +307,7 @@
                                                             }else{
                                                                 alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
                                                             }
-                                                        }
-                                                                  
+                                                        }        
                                                                 
 
                                                     </script> 
@@ -359,15 +333,6 @@
                                 <div class="panel-body"> 
                                     <div class="col-md-9">
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label">Email Address</label>
-                                                <div class="col-md-9">                                            
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                        <input type="text" id="email" name="email" class="form-control" />
-                                                    </div> 
-                                                </div>
-                                        </div>
-                                        <div class="form-group">
                                             <label class="col-md-3 control-label">Subject</label>
                                                 <div class="col-md-9">                                            
                                                     <div class="input-group">
@@ -392,21 +357,18 @@
                                                                     
                                                                     function check_email() {
                                                                         $campaign = $('#campaign_name').val();
-                                                                        $recipient = $('#email').val();
+                                                                        $id = $('#campaign_id').val();
                                                                         $subject = $('#email_subj').val();
                                                                         $message = $('#email_body').val();
                                                                         
-                                                                        if ( $campaign!=="" ) {
-                                                                            if($subject!=="" && $message!==""){
+                                                                        if($subject!=="" && $message!==""){
                                                                                 $.ajax({
                                                                                     type: "post",
                                                                                     url: "<?php echo base_url(); ?>" +"index.php/email/send_email/send",
                                                                                     dataType: 'json',
-                                                                                    data: {camp: $campaign, recp: $recipient, subj: $subject , message: $message},
-                                                                                    success: function (msg) {
-                                                                                        if (msg.status == "success") {
-                                                                                            alert(msg.info);
-                                                                                        } 
+                                                                                    data: {camp: $campaign, id: $id, subj: $subject , message: $message},
+                                                                                    success: function (data) {
+                                                                                        swal("Bulk email sent successfully", "You clicked the button!", "success");
                                                                                     },
                                                                                     error: function (error) {
                                                                                         alert("Something went wrong");
@@ -417,9 +379,7 @@
                                                                             }else{
                                                                                 alert("Please fill the required fields");
                                                                             } 
-                                                                       }else{
-                                                                           alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
-                                                                        }
+                                                                       
                                                                     }
                                                                    
                                                                 

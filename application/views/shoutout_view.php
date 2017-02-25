@@ -12,7 +12,7 @@
         
         
         <!-- END META SECTION -->
-         <link rel="icon" href="<?php echo base_url(); ?>EDULINK-Logo1.ico" type="image/x-icon" />               
+         <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />              
         <!-- CSS INCLUDE --> 
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>

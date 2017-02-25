@@ -242,7 +242,7 @@
 
                                 </div>                            
                                 <div class="panel-footer">
-                                    <button class="btn btn-info pull-right" onclick="handleInquiry();" style="float: center;" id="doneBtn" name="doneBtn">Assign</button>
+                                    <button class="btn btn-primary pull-right" onclick="handleInquiry();" style="float: center;" id="doneBtn" name="doneBtn">Assign</button>
                                 </div>                              
                             </div>
                             

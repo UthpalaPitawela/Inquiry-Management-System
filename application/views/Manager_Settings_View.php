@@ -176,7 +176,7 @@
                                                 <label class="col-md-3 col-xs-12 control-label">Username</label>
                                                 <div class="col-md-6 col-xs-12">                
                                                     <!-- <label id="disp_username"></label> -->
-                                                    <input type="text" class="form-control" style="color:black;text-align:center" id="disp_username" name="disp_username" readonly />                                              
+                                                    <input type="text" class="form-control" style="color:black;" id="disp_username" name="disp_username" readonly />                                              
                                                 </div>
                                             </div>
 

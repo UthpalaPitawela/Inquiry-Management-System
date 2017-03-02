@@ -219,12 +219,69 @@ foreach ($profile_data ->result_array() as $row3) {
                  </div>
 
 
+<div class="col-md-3">
+            <button type="button" id="showmail" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "document.getElementById('mailbox').style.display='block'; document.getElementById('showmail').style.display='none'; document.getElementById('hidemail').style.display='block';"" ><span>Send Mail</span></button>
+     <button type="button" id="hidemail" class="btn btn-primary view-pdf" style="display:none; " href = "javascript:void(0)" onclick = "document.getElementById('mailbox').style.display='none';document.getElementById('hidemail').style.display='none';document.getElementById('showmail').style.display='block';" ><span>Hide Mailing</span></button>
+
+</div>
+<div class="col-md-8">
 
 
+
+
+
+  <div class="block" id="mailbox">
+                        <form role="form" class="form-horizontal" action="<?php echo base_url("index.php/Email/EmailtoDB_Controller/offerletter")?>" method="POST">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">From:</label>
+                                <div class="col-md-10">                                        
+                                    <select class="form-control select" name="sender">
+                                        <option>Edulink (edulinkims@gmail.com)</option>
+                                                                               
+                                    </select>
+                                </div>
+                            </div>                        
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">To:</label>
+                                <div class="col-md-10">                                        
+                                    <input type="text" class="form-control" name="receivermail" value="<?php echo $addressforrmail; ?>" data-placeholder="Add email"/> 
+                                    <input type="text" name="primarytp" hidden="hidden" value="<?php echo $tpnum1; ?>">                               
+                                </div>
+                              
+                            </div>
+                           
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Subject:</label>
+                                <div class="col-md-10">                                        
+                                    <input type="text"  name="subject" class="form-control" value="" placeholder="Enter Subject" />                                
+                                </div>                                
+                            </div>
+                           
+                            <div class="form-group">
+                                <div class="col-md-12">                            
+                                    <textarea class="summernote_email" name="content" id="content">                  
+                                    </textarea>                            
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+
+                                    <div class="pull-right">
+                                        <button class="btn btn-danger" type="submit" id="send" onclick="showtext();"> <span class="fa fa-envelope"></span> Send Message</button>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                        
+
+</div>
 
 
 
 <?php
+
+
  if ($current_results->num_rows() > 0) {
 foreach ($current_results ->result_array() as $row2) {
 
@@ -252,53 +309,7 @@ if($row2['other']!='nolink'){
 
                     
           
-                        <div class="block" id="mailbox">
-                        <form role="form" class="form-horizontal" action="<?php echo base_url("index.php/EmailtoDB_Controller/offerletter")?>" method="POST">
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">From:</label>
-                                <div class="col-md-10">                                        
-                                    <select class="form-control select" name="sender">
-                                        <option>Dmitry (dmitryivaniuk@domain.com)</option>
-                                        <option>Incognito (otheremail@domain.com)</option>                                        
-                                    </select>
-                                </div>
-                            </div>                        
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">To:</label>
-                                <div class="col-md-10">                                        
-                                    <input type="text" class="form-control" name="receivermail" value="<?php echo $addressforrmail; ?>" data-placeholder="Add email"/> 
-                                    <input type="text" name="primarytp" hidden="hidden" value="<?php echo $tpnum1; ?>">                               
-                                </div>
-                              
-                            </div>
-                           
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Subject:</label>
-                                <div class="col-md-10">                                        
-                                    <input type="text"  name="subject" class="form-control" value="Lorem ipsum dolor sit amet"/>                                
-                                </div>                                
-                            </div>
-                           
-                            <div class="form-group">
-                                <div class="col-md-12">                            
-                                    <textarea class="summernote_email" name="content">                  
-                                    </textarea>                            
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <div class="pull-left">
-                                        <button class="btn btn-default"><span class="fa fa-trash-o"></span> Delete Draft</button>
-                                    </div>
-                                    <div class="pull-right">
-                                        <button class="btn btn-danger" type="submit" id="send" onclick="showtext();"> <span class="fa fa-envelope"></span> Send Message</button>
-                                    </div>                                    
-                                </div>
-                            </div>
-                        </form>
-                        </div>
-                        
-
+                      
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->             
 
@@ -312,12 +323,12 @@ if($row2['other']!='nolink'){
 
 
 
-
         <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "document.getElementById('newslight').style.display='block';document.getElementById('newsfade').style.display='block'" ><span>View PDF</span></button>
 
 
-    <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "document.getElementById('mailbox').style.display='block';" ><span>Send Mail</span></button>
 
+
+    
 <!-- div for black over lay -->
 <div id="newsfade" class="black_overlay"></div>
 
@@ -772,6 +783,7 @@ function getStudent(){
 
 }
 
+
      
 
 
@@ -868,6 +880,8 @@ function getStudent(){
         $('.mb-control').click(function(e){
             e.preventDefault()
         })
-        
+
+
+    
         </script> 
 

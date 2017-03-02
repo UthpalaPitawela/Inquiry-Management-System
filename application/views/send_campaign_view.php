@@ -368,7 +368,7 @@
                                                                         if($subject!=="" && $message!==""){
                                                                                 $.ajax({
                                                                                     type: "post",
-                                                                                    url: "<?php echo base_url(); ?>" +"index.php/email/send_email/send",
+                                                                                    url: "<?php echo base_url(); ?>" +"index.php/Email/send_email/send",
                                                                                     dataType: 'json',
                                                                                     data: {camp: $campaign, id: $id, subj: $subject , message: $message},
                                                                                     success: function (data) {

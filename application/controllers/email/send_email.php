@@ -35,11 +35,12 @@ class Send_email extends CI_Controller {
             
 
         if($recipient!=""){
+
             $mail->addAddress($recipient);
 
             if (!$mail->send()) {
                 return $mail->ErrorInfo;
-            } else {
+            }else{
                 print json_encode(array("status"=>"success","info"=>"Your message has been sent"));
                 
             }

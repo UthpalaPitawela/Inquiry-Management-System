@@ -144,7 +144,15 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li> 
-                    <li><a href="#">Manage Inquiries</a></li>                    
+                    <li>
+                    <?php if($status==0){ ?>
+                            <a href="<?php echo base_url();?>index.php/manageInquiries_controller">Manage Inquiries</a>
+                            <?php  } ?>
+
+                            <?php if($status==3){ ?>
+                            <a href="<?php echo base_url();?>index.php/manageInquiriesCoun_controller">Manage Inquiries</a>
+                            <?php  } ?>
+                    </li>                    
                     <li class="active"><a href="#">Summary Timeline</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       

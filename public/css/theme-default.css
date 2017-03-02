@@ -21,6 +21,12 @@
     overflow-y: scroll;
 }
 
+.ScrollStyle-1
+{
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
 .disabledInput {
     color: black;
 }

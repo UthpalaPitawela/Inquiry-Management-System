@@ -192,7 +192,7 @@
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li>
-                    <?php if($status==0){ ?>
+                        <?php if($status==0){ ?>
                             <a href="<?php echo base_url();?>index.php/manageInquiries_controller">Manage Inquiries</a>
                             <?php  } ?>
 
@@ -200,7 +200,6 @@
                             <a href="<?php echo base_url();?>index.php/manageInquiriesCoun_controller">Manage Inquiries</a>
                             <?php  } ?>
                     </li>
-                    <li><a href="#">Summary Timeline</a></li>
                     <li><a href="<?php echo base_url();?>index.php/user">Edit Records</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
@@ -687,7 +686,9 @@
                                 <a class="btn btn-info btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></a>
                                 <a class="btn btn-warning btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></a>
                                 
-                                <input type="submit" name="" class="btn btn-primary pull-right" value="Save Changes">
+                                <button type="submit" name="" class="btn btn-primary pull-right" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Save and Follow</button>
+
+                                
                                 
                             </div>
 
@@ -730,7 +731,7 @@
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="save" class="btn btn-primary">Save changes</button>
+                                                                <button type="submit" id="save" class="btn btn-primary" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Save changes</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -784,7 +785,7 @@
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="save" class="btn btn-primary">Send Text Message</button>
+                                                                <button type="submit" id="save" class="btn btn-primary" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -838,7 +839,7 @@
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="save" class="btn btn-primary">Send Email</button>
+                                                                <button type="submit" id="save" class="btn btn-primary" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Send Email</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -884,7 +885,7 @@
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="save" class="btn btn-primary">Save changes</button>
+                                                                <button type="submit" id="save" class="btn btn-primary" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Save changes</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -1173,4 +1174,19 @@ $(function(){
             e.preventDefault()
         })
         
+</script>
+
+
+<script type="text/javascript">
+    function follow(email,r_id){
+        $.ajax({             
+            type:"post",
+            url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
+            data : {id:r=email},
+            success: function(data) {
+                $('#followed').html(data);
+            }
+        });
+        $('#'+r_id).hide();
+    }
 </script>

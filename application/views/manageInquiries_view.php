@@ -27,6 +27,14 @@
             }
         </style>
 
+        <style type="text/css">
+            .ScrollStyle
+            {
+                max-height: 520px;
+                overflow-y: scroll;
+            }
+        </style>
+
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script> 
         <!-- JS INCLUDE --> 
 
@@ -196,6 +204,8 @@
                                 </div>
 
                                 <div class="panel-body">
+                                <div class="ScrollStyle">
+                                <div class="table-responsive">
                                     <table id="customers2" class="table datatable table-hover">
                                         <thead>
                                             <tr>
@@ -239,7 +249,9 @@
                             
                                         </tbody>
                                         <?php } ?>
-                                    </table>                                    
+                                    </table> 
+                                    </div>
+                                    </div>                                   
                                     
                                 </div>
                             </div>      
@@ -272,6 +284,8 @@
                         <div class="tab-pane active" id="tab22" >
                         <div class="col-md-12">
                             
+                                    <div class="ScrollStyle">
+                                    <div class="table-responsive">
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
@@ -468,7 +482,7 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                                   </div>
                                 </div>
 
-                                <!-- POPUP for call summary -->
+                                <!-- POPUP for other summary -->
                                       <div id="myModal3<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
@@ -518,6 +532,8 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                                      } ?>
                                     </tbody> 
                                     </table>
+                                    </div>
+                                    </div>
 
                         </div>
                         </div>              
@@ -525,6 +541,8 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                         <!-- +++++++++++++++++++++++++ Following (Medium) ++++++++++++++++++++++++  -->
                         <div class="tab-pane" id="tab23" >
                                 <div class="col-md-12">
+                                <div class="ScrollStyle">
+                                <div class="table-responsive">
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
@@ -765,6 +783,8 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                      ?>
                                     </tbody> 
                                     </table>
+                                    </div>
+                                    </div>
 
                                 </div>
                             </div> <!-- End of Following Medium -->
@@ -773,6 +793,8 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                         <!-- +++++++++++++++++++++++++ Following (Low) ++++++++++++++++++++++++  -->
                         <div class="tab-pane" id="tab24" >
                                 <div class="col-md-12">
+                                <div class="ScrollStyle">
+                                <div class="table-responsive">
                                     <table id="mydata" class="table datatable table-hover">
                                         <thead>
                                             <tr role="row">
@@ -1016,6 +1038,8 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                     } ?>
                                     </tbody> 
                                     </table>
+                                    </div>
+                                    </div>
 
                                 </div>
                         </div> <!-- End of Following Low -->
@@ -1044,6 +1068,8 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                     </div>
                                 
                                 <div class="panel-body">
+                                    <div class="ScrollStyle">
+                                    <div class="table-responsive">
                                     <table id="customers2" class="table datatable table-hover">
                                         <thead>
                                             <tr>
@@ -1084,6 +1110,8 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                         </form>
                                         </div>
                                     </table>  
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
                             </div>

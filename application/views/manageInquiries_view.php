@@ -219,7 +219,7 @@
                                                <!-- <form method="post" action="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges" >  -->
                                             
                                                 <!-- <input type="hidden" style="border:none; text-align: center;" value="<?php echo $postt->r_id; ?>" id="id" name="rid" /> -->
-                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/EditRecords_controller/index/'.$postt->r_id);?>"><?php echo $postt->Fname; ?></a></td>
+                                                <td style="text-align: center"><a href="<?php echo base_url('index.php/EditRecordsPending_controller/index/'.$postt->r_id);?>"><?php echo $postt->Fname; ?></a></td>
                                                 <td style="text-align: center"><?php echo $postt->Lname; ?></td>
                                                 <td style="text-align: center"><?php echo $postt->OL; ?></td>
                                                 <td style="text-align: center"><?php echo $postt->Grade1+$postt->Grade2+$postt->Grade3; ?></td>

@@ -399,7 +399,7 @@ $propic=$_SESSION["propic"];
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                                <input type="text" class="form-control" disabled value="<?php echo $row3['tpnumber'];?>"/>
+                                                <input type="text" class="form-control" id="primarytp" disabled value="<?php echo $row3['tpnumber'];?>"/>
                                             </div>                                            
                                            
                                         </div>
@@ -537,58 +537,206 @@ $propic=$_SESSION["propic"];
                     <div class="mb-content">
 
 
-                    <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return checkpropic();" action="<?php echo site_url("Update_Profile/update_Data")?>" method="POST">
+                    <form class="form-horizontal" enctype="multipart/form-data" onsubmit="return submitpasswords()" action="<?php echo base_url("index.php/Update_Profile/update_Password")?>" method="POST">
+
+                    <input type="text" name="tpforpassword" id=tpforpassword value='' hidden="hidden" >
+
+<script>
+
+document.getElementById("tpforpassword").value= document.getElementById("primarytp").value;
+</script>
+
+
                         
                    <div class="form-group">                                        
                                         <label class="col-md-3 col-xs-12 control-label">Old Password</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" id=password class="form-control" placeholder="Type old password" value="" />
+                                                <input type="password" id=old_password name="old_password" class="form-control" placeholder="Type old password" onkeyup="old_password_check();" value="" />
                                             </div>            
                                             
                                         </div>
                                     </div>
  
 
-                   <div class="form-group">                                        
+                   <div class="form-group ">                                        
                                         <label class="col-md-3 col-xs-12 control-label">New Password</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" id=password class="form-control" placeholder="Type new password"  value="" />
+                                                <input type="password" id=passwordnew name="new_password" class="form-control" placeholder="Type new password"  value="" oninput="checktwopasswords()" onkeyup="checktwopasswords()">
+                                               
                                             </div>            
                                             
                                         </div>
                                     </div>
 
 
-                   <div class="form-group">                                        
-                                        <label class="col-md-3 col-xs-12 control-label">Retype New Password</label>
+
+
+                   <div class="form-group has-success" id="divretype">                                        
+                                        <label class="col-md-3 col-xs-12 control-label">Retype New Password </label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" id=password class="form-control" placeholder="Retype new password"  value="" />
-                                            </div>            
-                                            
+                                                
+                                                <span class="input-group-addon"><span id=spanretype class="fa fa-unlock-alt  "></span></span>
+                                                <input type="password" id=passwordnewretype class="form-control" placeholder="Retype new password"  value="" oninput="checktwopasswords()" onkeyup="checktwopasswords()">
+
+                                              </div>            
+                                              
                                         </div>
                                     </div> 
+
+                          <div class="mb-footer">
+
+                        <input name="changepasswordbutton" class="btn btn-default btn-lg pull-right pull up " id="submitbutton" type="submit" style="display: block;" value="Submit" >
+                        <!-- Submit</button>
+onsubmit="submitpasswords();"
+ -->
+
+                        <button class="btn btn-default btn-lg pull-right pull up mb-control-close"onclick="    document.getElementById('passwordeditbox').style.display = 'none';" >Close</button>
+                    </div>
+              
 
 
 
                     </form>                                  
 
                     </div>
-                    <div class="mb-footer">
-
-                        <button class="btn btn-default btn-lg pull-right pull up mb-control-close" id="submitbutton" style="display: block;" onsubmit="">Submit</button>
-
-
-                        <button class="btn btn-default btn-lg pull-right pull up mb-control-close"onclick="    document.getElementById('passwordeditbox').style.display = 'none';" >Close</button>
-                    </div>
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- END Message Boxes -->
+        
+
+            <!-- THIS PAGE PLUGINS -->
+
+
+
+
+
+
+    <!-- START SCRIPTS -->
+        <!-- START PLUGINS -->
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap.min.js"></script>                
+        <!-- END PLUGINS -->
+        
+        <!-- THIS PAGE PLUGINS -->
+        <script type='text/javascript' src='<?php echo base_url(); ?>public/js/plugins/icheck/icheck.min.js'></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-datepicker.js"></script>                
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-file-input.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-select.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/tableExport.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jquery.base64.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/html2canvas.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/jspdf.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script> 
+ 
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+function submitpasswords(){
+
+  var twopasswords=checktwopasswords();
+  if(twopasswords){
+    var np=document.getElementById("passwordnew").value;
+    alert(np);
+    return true;
+  }else{
+
+      sweetAlert("Oops...", "To change password, Both new password and retype password must be equal!", "error");
+      return false;
+  }
+
+}
+
+
+
+
+
+  function checktwopasswords(){
+//     $('#submitbutton').prop('disabled',false);
+  //   document.getElementById("submitbutton").disabled=false;
+    var passwordnew=document.getElementById("passwordnew").value;
+    //var passnewinput=document.getElementById("passwordnew")
+    var passwordnewretype=document.getElementById("passwordnewretype").value;
+    var spanretype=document.getElementById("spanretype")
+    var divretype=document.getElementById("divretype")
+
+    if(passwordnewretype==passwordnew){
+      if(passwordnewretype==""){
+        $('#submitbutton').prop('disabled',true);
+        //$('#submitbutton').attr('disabled', 'disabled');
+         document.getElementById("submitbutton").disabled=true;
+        
+        spanretype.className="fa fa-unlock-alt";
+        divretype.className="form-group has-success"
+        
+        return false;
+      }else{
+        $('#submitbutton').prop('disabled',false);
+        //removeAttr('disabled')
+          // document.getElementById("submitbutton").disabled=false;
+              spanretype.className="fa fa-check";
+              divretype.className="form-group has-success ";
+              
+              return true;
+
+
+      }
+
+    }else{
+      //$('#submitbutton').attr('disabled', 'disabled');
+      $('#submitbutton').prop('disabled',true);
+       document.getElementById("submitbutton").disabled=true;
+      spanretype.className="fa fa-times";
+      divretype.className="form-group has-error ";
+      
+                     
+      return false;   
+
+    }
+
+  }
+</script>
+
+
+
+
+
 
 
 
@@ -608,50 +756,42 @@ $propic=$_SESSION["propic"];
 
 ?>
 
+<script type="text/javascript">
+  function old_password_check(){
+
+var primarytp=document.getElementById("primarytp").value;
+var old_password=document.getElementById("old_password").value;
+                $.ajax({             
+                    type:"post",
+                    url : '<?php echo base_url();?>index.php/Update_Profile/check_Old_Password/',
+                    data : {tp:r=primarytp},{password:r=old_password},
+                    success: function(data) {
 
 
+                    respond=data.trim();
+                      // alert(respond);
+                      if(respond=="True"){
 
+                        swal("Deleted!", "Student with contact number  Deleted!", "success");
+                        //window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
+                                           
+
+                        }
+                        else{
+                            sweetAlert("Oops...", "Something went wrong. Couldn't Delete!", "error");
+                        }
+                            
+
+                    }
+                });
+               
+        }
         
-        <!-- END Message Boxes -->
-        
 
-            <!-- THIS PAGE PLUGINS -->
+</script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>   
 
      
     </body>

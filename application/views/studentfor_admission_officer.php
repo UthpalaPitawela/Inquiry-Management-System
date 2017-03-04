@@ -267,7 +267,7 @@ foreach ($profile_data ->result_array() as $row3) {
                                 <div class="col-md-12">
 
                                     <div class="pull-right">
-                                        <button class="btn btn-danger" type="submit" id="send" onclick="showtext();"> <span class="fa fa-envelope"></span> Send Message</button>
+                                        <button class="btn btn-danger" type="submit" id="send"> <span class="fa fa-envelope"></span> Send Message</button>
                                     </div>                                    
                                 </div>
                             </div>

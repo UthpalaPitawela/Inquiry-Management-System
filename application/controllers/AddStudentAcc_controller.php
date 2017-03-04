@@ -44,13 +44,33 @@ class AddStudentAcc_controller extends CI_Controller{
 		redirect("AddStudentAcc_controller/index");
 	}
 
-	public function addstudentforadmissionofficer($Contactno){
+	public function addstudentforadmissionofficer($Contactno,$emmail){
 		
+		
+echo "<script type='text/javascript'>
+	alert(".$emmail.");
+</script>
+
+";
 //		redirect('index.php/ManageInquiries_controller/completedforadmissionofficer');
 
 		$Contactno=urldecode($Contactno); 
+		$emmail=urldecode($emmail); 
 
 		$this->AddStudentAcc_model->insertdatabyadmissionofficer($Contactno);
+
+
+		 $this->load->library('../controllers/Email/EmailtoDB_Controller.php');
+
+		?>
+		
+		<?php
+
+
+		 $content='<p><span style="font-size: 18px; font-weight: bold;">Congratulations  '.$emmail.' !</span></p><p>Your Account for <span style="font-weight: bold; font-size: 14px; background-color: rgb(206, 198, 206);">Edulink</span> has been created and now you can login to <span style="text-decoration: underline;">enter your exam results to prove the validity of the data you provided</span>.<br><br><span style="font-weight: bold;">Login details:</span></p><p><span style="font-weight: bold;">Username: </span>'.$Contactno.'</p><p><span style="font-weight: bold;">Password: &nbsp; </span>edulink@123</p><p>You can change your password once you log in to your account.<br>Feel free to contact us in any case of need.<br>Thanks.</p>';
+
+		 $this->EmailtoDB_Controller->send("Your EDULINK Account Created",$emmail,$content);
+
 	}
 
 }

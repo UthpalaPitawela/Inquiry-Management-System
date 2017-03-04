@@ -16,9 +16,11 @@
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
         <!-- EOF CSS INCLUDE --> 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
         <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 
     </head>
     <body>
@@ -160,12 +162,12 @@
                                                 <?php
                                                 if($post['account_created']==1){
                                                     ?>
-                                                    <button type="button" class="btn btn-danger" style="border: solid;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Resend &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                                                    <button type="button" class="btn btn-danger" style="border: solid;" onclick="Resend('<?php echo urlencode($post['Contactno']); ?>','<?php echo $post['r_id']; ?>','<?php echo urlencode($post['Email']); ?>')"" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Resend &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
 
                                                     <?php                                                    
                                                 }else{
 ?>
-                                                <button type="button" class="btn btn-info" style="border: solid;" onclick="createAndSend('<?php echo urlencode($post['Contactno']); ?>','<?php echo $post['r_id']; ?>')" >Create and Send</button>
+                                                <button type="button" class="btn btn-info" style="border: solid;" onclick="createAndSend('<?php echo urlencode($post['Contactno']); ?>','<?php echo $post['r_id']; ?>','<?php echo urlencode($post['Email']); ?>')" >Create and Send</button>
 
 <?php                                                    
                                                 }
@@ -278,23 +280,48 @@
                     url : '<?php echo base_url();?>index.php/Inquirybutton_controller/registeredforadmissionofficer/'+Contactno,
                     //data : {id:r=email},
                     success: function(data) {
-                        $('#registered').html(data);
+
+                    respond=data.trim();
+                       // alert(respond);
+                      if(respond=="True"){
+
+                        swal("Registerd!", "Student with contact number "+Contactno+" registerd!", "success");
+                        //window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
+                                        $('#'+r_id).hide();
+
+                        }
+                        else{
+                            sweetAlert("Oops...", "Something went wrong. Couldn't Register!", "error");
+                        }
+                            
+
+                        //$('#registered').html(data);
                     }
                 });
-                $('#'+r_id).hide();
+               // $('#'+r_id).hide();
         }
         
 
-        function createAndSend(Contactno,r_id){
+        function createAndSend(Contactno,r_id,email){
 
-//            alert(email)
 
                 $.ajax({
                     type:"get",
-                    url: '<?php echo base_url();?>index.php/AddStudentAcc_controller/addstudentforadmissionofficer/'+Contactno,
+                    url: '<?php echo base_url();?>index.php/Email/EmailtoDB_Controller/addstudentforadmissionofficer/'+Contactno+'/'+email,
                     success: function(data) {
-                        //alert("dd");
+                        respond=data.trim();
+                        //alert(respond)
+                      if(respond=="True"){
+
+                        swal("Email Sent!", "An email with account details are sent to the user "+email+" !", "success");
                         window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
+
+
+                        }
+                        else if(respond=="False"){
+                            sweetAlert("Oops...", "Something went wrong Email couldn't sent!", "error");
+                        }
+                        
                         //location.href=""
                     }
 
@@ -302,6 +329,34 @@
 
         }
 
+
+        function Resend(Contactno,r_id,email){
+
+
+                $.ajax({
+                    type:"get",
+                    url: '<?php echo base_url();?>index.php/Email/EmailtoDB_Controller/Resend_addstudentforadmissionofficer/'+Contactno+'/'+email,
+                    success: function(data) {
+                        respond=data.trim();
+                        //alert(respond)
+                      if(respond=="True"){
+
+                        swal("Email Resent!", "An email with account details are sent to the user "+email+" !", "success");
+                        window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
+
+
+                        }
+                        else if(respond=="False"){
+                            sweetAlert("Oops...", "Something went wrong Email couldn't sent!", "error");
+                        }
+                          //alert("dd");
+            //            window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
+                        //location.href=""
+                    }
+
+                });
+
+        }
 
 </script>
 

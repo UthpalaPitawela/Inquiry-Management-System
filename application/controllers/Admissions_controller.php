@@ -27,6 +27,7 @@ class Admissions_controller extends CI_Controller{
 		$id = $this->input->post('id');
 		$this->load->model('admissions_model');
 		$this->Admissions_model->deleteStudent($id);
+		echo "True";
 		
 	}
 

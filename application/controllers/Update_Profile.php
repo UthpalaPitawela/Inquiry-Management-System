@@ -35,6 +35,44 @@ $this->load->model("Student_Profile_Model");
 
 
  }
+ public function check_Old_Password(){
+
+ 	 $old_password = $this->input->post('password');
+
+ 	 $primarytpnumber=$this->input->post('tp');
+
+ 	 $res = $this->Student_Profile_Model->check_Password($primarytpnumber,$old_password);
+
+ 	  $rowcount2 = $resultstudent->num_rows();
+           
+            if($rowcount2>0){
+
+            	echo "True";
+           
+           }else{
+           	echo "False";
+           }
+
+ }
+
+ public function update_Password(){
+
+ 	 $old_password = $this->input->post('old_password');
+ 	 $new_password =$this->input->post('new_password');
+ 	 $primarytpnumber=$this->input->post('tpforpassword');
+
+
+ 	  $res = $this->Student_Profile_Model->update_Password($primarytpnumber,$old_password,$new_password);
+?>
+ 	  <script>
+        
+      window.location="<?php echo base_url("index.php/Page_Controller/loadingpages/student_profile");?>"
+      </script> 
+        
+
+    }
+
+ }
 
 
 

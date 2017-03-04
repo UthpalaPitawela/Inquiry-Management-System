@@ -3,7 +3,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/css/theme-default.css">
 
        
-
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
 
  <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/jquery/jquery-ui.min.js"></script>
@@ -12,7 +12,8 @@
          <!-- START PLUGINS -->
         
         
-        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap.min.js"></script>        
+        <script type="text/javascript" src="<?php echo base_url();?>public/js/plugins/bootstrap/bootstrap.min.js"></script>           <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
         <!-- END PLUGINS -->
           <!-- START THIS PAGE PLUGINS calendar-->        
         <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/icheck/icheck.min.js'></script>

@@ -28,21 +28,96 @@ public function offerletter(){
 		$this->load->model('EmailtoDB_Model');
 		$this->EmailtoDB_Model->insertofferletter($tp,$from,$subject,$to,$content);
 		$this->send($subject,$to,$content);
+		  redirect("index.php/Page_Controller/loadingpages/admission_officer_student_list");
+
 		//redirect("AddStudentAcc_controller/index");
 //redirect("index.php/Page_Controller/loadingpages/admission_officer_student_list");
 
 }
 
 
+
+
+
+
+
+
+
+
+
+	public function addstudentforadmissionofficer($Contactno,$email){
+		
+		
+ 
+		$this->load->model('AddStudentAcc_model');
+
+
+//		redirect('index.php/ManageInquiries_controller/completedforadmissionofficer');
+
+		$Contactno=urldecode($Contactno); 
+		$email=urldecode($email); 
+?>
+
+<?php
+		$this->AddStudentAcc_model->insertdatabyadmissionofficer($Contactno);
+
+
+		?>
+		
+		<?php
+
+
+		 $content='<p><span style="font-size: 18px; font-weight: bold;">Congratulations  '.$email.' !</span></p><p>Your Account for <span style="font-weight: bold; font-size: 14px; background-color: rgb(206, 198, 206);">Edulink</span> has been created and now you can login to <span style="text-decoration: underline;">enter your exam results to prove the validity of the data you provided</span>.<br><br><span style="font-weight: bold;">Login details:</span></p><p><span style="font-weight: bold;">Username: </span>'.$Contactno.'</p><p><span style="font-weight: bold;">Password: &nbsp; </span>edulink@123</p><p>You can change your password once you log in to your account.<br>Feel free to contact us in any case of need.<br>Thanks.</p>';
+
+		 $this->send("Your EDULINK Account Created",$email,$content);
+
+	}
+
+
+
+	public function Resend_addstudentforadmissionofficer($Contactno,$email){
+		
+		
+ 
+//		$this->load->model('AddStudentAcc_model');
+
+
+//		redirect('index.php/ManageInquiries_controller/completedforadmissionofficer');
+
+		$Contactno=urldecode($Contactno); 
+		$email=urldecode($email); 
+
+//		$this->AddStudentAcc_model->insertdatabyadmissionofficer($Contactno);
+
+
+		?>
+		
+		<?php
+
+//$baseurl=echo base_url();
+		 $content='<p><span style="font-size: 18px; font-weight: bold;">Congratulations  '.$email.' !</span></p><p>Your Account for <span style="font-weight: bold; font-size: 14px; background-color: rgb(206, 198, 206);">Edulink</span> has been created and now you can login to <span style="text-decoration: underline;">enter your exam results to prove the validity of the data you provided</span>.<br><br><span style="font-weight: bold;">Login details:</span></p><p><span style="font-weight: bold;">Username: </span>'.$Contactno.'</p><p><span style="font-weight: bold;">Password: &nbsp; </span>edulink@123</p>
+		 <p>You can login to EDULINK using following link </p>
+		 <p>You can change your password once you log in to your account.<br>Feel free to contact us in any case of need.<br>Thanks.</p>';
+
+		 $this->send("Reminder: Your EDULINK Account Created",$email,$content);
+
+	}
+
+
+
+
+
+
+
+
+
+
+
 public function send($subject,$to,$content){ 
 
 
 
-
 	
-       $recipient ="randhajapvt@gmail.com";
-       $subject = 'subj';
-       $message = 'message';
        /*
        $campaign = 'camp1';
        $campaign_id = '1';
@@ -51,6 +126,8 @@ public function send($subject,$to,$content){
        $message = "lectures have been postponed"; */
 
       
+
+
 
 $mail = new PHPMailer;
 
@@ -74,23 +151,18 @@ $mail->isHTML(true);                                  // Set email format to HTM
 
 $mail->Subject = $subject;
 $mail->Body    = $content;
-
 ?>
 
-<script type="text/javascript">
-	alert("kk");
-</script>
 
 <?php
 if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
+    echo 'False';
+  //  echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
 
-    echo 'Message has been sent';
+    echo 'True';
 
-    redirect("index.php/Page_Controller/loadingpages/admission_officer_student_list");
-
+  
 }
 
 

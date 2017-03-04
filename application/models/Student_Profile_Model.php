@@ -1,5 +1,29 @@
 <?php
 class Student_Profile_Model extends CI_Model{
+
+
+	function update_Password($primarytpnumber,$old_password,$new_password){
+
+
+		$data['password'] =$new_password;
+
+			$this->db->where('tpnumber', $primarytpnumber);
+			$this->db->where('password', $old_password);
+			
+			return $this->db->update('student_table', $data); 
+
+	}
+	function check_password($primarytpnumber,$old_password){
+
+				// $query = $this->db->query("SELECT firstname,user_name,propic FROM student_table WHERE user_name= '$username' AND password = '$password'");
+
+		$this->db->select('tpnumber')->from('student_table')->where('tpnumber', $primarytpnumber)->where('password',$old_password);
+		
+
+		$query =$this->db->get();
+        return $query;
+        
+	}
 	
 
 

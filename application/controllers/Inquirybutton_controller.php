@@ -68,6 +68,7 @@ class Inquirybutton_controller extends CI_Controller{
 		
 		$this->load->model('Inquirybutton_model');
 		$this->Inquirybutton_model->registered($id);
+		echo "True";
 	}
 
 }

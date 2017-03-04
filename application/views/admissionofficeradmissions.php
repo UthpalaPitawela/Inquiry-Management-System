@@ -16,8 +16,12 @@
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        
         <!-- EOF CSS INCLUDE --> 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
+         <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
         <!-- JS INCLUDE --> 
 
     </head>
@@ -222,7 +226,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/jspdf.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script> 
-
+ 
         <!-- To delete an admission -->
         <script type="text/javascript">
 
@@ -232,10 +236,27 @@
                     url : '<?php echo base_url();?>index.php/Admissions_controller/deleteStudent/',
                     data : {id:r=Contactno},
                     success: function(data) {
-                        $('#deleted').html(data);
+
+
+                    respond=data.trim();
+                      // alert(respond);
+                      if(respond=="True"){
+
+                        swal("Deleted!", "Student with contact number "+Contactno+" Deleted!", "success");
+                        //window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
+                                                $('#deleted').html(data);
+
+                                         $('#'+r_id).hide();
+
+                        }
+                        else{
+                            sweetAlert("Oops...", "Something went wrong. Couldn't Delete!", "error");
+                        }
+                            
+
                     }
                 });
-                $('#'+r_id).hide();
+               
         }
         
        </script>

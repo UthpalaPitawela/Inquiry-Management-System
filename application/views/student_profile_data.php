@@ -188,6 +188,7 @@ function checktp2(){
         <!-- EOF CSS INCLUDE -->
     </head>
     <body>
+
         <div class="page-container" >
             
             <!-- START PAGE SIDEBAR -->
@@ -548,12 +549,12 @@ document.getElementById("tpforpassword").value= document.getElementById("primary
 
 
                         
-                   <div class="form-group">                                        
+                   <div class="form-group" id="divold">                                        
                                         <label class="col-md-3 col-xs-12 control-label">Old Password</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="password" id=old_password name="old_password" class="form-control" placeholder="Type old password" onkeyup="old_password_check();" value="" />
+                                                <span class="input-group-addon"><span id=old class="fa fa-unlock-alt"></span></span>
+                                                <input type="password" id=old_password name="old_password" class="form-control" placeholder="Type old password" onchange="old_password_check();" value="" onkeydown="disablesubmit()"  />
                                             </div>            
                                             
                                         </div>
@@ -590,7 +591,7 @@ document.getElementById("tpforpassword").value= document.getElementById("primary
 
                           <div class="mb-footer">
 
-                        <input name="changepasswordbutton" class="btn btn-default btn-lg pull-right pull up " id="submitbutton" type="submit" style="display: block;" value="Submit" >
+                        <input name="changepasswordbutton" disabled="disabled" class="btn btn-default btn-lg pull-right pull up " id="submitbuttonpassword" type="submit" style="display: block;" value="Submit" >
                         <!-- Submit</button>
 onsubmit="submitpasswords();"
  -->
@@ -673,7 +674,7 @@ function submitpasswords(){
   var twopasswords=checktwopasswords();
   if(twopasswords){
     var np=document.getElementById("passwordnew").value;
-    alert(np);
+   
     return true;
   }else{
 
@@ -684,8 +685,34 @@ function submitpasswords(){
 }
 
 
+</script>
+
+<?php
+     if(isset($_SESSION["alert"])){
+            $_SESSION["alert"]=="success";
+            
+          ?>
+        <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
+        <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
+        <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 
 
+<script type="text/javascript">
+    swal("Password Set!", "New Password is set in your account!", "success");
+      
+</script>
+
+          <?php
+unset($_SESSION['alert']);
+            }
+?>
+
+
+<script type="text/javascript">
 
   function checktwopasswords(){
 //     $('#submitbutton').prop('disabled',false);
@@ -698,16 +725,14 @@ function submitpasswords(){
 
     if(passwordnewretype==passwordnew){
       if(passwordnewretype==""){
-        $('#submitbutton').prop('disabled',true);
-        //$('#submitbutton').attr('disabled', 'disabled');
-         document.getElementById("submitbutton").disabled=true;
+       //document.getElementById("submitbuttonpassword").disabled=true;
         
         spanretype.className="fa fa-unlock-alt";
         divretype.className="form-group has-success"
         
         return false;
       }else{
-        $('#submitbutton').prop('disabled',false);
+
         //removeAttr('disabled')
           // document.getElementById("submitbutton").disabled=false;
               spanretype.className="fa fa-check";
@@ -719,9 +744,7 @@ function submitpasswords(){
       }
 
     }else{
-      //$('#submitbutton').attr('disabled', 'disabled');
-      $('#submitbutton').prop('disabled',true);
-       document.getElementById("submitbutton").disabled=true;
+      // document.getElementById("submitbuttonpassword").disabled=true;
       spanretype.className="fa fa-times";
       divretype.className="form-group has-error ";
       
@@ -757,33 +780,80 @@ function submitpasswords(){
 ?>
 
 <script type="text/javascript">
+
+function disablesubmit(){
+
+   document.getElementById("submitbuttonpassword").disabled=true;
+
+}
+
+// function activatesubmit(){
+
+//   var newtwo=checktwopasswords();
+//   var oldp=old_password_check();
+
+//   if(newtwo==true && oldp==true){
+
+
+//   }else{
+//     document.getElementById("submitbuttonpassword").disabled=true;
+//   }
+
+// }
+
   function old_password_check(){
 
-var primarytp=document.getElementById("primarytp").value;
-var old_password=document.getElementById("old_password").value;
-                $.ajax({             
-                    type:"post",
-                    url : '<?php echo base_url();?>index.php/Update_Profile/check_Old_Password/',
-                    data : {tp:r=primarytp},{password:r=old_password},
-                    success: function(data) {
+
+ //disabled=true;
+
+ var primarytp=document.getElementById("primarytp").value;
+ var old_password=document.getElementById("old_password").value;
+
+  var spanold=document.getElementById("old")
+    var divold=document.getElementById("divold")
+                 $.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/Update_Profile/check_Old_Password/',
+                     data : {tp:primarytp,password:old_password},
+                     success: function(data) {
 
 
-                    respond=data.trim();
-                      // alert(respond);
-                      if(respond=="True"){
+                     respond=data.trim();
 
-                        swal("Deleted!", "Student with contact number  Deleted!", "success");
-                        //window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
+                     if(old_password==""){
+
+                        spanold.className="fa fa-unlock-alt";
+        divold.className="form-group"
+               document.getElementById("submitbuttonpassword").disabled=true;
+               return false;
+
+                     }else{
+                       // alert(respond);
+                       if(respond=="True"){
+
+
+
+                         spanold.className="fa fa-check";
+        divold.className="form-group has-success"
+        document.getElementById("submitbuttonpassword").disabled=false;
                                            
+return true;
+                         }
+                         else{
+                              spanold.className="fa fa-times";
+      divold.className="form-group has-error ";
+             document.getElementById("submitbuttonpassword").disabled=true;
+            return false;
+                         }
 
-                        }
-                        else{
-                            sweetAlert("Oops...", "Something went wrong. Couldn't Delete!", "error");
-                        }
+                         }
                             
 
-                    }
-                });
+                     },
+                     error: function(jqXHR){
+                        alert(jqXHR.responseText);
+                     }
+                 });
                
         }
         
@@ -794,6 +864,9 @@ var old_password=document.getElementById("old_password").value;
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>   
 
      
+
+
+
     </body>
 </html>
 

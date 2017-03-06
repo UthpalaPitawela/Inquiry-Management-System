@@ -43,7 +43,7 @@ $this->load->model("Student_Profile_Model");
 
  	 $res = $this->Student_Profile_Model->check_Password($primarytpnumber,$old_password);
 
- 	  $rowcount2 = $resultstudent->num_rows();
+ 	  $rowcount2 = $res->num_rows();
            
             if($rowcount2>0){
 
@@ -63,13 +63,21 @@ $this->load->model("Student_Profile_Model");
 
 
  	  $res = $this->Student_Profile_Model->update_Password($primarytpnumber,$old_password,$new_password);
+
+ $_SESSION["alert"]="success";
+
+
+//      include 'imports.php';
+
+
 ?>
  	  <script>
-        
+    // alert("done");    
+    //     swal("Registerd!", "Student with contact number "+Contactno+" registerd!", "success");
       window.location="<?php echo base_url("index.php/Page_Controller/loadingpages/student_profile");?>"
       </script> 
         
-
+<?php
     }
 
  }
@@ -77,5 +85,5 @@ $this->load->model("Student_Profile_Model");
 
 
 
- }
+ 
 ?>

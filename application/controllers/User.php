@@ -19,6 +19,23 @@ class User extends CI_Controller{
 //         $this->register();
      }
 
+function TPcheck(){
+
+    $tp= $this->input->post('tp');
+     $result = $this->User_model->check_student_TP($tp);
+        $rowcount = $result->num_rows();
+
+      
+       // $numrows=mysqli_num_rows($result);
+        if($rowcount>0){
+
+                echo "True";
+           
+           }else{
+            echo "False";
+           }
+}
+
      function register(){
 
          // $this->load->library('form_validation');
@@ -72,11 +89,20 @@ class User extends CI_Controller{
              if($other==""){
                 $other="No Description";
              }
+ 
+
+            $res= $this->User_model->register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname);
 
 
-             $this->User_model->register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname);
+              if($res==1){
+   $_SESSION["alert"]="insertsuccess";
 
 
+ }else{
+ $_SESSION["alert"]="notsuccess";
+
+
+ }
 
           //}
 

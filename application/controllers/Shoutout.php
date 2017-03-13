@@ -8,7 +8,7 @@ class Shoutout extends CI_Controller {
 	    parent::__construct();
 
 	    $this->load->library('javascript');
-	    $this->load->library('javascript/jquery'); 
+	   // $this->load->library('javascript/jquery'); 
 	   	$this->load->helper('url');                    
 	    $this->load->model('Campaign_model','campaign_model');
 	}

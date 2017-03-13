@@ -8,7 +8,7 @@ class Campaign_Controller extends CI_Controller {
 	    parent::__construct();
 
 	    $this->load->library('javascript');
-	    $this->load->library('javascript/jquery');                  
+//	    $this->load->library('javascript/jquery');                  
 	    $this->load->model('Campaign_model');
 	}
 

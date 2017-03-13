@@ -5,6 +5,19 @@
          parent::__construct();
      }
 
+
+     function check_student_TP($tp){
+
+                // $query = $this->db->query("SELECT firstname,user_name,propic FROM student_table WHERE user_name= '$username' AND password = '$password'");
+
+        $this->db->select('Fname')->from('register')->where('Contactno', $tp);
+        
+
+        $query =$this->db->get();
+        return $query;
+        
+    }
+
       function register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname){
          //$shal_password = sha1($password);
 
@@ -36,7 +49,7 @@
 
          $query_str = "INSERT INTO register(Fname,Lname,Gender,Address,Country,Email,Contactno,NIC,OL,Remark,Subject1,Subject2,Subject3,Grade1,Grade2,Grade3,Other,Inquiry,Intake,Pdate,id,CounsellorName)VALUES ('$fname','$lname','$gender','$address','$country','$email','$contactno','$nic','$ol','$remark','$subject1','$subject2','$subject3','$grade1','$grade2','$grade3','$other','$mode','$intake','$pdate','$id','$counsellorname')";
 
-         $this->db->query($query_str);
+        return $this->db->query($query_str);
 
 
 

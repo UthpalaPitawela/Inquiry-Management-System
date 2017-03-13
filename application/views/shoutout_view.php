@@ -252,7 +252,7 @@
                                                                                     if(message!==""){
                                                                                         $.ajax({
                                                                                             type: "get",
-                                                                                            url: "<?php echo base_url(); ?>" +"index.php/sms/send_sms/send/"+recipient+"/"+message,
+                                                                                            url: "<?php echo base_url(); ?>" +"index.php/sms/Send_sms/send/"+recipient+"/"+message,
                                                                                            
                                                                                             success: function (msg) {
                                                                                                 $('#loading_image').hide();

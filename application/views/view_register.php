@@ -281,9 +281,9 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="contactno" id="contactno" class="form-control" placeholder="Contact number format : XXX XXX XXXX" required />
+                                                <input type="text" name="contactno" id="contactno" class="form-control" placeholder="Contact number format : XXX XXX XXXX" onchange="phone_number_check();" required />
                                             </div>
-                                            <span id="error_invalidMobile" style="color: red;"></span>
+                                            <span id="error_invalidMobile" style="color: red;"><div id="p1"></div></span>
 
                                         </div>
                                     </div>
@@ -493,7 +493,7 @@
                             </div>
                             <div class="panel-footer">
                                 <button type="reset" class="btn btn-default">Clear Form</button>
-                                <button class="btn btn-primary pull-right">Submit</button>
+                                <button class="btn btn-primary pull-right" id="submitform" disabled="disabled">Submit</button>
                             </div>
 
                             </div>
@@ -532,8 +532,6 @@
         
         <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap.min.js"></script>
         <!-- JQUERY -->
         <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -557,9 +555,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>
 
 
-        
-
-
+   
 
     </body>
 </html>
@@ -594,7 +590,7 @@
              $.ajax({
      
                 type:"get",
-                url : 'User/geteligbledata/'+id,
+                url : '<?php echo base_url();?>index.php/User/geteligbledata/'+id,
                 //url : 'view_register'+id,
                 success: function (data) {
 
@@ -751,6 +747,124 @@ $(function(){
         })
         
 </script>
+
+
+<?php
+     if(isset($_SESSION["alert"])){
+
+                ?>
+        
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Inserted data were submitted!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert']);
+            }
+?>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<script type="text/javascript">
+
+
+    
+
+  function phone_number_check(){
+
+// document.getElementById("p1").innerHTML = "";
+//  //disabled=true;
+
+
+ var primarytp=document.getElementById("contactno").value;
+ //var old_password=document.getElementById("old_password").value;
+
+   document.getElementById("submitform").disabled=true;
+  //   var divold=document.getElementById("divold")
+                 $.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/User/TPcheck/',
+                     data : {tp:primarytp},
+                     success: function(data) {
+
+
+                     respond=data.trim();
+
+                  
+                       // alert(respond);
+                       if(respond=="True"){
+
+
+ document.getElementById("submitform").disabled=true;
+
+                       
+          swal(
+  'Oops...',
+  'Phone number exist!',
+  'error'
+);
+            
+
+                         }
+                         else{
+              
+                    document.getElementById("submitform").disabled=false;
+
+
+          
+           // document.getElementById("p1").innerHTML = "Existing TP number!";
+
+
+     
+
+
+
+
+
+
+                         }
+
+                            
+
+                     },
+                     error: function(jqXHR){
+                        alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+        }
+        
+</script>
+
+        
+
+
 
 <!-- <script type="text/javascript">
     function alert1(){

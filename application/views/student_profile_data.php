@@ -825,8 +825,8 @@ function disablesubmit(){
  var primarytp=document.getElementById("primarytp").value;
  var old_password=document.getElementById("old_password").value;
 
-  var spanold=document.getElementById("old")
-    var divold=document.getElementById("divold")
+  var spanold=document.getElementById("old");
+    var divold=document.getElementById("divold");
                  $.ajax({             
                      type:"post",
                      url : '<?php echo base_url();?>index.php/Update_Profile/check_Old_Password/',

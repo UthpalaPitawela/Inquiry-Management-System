@@ -755,7 +755,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/sms/Sendsms_summary/send">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -785,8 +785,56 @@
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="save" class="btn btn-primary" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Send Text Message</button>
-                                                        </div>                               
+                                                                <button type="submit" id="save" class="btn btn-primary" onclick="check_sms('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Send Text Message</button>
+                                                        </div>
+
+                                                                        <script>           
+                                                                            function check_sms(email,r_id) {
+                                                                                $('#loading_image').show();
+                                                                                var recipient = $('#contactno').val();
+                                                                                var message = $('#sms1').val();
+
+                                                                                //alert(recipient);
+                                                                                //alert(message);
+                                                                                 
+                                                                                if ( recipient!=="") {
+                                                                                    if(message!==""){
+                                                                                        $.ajax({
+                                                                                            type: "get",
+                                                                                            url: "<?php echo base_url(); ?>" +"index.php/sms/Sendsms_summary/send/"+recipient+"/"+message,
+                                                                                           
+                                                                                            success: function (msg) {
+                                                                                                $('#loading_image').hide();
+                                                                                                alert("SMS sent successfully");
+                                                                                            },
+                                                                                            error: function (error) {
+                                                                                                alert("Something went wrong");
+                                                                                            }
+                                                                                        }); 
+                                                                                                    
+
+                                                                                    }else{
+                                                                                        alert("Please fill the required field");
+                                                                                    } 
+                                                                                }else{
+                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                }
+
+
+
+                                            $.ajax({             
+                                                type:"post",
+                                                url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
+                                                data : {id:r=email},
+                                                success: function(data) {
+                                                    $('#followed').html(data);
+                                                }
+                                            });
+                                            $('#'+r_id).hide();
+                                                                            }        
+                                                                                    
+
+                                                                        </script>                                
                                                     
                                                     </form>
                                                     
@@ -1177,7 +1225,7 @@ $(function(){
 </script>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function follow(email,r_id){
         $.ajax({             
             type:"post",
@@ -1189,4 +1237,4 @@ $(function(){
         });
         $('#'+r_id).hide();
     }
-</script>
+</script> -->

@@ -19,8 +19,17 @@ class Campaign_Controller extends CI_Controller {
 
 	public function get_campaignDetails(){
 		$id = $this->input->post('id');
+		//$id = '131';
 		$this->data['students'] = $this->Campaign_model->get_campaignStudents($id);
-		print json_encode($this->data);
+		if(count($this->data['students'])>0){
+			$this->data['count'] = count($this->data['students']);
+			$this->data['fail']=FALSE;
+			print json_encode($this->data);
+		}else{
+			$this->data['fail']=TRUE;
+			print json_encode($this->data);
+		}
+		
 	}
 
 	public function evaluate_campaign(){ 

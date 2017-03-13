@@ -11,7 +11,7 @@
         
         
         <!-- END META SECTION -->
-         <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />             
+         <link rel="icon" href="<?php echo base_url(); ?>EDULINK logo1.ico" type="image/x-icon" />               
         <!-- CSS INCLUDE --> 
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
@@ -119,10 +119,6 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
-                    </li>
-
-                    <li>
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
                     </li>
 
@@ -202,11 +198,11 @@
                                 
                                 <div class="panel panel-default"  style="border-top-width:2px; ">
                                     <div class="panel-heading" >
-                                        <h2 class="panel-title"><strong>New Campaign</strong></h2>
-                                        <button type="button" onclick="" class="btn btn-primary pull-right" style="border-radius: 6px" >See Selected Contacts</button>
-                                                
-                                    </div>
                                     <?php foreach($campaign as $camp){ ?>
+                                        <h2 class="panel-title"><strong>New Campaign</strong></h2>
+                                        <button type="button" onclick="getDetails()" class="btn btn-primary pull-right" style="border-radius: 6px">See Selected Contacts</button>
+                                    </div>
+                                    
                                     <input type="text" name="campaign_id" id="campaign_id" value="<?php echo $camp->campaign_id; ?>" hidden="hidden" />
                                     <input type="text" name="campaign_name" id="campaign_name" value="<?php echo $camp->campaign_name; ?>" hidden="hidden" />
                                                                 
@@ -237,6 +233,56 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                     <!-- Data Modal -->
+                                        <div id="viewModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true" style="display: none;">
+                                           <div class="modal-dialog"> 
+                                              <div class="modal-content"> 
+                                                          
+                                                 <div class="modal-header"> 
+                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                                                     <h4 class="modal-title">
+                                                     </h4> 
+                                                 </div> 
+                                                 
+                                                 <div class="modal-body"> 
+                                                             
+                                                     <div id="dynamic-content"> <!-- mysql data will load in table -->
+                                                                                
+                                                         <div class="row"> 
+                                                             <div class="col-md-12"> 
+                                                                  <div class="form-group">
+                                                                        <label class="col-md-3 control-label">No.Of Contacts</label>
+                                                                        <div class="col-md-6">                   
+                                                                            <div class="input-group">
+                                                                                <input type="text" id="selected_contacts" name="selected_contacts" class="form-control" disabled="" />
+                                                                            </div> 
+                                                                        </div>
+                                                                                
+                                                                   </div>  
+                                                                 <div class="table-responsive">
+                                                                         
+                                                                 <table id="campaign_table" class="table datatable table-hover">
+                                                                         
+                                                                 </table>
+                                                                            
+                                                                 </div>
+                                                                               
+                                                           </div> 
+                                                      </div>
+                                                               
+                                                     </div> 
+                                                                     
+                                                 </div> 
+                                                   
+                                               <div class="modal-footer"> 
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                                               </div>  
+                                                      
+                                              </div> 
+                                           </div>
+                                        </div>
+                                        <!-- End of Data Modal -->
                                         
 
                                     </div>
@@ -368,7 +414,7 @@
                                                                         if($subject!=="" && $message!==""){
                                                                                 $.ajax({
                                                                                     type: "post",
-                                                                                    url: "<?php echo base_url(); ?>" +"index.php/Email/send_email/send",
+                                                                                    url: "<?php echo base_url(); ?>" +"index.php/email/send_email/send",
                                                                                     dataType: 'json',
                                                                                     data: {camp: $campaign, id: $id, subj: $subject , message: $message},
                                                                                     success: function (data) {
@@ -463,6 +509,40 @@
         })
         
         </script> 
+
+        <script type="text/javascript">
+    
+        function getDetails() {
+            var campName=$('#campaign_name').val();;
+            var campID=$('#campaign_id').val();;
+            
+            $.ajax({
+                type:"post",
+                url : "<?php echo base_url();?>index.php/Campaign_Controller/get_campaignDetails",
+                data : {id: campID},
+                dataType: 'json',
+                success: function (data) {
+                    if(data.fail){
+                        swal("Sorry! Campaign has been updated");
+                    }else{
+                        var trHTML = '';
+                        thHTML = '<thead><tr><th>ID</th><th>Name</th><th>Contact Number</th><th>Email</th></tr></thead>';
+                        trHTML += thHTML;
+                        $.each(data.students, function (i, item) {
+                            trHTML += '<tr><td>' + item.r_id +'</td><td>' + item.Fname + ' ' + item.Lname + '</td><td>' + item.Contactno + '</td><td>' + item.Email + '</td></tr>';
+                        });
+                        $(".modal-body #campaign_table").html(trHTML); 
+                        $(".modal-body #selected_contacts").val( data.count);
+                        $('#viewModal').modal('show');
+                        $('.modal-title').html('<i class="glyphicon glyphicon-bullhorn"></i>  '+campName); 
+                    }
+                    
+                }
+            }) 
+ 
+        }
+        </script>
+
 
 
 

@@ -7,7 +7,7 @@ class Admissions_model extends CI_Model{
 
 	function getRegistered(){
 		$status = "Registered";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email");
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,CounsellorName");
 		$query = $this->db->get_where('register',array('status'=>$status));
 
 		return $query->result();

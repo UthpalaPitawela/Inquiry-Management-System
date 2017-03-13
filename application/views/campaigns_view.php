@@ -11,7 +11,7 @@
         
         
         <!-- END META SECTION -->
-        <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />            
+         <link rel="icon" href="<?php echo base_url(); ?>EDULINK logo1.ico" type="image/x-icon" />               
         <!-- CSS INCLUDE --> 
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
@@ -119,10 +119,6 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
-                    </li>
-
-                    <li>
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
                     </li>
 
@@ -221,74 +217,75 @@
                                                                     
                                                                     <form class="form-horizontal" >
 
-                                                            <!-- FIRST COLUMN -->
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-3 control-label">Campaign Name</label>
-                                                                    <div class="col-md-9">                                            
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                                            <input type="text" id="campaign_name" name="campaign_name" class="form-control" required="" />
-                                                                        </div> 
-                                                                    </div>
-                                                                    
-                                                                </div>
+                                                                        <!-- FIRST COLUMN -->
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label">Campaign Name</label>
+                                                                                <div class="col-md-9">                                            
+                                                                                    <div class="input-group">
+                                                                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                                                        <input type="text" id="campaign_name" name="campaign_name" class="form-control" required="" />
+                                                                                    </div> 
+                                                                                </div>
+                                                                                
+                                                                            </div>
 
-                                                                <div class="form-group">                                        
-                                                                    <label class="col-md-3 control-label">Date</label>
-                                                                    <div class="col-md-9">
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                                            <input type="text" name="inquiry_date" id="inquiry_date" class="form-control datepicker" value="" required="" />                                            
+                                                                            <div class="form-group">                                        
+                                                                                <label class="col-md-3 control-label">Date</label>
+                                                                                <div class="col-md-9">
+                                                                                    <div class="input-group">
+                                                                                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                                                        <input type="text" name="inquiry_date" id="inquiry_date" class="form-control datepicker" value="" required="" />                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">                                        
+                                                                                <label class="col-md-3 control-label"></label>
+                                                                                <div class="col-md-9">
+                                                                                    <div class="input-group">
+                                                                                                                                    
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                                                          
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">                                        
-                                                                    <label class="col-md-3 control-label"></label>
-                                                                    <div class="col-md-9">
-                                                                        <div class="input-group">
-                                                                                                                        
+                                                                        <!-- SECOND COLUMN -->
+                                                                        <div class="col-md-6">
+
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label">Type</label>
+                                                                                <div class="col-md-9">                                        
+                                                                                    <select name="inquiry_type" id="inquiry_type" class="form-control select">
+                                                                                        <option value="">Select Type</option>
+                                                                                        <option >Walk-in</option>
+                                                                                        <option >Call</option>
+                                                                                        <option >Email</option>
+                                                                                        <option >SMS</option>
+                                                                                        <option >Bulk</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-3 control-label">Status</label>
+                                                                                <div class="col-md-9">                                        
+                                                                                    <select name="inquiry_status" id="inquiry_status" class="form-control select">
+                                                                                        <option value="">Select Status</option>
+                                                                                        <option >Pending</option>
+                                                                                        <option >Following</option>
+                                                                                        <option >Registered</option>
+                                                                                        <option >Completed</option>
+                                                                                       
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                                              
+                                                                        <!-- END OF SECOND COLUMN -->
+                                                                    </form>
+                                                                </div>         
                                                             </div>
-                                                            <!-- SECOND COLUMN -->
-                                                            <div class="col-md-6">
-
-                                                                <div class="form-group">
-                                                                    <label class="col-md-3 control-label">Type</label>
-                                                                    <div class="col-md-9">                                        
-                                                                        <select name="inquiry_type" id="inquiry_type" class="form-control select">
-                                                                            <option value="">Select Type</option>
-                                                                            <option >Walk-in</option>
-                                                                            <option >Call</option>
-                                                                            <option >Email</option>
-                                                                            <option >SMS</option>
-                                                                            <option >Bulk</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="col-md-3 control-label">Status</label>
-                                                                    <div class="col-md-9">                                        
-                                                                        <select name="inquiry_status" id="inquiry_status" class="form-control select">
-                                                                            <option value="">Select Status</option>
-                                                                            <option >Pending</option>
-                                                                            <option >Following</option>
-                                                                            <option >Registered</option>
-                                                                            <option >Completed</option>
-                                                                           
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                
-                                                            </div>
-                                                        
-                                                    </div>
-                                                </div>
 
                                                         </div>
 
@@ -296,114 +293,110 @@
                                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                                                 <button type="button" id="evaluate" class="btn btn-primary" onclick="update_campaign()">Evaluate Contacts </button>
                                                         </div> 
-                                                        </form>
+                                                        
                                                         
                                                         </div>
                                                     </div>
-                                              </div> 
+                                                </div> 
                                               <!-- End of Data Modal for Campaign -->
-                                        
-
-                                        
                                     </div>
                                     <div class="panel-body">
                                         <div class="col-md-11">
-                                        <!-- Start Campaigns Table --> 
+                                            <!-- Start Campaigns Table --> 
                                             <div style="overflow-y:scroll; height:450px;">
-                                            <table id="mydata" class="table datatable table-hover">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th width="100" style="text-align: center"></th>
-                                                        <th width="150" style="text-align: center">Campaign Name</th>
-                                                        <th width="150" style="text-align: center">Date Created</th>
-                                                        <th width="200" colspan="2" style="text-align: center;">Selection</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                <form>
-                                            <?php
-                                           
-                                                    foreach($campaigns as $campaign){ ?>
-                                                        <tr id="<?php  echo $campaign->campaign_id; ?>">
-                                                            <td style="text-align: center">
-                                                            <button type="button" class="btn btn-success btn-sm" style="border-radius: 25px" data-toggle="modal" data-placement="top" title="View Campaign Details" data-tooltip="tooltip" href="#viewModal<?php echo $campaign->campaign_id;?>" onclick="getDetails('<?php  echo $campaign->campaign_id; ?>')"><span class="glyphicon glyphicon-plus"></span></button> 
-                                                            </td>
-                                                            <td style="text-align: center"><?php echo $campaign->campaign_name; ?></td>
-                                                            <td style="text-align: center"><?php echo $campaign->date; ?></td>
-                                                            <td style="text-align: center"><?php echo $campaign->inquiry; ?></td>
-                                                            <td style="text-align: center"><?php echo $campaign->status; ?></td>
+                                                <table id="mydata" class="table datatable table-hover">
+                                                    <thead>
+                                                        <tr role="row">
+                                                            <th width="100" style="text-align: center"></th>
+                                                            <th width="150" style="text-align: center">Campaign Name</th>
+                                                            <th width="150" style="text-align: center">Date Created</th>
+                                                            <th width="200" colspan="2" style="text-align: center;">Selection</th>
                                                         </tr>
-                                                </form>
-                                            <?php } ?>
+                                                    </thead>
 
+                                                    <tbody>
+                                                    <form>
+                                                <?php
+                                               
+                                                        foreach($campaigns as $campaign){ ?>
 
-                                                </tbody> 
-                                            </table>
-                                            <div> <!-- scroll bar -->
+                                                            <tr id="<?php  echo $campaign->campaign_id; ?>">
+                                                                <td style="text-align: center">
+                                                                <button type="button" class="btn btn-success btn-sm" style="border-radius: 25px" onclick="getDetails('<?php  echo $campaign->campaign_id; ?>','<?php echo $campaign->campaign_name; ?>')"><span class="glyphicon glyphicon-plus"></span></button> 
+
+                                                                </td>
+                                                                <td  style="text-align: center"><?php echo $campaign->campaign_name; ?></td>
+                                                                <td style="text-align: center"><?php echo $campaign->date; ?></td>
+                                                                <td style="text-align: center"><?php echo $campaign->inquiry; ?></td>
+                                                                <td style="text-align: center"><?php echo $campaign->status; ?></td>
+                                                            </tr>
+                                                    </form>
+                                                <?php } ?>  
+                                                 
+                                                    </tbody> 
+                                                
+                                                </table>
+                                            </div> <!-- scroll bar -->
+
                                             <!-- End Campaigns Table -->
+                                        </div>
 
-                                                     <!-- Data Modal for each Campaign -->
-                                                  <div id="viewModal<?php echo $campaign->campaign_id; ?>" class="modal fade">
-                                                      <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                          <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                            <h4 class="modal-title"><?php echo $campaign->campaign_name; ?></h4>
-                                                          </div>
-                                                          <br>
+                                        <!-- Data Modal -->
+                                        <div id="viewModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true" style="display: none;">
+                                           <div class="modal-dialog"> 
+                                              <div class="modal-content"> 
                                                           
-                                                        <div class="modal-body">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                
-                                                                <form class="form-horizontal">
-
-                                                                    <input type="text" name="campid" id="campid" value="<?php echo $campaign->campaign_id; ?>" hidden="hidden" />
-
-                                                                    <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Selected Contacts</label>
-                                                                        <div class="col-md-3">
-                                                                            <input type="text" class="form-control" readonly value=""/>
+                                                 <div class="modal-header"> 
+                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                                                     <h4 class="modal-title">
+                                                     </h4> 
+                                                 </div> 
+                                                 
+                                                 <div class="modal-body"> 
+                                                             
+                                                     <div id="dynamic-content"> <!-- mysql data will load in table -->
+                                                                                
+                                                         <div class="row"> 
+                                                             <div class="col-md-12"> 
+                                                                  <div class="form-group">
+                                                                        <label class="col-md-3 control-label">No.Of Contacts</label>
+                                                                        <div class="col-md-6">                   
+                                                                            <div class="input-group">
+                                                                                <input type="text" id="selected_contacts" name="selected_contacts" class="form-control" disabled="" />
+                                                                            </div> 
                                                                         </div>
-                                                                    </div>
-                                                                    
-                                                                    <div id="campaign_table" class="table-responsive" style="display:none">    
-                                                                    <table class="table datatable table-hover ">
-                                                                        <thead>
-                                                                            <tr role="row">
-                                                                                <th width="50" style="text-align: center">First Name</th>
-                                                                                <th width="50" style="text-align: center">Last Name</th>
-                                                                                <th width="50" style="text-align: center">Email</th>
-                                                                                <th width="50" style="text-align: center">Contact No</th>
-                                                                            </tr>
-                                                                        </thead>
-
+                                                                                
+                                                                   </div>  
+                                                                 <div class="table-responsive">
                                                                          
-                                                                    </table>
-                                                                    </div>
-                                                                      
-                                                                    <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                    </div>                               
-                                                                
-                                                                </form>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        
-                                                        </div>
-                                                    </div>
+                                                                 <table id="campaign_table" class="table datatable table-hover">
+                                                                         
+                                                                 </table>
+                                                                            
+                                                                 </div>
+                                                                               
+                                                           </div> 
+                                                      </div>
+                                                               
+                                                     </div> 
+                                                                     
+                                                 </div> 
+                                                   
+                                               <div class="modal-footer"> 
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                                               </div>  
+                                                      
                                               </div> 
-                                              <!-- End of Data Modal for Campaign -->
-                                           
-                                        </div>      
-                                        
+                                           </div>
+                                        </div>
+                                        <!-- End of Data Modal -->
+
+
                                     </div>
+                                    <!-- End of panel body -->
                                 </div>
+                                <!-- End of panel default -->
                             </form>
-                            
                         </div>
                     </div>  
 
@@ -458,17 +451,11 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/bootstrap/bootstrap-select.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
 
-        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/tableExport.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jquery.base64.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/html2canvas.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/jspdf.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script>
-
+        
         <!-- END THIS PAGE PLUGINS -->       
         
         <!-- START TEMPLATE -->
-        <!-- <script type="text/javascript" src="<?php echo base_url(); ?>public/js/settings.js"></script> -->
+        <!-- <script type="text/javascript" src="<?php //echo base_url(); ?>public/js/settings.js"></script> -->
         
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>        
@@ -490,7 +477,7 @@
                 $status = $('#inquiry_status').val();
                 
                 
-                if ($type!=="Select Type" || $status!=="Select Status"){
+                if ($type!=="" || $status!==""){
 
                     $.ajax({
                         type: "post",
@@ -527,22 +514,32 @@
 
         <script type="text/javascript">
     
-        function getDetails(campID) {  
-            var campID=campID;
+        function getDetails(camp_id,camp_name) {  
+            var campName=camp_name;
+            var campID=camp_id;
             $.ajax({
-     
                 type:"post",
                 url : "<?php echo base_url();?>index.php/Campaign_Controller/get_campaignDetails",
                 data : {id: campID},
                 dataType: 'json',
                 success: function (data) {
-                    var trHTML = '';
-                    $.each(data, function (i, item) {
-                        trHTML += '<tr><td>' + item.Fname + '</td><td>' + item.Lname + '</td><td>' + item.Email + '</td><td>' + item.Contactno + '</td></tr>';
-                    });
-                    $('#campaign_table').append(trHTML);
-                            }
-                        })
+                    if(data.fail){
+                        swal("Sorry! Campaign has been updated");
+                    }else{
+                        var trHTML = '';
+                        thHTML = '<thead><tr><th>ID</th><th>Name</th><th>Contact Number</th><th>Email</th></tr></thead>'; 
+                        trHTML += thHTML;
+                        $.each(data.students, function (i, item) {
+                            trHTML += '<tr><td>' + item.r_id +'</td><td>' + item.Fname + ' ' + item.Lname + '</td><td>' + item.Contactno + '</td><td>' + item.Email + '</td></tr>';
+                        });
+                        $(".modal-body #campaign_table").html(trHTML); 
+                        $(".modal-body #selected_contacts").val( data.count);
+                        $('#viewModal').modal('show');
+                        $('.modal-title').html('<i class="glyphicon glyphicon-bullhorn"></i>  '+campName); 
+                    }
+                    
+                }
+            }) 
  
         }
         </script>

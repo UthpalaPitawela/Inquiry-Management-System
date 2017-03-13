@@ -14,7 +14,8 @@ class Campaign_model extends CI_Model
 
     public function get_campaignStudents($camp_id){
         $this->db->select("Fname,Lname,r_id,Contactno,Email");
-        $query = $this->db->get_where('register',array('campaign_id'=>$camp_id));
+        $this->db->where('campaign_id',$camp_id);
+        $query = $this->db->get('register');
         return $query->result();
     }
 

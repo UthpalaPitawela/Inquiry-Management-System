@@ -197,7 +197,8 @@
                                                 <th width="100" style="text-align: center">AL</th>
                                                 <th width="100" style="text-align: center">Contact No.</th>
                                                 <th width="200" style="text-align: center">Email</th>
-                                                <th width="200" style="text-align: center">Actions</th>
+                                                <th width="200" style="text-align: center">Counsellor</th>
+                                                
                                             </tr>
                                         </thead>
                                     <?php
@@ -211,9 +212,8 @@
                                                 <td style="text-align: center"><?php echo $post->Grade1+$post->Grade2+$post->Grade3; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Contactno; ?></td>
                                                 <td style="text-align: center"><?php echo $post->Email; ?></td>
-                                                <td style="text-align: center">
-                                                <button type="button" class="btn btn-danger btn-rounded btn-sm" onclick="deleteStudent('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Delete</button>
-                                                </td>
+                                                <td style="text-align: center"><?php echo $post->CounsellorName; ?></td>
+                                                
                                             </tr>
                             
                                         </tbody>
@@ -290,10 +290,22 @@
         <!-- To delete an admission -->
         <script type="text/javascript">
 
+        // function deleteStudent(email,r_id){
+        //         $.ajax({             
+        //             type:"post",
+        //             url : '<?php echo base_url();?>/index.php/admissions_controller/deleteStudent/',
+        //             data : {id:r=email},
+        //             success: function(data) {
+        //                 $('#deleted').html(data);
+        //             }
+        //         });
+        //         $('#'+r_id).hide();
+        // }
+
         function deleteStudent(email,r_id){
                 $.ajax({             
                     type:"post",
-                    url : 'admissions_controller/deleteStudent/',
+                    url : '<?php echo base_url();?>/index.php/Admissions_controller/deleteStudent/',
                     data : {id:r=email},
                     success: function(data) {
                         $('#deleted').html(data);

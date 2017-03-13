@@ -44,7 +44,7 @@ class Summary_controller extends CI_Controller{
 		$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
 		redirect("index.php/EditRecords_controller/index/$regid");
 	}
-
+ 
 	public function updateEmailSummary()
 	{
 

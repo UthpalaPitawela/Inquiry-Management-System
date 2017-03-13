@@ -64,7 +64,17 @@ $this->load->model("Student_Profile_Model");
 
  	  $res = $this->Student_Profile_Model->update_Password($primarytpnumber,$old_password,$new_password);
 
- $_SESSION["alert"]="success";
+
+ if($res==1){
+   $_SESSION["alert"]="success";
+
+
+ }else{
+ $_SESSION["alert"]="notsuccess";
+
+
+ }
+
 
 
 //      include 'imports.php';

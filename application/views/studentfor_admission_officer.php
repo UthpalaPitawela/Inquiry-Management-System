@@ -443,7 +443,7 @@ if($row2['other']!='nolink'){
 
                             <a class="gallery-item" style="height:200px;width:200px;" href="<?php echo base_url($row2['alimage2'])?>" title="A/L Certificate Image 2" data-gallery="">
                                 <div class="image">
-                                    <img style="height:200px;width:200px;" src="<?php echo base_url($row2['olimage2'])?>" alt="A/L Certificate Image 2">    
+                                    <img style="height:200px;width:200px;" src="<?php echo base_url($row2['alimage2'])?>" alt="A/L Certificate Image 2">    
                                     <ul class="gallery-item-controls">
                                         <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
                                         <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>

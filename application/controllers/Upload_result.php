@@ -21,6 +21,17 @@ $this->load->model("Results_model");
 $user_Id=$_SESSION["user_ID"];
     $res = $this->Results_model->insert_Result($user_Id);
 
+     if($res==1){
+   $_SESSION["alert"]="insertsuccess";
+
+
+ }else{
+ $_SESSION["alert"]="notsuccess";
+
+
+ }
+
+
 
     if($res){
         ?>
@@ -39,6 +50,17 @@ $user_Id=$_SESSION["user_ID"];
 $user_Id=$_SESSION["user_ID"];
     $res = $this->Results_model->delete_Result($user_Id);
 
+     if($res==1){
+   $_SESSION["alert"]="deletesuccess";
+
+
+ }else{
+ $_SESSION["alert"]="notsuccess";
+
+
+ }
+
+
     if($res){
         ?>
         <script>
@@ -55,6 +77,16 @@ $user_Id=$_SESSION["user_ID"];
  $user_Id=$_SESSION["user_ID"];
 
     $res = $this->Results_model->update_Result($user_Id);
+     if($res==true){
+   $_SESSION["alert"]="insertsuccess";
+
+
+ }else{
+ $_SESSION["alert"]="notsuccess";
+
+
+ }
+
 
  if($res){
         ?>

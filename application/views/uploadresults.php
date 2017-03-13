@@ -22,8 +22,11 @@
 
 
 
-
-
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert2/sweetalert2.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
+        <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert2/sweetalert2.min.js'); ?>"></script>
 
 
 
@@ -32,7 +35,177 @@
 <script type="text/javascript">
 
 
+
+function confirmdelete(){
+
+    //alert("a");
+
+     swal({
+        title: "Are you sure?",
+        text: "Your all submitted files will be deleted!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Yes, I am sure!',
+        cancelButtonText: "No, cancel it!",
+        closeOnConfirm: true,
+        closeOnCancel: false
+    },
+    function(isConfirm) {
+        if (isConfirm) {
+
+            window.location='<?php echo base_url("index.php/Upload_result/delete_Result");?>';
+
+            // swal({
+            //     title: 'Shortlisted!',
+            //     text: 'Candidates are successfully shortlisted!',
+            //     type: 'success'
+            // }, function() {
+            //     form.submit();
+            // });
+
+        } else {
+        
+swal({
+  title: 'Cancelled!',
+  text: 'Did not deleted.',
+  timer: 1000
+}).then(
+  function () {},
+  // handling the promise rejection
+  function (dismiss) {
+    if (dismiss === 'timer') {
+      console.log('This will closed by the timer')
+    }
+  }
+);
+
+
+        }
+    });
+
+}
+ function confirm() {
+
+ swal({
+        title: "Are you sure?",
+        text: "Your selected files will be submitted!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Yes, I am sure!',
+        cancelButtonText: "No, cancel it!",
+        closeOnConfirm: true,
+        closeOnCancel: false
+    },
+    function(isConfirm) {
+        if (isConfirm) {
+
+            var subval= checkimage();
+            //alert(subval);
+            if(subval==true){
+              //  alert("awe");
+                document.getElementById("emptyform").submit();
+
+            }else{
+
+                         swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+)
+            }
+            // swal({
+            //     title: 'Shortlisted!',
+            //     text: 'Candidates are successfully shortlisted!',
+            //     type: 'success'
+            // }, function() {
+            //     form.submit();
+            // });
+
+        } else {
+           
+            swal({
+  title: 'Cancelled!',
+  text: 'You did not submit',
+  timer: 1000
+}).then(
+  function () {},
+  // handling the promise rejection
+  function (dismiss) {
+    if (dismiss === 'timer') {
+      console.log('This will closed by the timer')
+    }
+  }
+);
+
+
+        }
+    });
+}
+
+
+function confirm2() {
+
+ swal({
+        title: "Are you sure?",
+        text: "Your selected files will be submitted!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Yes, I am sure!',
+        cancelButtonText: "No, cancel it!",
+        closeOnConfirm: true,
+        closeOnCancel: false
+    },
+    function(isConfirm) {
+        if (isConfirm) {
+
+            var subval= checkimage();
+            //alert(subval);
+            if(subval==true){
+              //  alert("awe");
+                document.getElementById("dataform").submit();
+
+            }else{
+
+                           swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+)
+            }
+            // swal({
+            //     title: 'Shortlisted!',
+            //     text: 'Candidates are successfully shortlisted!',
+            //     type: 'success'
+            // }, function() {
+            //     form.submit();
+            // });
+
+        } else {
+         
+            swal({
+  title: 'Cancelled!',
+  text: 'You did not submit',
+  timer: 1000
+}).then(
+  function () {},
+  // handling the promise rejection
+  function (dismiss) {
+    if (dismiss === 'timer') {
+      console.log('This will closed by the timer')
+    }
+  }
+);            
+        }
+    });
+}
+
+
  function checkimage() {
+
+  // alert("dd");
 
 //alert(this.files[0].size/1024/1024);
 
@@ -64,12 +237,61 @@ for (i = 1; i < 5; i++) {
         var ex=fileExtension.toLowerCase();
         switch(ex){
 
-          case "png":checkSizeAssignment(object,i);break;
-          case "jpg":checkSizeAssignment(object,i);break;
-          case "jpeg": checkSizeAssignment(object,i);break;
-          case "pdf":checkSizeAssignment(object,i);break;
+          case "png":retval= checkSizeAssignment(object,i);break;
+          case "jpg":retval=checkSizeAssignment(object,i);break;
+          case "jpeg":retval= checkSizeAssignment(object,i);break;
+         
           
-   default: document.getElementById('pText').innerHTML = "Invalid file type. You can select only png,jpg,jpeg or pdf files";
+   default: document.getElementById('pText').innerHTML = "Invalid file type. You can select only png,jpg,jpeg";
+          
+              document.getElementById("message-box-danger").style.display = 'block';
+
+            return false;break;
+       
+
+
+        }
+
+
+        }
+
+if(retval==false){
+    return retval;
+}
+        
+    }
+
+
+
+ object2="pdf";
+    
+
+
+
+
+
+
+
+
+        var fileElement = document.getElementById(object2);
+        var fileExtension = "";
+  
+
+        if ($('#'+object2).get(0).files.length === 0) {
+            
+            retval=true;
+        }else{
+
+            if (fileElement.value.lastIndexOf(".") > 0) {
+            fileExtension = fileElement.value.substring(fileElement.value.lastIndexOf(".") + 1, fileElement.value.length);
+            }
+        var ex=fileExtension.toLowerCase();
+        switch(ex){
+
+          case "pdf":retval= checkSizeAssignment(object2,5);break;
+          
+          
+   default: document.getElementById('pText').innerHTML = "Invalid file type. You can select only pdf files in fifth file input tag";
           
               document.getElementById("message-box-danger").style.display = 'block';
 
@@ -83,8 +305,9 @@ for (i = 1; i < 5; i++) {
         }
 
 
-        
-    }
+
+
+    return retval;
     
 }
 
@@ -94,10 +317,21 @@ function checkSizeAssignment(upimage,i){
 
             if (oFile.size > 2097152) // 2 mb for bytes.
             {
+                if(i==5){
+
+
+                    document.getElementById('pText').innerHTML = "PDF file size is too large. Select a file of size atmost 2Mb.";
+          
+                document.getElementById("message-box-danger").style.display = 'block';
+                return false;
+                
+
+                }else{
                 document.getElementById('pText').innerHTML = "Image "+i+" size is too large. Select an image of size atmost 2Mb.";
           
                 document.getElementById("message-box-danger").style.display = 'block';
                 return false;
+                }
             }else{
                   
                return true;
@@ -297,13 +531,14 @@ $propic=$_SESSION["propic"];
 
 <script type="text/javascript">
 
-        function readURL(input,imgtg) {
+        function readURL(input,imgtg,anchor) {
            
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
                     $('#'+imgtg).attr('src', e.target.result);
+                    $('#'+anchor).attr('href', e.target.result);
                 }
 
                 reader.readAsDataURL(input.files[0]);
@@ -335,11 +570,128 @@ foreach ($current_results ->result_array() as $row3) {
 
 
 
-<form enctype="multipart/form-data" action="<?php echo base_url("index.php/Upload_result/update_Result")?>" method="POST" onsubmit="return checkimage();">
+<form enctype="multipart/form-data" id="dataform" action="<?php echo base_url("index.php/Upload_result/update_Result")?>" method="POST" >
+<!-- onsubmit="return checkimage();return" -->
+<label style="float: left; padding-top: 7px;">Enter image 1 : &nbsp</label>
+ <input name="file1" type="file" id="addimage1" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange=" readURL(this,'image1','a1');">
+
+ <label style="float: left; padding-top: 7px;">Enter image 2 : &nbsp</label>
+<input name="file2" type="file" id="addimage2" class="btn btn-info" style="width:200px;  margin-bottom: 2px;" onchange=" readURL(this,'image2','a2');">
+<label style="float: left; padding-top: 7px;">Enter image 3 : &nbsp</label>
+<input name="file3" type="file" id="addimage3" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange=" readURL(this,'image3','a3');">
+<label style="float: left; padding-top: 7px;">Enter image 4 : &nbsp</label>
+ <input name="file4" type="file" id="addimage4" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange="readURL(this,'image4','a4');">
+
+<label style="float: left; padding-top: 7px;">Enter pdf File : &nbsp&nbsp</label>
+
+<input name="file5" type="file" id="pdf" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange="">
+
+<div class="gallery" id="links">
+                             
+
+                            <a class="gallery-item" style="height:200px;width:200px;" id="a1" href="<?php echo base_url($row3['olimage1'])?>" title="O/L Certificate Image 1" data-gallery="">
+                                <div class="image">                              
+                                    <img style="height:200px;width:200px;" id="image1" src=" <?php echo base_url($row3['olimage1']); ?>" alt="O/L Certificate Image 1">           
+
+                                    <ul class="gallery-item-controls">
+                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
+                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                    </ul>                                                                    
+                                </div>
+
+                                <div class="meta">
+                                    <strong>O/L Certificate Image 1</strong>
+                                  
+                                </div>   
+
+
+                            </a>
+                                
+
+                            <a class="gallery-item" style="height:200px;width:200px;" id="a2" href="<?php echo base_url($row3['olimage2'])?>" title="O/L Certificate Image 2" data-gallery="">
+                                <div class="image">
+                                    <img style="height:200px;width:200px;" id="image2" src="<?php echo base_url($row3['olimage2'])?>" alt="O/L Certificate Image 2">    
+                                    <ul class="gallery-item-controls">
+                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
+                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                    </ul>                                                                    
+                                </div>
+                                <div class="meta">
+                                    <strong>O/L Certificate Image 2</strong>
+                          
+                                </div>                                
+                            </a>                            
+
+                            <a class="gallery-item" style="height:200px;width:200px;" id="a3" href="<?php echo base_url($row3['alimage1'])?>" title="A/L Certificate Image 1" data-gallery="">
+                                <div class="image">
+                                    <img style="height:200px;width:200px;" id="image3" src="<?php echo base_url($row3['alimage1'])?>" alt="A/L Certificate Image 1">                                        
+                                    <ul class="gallery-item-controls">
+                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
+                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                    </ul>                                                                    
+                                </div>
+                                <div class="meta">
+                                    <strong>A/L Certificate Image 1</strong>
+                                  
+                                </div>                                
+                            </a>
+
+                            <a class="gallery-item" style="height:200px;width:200px;" id="a4" href="<?php echo base_url($row3['alimage2'])?>" title="A/L Certificate Image 2" data-gallery="">
+                                <div class="image">
+                                    <img style="height:200px;width:200px;" id="image4" src="<?php echo base_url($row3['alimage2'])?>" alt="A/L Certificate Image 2">    
+                                    <ul class="gallery-item-controls">
+                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
+                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                    </ul>                                                                    
+                                </div>
+                                <div class="meta">
+                                    <strong>A/L Certificate Image 2</strong>
+                     
+                                </div>                                
+                            </a>                            
+                             
+                        </div>
+                        
 
 
 
-<table>
+
+
+   <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+        </div>      
+        <!-- END BLUEIMP GALLERY -->
+        
+     
+        <script>            
+            document.getElementById('links').onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement;
+                var link = target.src ? target.parentNode : target;
+                var options = {index: link, event: event,onclosed: function(){
+                        setTimeout(function(){
+                            $("body").css("overflow","");
+                        },200);                        
+                    }};
+                var links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+            };
+        </script>        
+        
+   
+
+
+
+
+
+
+<!-- <table>
     <tr>
         
     <td>
@@ -385,16 +737,17 @@ foreach ($current_results ->result_array() as $row3) {
         </td>
     </tr>
     </table>
-            
-            <div style="margin-left: 2%; margin-top:10%;float:bottom; ">
-  <input name="file5" type="file" id="pdf" style="width:303px;" class="btn btn-info" style="" onchange="">
-</div>
+ -->            
+        
+
+
+<div class="col-md-12 col-sm-6" style="margin-top: 45px;" >
 <?php 
 
          if($row3['other']!="nolink"){
             ?>
 
- <div style="margin-top: 2%;margin-left: 5%; height:40vw;border:solid; width: 90%;" onload="this.style.height=this.contentDocument.body.scrollHeight +'px'; href="<?php echo base_url($row3['other']); ?>">
+ <div style="height:35vw;border:solid; width: 70%;" onload="this.style.height=this.contentDocument.body.scrollHeight +'px'; href="<?php echo base_url($row3['other']); ?>">
               
                   <object data="<?php echo base_url($row3['other']); ?> " type="application/pdf" width="100%" height="100%" >
                   alt : <a href="<?php echo base_url($row3['other']); ?> ">No other files have been uploaded</a>
@@ -408,17 +761,16 @@ foreach ($current_results ->result_array() as $row3) {
           }
           ?>
 
+</div>
 
 
+<div  style="margin-top: 150px;">
+    <button class="btn btn-primary pull-right" type="button" id="deleteresult" name="deleteresults"  onclick="confirmdelete();" > Delete All</button>
 
 
-
+<input  class="btn btn-primary pull-right" type="button" onclick="confirm2();" id="resultsubmit" name="submitresults"  value="Update">
+ </div>
       
-    <button class="btn btn-primary pull-right" type="button" id="deleteresult" name="deleteresults"  onclick="window.location='<?php echo base_url("index.php/Upload_result/delete_Result");?>'" > Delete </button>
-
-
-<input  class="btn btn-primary pull-right" type="submit" id="resultsubmit" name="submitresults"  value="Update">
- 
 
 
 
@@ -443,15 +795,136 @@ foreach ($current_results ->result_array() as $row3) {
 
   ?><h1><?php echo "No result"; ?> </h1>
 
-<h2>You can Insert your files by selecting new files and click Post</h2><br>
+<h2>You can Insert your files by selecting new files and click Submit</h2><br>
 
  
 
 
 
-<form enctype="multipart/form-data" style="" action="<?php echo base_url("index.php/Upload_result/insert_Result")?>"  method="POST" onsubmit="return checkimage();">
+<form enctype="multipart/form-data" style="" id="emptyform" action="<?php echo base_url("index.php/Upload_result/insert_Result")?>"  method="POST">
 
-<table>
+<!--  onsubmit="return checkimage();" -->
+
+
+
+<label style="float: left; padding-top: 7px;">Enter image 1 : &nbsp</label>
+ <input name="file1" type="file" id="addimage1" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange=" readURL(this,'image1','a1');">
+
+ <label style="float: left; padding-top: 7px;">Enter image 2 : &nbsp</label>
+<input name="file2" type="file" id="addimage2" class="btn btn-info" style="width:200px;  margin-bottom: 2px;" onchange=" readURL(this,'image2','a2');">
+<label style="float: left; padding-top: 7px;">Enter image 3 : &nbsp</label>
+<input name="file3" type="file" id="addimage3" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange=" readURL(this,'image3','a3');">
+<label style="float: left; padding-top: 7px;">Enter image 4 : &nbsp</label>
+ <input name="file4" type="file" id="addimage4" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange="readURL(this,'image4','a4');">
+
+<label style="float: left; padding-top: 7px;">Enter pdf File : &nbsp&nbsp</label>
+
+<input name="file5" type="file" id="pdf" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange="">
+
+<div class="gallery" id="links">
+                             
+
+                            <a class="gallery-item" style="height:200px;width:200px;"  id="a1" href=""  title="O/L Certificate Image 1" data-gallery="">
+                                <div class="image">                              
+                                    <img style="height:200px;width:200px;" id="image1" src="" alt="O/L Certificate Image 1">           
+
+                                    <ul class="gallery-item-controls">
+                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
+                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                    </ul>                                                                    
+                                </div>
+
+                                <div class="meta">
+                                    <strong>O/L Certificate Image 1</strong>
+                                  
+                                </div>   
+
+
+                            </a>
+                                
+
+                            <a class="gallery-item" style="height:200px;width:200px;"  id="a2"  href="" title="O/L Certificate Image 2" data-gallery="">
+                                <div class="image">
+                                    <img style="height:200px;width:200px;" id="image2" src="" alt="O/L Certificate Image 2">    
+                                    <ul class="gallery-item-controls">
+                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
+                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                    </ul>                                                                    
+                                </div>
+                                <div class="meta">
+                                    <strong>O/L Certificate Image 2</strong>
+                          
+                                </div>                                
+                            </a>                            
+
+                            <a class="gallery-item" style="height:200px;width:200px;" href=""  id="a3"  title="A/L Certificate Image 1" data-gallery="">
+                                <div class="image">
+                                    <img style="height:200px;width:200px;" id="image3" src="" alt="A/L Certificate Image 1">                                        
+                                    <ul class="gallery-item-controls">
+                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
+                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                    </ul>                                                                    
+                                </div>
+                                <div class="meta">
+                                    <strong>A/L Certificate Image 1</strong>
+                                  
+                                </div>                                
+                            </a>
+
+                            <a class="gallery-item" style="height:200px;width:200px;" href=""  id="a4"  title="A/L Certificate Image 2" data-gallery="">
+                                <div class="image">
+                                    <img style="height:200px;width:200px;" id="image4" src="" alt="A/L Certificate Image 2">    
+                                    <ul class="gallery-item-controls">
+                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
+                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                    </ul>                                                                    
+                                </div>
+                                <div class="meta">
+                                    <strong>A/L Certificate Image 2</strong>
+                     
+                                </div>                                
+                            </a>                            
+                             
+                        </div>
+                        
+
+
+
+
+
+   <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+        </div>      
+        <!-- END BLUEIMP GALLERY -->
+        
+     
+        <script>            
+            document.getElementById('links').onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement;
+                var link = target.src ? target.parentNode : target;
+                var options = {index: link, event: event,onclosed: function(){
+                        setTimeout(function(){
+                            $("body").css("overflow","");
+                        },200);                        
+                    }};
+                var links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+            };
+        </script>        
+        
+   
+
+
+
+
+<!-- <table>
     <tr>
         <td>
                   <div style="margin-left:12%; margin-top: 2%; float:left; ">
@@ -532,7 +1005,7 @@ foreach ($current_results ->result_array() as $row3) {
 <tr>
     <td>
         
-        <input style="margin-left:12%; margin-top: 15%; float:left; " class="btn btn-info" type="submit" id="newssubmit" name="submitresults" value="Post" >
+        
 
     </td>
 </tr>
@@ -543,7 +1016,8 @@ foreach ($current_results ->result_array() as $row3) {
 
 
 </table>
-
+ -->
+ <input style="" class="btn btn-info pull-right" type="button" onclick=" confirm();" id="newssubmit" name="submitresults" value="Submit" >
 </form>
 
 <?php
@@ -661,7 +1135,64 @@ foreach ($current_results ->result_array() as $row3) {
 
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->         
+    
+<?php
+     if(isset($_SESSION["alert"])){
+
+                ?>
+        <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
+        <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
+        <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Inserted data were submitted!", "success");
+      
+</script>
+
+          <?php
+        }elseif( $_SESSION["alert"]=="deletesuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Successfully Deleted!", "All the result data ware deleted!", "success");
+      
+</script>
+
+          <?php
+        }elseif ($_SESSION["alert"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert']);
+            }
+?>
+
+
+
+
+
     </body>
+
 </html>
 
 

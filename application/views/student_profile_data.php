@@ -689,9 +689,8 @@ function submitpasswords(){
 
 <?php
      if(isset($_SESSION["alert"])){
-            $_SESSION["alert"]=="success";
-            
-          ?>
+
+                ?>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
@@ -700,13 +699,30 @@ function submitpasswords(){
         <!-- JS INCLUDE --> 
                 <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 
+<?php
 
+      if( $_SESSION["alert"]=="success"){
+
+      
+            
+?>
 <script type="text/javascript">
     swal("Password Set!", "New Password is set in your account!", "success");
       
 </script>
 
           <?php
+        }elseif ($_SESSION["alert"]=="notsuccess") {
+          ?>
+          <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
 unset($_SESSION['alert']);
             }
 ?>
@@ -851,7 +867,8 @@ return true;
 
                      },
                      error: function(jqXHR){
-                        alert(jqXHR.responseText);
+                        alert("Something Wrong");
+                        //jqXHR.responseText
                      }
                  });
                

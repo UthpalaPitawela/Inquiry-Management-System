@@ -28,7 +28,7 @@ class Summary_model extends CI_Model{
 		{
 			$this->db->query("UPDATE register SET summary_sms1='$sms',summary_sms1_date='$date',sms_count='$sms_count' WHERE r_id='$rid' ");
 			return;
-		}elseif ($call_count%2==0) {
+		}elseif ($sms_count%2==0) {
 			$this->db->query("UPDATE register SET summary_sms2='$sms',summary_sms2_date='$date',sms_count='$sms_count' WHERE r_id='$rid' ");
 			return;
 		}

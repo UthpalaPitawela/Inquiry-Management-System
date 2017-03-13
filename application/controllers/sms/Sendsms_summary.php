@@ -4,7 +4,13 @@ require 'autoload.php';
 
 class Sendsms_summary extends CI_Controller {
 
-    function send($recipient,$text){
+    function send(){
+
+  $this->load->model('Summary_model');
+
+$recipient = $this->input->post('recipient');
+
+   $text=$this->input->post('text');
 
         //Update the database
         $sms = $this->input->post('sms1');

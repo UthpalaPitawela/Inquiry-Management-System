@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
     <head> 
 
         <!-- META SECTION -->
@@ -794,23 +794,81 @@
                                                                                 var recipient = $('#contactno').val();
                                                                                 var message = $('#sms1').val();
 
+                                                                                // alert(recipient);
+                                                                                // alert(message);
+
                                                                                 //alert(recipient);
                                                                                 //alert(message);
                                                                                  
                                                                                 if ( recipient!=="") {
                                                                                     if(message!==""){
-                                                                                        $.ajax({
-                                                                                            type: "get",
-                                                                                            url: "<?php echo base_url(); ?>" +"index.php/sms/Sendsms_summary/send/"+recipient+"/"+message,
+
+
+
+
+
+
+
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
+                     data : {recipient:recipient,text:message},
+                     success: function(data) {
+
+
+                        $('#loading_image').hide();
+                             alert("SMS sent successfully");
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                        // $.ajax({
+                                                                                        //     type: "get",
+                                                                                        //     url: '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/'+recipient,message,
+                                                                                        //     //+"/"+message,
                                                                                            
-                                                                                            success: function (msg) {
-                                                                                                $('#loading_image').hide();
-                                                                                                alert("SMS sent successfully");
-                                                                                            },
-                                                                                            error: function (error) {
-                                                                                                alert("Something went wrong");
-                                                                                            }
-                                                                                        }); 
+                                                                                        //     success: function (msg) {
+                                                                                        //         $('#loading_image').hide();
+                                                                                        //         alert("SMS sent successfully");
+                                                                                        //     },
+                                                                                        //     error: function (error) {
+                                                                                        //         alert("Something went wrong");
+                                                                                        //     }
+                                                                                        // }); 
                                                                                                     
 
                                                                                     }else{

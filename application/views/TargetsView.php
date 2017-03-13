@@ -319,7 +319,7 @@
                                             <div class="panel-body panel-body-table">
 
                                                 <div class="table-responsive">
-                                                    <table class="table table-bordered table-striped table-actions">
+                                                    <table class="table table-bordered table-striped">
                                                         <thead>
                                                             <tr>
                                                                 <!--<th width="50">TID</th>-->
@@ -330,7 +330,7 @@
                                                                 <th width="100">Start Date</th>
                                                                 <th width="100">Deadline</th>
                                                                 <th width="100">Assigned By</th>
-                                                                <th width="110">Actions</th>
+                                                                
                                                             </tr>
                                                         </thead>
 
@@ -359,10 +359,7 @@
                                                                 <td><?php echo $Start_Date;   ?></td>
                                                                 <td><?php echo $End_Date;   ?></td>
                                                                 <td><?php echo $Assigned_By;   ?></td>
-                                                                <td>
-                                                                    <button class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
-                                                                    <button class="btn btn-danger btn-rounded btn-sm" onClick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
-                                                                </td>
+                                                                
                                                             </tr>
                                                             <?php }
                                                             }

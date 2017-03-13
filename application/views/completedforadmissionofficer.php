@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -285,7 +286,7 @@
                        // alert(respond);
                       if(respond=="True"){
 
-                        swal("Registerd!", "Student with contact number "+Contactno+" registerd!", "success");
+                        swal("Registered!", "Student with contact number "+Contactno+" registered!", "success");
                         //window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
                                         $('#'+r_id).hide();
 

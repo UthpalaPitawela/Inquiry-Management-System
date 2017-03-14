@@ -32,12 +32,6 @@ class EditRecords_controller extends CI_Controller{
         $this->Inquirybutton_model->following($id);
         
 
-?>
-<script type="text/javascript">
-    alert("d");
-</script>
-
-<?php
              //everything is good-process the form- write the data into the registration database
              $rid = $this->input->post('rid');
              $fname = $this->input->post('fname');
@@ -60,6 +54,7 @@ class EditRecords_controller extends CI_Controller{
              $mode = $this->input->post('mode');
              //$intake = $this->input->post('intake');
              $pdate = $this->input->post('pdate');
+
              $counsellorname = $this->input->post('counsellorname');
       
              if($remark==""){
@@ -83,7 +78,7 @@ class EditRecords_controller extends CI_Controller{
              }
 
              //redirect to the view
-             redirect("index.php/EditRecords_controller/index/$rid");
+            redirect("index.php/EditRecords_controller/index/$rid");
              
 
 

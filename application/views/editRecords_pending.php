@@ -256,8 +256,32 @@
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Gender</label>
                                         <div class="col-md-6 col-xs-12">
-                                            <input type="radio" name="gender" value="Male" value="<?php echo $post->Gender;  ?>"> Male
+                                            <?php
+
+                                            if( $post->Gender=="Male"){
+                                                ?>
+
+                                <input type="radio" name="gender" value="Male" checked="checked" > Male
                                             <input type="radio" name="gender" value="Female"> Female
+
+<?php
+                                            }elseif($post->Gender=="Female"){
+?>                                                
+                                <input type="radio" name="gender" value="Male"  > Male
+                                            <input type="radio" name="gender" checked="checked" value="Female"> Female
+
+<?php
+                                            }else{
+
+                                                ?>                                                
+                                <input type="radio" name="gender" value="Male"  > Male
+                                            <input type="radio" name="gender" value="Female"> Female
+
+<?php
+
+                                            }
+
+                                        ?>
 
                                         </div>
                                     </div>
@@ -357,7 +381,7 @@
                                         <label class="col-md-3 col-xs-12 control-label">Remarks</label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
-                                                <textarea class="form-control" rows="3" cols="50" name="remark"></textarea>
+                                                <textarea class="form-control" rows="3" cols="50" name="remark"><?php echo $post->Remark; ?></textarea>
                                             </div>
 
                                         </div>
@@ -606,11 +630,59 @@
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Mode Of Inquiry</label>
                                         <div class="col-md-6 col-xs-12" name="mode">
+ <?php
+                                        if($post->Inquiry=="Walk-in"){
+
+?>
+                                <input type="radio" name="mode" value="Walk-in" checked="checked"> &nbsp;Walk-in&nbsp;
+                                   <input type="radio" name="mode" value="Call"> &nbsp;Call&nbsp;            
+                                            <input type="radio" name="mode" value="Email"> &nbsp;Email / SMS&nbsp;
+                                            <input type="radio" name="mode" value="Database"> &nbsp;Database&nbsp;
+<?php
+
+
+                                        }elseif($post->Inquiry=="Call"){
+
+                                            ?>
+
+                                    <input type="radio" name="mode" value="Walk-in"> &nbsp;Walk-in&nbsp;
+                                            <input type="radio" checked="checked" name="mode" value="Call"> &nbsp;Call&nbsp;            
+                                            <input type="radio" name="mode" value="Email"> &nbsp;Email / SMS&nbsp;
+                                            <input type="radio" name="mode" value="Database"> &nbsp;Database&nbsp;
+                                            <?php
+
+                                        }elseif($post->Inquiry=="Email"){
+                                            ?>
+
                                             <input type="radio" name="mode" value="Walk-in"> &nbsp;Walk-in&nbsp;
+                                            <input type="radio" name="mode" value="Call"> &nbsp;Call&nbsp;            
+                                            <input type="radio" name="mode" value="Email" checked="checked" > &nbsp;Email / SMS&nbsp;
+                                            <input type="radio" name="mode" value="Database"> &nbsp;Database&nbsp;
+
+
+                                            <?php
+                                        }elseif($post->Inquiry=="Database"){
+                                            ?>
+                                            <input type="radio" name="mode" value="Walk-in"> &nbsp;Walk-in&nbsp;
+                                            <input type="radio" name="mode" value="Call"> &nbsp;Call&nbsp;            
+                                            <input type="radio" name="mode" value="Email"> &nbsp;Email / SMS&nbsp;
+                                            <input type="radio" name="mode" value="Database" checked="checked"> &nbsp;Database&nbsp;
+
+                                            <?php
+                                        }else{
+                                            ?>
+ <input type="radio" name="mode" value="Walk-in"> &nbsp;Walk-in&nbsp;
                                             <input type="radio" name="mode" value="Call"> &nbsp;Call&nbsp;            
                                             <input type="radio" name="mode" value="Email"> &nbsp;Email / SMS&nbsp;
                                             <input type="radio" name="mode" value="Database"> &nbsp;Database&nbsp;
 
+                                            <?php
+
+                                        }
+
+                                        ?>
+
+                                       
                                         </div>
                                     </div>
 
@@ -631,8 +703,8 @@
                                         <label class="col-md-3 col-xs-12 control-label">Potential Date* </label>
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo $post->Pdate;  ?>"  name="pdate" required />
+                                               <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                <input id="datepicker" class="form-control datepicker" data-date-format="yyyy-mm-dd"  value="<?php echo $post->Pdate;  ?>"   name="pdate" required />
 
                                             </div>
 

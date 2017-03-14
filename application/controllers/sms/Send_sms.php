@@ -1,10 +1,13 @@
 <?php
 
-require 'autoload.php';
+require 'Autoload.php';
 
 class Send_sms extends CI_Controller {
 
     function send($recipient,$text){
+
+        
+      
         
 
         $apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIwZWRkN2U2MC1lNjM5LTExZTYtOGQxZi1kZjMzMzM3ZThjNDMiLCJzdWIiOiJTSE9VVE9VVF9BUElfVVNFUiIsImlhdCI6MTQ4NTcwNDM0MSwiZXhwIjoxODAxMjM3MTQxLCJzY29wZXMiOnsiYWN0aXZpdGllcyI6WyJyZWFkIiwid3JpdGUiXSwibWVzc2FnZXMiOlsicmVhZCIsIndyaXRlIl0sImNvbnRhY3RzIjpbInJlYWQiLCJ3cml0ZSJdfSwic29fdXNlcl9pZCI6IjkzOCIsInNvX3VzZXJfcm9sZSI6InVzZXIiLCJzb19wcm9maWxlIjoiYWxsIiwic29fdXNlcl9uYW1lIjoiIiwic29fYXBpa2V5Ijoibm9uZSJ9.zkBjCz55wDIzZ1CxhbdjGaFNazJpWB4XzomW3MwJ7F0';

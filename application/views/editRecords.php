@@ -830,7 +830,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
+                                                    <form class="form-horizontal" id="smssummaryform" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -860,13 +860,13 @@
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="save" class="btn btn-primary" onclick="check_sms('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Send Text Message</button>
+                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Send Text Message</button>
                                                         </div>   
 
                                                                            
                                                      <script>           
                                                                             function check_sms(email,r_id) {
-                                                                                $('#loading_image').show();
+                                                                              //  $('#loading_image').show();
                                                                                 var recipient = $('#contactno').val();
                                                                                 var message = $('#sms1').val();
 
@@ -892,8 +892,9 @@ $.ajax({
                      data : {recipient:recipient,text:message},
                      success: function(data) {
 
+              document.getElementById("smssummaryform").submit();
 
-                        $('#loading_image').hide();
+                        //$('#loading_image').hide();
                              alert("SMS sent successfully");
                             
 
@@ -956,15 +957,7 @@ $.ajax({
 
 
 
-                                            $.ajax({             
-                                                type:"post",
-                                                url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
-                                                data : {id:r=email},
-                                                success: function(data) {
-                                                    $('#followed').html(data);
-                                                }
-                                            });
-                                            $('#'+r_id).hide();
+                                           }
                                                                        
                                                                        </script>                            
                                                     

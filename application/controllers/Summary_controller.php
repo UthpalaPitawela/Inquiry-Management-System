@@ -41,7 +41,8 @@ class Summary_controller extends CI_Controller{
 		$sms_count = $this->input->post('sms_count');
 			
 
-		$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+		$res=$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+
 		redirect("index.php/EditRecords_controller/index/$regid");
 	}
  

@@ -614,15 +614,18 @@
 
                                         </div>
                                     </div>
+                                    <!-- START TAGSINPUT -->
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Potential Level </label>
-                                        <div class="col-md-6 col-xs-12" name="mode">
-                                            <input type="radio" name="intake" value="High"> High&nbsp;
-                                            <input type="radio" name="intake" value="Medium"> Medium&nbsp;
-                                            <input type="radio" name="intake" value="Low"> Low&nbsp;
-
+                                        <label class="col-md-3 col-xs-12 control-label">Tags</label>
+                                        <div class="col-md-6 col-xs-12">
+                                        
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-tags"></span></span>
+                                                <input type="text" class="tagsinput" value=""/>
+                                            </div> 
                                         </div>
-                                    </div>
+                                    </div>                       
+                                    <!-- END OF TAGSINPUT -->
 
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Potential Date* </label>

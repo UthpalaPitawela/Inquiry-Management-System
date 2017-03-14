@@ -47,7 +47,7 @@ class EditRecords_controller extends CI_Controller{
              $grade3 = $this->input->post('grade3');
              $other = $this->input->post('other');
              $mode = $this->input->post('mode');
-             $intake = $this->input->post('intake');
+             //$intake = $this->input->post('intake');
              $pdate = $this->input->post('pdate');
              $counsellorname = $this->input->post('counsellorname');
       
@@ -59,7 +59,7 @@ class EditRecords_controller extends CI_Controller{
              }
 
 
-             $this->EditRecords_model->update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname);
+             $this->EditRecords_model->update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$pdate,$counsellorname);
 
              //redirect to the view
 

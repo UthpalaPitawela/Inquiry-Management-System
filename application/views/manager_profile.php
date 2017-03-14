@@ -200,36 +200,71 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                              
-                            <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Target</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                    <!--This is the target section-->
-                                        <div class="list-group border-bottom push-down-20">
-                                            <a href="#" class="list-group-item active">Month(November)</a>
-                                            <a href="#" class="list-group-item">Total Target<span class="badge badge-success">30</span></a>
-                                            <a href="#" class="list-group-item">Completed <span class="badge badge-danger">5</span></a>
-                                            
-                                        </div> 
-                                       
-                                    </div>                            
-                            </div>
-                        </div>
+                        
 
                         <!-- Assign Inquiries button -->
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-md-12">
                                 <a href="<?php echo base_url();?>index.php/Assign_Inquiries_Controller"><button class="btn btn-primary btn-block">Assign Inquiries</button></a>
                             </div>
+                        </div> -->
+
+                        <!--Web inquiries -->
+                        <div class="col-md-6">
+
+                            <div class="widget widget-success widget-item-icon">
+                                <div class="widget-item-left">
+                                    <span class="fa fa-globe"></span>
+                                </div>
+                                <div class="widget-data">
+                                <br>
+                                    <a href="#"><div class="widget-subtitle"><div class="widget-int num-count">Web Inquiries</div></div></a>
+                                    
+                                    <a href="<?php echo base_url();?>index.php/Assign_Inquiries_Controller"><div class="widget-subtitle">Direct Inquiries From The Website</div></a>
+                                </div>
+                                                           
+                            </div>
+
                         </div>
+
+                        <!-- Assign Inquiries -->
+                        <div class="col-md-6">
+
+                            <div class="widget widget-success widget-item-icon">
+                                <div class="widget-item-left">
+                                    <span class="fa fa-users"></span>
+                                </div>
+                                <div class="widget-data">
+                                <br>
+                                    <a href="<?php echo base_url();?>index.php/Assign_Inquiries_Controller"><div class="widget-subtitle"><div class="widget-int num-count">Assign</div></div></a>
+                                    
+                                    <a href="<?php echo base_url();?>index.php/Assign_Inquiries_Controller"><div class="widget-subtitle">Assign Inquiries to Counsellors</div></a>
+                                </div>
+                                                           
+                            </div>
+
+                        </div>
+
+                                             
+                        
                               
                                       
                     </div>
 
                     <br>
+
+                    <!-- START WIDGET CLOCK -->
+                    <div class="col-md-5">
+                            <div class="widget widget-info widget-padding-sm">
+                                <div class="widget-big-int plugin-clock">00:00</div>                            
+                                <div class="widget-subtitle plugin-date">Loading...</div>
+                                                            
+                                                           
+                            </div>            
+                    </div>            
+                            <!-- END WIDGET CLOCK -->
+
+                    <!--Calendar -->
                     <div class="col-md-5" >
                     
                         <div id="alert_holder"></div>

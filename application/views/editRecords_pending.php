@@ -667,7 +667,7 @@
                                          <div class="col-md-6 col-xs-12">
                                              <div class="input-group">
                                                  <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="CounsellorName" class="form-control" disabled value="<?php echo $post->CounsellorName;  ?>" />
+                                                <input type="text" name="CounsellorName" class="form-control" disabled value="<?php echo $post->CounsellorName;?>"/>
                                             </div>
                                  
                                          </div>
@@ -690,9 +690,9 @@
                                 <a class="btn btn-info btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></a>
                                 <a class="btn btn-warning btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></a>
                                 
-                                <button type="submit" name="" class="btn btn-primary pull-right" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Save and Follow</button>
+                                <button type="submit" name="" class="btn btn-primary pull-right" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>') ">Save and Follow</button>
 
-                                
+<!--                                 -->
                                 
                             </div>
 
@@ -894,7 +894,19 @@ $.ajax({
                                             });
                                             $('#'+r_id).hide();
                                                                             }        
-                                                                                    
+                                                 
+                            function follow(email,r_id){
+                                 $.ajax({             
+                                                type:"post",
+                                                url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
+                                                data : {id:r=email},
+                                                success: function(data) {
+                                                    $('#followed').html(data);
+                                                }
+                                            });
+                                            $('#'+r_id).hide();
+                                           
+                            }                                   
 
                                                                         </script>                                
                                                     
@@ -1287,16 +1299,46 @@ $(function(){
 </script>
 
 
-<!-- <script type="text/javascript">
-    function follow(email,r_id){
-        $.ajax({             
-            type:"post",
-            url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
-            data : {id:r=email},
-            success: function(data) {
-                $('#followed').html(data);
+<!-- Start of alerts -->
+<?php
+     if(isset($_SESSION["alert1"])){
+
+                ?>
+        
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert1"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Entry submitted succesfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert1"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert1']);
             }
-        });
-        $('#'+r_id).hide();
-    }
-</script> -->
+?>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<!-- End of alerts -->

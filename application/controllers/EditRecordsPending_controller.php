@@ -59,10 +59,17 @@ class EditRecordsPending_controller extends CI_Controller{
              }
 
 
-             $this->EditRecords_model->update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$pdate,$counsellorname);
+             $res = $this->EditRecords_model->update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$pdate,$counsellorname);
+
+              if($res==1){
+                $_SESSION["alert1"]="insertsuccess";
+
+            }else{
+                $_SESSION["alert1"]="notsuccess";
+
+            }
 
              //redirect to the view
-
              redirect("index.php/EditRecordsPending_controller/index/$rid");
              
 

@@ -632,7 +632,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo $post->Pdate;  ?>"  name="pdate" required />
+                                                <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo $post->Pdate;  ?>" type="text"  name="pdate" required />
 
                                             </div>
 
@@ -1177,3 +1177,47 @@ $(function(){
         })
         
 </script>
+
+<!-- Start of alerts -->
+<?php
+     if(isset($_SESSION["alert"])){
+
+                ?>
+        
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+  echo "<script>alert(".$_SESSION["alert"].")</script>";
+    
+      if( $_SESSION["alert"]=="insertsuccess"){
+
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Entry submitted succesfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert']);
+            }
+?>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<!-- End of alerts -->

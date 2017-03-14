@@ -64,43 +64,6 @@
 
 
 
-
-
-     //function confirm_registration($registration_code){
-        // $query_str = "SELECT  user_id from  users WHERE activation_code = ?";
-
-         //$result = $this->db->query($query_str,$registration_code);
-
-         //if($result->num_rows() == 1){
-             //$query_str = "UPDATE  users SET activated = 1 WHERE activation_code = ?";
-
-             //$this->db->query($query_str,$registration_code);
-             //return true;
-
-         //}else{
-             //return false;
-         //}
-
-
-
-     //}
-
-
-
-
-
-     //function check_exists_username($username){
-         //$query_str = "SELECT username from users where username = ?";
-
-         //$result = $this->db->query($query_str,$username);
-
-         //if($result->num_rows()> 0){
-             //return true;
-
-         //}else{
-             //return false;
-        // }
-     //}
     function  getdata($id){
         $sql = "SELECT * FROM programme WHERE id=$id";
         $query = $this->db->query($sql);

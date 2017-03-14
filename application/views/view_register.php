@@ -749,6 +749,7 @@ $(function(){
 </script>
 
 
+<!-- Start of alerts -->
 <?php
      if(isset($_SESSION["alert"])){
 
@@ -767,7 +768,7 @@ $(function(){
             
 ?>
 <script type="text/javascript">
-    swal("Submitted!", "Inserted data were submitted!", "success");
+    swal("Submitted!", "Entry submitted succesfully!", "success");
       
 </script>
 
@@ -789,11 +790,12 @@ unset($_SESSION['alert']);
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
         <!-- EOF CSS INCLUDE --> 
       <!-- JS INCLUDE --> 
-                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<!-- End of alerts -->
+
+
+
 <script type="text/javascript">
-
-
-    
 
   function phone_number_check(){
 
@@ -825,7 +827,7 @@ unset($_SESSION['alert']);
                        
           swal(
   'Oops...',
-  'Phone number exist!',
+  'Phone number exists!',
   'error'
 );
             

@@ -212,7 +212,7 @@
                         <!--Web inquiries -->
                         <div class="col-md-6">
 
-                            <div class="widget widget-success widget-item-icon">
+                            <div class="widget widget-primary widget-item-icon">
                                 <div class="widget-item-left">
                                     <span class="fa fa-globe"></span>
                                 </div>
@@ -230,7 +230,7 @@
                         <!-- Assign Inquiries -->
                         <div class="col-md-6">
 
-                            <div class="widget widget-success widget-item-icon">
+                            <div class="widget widget-primary widget-item-icon">
                                 <div class="widget-item-left">
                                     <span class="fa fa-users"></span>
                                 </div>

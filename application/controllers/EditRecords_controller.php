@@ -25,8 +25,19 @@ class EditRecords_controller extends CI_Controller{
      }
  
      function register(){
+
+
+        $id = $this->input->post('rid');
+        $this->load->model('Inquirybutton_model');
+        $this->Inquirybutton_model->following($id);
         
 
+?>
+<script type="text/javascript">
+    alert("d");
+</script>
+
+<?php
              //everything is good-process the form- write the data into the registration database
              $rid = $this->input->post('rid');
              $fname = $this->input->post('fname');
@@ -59,10 +70,19 @@ class EditRecords_controller extends CI_Controller{
              }
 
 
-             $this->EditRecords_model->update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$pdate,$counsellorname);
+             $res =     $this->EditRecords_model->update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$pdate,$counsellorname);
+
+             if($res==1){
+               $_SESSION["alert"]="insertsuccess";
+
+
+             }else{
+             $_SESSION["alert"]="notsuccess";
+
+
+             }
 
              //redirect to the view
-
              redirect("index.php/EditRecords_controller/index/$rid");
              
 

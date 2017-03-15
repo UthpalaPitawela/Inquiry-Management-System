@@ -46,7 +46,7 @@ $recipient = $this->input->post('recipient');
             $result = $apiInstance->messagesPost($message,$config);
             echo json_encode(array("status"=>"success","info"=>"SMS sent successfully.."));
         }
-echo "$text";
+
         //Redirect to the edit records page
       //  redirect("index.php/EditRecords_controller/index/$regid");
 

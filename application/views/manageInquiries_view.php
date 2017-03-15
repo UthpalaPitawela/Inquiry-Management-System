@@ -405,7 +405,7 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form id="smssummaryform" class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form id="smssummaryform<?php echo $post['r_id']; ?>" class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -420,13 +420,13 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage1"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage1<?php echo $post['r_id']; ?>"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="button" onclick="check_sms('<?php echo $post['Email']; ?>','<?php echo $post['r_id']; ?>')" id="save" class="btn btn-primary">Send Text Message</button>
+                                                                <button type="button" onclick="check_sms('<?php echo $post['Contactno']; ?>','<?php echo $post['r_id']; ?>')" id="save" class="btn btn-primary">Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -437,104 +437,6 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                                   </div>
                                 </div>
 
-                                <script>           
-                                                                            function check_sms(email,r_id) {
-                                                                              //  $('#loading_image').show();
-                                                                                var recipient = $('#contactno1').val();
-                                                                                var message = $('#smsmessage1').val();
-                                                                                alert(recipient);
-
-                                                                                // alert(recipient);
-                                                                                // alert(message);
-
-                                                                                //alert(recipient);
-                                                                                //alert(message);
-                                                                                 
-                                                                                if ( recipient!=="") {
-                                                                                    if(message!==""){
-
-
-
-
-
-
-
-
-$.ajax({             
-                     type:"post",
-                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
-                     data : {recipient:recipient,text:message},
-                     success: function(data) {
-
-              document.getElementById("smssummaryform").submit();
-
-                        //$('#loading_image').hide();
-                             alert("SMS sent successfully");
-                            
-
-                     },
-                     error: function(jqXHR){
-                      alert(jqXHR.responseText);
-                        //jqXHR.responseText
-                     }
-                 });
-               
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                                        // $.ajax({
-                                                                                        //     type: "get",
-                                                                                        //     url: '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/'+recipient,message,
-                                                                                        //     //+"/"+message,
-                                                                                           
-                                                                                        //     success: function (msg) {
-                                                                                        //         $('#loading_image').hide();
-                                                                                        //         alert("SMS sent successfully");
-                                                                                        //     },
-                                                                                        //     error: function (error) {
-                                                                                        //         alert("Something went wrong");
-                                                                                        //     }
-                                                                                        // }); 
-                                                                                                    
-
-                                                                                    }else{
-                                                                                        alert("Please fill the required field");
-                                                                                    } 
-                                                                                }else{
-                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
-                                                                                }
-
-
-
-                                           }
-                                                                       
-                                                                       </script>                            
-                                                    
 
                                 <!-- POPUP for Email -->
                                       <div id="myModal2<?php echo $post['r_id']; ?>" class="modal fade">
@@ -629,6 +531,8 @@ $.ajax({
 
 
                                      } ?>
+
+
                                     </tbody> 
                                     </table>
                                     </div>
@@ -636,6 +540,73 @@ $.ajax({
 
                         </div>
                         </div>              
+                                <script>           
+                                                                            function check_sms(tp,r_id) {
+                                                                                //alert();
+                                                                              //  $('#loading_image').show();
+                                                                                var recipient = tp;
+                                                             //var message=;
+                                                             message=document.getElementById('smsmessage1'+r_id).value;
+                                                                                //var message = $('#smsmessage1').val();
+                                                                           //     alert(message);
+
+                                                                                // alert(recipient);
+                                                                                // alert(message);
+
+                                                                                //alert(recipient);
+                                                                                //alert(message);
+                                                                                 
+                                                                                if ( recipient!=="") {
+                                                                                    if(message!==""){
+
+
+
+
+
+
+
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
+                     data : {recipient:recipient,text:message},
+                     success: function(data) {
+
+              document.getElementById("smssummaryform"+r_id).submit();
+
+                        //$('#loading_image').hide();
+                             alert("SMS sent successfully");
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+                                                
+
+                                                                                    }else{
+                                                                                       
+                                                                                        alert("Please fill the required field");
+                                                                                    } 
+                                                                                }else{
+                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                }
+
+
+
+                                           }
+                                                                       
+                                                                       </script>                            
+                                                    
+
+
+
 
                         <!-- +++++++++++++++++++++++++ Following (Medium) ++++++++++++++++++++++++  -->
                         <div class="tab-pane" id="tab23" >
@@ -750,7 +721,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                 </div>
 
                                 <!-- POPUP for SMS -->
-                                      <div id="myModal1<?php echo $post['r_id']; ?>" class="modal fade">
+                                       <div id="myModal1<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
@@ -762,7 +733,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form id="smssummaryform2" class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form id="smssummaryform2<?php echo $post['r_id']; ?>" class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -777,13 +748,13 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage2"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage2<?php echo $post['r_id']; ?>"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms2('<?php echo $post['Email']; ?>','<?php echo $post['r_id']; ?>')">Send Text Message</button>
+                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms2('<?php echo $post['Contactno']; ?>','<?php echo $post['r_id']; ?>')">Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -792,104 +763,8 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             </div>
                                         </div>
                                   </div>
-                                </div>
-                                <script>           
-                                                                            function check_sms2(email,r_id) {
-                                                                              //  $('#loading_image').show();
-                                                                                var recipient = $('#contactno2').val();
-                                                                                var message = $('#smsmessage2').val();
-
-                                                                                // alert(recipient);
-                                                                                // alert(message);
-
-                                                                                //alert(recipient);
-                                                                                //alert(message);
-                                                                                 
-                                                                                if ( recipient!=="") {
-                                                                                    if(message!==""){
-
-
-
-
-
-
-
-
-$.ajax({             
-                     type:"post",
-                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
-                     data : {recipient:recipient,text:message},
-                     success: function(data) {
-
-              document.getElementById("smssummaryform2").submit();
-
-                        //$('#loading_image').hide();
-                             alert("SMS sent successfully");
-                            
-
-                     },
-                     error: function(jqXHR){
-                      alert(jqXHR.responseText);
-                        //jqXHR.responseText
-                     }
-                 });
-               
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                                        // $.ajax({
-                                                                                        //     type: "get",
-                                                                                        //     url: '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/'+recipient,message,
-                                                                                        //     //+"/"+message,
-                                                                                           
-                                                                                        //     success: function (msg) {
-                                                                                        //         $('#loading_image').hide();
-                                                                                        //         alert("SMS sent successfully");
-                                                                                        //     },
-                                                                                        //     error: function (error) {
-                                                                                        //         alert("Something went wrong");
-                                                                                        //     }
-                                                                                        // }); 
-                                                                                                    
-
-                                                                                    }else{
-                                                                                        alert("Please fill the required field");
-                                                                                    } 
-                                                                                }else{
-                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
-                                                                                }
-
-
-
-                                           }
-                                                                       
-                                                                       </script>                            
-                                                    
+                                </div>                           
+                                                 
 
                                 <!-- POPUP for Email -->
                                       <div id="myModal2<?php echo $post['r_id']; ?>" class="modal fade">
@@ -985,6 +860,64 @@ $.ajax({
                                 </div>
                             </div> <!-- End of Following Medium -->
 
+                                <script>           
+                                                                            function check_sms2(tp,r_id) {
+                                                                              //  $('#loading_image').show();
+                                                                                var recipient = tp;
+                                                                                var message = $('#smsmessage2'+r_id).val();
+
+                                                                                // alert(recipient);
+                                                                                // alert(message);
+
+                                                                                //alert(recipient);
+                                                                                //alert(message);
+                                                                                 
+                                                                                if ( recipient!=="") {
+                                                                                    if(message!==""){
+
+
+
+
+
+
+
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
+                     data : {recipient:recipient,text:message},
+                     success: function(data) {
+
+              document.getElementById("smssummaryform2"+r_id).submit();
+
+                        //$('#loading_image').hide();
+                             alert("SMS sent successfully");
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+         
+
+                                                                                    }else{
+                                                                                        alert("Please fill the required field");
+                                                                                    } 
+                                                                                }else{
+                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                }
+
+
+
+                                           }
+                                                                       
+                                                                       </script> 
 
                         <!-- +++++++++++++++++++++++++ Following (Low) ++++++++++++++++++++++++  -->
                         <div class="tab-pane" id="tab24" >
@@ -1103,6 +1036,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                 </div>
 
                                 <!-- POPUP for SMS -->
+                               
                                       <div id="myModal1<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
@@ -1115,7 +1049,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" id="smssummaryform3<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -1130,13 +1064,13 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage3"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage3<?php echo $post['r_id']; ?>"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms3('<?php echo $post['Email']; ?>','<?php echo $post['r_id']; ?>')">Send Text Message</button>
+                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms3('<?php echo $post['r_id']; ?>','<?php echo $post['Contactno']; ?>')">Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -1146,105 +1080,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                         </div>
                                   </div>
                                 </div>
-
-                                <script>           
-                                                                            function check_sms3(email,r_id) {
-                                                                              //  $('#loading_image').show();
-                                                                                var recipient = $('#contactno3').val();
-                                                                                var message = $('#sms1').val();
-
-                                                                                // alert(recipient);
-                                                                                // alert(message);
-
-                                                                                //alert(recipient);
-                                                                                //alert(message);
-                                                                                 
-                                                                                if ( recipient!=="") {
-                                                                                    if(message!==""){
-
-
-
-
-
-
-
-
-$.ajax({             
-                     type:"post",
-                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
-                     data : {recipient:recipient,text:message},
-                     success: function(data) {
-
-              document.getElementById("smssummaryform3").submit();
-
-                        //$('#loading_image').hide();
-                             alert("SMS sent successfully");
-                            
-
-                     },
-                     error: function(jqXHR){
-                      alert(jqXHR.responseText);
-                        //jqXHR.responseText
-                     }
-                 });
-               
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                                        // $.ajax({
-                                                                                        //     type: "get",
-                                                                                        //     url: '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/'+recipient,message,
-                                                                                        //     //+"/"+message,
-                                                                                           
-                                                                                        //     success: function (msg) {
-                                                                                        //         $('#loading_image').hide();
-                                                                                        //         alert("SMS sent successfully");
-                                                                                        //     },
-                                                                                        //     error: function (error) {
-                                                                                        //         alert("Something went wrong");
-                                                                                        //     }
-                                                                                        // }); 
-                                                                                                    
-
-                                                                                    }else{
-                                                                                        alert("Please fill the required field");
-                                                                                    } 
-                                                                                }else{
-                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
-                                                                                }
-
-
-
-                                           }
-                                                                       
-                                                                       </script>                            
-                                                    
-
+ 
                                 <!-- POPUP for Email -->
                                       <div id="myModal2<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
@@ -1334,6 +1170,62 @@ $.ajax({
                                     </table>
                                     </div>
                                     </div>
+
+
+                                <script>           
+                                                                            function check_sms3(r_id,tp) {
+                                                                              //  $('#loading_image').show();
+                                                                                var recipient = tp;
+                                                                                var message = $('#smsmessage3'+r_id).val();
+
+                                                                                // alert(recipient);
+                                                                                // alert(message);
+
+                                                                                //alert(recipient);
+                                                                                //alert(message);
+                                                                                 
+                                                                                if ( recipient!=="") {
+                                                                                    if(message!==""){
+
+
+
+
+
+
+
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
+                     data : {recipient:recipient,text:message},
+                     success: function(data) {
+
+              document.getElementById("smssummaryform3"+r_id).submit();
+
+                        //$('#loading_image').hide();
+                             alert("SMS sent successfully");
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+                                                                                    }else{
+                                                                                        alert("Please fill the required field");
+                                                                                    } 
+                                                                                }else{
+                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                }
+
+
+
+                                           }
+                                                                       
+                                                                       </script>                            
+                                                    
 
                                 </div>
                         </div> <!-- End of Following Low -->

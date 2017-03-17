@@ -29,10 +29,64 @@ class Summary_controller extends CI_Controller{
 			
 
 		$this->Summary_model->updateCallSummary($call,$regid,$date,$call_count);
+		redirect("index.php/ManageInquiries_controller");
+	}
+
+	public function updateCallSummary2()
+	{
+
+		$call = $this->input->post('summary1');
+		$regid = $this->input->post('regid');
+		$date = $this->input->post('date');
+		$call_count = $this->input->post('call_count');
+			
+
+		$this->Summary_model->updateCallSummary($call,$regid,$date,$call_count);
+		redirect("index.php/ManageInquiriesCoun_controller/");
+	}
+
+	public function updateCallSummary1()
+	{
+
+		$call = $this->input->post('summary1');
+		$regid = $this->input->post('regid');
+		$date = $this->input->post('date');
+		$call_count = $this->input->post('call_count');
+			
+
+		$this->Summary_model->updateCallSummary($call,$regid,$date,$call_count);
 		redirect("index.php/EditRecords_controller/index/$regid");
 	}
 
 	public function updateSmsSummary()
+	{
+
+		$sms = $this->input->post('sms1');
+		$regid = $this->input->post('regid');
+		$date = $this->input->post('date');
+		$sms_count = $this->input->post('sms_count');
+			
+
+		$res=$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+
+		redirect("index.php/ManageInquiries_controller");
+	}
+
+	public function updateSmsSummary2()
+	{
+
+		$sms = $this->input->post('sms1');
+		$regid = $this->input->post('regid');
+		$date = $this->input->post('date');
+		$sms_count = $this->input->post('sms_count');
+			
+
+		$res=$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+
+		redirect("index.php/ManageInquiriesCoun_controller");
+	}
+
+	public function updateSmsSummary1()
 	{
 
 		$sms = $this->input->post('sms1');
@@ -56,10 +110,62 @@ class Summary_controller extends CI_Controller{
 			
 
 		$this->Summary_model->updateEmailSummary($email,$regid,$date,$email_count);
+		redirect("index.php/ManageInquiries_controller");
+	}
+
+	public function updateEmailSummary2()
+	{
+
+		$email = $this->input->post('email1');
+		$regid = $this->input->post('regid');
+		$date = $this->input->post('date');
+		$email_count = $this->input->post('email_count');
+			
+
+		$this->Summary_model->updateEmailSummary($email,$regid,$date,$email_count);
+		redirect("index.php/ManageInquiriesCoun_controller");
+	}
+
+	public function updateEmailSummary1()
+	{
+
+		$email = $this->input->post('email1');
+		$regid = $this->input->post('regid');
+		$date = $this->input->post('date');
+		$email_count = $this->input->post('email_count');
+			
+
+		$this->Summary_model->updateEmailSummary($email,$regid,$date,$email_count);
 		redirect("index.php/EditRecords_controller/index/$regid");
 	}
 
 	public function updateOtherSummary()
+	{
+
+		$other = $this->input->post('other');
+		$regid = $this->input->post('regid');
+		$date = $this->input->post('date');
+		//$email_count = $this->input->post('email_count');
+			
+
+		$this->Summary_model->updateOtherSummary($other,$regid,$date);
+		redirect("index.php/ManageInquiries_controller");
+	}
+
+	public function updateOtherSummary2()
+	{
+
+		$other = $this->input->post('other');
+		$regid = $this->input->post('regid');
+		$date = $this->input->post('date');
+		//$email_count = $this->input->post('email_count');
+			
+
+		$this->Summary_model->updateOtherSummary($other,$regid,$date);
+		redirect("index.php/ManageInquiriesCoun_controller");
+	}
+
+	public function updateOtherSummary1()
 	{
 
 		$other = $this->input->post('other');

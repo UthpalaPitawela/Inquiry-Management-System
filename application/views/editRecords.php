@@ -783,7 +783,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary1">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
 
@@ -830,7 +830,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" id="smssummaryform" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
+                                                    <form class="form-horizontal" id="smssummaryform" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary1">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -881,11 +881,6 @@
 
 
 
-
-
-
-
-
 $.ajax({             
                      type:"post",
                      url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
@@ -905,33 +900,6 @@ $.ajax({
                      }
                  });
                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                                                                         // $.ajax({
                                                                                         //     type: "get",
@@ -954,7 +922,6 @@ $.ajax({
                                                                                 }else{
                                                                                     alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
                                                                                 }
-
 
 
                                            }
@@ -982,7 +949,7 @@ $.ajax({
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateEmailSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateEmailSummary1">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -1002,7 +969,7 @@ $.ajax({
                                                                     </div>
                                                                 
                                                                     <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter Email body:</label>
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="email1">Enter Email body:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
                                                                             <textarea class="form-control" rows="5" name="email1" id="email1"></textarea>
@@ -1022,7 +989,7 @@ $.ajax({
                                   </div>
                                 </div>
 
-                                <!-- POPUP for call summary -->
+                                <!-- POPUP for other summary -->
                                       <div id="myModal3<?php echo $post->r_id; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
@@ -1035,7 +1002,7 @@ $.ajax({
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateOtherSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateOtherSummary1">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
 

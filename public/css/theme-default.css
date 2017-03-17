@@ -3443,13 +3443,13 @@ background: #2b73ef !important;
   color: #EEE;
 }
 .widget .widget-int {
-  font-size: 32px;
+  font-size: 20px;
   line-height: 40px;
   font-weight: bold;
   font-family: arial;
 }
 .widget .widget-big-int {
-  font-size: 42px;
+  font-size: 30px;
   line-height: 45px;
   font-weight: 300;
 }

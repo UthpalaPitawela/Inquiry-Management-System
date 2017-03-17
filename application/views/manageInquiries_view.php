@@ -282,7 +282,7 @@
 
                         <!-- +++++++++++++++++++++++++ Following (High) ++++++++++++++++++++++++  -->
                         <div class="tab-pane active" id="tab22" >
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-xs-12">
                             
                                     <div class="ScrollStyle">
                                     <div class="table-responsive">
@@ -375,15 +375,24 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Call Summary:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
                                                                             <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                            <input type="hidden" name="call_count" id="call_count" value="<?php echo $post['call_count']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -416,11 +425,21 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                                     <form id="smssummaryform<?php echo $post['r_id']; ?>" class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+
+                                                        <input type="text" name="sms_count" id="sms_count" value="<?php echo $post['sms_count']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
                                                                             <input type="text" class="form-control" name="contactno" id="contactno1" value="<?php echo $post['Contactno']; ?>" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -459,7 +478,7 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateEmailSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -469,12 +488,21 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                                                             <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post['Email']; ?>" />
                                                                         </div>
                                                                     </div>
-                                                                
+
                                                                     <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter Email body:</label>
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="email1">Enter Email body:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="email1" id="email1"></textarea>
+                                                                            <input type="hidden" name="email_count" id="email_count" value="<?php echo $post['email_count']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -504,9 +532,17 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateOtherSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
@@ -706,15 +742,24 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Call Summary:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
                                                                             <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                            <input type="hidden" name="call_count" id="call_count" value="<?php echo $post['call_count']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -747,11 +792,21 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                                     <form id="smssummaryform2<?php echo $post['r_id']; ?>" class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+
+                                                        <input type="text" name="sms_count" id="sms_count" value="<?php echo $post['sms_count']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
                                                                             <input type="text" class="form-control" name="contactno" id="contactno2" value="<?php echo $post['Contactno']; ?>" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -790,7 +845,7 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateEmailSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -800,12 +855,21 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                                                             <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post['Email']; ?>" />
                                                                         </div>
                                                                     </div>
-                                                                
+
                                                                     <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter Email body:</label>
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="email1">Enter Email body:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="email1" id="email1"></textarea>
+                                                                            <input type="hidden" name="email_count" id="email_count" value="<?php echo $post['email_count']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -822,7 +886,7 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                   </div>
                                 </div>
 
-                                <!-- POPUP for call summary -->
+                                <!-- POPUP for other summary -->
                                       <div id="myModal3<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
@@ -835,9 +899,17 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateOtherSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
@@ -1024,12 +1096,21 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                     <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Call Summary:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
                                                                             <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                            <input type="hidden" name="call_count" id="call_count" value="<?php echo $post['call_count']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -1063,11 +1144,21 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                     <form class="form-horizontal" id="smssummaryform3<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+
+                                                        <input type="text" name="sms_count" id="sms_count" value="<?php echo $post['sms_count']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
                                                                             <input type="text" class="form-control" name="contactno" id="contactno3" value="<?php echo $post['Contactno']; ?>" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -1105,7 +1196,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateEmailSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -1115,12 +1206,21 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                                             <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post['Email']; ?>" />
                                                                         </div>
                                                                     </div>
-                                                                
+
                                                                     <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter Email body:</label>
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="email1">Enter Email body:</label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <textarea class="form-control" rows="5" name="email1" id="email1"></textarea>
+                                                                            <input type="hidden" name="email_count" id="email_count" value="<?php echo $post['email_count']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -1137,7 +1237,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                   </div>
                                 </div>
 
-                                <!-- POPUP for call summary -->
+                                <!-- POPUP for other summary -->
                                       <div id="myModal3<?php echo $post['r_id']; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
@@ -1150,9 +1250,17 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateOtherSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="date">Date: </label>
+                                                                        <div class="col-md-8 col-xs-12">     
+                                                                            
+                                                                            <input id="datepicker" class="form-control datepicker" data-date-format="dd-mm-yyyy" data-date-viewmode="years" value="<?php echo date('Y-m-d');  ?>" style="color: black"  name="date" readonly />
+                                                                        </div>
+                                                                    </div>
                                                                 
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>

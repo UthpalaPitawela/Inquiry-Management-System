@@ -8,6 +8,7 @@ class EditRecords_controller extends CI_Controller{
          $this->load->helper('url');
 
          $this->load->model('EditRecords_model');
+         $this->load->model('Tag_Model');
 
 
      }
@@ -19,6 +20,7 @@ class EditRecords_controller extends CI_Controller{
         $data["users"] = $this->EditRecords_model->get_users();
         $rid = $this->uri->segment(3);
         $data["record"] = $this->EditRecords_model->getDetails($rid);
+        $data["tags"]=$this->Tag_Model->getTags($rid);
         $this->load->view('editRecords',$data);
 
 //         $this->register();

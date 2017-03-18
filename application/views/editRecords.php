@@ -692,9 +692,14 @@
                                         <label class="col-md-3 col-xs-12 control-label">Tags</label>
                                         <div class="col-md-6 col-xs-12">
                                         
-                                            <div class="input-group">
+                                            <div class="input-group" >
                                                 <span class="input-group-addon"><span class="fa fa-tags"></span></span>
-                                                <input type="text" class="tagsinput" value=""/>
+                                                 
+                                                <div><?php foreach($tags as $mytags){ echo"<span class='fa fa-tag'></span>
+                                                   $mytags->tag<button type='button' onclick='removetag($post->r_id,$mytags->tag_id)' class='btn btn-primary'><i class='fa fa-times'></i></button>";}?> 
+                                                <input type="text" id="tag" size="25" onkeyup="tagsinput(<?php echo $post->r_id;?>)" value=""/><button class="btn btn-primary active" onclick="addnewtag(<?php echo $post->r_id;?>)" type="button">Add new</button>
+                                                <div id="tagdiv"></div>
+                                                </div>
                                             </div> 
                                         </div>
                                     </div>                       
@@ -1101,7 +1106,127 @@ $.ajax({
 
     </body>
 </html>
+<script type="text/javascript">
+function removetag(rid,tagid){
 
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/Tag_Controller/removeTag/',
+                     data : {rid:rid,tagid:tagid},
+                     success: function(searchresult) {
+
+                    //       redirect("index.php/EditRecords_controller/index/"+rid);
+                    window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+rid;
+
+
+
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+}
+
+function addnewtag(userID){
+    var newtag = document.getElementById("tag").value;
+
+        if(newtag!=""){
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/Tag_Controller/addnewTag/',
+                     data : {newtag:newtag,userID:userID},
+                     success: function(searchresult) {
+
+                             window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+userID;
+
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+            // $.ajax({
+
+            //     type:"get",
+            //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
+            //     success: function (searchresult) {
+
+
+            //         $('#tagdiv').html(searchresult);
+ 
+            //     }
+            // })
+
+
+    }else{
+        alert("Enter the tag input");
+    }
+
+
+
+}
+
+
+    function tagsinput(userID){
+
+ var searchtag = document.getElementById("tag").value;
+
+
+    $('#tagdiv').html("");
+     // alert(skey);
+
+
+    if(searchtag!=""){
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/',
+                     data : {skey:searchtag,userID:userID},
+                     success: function(searchresult) {
+
+                            $('#tagdiv').html(searchresult);
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+            // $.ajax({
+
+            //     type:"get",
+            //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
+            //     success: function (searchresult) {
+
+
+            //         $('#tagdiv').html(searchresult);
+ 
+            //     }
+            // })
+
+
+    }
+
+
+    }
+</script>
 
 <script type="text/javascript">
 

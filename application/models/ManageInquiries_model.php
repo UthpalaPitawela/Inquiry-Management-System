@@ -182,7 +182,7 @@ class ManageInquiries_model extends CI_Model{
 		    $summary[$key] = $row['summary'];
 		    $mode[$key] = $row['mode'];
 		}
-		array_multisort($date, SORT_ASC, $data);
+		array_multisort($date, SORT_DESC, $data);
 		}else{
 			$data = null;
 		}			

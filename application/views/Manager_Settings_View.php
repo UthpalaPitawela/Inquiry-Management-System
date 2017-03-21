@@ -415,6 +415,50 @@
             });
            
         </script> 
+
+        <!-- Start of alerts -->
+<?php
+     if(isset($_SESSION["alert"])){
+
+                ?>
+        
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+  echo "<script>alert(".$_SESSION["alert"].")</script>";
+    
+      if( $_SESSION["alert"]=="success"){
+
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "New user added successfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert"]=="unsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert']);
+            }
+?>
+ <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>"> -->
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+<!-- <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+ --><!-- End of alerts -->
        
     <!-- END SCRIPTS -->         
     </body>

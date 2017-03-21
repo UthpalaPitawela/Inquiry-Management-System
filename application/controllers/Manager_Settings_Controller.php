@@ -53,11 +53,13 @@ parent::__construct();
         $this->form_validation->set_rules('addconfirmpassword', 'Password Confirmation', 'required|matches[addpassword]');
         if ($this->form_validation->run() == FALSE)
                 {
+                    
                     $this->load->view('Manager_Settings_View');
                 	//echo "Hii";
                 }
                 else
                 {
+                    
                     $this->load->view('Manager_Settings_View');
                        
     				$fname = $this->input->post('fname');
@@ -66,11 +68,13 @@ parent::__construct();
                     $email = $this->input->post('email');
     				if($role == 'counsellor' | 'Counsellor'){
     					$status = '3';
-    				}elseif($role == 'manager' | 'Manager'){
+    				}else if($role == 'manager' | 'Manager'){
                         $status = '0';
-                    }elseif($role == 'assistant manager' | 'Assistant Manager'){
+                    }else if($role == 'assistant manager' | 'Assistant Manager'){
                         $status = '4';
-                    }elseif($role == 'admissions officer' | 'Admissions Officer'){
+                    }else 
+                    //if($role == 'admissions officer' | 'Admissions Officer')
+                    {
                         $status = '2';
                     }
     				$username = $this->input->post('addusername');
@@ -79,7 +83,14 @@ parent::__construct();
 
 					$this->load->model('Manager_Settings_Model');
 
-    				$this->Manager_Settings_Model->addUser($fname,$lname,$status,$email,$username,$password);
+    				$res = $this->Manager_Settings_Model->addUser($fname,$lname,$status,$email,$username,$password);
+                    echo $res;
+                    if($res==1){
+                        $_SESSION["alert"]="success";
+                    }else{
+                        $_SESSION["alert"]="unsuccess";
+                    }
+
 				}
 
 

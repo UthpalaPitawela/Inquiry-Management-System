@@ -39,6 +39,9 @@
        input[type="text"][disabled] {
             color: black;
         }
+
+        .button1 {padding: 2px 3px;}
+
         </style>
 
     </head>
@@ -379,14 +382,25 @@
                                         &nbsp;
 
                                         <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Remarks</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <textarea class="form-control" rows="3" cols="50" name="remark"><?php echo $post->Remark; ?></textarea>
-                                            </div>
+                                            <label class="col-md-3 col-xs-12 control-label">Remarks</label>
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="input-group">
+                                                    <textarea class="form-control" rows="3" cols="50" name="remark"><?php echo $post->Remark; ?></textarea>
+                                                </div>
 
+                                            </div>
                                         </div>
-                                        </div>
+
+                                        <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Counsellor Name</label>
+                                         <div class="col-md-6 col-xs-12">
+                                             <div class="input-group">
+                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="CounsellorName" class="form-control" disabled value="<?php echo $post->CounsellorName;  ?>" />
+                                            </div>
+                                 
+                                         </div>
+                                     </div>
 
                                     </div>
                                 </div>
@@ -695,14 +709,33 @@
                                             <div class="input-group" >
                                                 <span class="input-group-addon"><span class="fa fa-tags"></span></span>
                                                  
-                                                <div><?php foreach($tags as $mytags){ echo"<span class='fa fa-tag'></span>
-                                                   $mytags->tag<button type='button' onclick='removetag($post->r_id,$mytags->tag_id)' class='btn btn-primary'><i class='fa fa-times'></i></button>";}?> 
-                                                <input type="text" id="tag" size="25" onkeyup="tagsinput(<?php echo $post->r_id;?>)" value=""/><button class="btn btn-primary active" onclick="addnewtag(<?php echo $post->r_id;?>)" type="button">Add new</button>
-                                                <div id="tagdiv"></div>
-                                                </div>
-                                            </div> 
+                                                
+                                                <input type="text" class="form-control" id="tag" size="25" onkeyup="tagsinput(<?php echo $post->r_id;?>)" value=""/>
+                                            </div>
                                         </div>
-                                    </div>                       
+
+                                        <div class="col-md-2">
+                                            <button class="btn btn-primary active" onclick="addnewtag(<?php echo $post->r_id;?>)" type="button">Add new</button>
+                                        </div>
+
+                                        <div class = "col-md-3 col-xs-12"></div>
+                                        <div class="col-md-6 col-xs-12">
+
+                                            <div id="tagdiv"></div>
+
+                                            <br>
+                                            <div><?php foreach($tags as $mytags){ echo"
+                                            <input style=\"width:50px\" type='text' value='$mytags->tag'/>
+                                                   <button type='button' onclick='removetag($post->r_id,$mytags->tag_id)' class='btn btn-secondary button1'><i class='fa fa-times'></i></button>
+
+                                            ";}?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                        
+                                                          
                                     <!-- END OF TAGSINPUT -->
 
                                     <div class="form-group">
@@ -740,16 +773,7 @@
                                         </div>
                                     </div>
 
-                                      <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Counsellor Name</label>
-                                         <div class="col-md-6 col-xs-12">
-                                             <div class="input-group">
-                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="CounsellorName" class="form-control" disabled value="<?php echo $post->CounsellorName;  ?>" />
-                                            </div>
-                                 
-                                         </div>
-                                     </div>
+                                      
 
                                 </div>
 

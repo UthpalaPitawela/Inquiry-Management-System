@@ -35,7 +35,17 @@ parent::__construct();
                         
     					
 
-    					$this->Manager_Settings_Model->changePassword($password,$username);
+    					$result = $this->Manager_Settings_Model->changePassword($password,$username);
+
+                        if($result==1){
+                            $_SESSION["alert1"]="insertsuccess";
+
+                        }else{
+                            $_SESSION["alert1"]="notsuccess";
+
+                        }
+
+                        redirect("index.php/Manager_Settings_Controller/index");
                       
                 }
  	}
@@ -84,12 +94,16 @@ parent::__construct();
 					$this->load->model('Manager_Settings_Model');
 
     				$res = $this->Manager_Settings_Model->addUser($fname,$lname,$status,$email,$username,$password);
-                    echo $res;
+
                     if($res==1){
-                        $_SESSION["alert"]="success";
+                        $_SESSION["alert2"]="insertsuccess";
+
                     }else{
-                        $_SESSION["alert"]="unsuccess";
+                        $_SESSION["alert2"]="notsuccess";
+
                     }
+
+                    redirect("index.php/Manager_Settings_Controller/index");
 
 				}
 

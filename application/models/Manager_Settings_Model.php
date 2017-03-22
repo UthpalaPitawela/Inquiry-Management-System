@@ -7,7 +7,7 @@ class Manager_Settings_Model extends CI_Model{
 			);
 
 		$this->db->where('username', $username);
-		$this->db->update('user', $data);
+		return $this->db->update('user', $data);
 
 	}
 	//The database code to add user functions 
@@ -21,7 +21,7 @@ class Manager_Settings_Model extends CI_Model{
 			'password' => $password
 
 			);
-		$this->db->insert('user',$data);
+		return $this->db->insert('user',$data);
 	}
 
 	function getUsers(){

@@ -7,7 +7,8 @@ class TargetsModel extends CI_Model{
 
 	function set_target($data){
 		//Inserting data into the table 'Targets' in the database 'edulink'
-		$this->db->insert('targets',$data);
+		return $this->db->insert('targets',$data);
+
 	}
 
 	function get_table(){

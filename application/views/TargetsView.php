@@ -487,6 +487,50 @@
     </body>
 </html>
 
+<!-- Start of alerts -->
+<?php
+     if(isset($_SESSION["alert1"])){
+
+                ?>
+        
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert1"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Target added succesfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert1"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert1']);
+            }
+?>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<!-- End of alerts -->
+
 
 
 

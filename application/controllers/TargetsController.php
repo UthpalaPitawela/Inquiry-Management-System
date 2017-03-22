@@ -37,7 +37,15 @@ class TargetsController extends CI_Controller{
 			'Assigned_By' => $this->input->post('Assigned_By'));
 
 		//Transfering data to model
-		$this->TargetsModel->set_target($data);
+		$res = $this->TargetsModel->set_target($data);
+
+		if($res==1){
+            $_SESSION["alert1"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert1"]="notsuccess";
+
+        }
 
 		/*
 		if($this->TargetsView->add($data)){

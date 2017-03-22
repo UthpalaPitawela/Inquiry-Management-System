@@ -32,7 +32,7 @@ class TargetsModel extends CI_Model{
 
 	function assigned_targets()
 	{
-		$query = $this->db->query("SELECT CounsellorName, sum(Status='Pending') AS pending, sum(Status='Completed') AS completed FROM register GROUP BY CounsellorName");
+		$query = $this->db->query("SELECT CounsellorName, sum(Status='Pending') AS pending, sum(Status='Following') AS following, sum(Status='Completed') AS completed FROM register GROUP BY CounsellorName");
 		// $this->db->select('CounsellorName, (SELECT COUNT(register.Status) FROM register WHERE register.Status="Pending") AS pending',false);
 		// $query = $this->db->get('register');
 

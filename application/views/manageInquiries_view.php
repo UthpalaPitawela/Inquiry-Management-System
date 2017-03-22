@@ -1493,6 +1493,7 @@ $.ajax({
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/jspdf.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?> public/js/plugins/tableexport/jspdf/libs/base64.js"></script>
+        
 
          <!-- START TEMPLATE -->
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        

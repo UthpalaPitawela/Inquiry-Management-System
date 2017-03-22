@@ -185,6 +185,8 @@
                     <li><a href="<?php echo base_url();?>index.php/Campaign_Controller/index">Campaigns</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
+                <div id="loading_image" style="display:none;position:absolute;top:3%;left:35%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="90" height="90"/>Loading..</div>
+
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
@@ -470,7 +472,7 @@
 
         <script>
             function update_campaign() {
-                
+                $('#loading_image').show(); 
                 $campaign_name = $('#campaign_name').val();
                 $date = $('#inquiry_date').val();
                 $type = $('#inquiry_type').val();
@@ -485,6 +487,7 @@
                         dataType: 'json',
                         data: {name: $campaign_name, date: $date, type: $type ,status: $status},
                             success: function (data) {
+                                $('#loading_image').hide(); 
                                 if (data.status == "success") {
                                     $('#newModal').modal('hide');
                                     swal({title: data.info, text: "You clicked the button!", type: "success"},
@@ -515,6 +518,7 @@
         <script type="text/javascript">
     
         function getDetails(camp_id,camp_name) {  
+            $('#loading_image').show();
             var campName=camp_name;
             var campID=camp_id;
             $.ajax({
@@ -523,6 +527,7 @@
                 data : {id: campID},
                 dataType: 'json',
                 success: function (data) {
+                    $('#loading_image').hide(); 
                     if(data.fail){
                         swal("Sorry! Campaign has been updated");
                     }else{

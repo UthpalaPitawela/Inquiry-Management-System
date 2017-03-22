@@ -281,7 +281,7 @@
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="contactno" id="contactno" class="form-control" placeholder="Contact number format : XXX XXX XXXX" onchange="phone_number_check();" required />
+                                                <input type="text" name="contactno" id="contactno" class="form-control" placeholder="Contact number format : 94 XXXXXXXXX" onchange="phone_number_check();" required />
                                             </div>
                                             <span id="error_invalidMobile" style="color: red;"><div id="p1"></div></span>
 

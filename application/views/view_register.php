@@ -628,21 +628,21 @@
 <script type="text/javascript">
 $(function(){
     $('#error_invalidEmail').hide();
-    $('#error_invalidMobile').hide();
+    //$('#error_invalidMobile').hide();
     $('#error_invalidFirstname').hide();
     $('#error_invalidLastname').hide();
 
     var error_email = false;
-    var error_mobile = false;
+    //var error_mobile = false;
     var error_firstname = false;
     var error_lastname = false;
 
     $("#email").focusout(function(){
         validateEmail(this.value);
     });
-    $("#contactno").focusout(function(){
-        validateMobile(this.value);
-    });
+    // $("#contactno").focusout(function(){
+    //     validateMobile(this.value);
+    // });
     $("#fname").focusout(function(){
         validateFirstname(this.value);
     });
@@ -667,22 +667,22 @@ $(function(){
     }
 
     //Check if mobile number is valid
-    function validateMobile(inputtxt)
-    {
-        var phoneno = /^\+?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{4})$/;
-        if(inputtxt.match(phoneno))
-        {
-            $("#error_invalidMobile").hide();
-            document.getElementById("contactno").style.borderColor = "";
-        }
-        else
-        {
-            $("#error_invalidMobile").html("Invalid Phone Number");
-            $("#error_invalidMobile").show();
-            document.getElementById("contactno").style.borderColor = 'red';
-            error_mobile =  true;
-        }
-    }
+    // function validateMobile(inputtxt)
+    // {
+    //     var phoneno = /^\+?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{4})$/;
+    //     if(inputtxt.match(phoneno))
+    //     {
+    //         $("#error_invalidMobile").hide();
+    //         document.getElementById("contactno").style.borderColor = "";
+    //     }
+    //     else
+    //     {
+    //         $("#error_invalidMobile").html("Invalid Phone Number");
+    //         $("#error_invalidMobile").show();
+    //         document.getElementById("contactno").style.borderColor = 'red';
+    //         error_mobile =  true;
+    //     }
+    // }
 
     //Check if first name is valid
     function validateFirstname(input) {

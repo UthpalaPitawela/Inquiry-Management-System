@@ -12,7 +12,7 @@
         
         
         <!-- END META SECTION -->
-         <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />              
+         <link rel="icon" href="<?php echo base_url(); ?>EDULINK-Logo1.ico" type="image/x-icon" />               
         <!-- CSS INCLUDE --> 
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
@@ -114,10 +114,6 @@
                         <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
                     </li>
 
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
-                    </li>
-
                     <li class="active">
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email / SMS</span></a>
                     </li>
@@ -184,6 +180,8 @@
                     <li><a href="<?php echo base_url();?>index.php/shoutout/index">Email / SMS</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
+                <div id="loading_image" style="display:none;position:absolute;top:3%;left:35%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="90" height="90"/>Loading..</div>
+
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
@@ -224,7 +222,7 @@
                                                                     <div class="col-md-9">                                            
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                                            <input type="text" id="sms_number" name="sms_number" class="form-control"/>
+                                                                            <input type="text" id="sms_number" name="sms_number" class="form-control" placeholder="eg: 94719954234"/>
                                                                         </div> 
                                                                     </div>
                                                             </div>
@@ -252,7 +250,7 @@
                                                                                     if(message!==""){
                                                                                         $.ajax({
                                                                                             type: "get",
-                                                                                            url: "<?php echo base_url(); ?>" +"index.php/sms/Send_sms/send/"+recipient+"/"+message,
+                                                                                            url: "<?php echo base_url(); ?>" +"index.php/sms/send_sms/send/"+recipient+"/"+message,
                                                                                            
                                                                                             success: function (msg) {
                                                                                                 $('#loading_image').hide();
@@ -300,7 +298,7 @@
                                                                     <div class="col-md-9">                                            
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                                            <input type="text" id="email" name="email" class="form-control" />
+                                                                            <input type="text" id="email" name="email" class="form-control" placeholder="eg: john@gmail.com" />
                                                                         </div> 
                                                                     </div>
                                                             </div>
@@ -328,6 +326,7 @@
                                                                         <script>
                                                                                         
                                                                                         function check_email() {
+                                                                                            $('#loading_image').show();
                                                                                             $recipient = $('#email').val();
                                                                                             $subject = $('#email_subj').val();
                                                                                             $message = $('#email_body').val();
@@ -340,6 +339,7 @@
                                                                                                         dataType: 'json',
                                                                                                         data: {recp: $recipient, subj: $subject , message: $message},
                                                                                                         success: function (msg) {
+                                                                                                            $('#loading_image').hide();
                                                                                                             if (msg.status == "success") {
                                                                                                                 swal(msg,info, "You clicked the button!", "success");
                                                                                                             } 
@@ -354,7 +354,7 @@
                                                                                                     alert("Please fill the required fields");
                                                                                                 } 
                                                                                            }else{
-                                                                                               alert("Give a recipient");
+                                                                                               alert("Fill recipient");
                                                                                             }
                                                                                         }
                                                                                        

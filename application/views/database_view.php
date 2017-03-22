@@ -11,7 +11,7 @@
         
         
         <!-- END META SECTION -->
-         <link rel="icon" href="<?php echo base_url('public/assets/EDULINK-Logo1.ico');?>" type="image/x-icon" />         
+         <link rel="icon" href="<?php echo base_url(); ?>EDULINK logo1.ico" type="image/x-icon" />               
         <!-- CSS INCLUDE --> 
              
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
@@ -106,10 +106,6 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
-                    </li>
-
-                    <li>
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
                     </li>
 
@@ -174,7 +170,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="<?php echo base_url();?>index.php/Database">Databases</a></li>
+                    <li><a href="<?php echo base_url();?>index.php/Database">Bulk Upload</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
                 
@@ -183,20 +179,17 @@
                 
                     <div class="row">
                     	<!-- FORM -->
-                        <div class="col-md-5">
+                        <div class="col-md-12">
                             
                             <form class="form-horizontal" style="border-color: #808080;" action="<?php echo base_url();?>index.php/database/bulk_input" method="post" name="add_bulk" enctype="multipart/form-data">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Bulk Input</strong></h3>
-                                </div>
-                            
+                                
                                 <div class="panel panel-default"  style="border-top-color:#2b73ef; border-top-width:2px; ">
                                     <div class="panel-heading" >
-                                        <h2 class="panel-title"><strong>Create Bulk</strong></h2>
+                                        <h2 class="panel-title"><strong>Create New Bulk</strong></h2>
                                  	</div>
                                     <div class="panel-body"> 
                                          
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label">Bulk Name</label>
                                                     <div class="col-md-9">                                            
@@ -207,7 +200,17 @@
                                                     </div>
                                                     
                                                 </div>
+                                                <div class="form-group">                                        
+                                                    <label class="col-md-3 control-label">Bulk Input</label>
+                                                    <div class="col-md-6">                                            
+                                                        <input type="file"  name="file" required="">
+                                                    </div>
+                                                    
+                                                </div>
 
+                                                <br>
+                                            </div>
+                                            <div class="col-md-6">
                                                 <div class="form-group">                                        
                                                     <label class="col-md-3 control-label">Date</label>
                                                     <div class="col-md-9">
@@ -217,20 +220,66 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">                                        
-                                                    <label class="col-md-3 control-label">Bulk Input</label>
-                                                    <div class="col-md-6">                                            
-                                                        <input type="file"  name="file" >
-                                                    </div>
-                                                    
-                                                </div>
-                                                
-                                                <div class="panel-footer">
-                                   					 <button type="reset" class="btn btn-default">Clear Form</button>                                    
-                                   					 <button type="submit" name="create_bulk" style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary pull-right" >Create Bulk</button>
-                                				</div>
-                                                                                          
                                             </div>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            
+
+                                            <div class="col-md-4"></div>
+
+                                            <div class="col-md-2" style="align-items: right">
+                                                                                             
+                                                <button type="submit" name="create_bulk" style="background-color:#2b73ef; border-color:#2b73ef; font-size: 14;" class="btn btn-primary" >Create Bulk</button>
+                                                                                      
+                                                    
+                                            </div>
+                                                                                          
+                                            
+                                            
+                                            
+                                            
+                                            <div class="col-md-12">
+                                            <!-- Start Student Table --> 
+                                            <div style="overflow-y:scroll; height:450px;">
+                                                <table id="mydata" class="table table-hover">
+                                                    <thead>
+                                                        
+                                                        <tr role="row">
+                                                            <th  style="text-align: center">Bulk Name</th>
+                                                            <th  style="text-align: center">Name</th>
+                                                            <th  style="text-align: center">Gender</th>
+                                                            <th  style="text-align: center">Address</th>
+                                                            <th  style="text-align: center;">Email</th>
+                                                            <th  style="text-align: center;">Contact Number</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+
+                                                    <form>
+                                                <?php
+                                               
+                                                        foreach($students as $student){ ?>
+
+                                                            <tr id="<?php  echo $student->r_id; ?>">
+                                                                <td  style="text-align: center"><?php echo $student->bulk_name; ?></td>
+                                                                <td style="text-align: center"><?php echo $student->Fname; ?>  <?php echo $student->Lname; ?></td>
+                                                                <td  style="text-align: center"><?php echo $student->Gender; ?></td>
+                                                                <td style="text-align: center"><?php echo $student->Address; ?></td>
+                                                                <td style="text-align: center"><?php echo $student->Email; ?></td>
+                                                                <td style="text-align: center"><?php echo $student->Contactno; ?></td>
+                                                            </tr>
+                                                    </form>
+                                                <?php } ?>  
+                                                 
+                                                    </tbody> 
+                                                
+                                                </table>
+                                            </div> <!-- scroll bar -->
+
+                                            <!-- End Campaigns Table -->
+                                        </div>
                                                                                     
                                     </div>
                                 </div>
@@ -238,36 +287,7 @@
                             
                         </div>
                         <!-- END FORM -->
-                        <div class="col-md-7">
-                            <form class="form-horizontal" style="border-color: #808080;" action="<?php echo base_url();?>index.php/database/bulk_input" method="post" name="add_bulk" enctype="multipart/form-data">
-                                <div class="panel panel-default"  style="top:39px; border-top-color:#2b73ef; border-top-width:2px; "> 
-                                	<div class="panel-heading" >
-                                        <h2 class="panel-title"><strong>View Bulk Details</strong></h2>
-                                 	</div>
-	                                    <div class="panel-body"> 
-	                                            <!-- FIRST COLUMN -->
-	                                            <div class="col-md-12">
-	                                                <div class="form-group">
-	                                                    <label class="col-md-2 control-label">Bulk Name</label>
-                                                    	<div class="col-md-9">                                        
-	                                                        <select name="bulk_type" id="bulk_type" class="form-control select">
-	                                                            <option>Select Bulk</option>
-	                                                            <option>Walk-in</option>
-	                                                            <option>Call</option>
-	                                                            <option>E-mail</option>
-	                                                            <option>SMS</option>
-	                                                            <option>Bulk</option>
-	                                                        </select>
-                                                    	</div>
-	                                                    
-	                                                </div>                                               
-	                                            </div>
-	                                                                                    
-	                                    </div>
-                                </div>
-                            </form>
-                            
-                        </div>
+                        
                         
                     </div> 
 
@@ -339,7 +359,51 @@
           $( function() {
             $( "#datepicker" ).datepicker();
           } );
-        </script>     
+        </script> 
+
+        <!-- Start of alerts -->
+        <?php
+             if(isset($_SESSION["alert"])){
+
+                        ?>
+                
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+                <!-- EOF CSS INCLUDE --> 
+              <!-- JS INCLUDE --> 
+                        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+        <?php
+          echo "<script>alert(".$_SESSION["alert"].")</script>";
+            
+              if( $_SESSION["alert"]=="uploadSuccess"){
+
+                    
+        ?>
+        <script type="text/javascript">
+            swal("Submitted!", "Bulk uploaded succesfully!", "success");
+              
+        </script>
+
+                  <?php
+        }elseif ($_SESSION["alert"]=="uploadFail") {
+                    ?>
+                    <script type="text/javascript">
+                  swal(
+          'Oops...',
+          'Something went wrong!',
+          'error'
+        );
+                  </script>
+                  <?php
+                }
+        unset($_SESSION['alert']);
+                    }
+        ?>
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+                <!-- EOF CSS INCLUDE --> 
+              <!-- JS INCLUDE --> 
+        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        <!-- End of alerts -->    
         
     <!-- END SCRIPTS -->                   
     </body>

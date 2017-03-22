@@ -10,19 +10,27 @@ class Database extends CI_Controller {
 	    $this->load->library('javascript');
 	    $this->load->library('javascript/jquery'); 
 	   	$this->load->helper('url');                    
-	    $this->load->model('Database_Model','db_model');
+	    $this->load->model('Database_Model');
 	}
 
 	public function index(){
-		$this->load->view('database_view');
+		$this->data['students'] = $this->Database_Model->get_students();		
+		$this->load->view('database_view',$this->data);
+		//$this->load->view('bulkUpload_view',$this->data);
 	}
 
 	public function bulk_input(){
+		
 		if(isset($_POST["create_bulk"]))
 	 	{	
 
 	 		$bulk_name = $this->input->post('bulk_name');
 	 		$bulk_date = $this->input->post('bulk_date');
+	 		$check_list = $this->input->post('check_list');
+	 		
+	 		
+	 		$firstRow      = true;
+	 		$columnArray    = array();
 	 		
 	 		if($bulk_name!=NULL and $bulk_date!=NULL)
 	 		{	
@@ -35,27 +43,51 @@ class Database extends CI_Controller {
 	          		
 		            while (($importdata = fgetcsv($file, 10000, ",")) !== FALSE)
 			           {
-			                $data = array(
-			                      'name' => $importdata[0],
-			                      'email' =>$importdata[1],
-			                      'phone_number' => $importdata[2],
-			                      'bulk_name' => $bulk_name,
-			                      'date' => $bulk_date,
-							                      );
+
+			           		if($firstRow) {
+						        foreach($importdata as $columnName) {
+						            $columnArray[] = $columnName;
+						        }
+
+						        $firstRow = false;
+
+						       
+
+						    } else { 
+						    	$data = array();  // array of data to be sent to the database
+						    	for($i = 0; $i < count($columnArray) ; $i++){
+						    		$data[$columnArray[$i]] = $importdata[$i];
+						        }
+
+						        $data['bulk_name'] = $bulk_name;
+						        $data['bulk_date'] = $bulk_date;
+						        $data['Inquiry'] = 'Bulk';
+
+						        
+						       
+
+			           			$insert_bulkData = $this->Database_Model->insert_bulkInput($data); 
 
 
-			           		$insert_bulkData = $this->db_model->insert_bulkInput($data);
-			           }                    
-		            fclose($file);
-				    $this->session->set_flashdata('message', 'Data inserted successfully..');
-				    redirect('database/index');
+						    }
+			           }                     
+		            fclose($file); 
+
+		            $this->data['students'] = $this->Database_Model->get_students();
+		            $_SESSION["alert"]="uploadSuccess";
+		            $this->load->view('database_view',$this->data);
+		            
 				}else{
-				    $this->session->set_flashdata('message', 'Something went wrong..');
-					redirect('database/index');
-		    	}
-		    }
+					$this->data['students'] = $this->Database_Model->get_students();
+					$_SESSION["alert"]="uploadFail";
+					$this->load->view('database_view',$this->data);
+					
+		    	} 
+		    }  
 		}
 	}
+
+
 }
 
 

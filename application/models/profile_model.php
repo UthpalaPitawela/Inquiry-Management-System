@@ -118,6 +118,12 @@ class profile_model extends CI_Model{
 
     }
 
+    function changeDetails($id,$email, $dob, $tpnumber)
+    {
+        $user1 = "id";
+        return $this->db->query("UPDATE user SET email = email, dob = dob, TP = tpnumber WHERE u_id= $user1");
+    }
+
 }
 
 ?>

@@ -228,10 +228,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url('index.php/addStudentAcc_controller/addstudent');?>">
+                            <form class="form-horizontal" method="POST" action="<?php echo base_url('index.php/profile_controller/changeDetails');?>">
                             <div class="panel panel-default">
 
-                                <div class="panel-body">                                                                        
+                                <div class="panel-body"> 
+
+                                <input type="text" class="hidden" name="id" id="id" value="<?php echo $row->u_id;?>"/>                                                                       
                                     
                                     <div class="form-group">
                                         <label class="col-md-5 col-xs-12 control-label">First Name</label>
@@ -394,6 +396,51 @@
     <!-- END SCRIPTS -->                   
     </body>
 </html>
+
+
+<!-- Start of alerts -->
+<?php
+     if(isset($_SESSION["alert1"])){
+
+                ?>
+        
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert1"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Changes made succesfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert1"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert1']);
+            }
+?>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <!-- EOF CSS INCLUDE --> 
+      <!-- JS INCLUDE --> 
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<!-- End of alerts -->
 
 
 

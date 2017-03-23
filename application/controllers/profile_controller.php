@@ -1,7 +1,7 @@
 <?php
 if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class profile_controller extends CI_Controller{
+class Profile_controller extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 
@@ -53,15 +53,27 @@ class profile_controller extends CI_Controller{
 
 	public function changeDetails()
 	{
+		//$user_ID = $_SESSION("user_ID");
 		//get form data to an array named $data
-		$data = array(
-			'email' => $this->input->post('username'),
-			'dob' => $this->input->post('password'),
-			'tpnumber' => $this->input->post('firstname'));
+		
+			$id =  $this->input->post('id');
+			$email =  $this->input->post('username');
+			$dob =  $this->input->post('password');
+			$tpnumber = $this->input->post('TP');
 			
 
 		//transferring data to model
-		$this->profile_model->changeDetails($data);
+		
+		$res = $this->profile_model->changeDetails($id,$email, $dob, $tpnumber);
+
+		if($res==1){
+            $_SESSION["alert1"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert1"]="notsuccess";
+
+        }
+
 
 		redirect("index.php/profile_controller");
 	}

@@ -1154,7 +1154,127 @@ $.ajax({
     </body>
 </html>
 
+<script type="text/javascript">
+function removetag(rid,tagid){
 
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/Tag_Controller/removeTag/',
+                     data : {rid:rid,tagid:tagid},
+                     success: function(searchresult) {
+
+                    //       redirect("index.php/EditRecords_controller/index/"+rid);
+                    window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+rid;
+
+
+
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+}
+
+function addnewtag(userID){
+    var newtag = document.getElementById("tag").value;
+
+        if(newtag!=""){
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/Tag_Controller/addnewTag/',
+                     data : {newtag:newtag,userID:userID},
+                     success: function(searchresult) {
+
+                             window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+userID;
+
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+            // $.ajax({
+
+            //     type:"get",
+            //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
+            //     success: function (searchresult) {
+
+
+            //         $('#tagdiv').html(searchresult);
+ 
+            //     }
+            // })
+
+
+    }else{
+        alert("Enter the tag input");
+    }
+
+
+
+}
+
+
+    function tagsinput(userID){
+
+ var searchtag = document.getElementById("tag").value;
+
+
+    $('#tagdiv').html("");
+     // alert(skey);
+
+
+    if(searchtag!=""){
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/',
+                     data : {skey:searchtag,userID:userID},
+                     success: function(searchresult) {
+
+                            $('#tagdiv').html(searchresult);
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+            // $.ajax({
+
+            //     type:"get",
+            //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
+            //     success: function (searchresult) {
+
+
+            //         $('#tagdiv').html(searchresult);
+ 
+            //     }
+            // })
+
+
+    }
+
+
+    }
+</script>
 <script type="text/javascript">
 
 

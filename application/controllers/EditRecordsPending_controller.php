@@ -8,7 +8,7 @@ class EditRecordsPending_controller extends CI_Controller{
          $this->load->helper('url');
 
          $this->load->model('EditRecordsPending_model');
-
+           $this->load->model('Tag_Model');
 
      }
 
@@ -19,6 +19,7 @@ class EditRecordsPending_controller extends CI_Controller{
         $data["users"] = $this->EditRecordsPending_model->get_users();
         $rid = $this->uri->segment(3);
         $data["record"] = $this->EditRecordsPending_model->getDetails($rid);
+         $data["tags"]=$this->Tag_Model->getTags($rid);
         $this->load->view('editRecords_pending',$data);
 
 //         $this->register();

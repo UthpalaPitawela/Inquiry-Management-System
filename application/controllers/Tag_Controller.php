@@ -105,5 +105,60 @@ echo "<li><a href=".$base."index.php/Tag_Controller/addTag/".$tag_id."/".$userID
 
    }
 
+
+
+
+   public function searchTagforAll(){
+   	$skey = $this->input->post('skey');
+
+	$searchresult = $this->Tag_Model->SearchTag($skey);
+
+
+?>
+<table >
+
+<?php
+
+foreach($searchresult as $sch){
+	 	$base=base_url();
+	 
+
+?>
+<tr>
+<?php
+$tag=$sch->tag;
+$tag_id=$sch->tag_id;
+//	 	$tpnumber=urlencode($tpnumber);
+
+?>
+<td>
+
+<?php
+
+echo "<li style='width:100%;' ><a href=".$base."index.php/ManageInquiries_controller/tagindex/".$tag_id."><span class='fa fa-tag'></span>&nbsp $sch->tag</a></li>";
+
+//echo "<li><a href=".$base."index.php/Tag_Controller/addTag/".$tag_id."/".$userID."><span class='fa fa-tag'></span>&nbsp $sch->tag</a></li>";
+	 	
+	 	?>
+</td>
+</tr>
+<?php
+}
+?>
+	
+</table>
+	 	
+
+
+
+<?php           
+
+        
+
+
+   }
+
+
+
  }
 ?>

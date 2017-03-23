@@ -7,6 +7,7 @@ class ManageInquiries_controller extends CI_Controller{
 
 		//Load the model of manage_inquiries
 		$this->load->model('ManageInquiries_model');
+		 $this->load->model('Tag_Model');
 		
 	}
 
@@ -24,6 +25,26 @@ class ManageInquiries_controller extends CI_Controller{
 		$this->data['posts3'] = $this->ManageInquiries_model->getPending();
 		$this->data['posts4'] = $this->ManageInquiries_model->getCompleted();
 		$this->load->view('manageInquiries_view', $this->data);
+	}
+
+	public function tagindex($tagid){
+
+		$_SESSION["tagsearch"]="tagsinquiries";
+		$this->data['following'] = $this->ManageInquiries_model->getAllFollowing();
+		$this->data['posts'] = $this->ManageInquiries_model->getPostsHigh();
+		
+		//$this->data['posts'] = $this->manageInquiries_model->getPostsHigh();
+		//$this->load->view('manageInquiries_view', $this->data);
+
+		$this->data['posts1'] = $this->ManageInquiries_model->getPostsMedium();
+		$this->data['posts2'] = $this->ManageInquiries_model->getPostsLow();
+		$this->data['posts3'] = $this->ManageInquiries_model->getPending();
+		$this->data['posts4'] = $this->ManageInquiries_model->getCompleted();
+
+		$this->data["tagstudent"]=$this->Tag_Model->getTagStudents($tagid);
+
+		$this->load->view('manageInquiries_view', $this->data);
+
 	}
 
 	public function completedforadmissionofficer(){

@@ -124,5 +124,50 @@ return $query2;
        
         
   }
+
+
+
+
+
+  function getTagStudents($tagid){
+    $this->db->select('user_id')->from('tagvsuser')->where('tagid', $tagid);
+    
+
+    $query =$this->db->get();
+
+
+    $rowcount = $query->num_rows();
+    $query2=array();       
+          if($rowcount>0){
+
+
+               foreach ($query->result_array() as $row) {
+
+
+
+
+                  $stdid=$row['user_id'];
+
+          $this->db->select('*')->from('register')->where('r_id', $stdid);
+          $var = $this->db->get();
+                   $var=$var->result();
+
+array_push($query2,$var[0]);
+//array_push($query2, $var);
+         // $query2 =
+          
+          
+
+
+                }
+
+
+             }
+
+return $query2; 
+
+       
+        
+  }
 }
 ?>

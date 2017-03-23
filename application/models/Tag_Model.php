@@ -105,12 +105,14 @@ $this->db->delete('tagvsuser');
 
           $this->db->select('*')->from('tags')->where('tag_id', $tagid);
           $var = $this->db->get();
+               $rowcount2 = $var->num_rows();
+           if($rowcount2>0){
                    $var=$var->result();
 
 array_push($query2,$var[0]);
 //array_push($query2, $var);
          // $query2 =
-          
+          }
           
 
 
@@ -150,12 +152,57 @@ return $query2;
 
           $this->db->select('*')->from('register')->where('r_id', $stdid);
           $var = $this->db->get();
+                  $rowcount2 = $var->num_rows();
+           if($rowcount2>0){
                    $var=$var->result();
 
 array_push($query2,$var[0]);
 //array_push($query2, $var);
          // $query2 =
-          
+          }
+
+
+                }
+
+
+             }
+
+return $query2; 
+
+       
+        
+  }
+
+  function getTagStudentsCoun($tagid,$counsellor){
+    $this->db->select('user_id')->from('tagvsuser')->where('tagid', $tagid);
+    
+echo "<script>alert(".$counsellor.")</script>";
+
+    $query =$this->db->get();
+
+
+    $rowcount = $query->num_rows();
+    $query2=array();       
+          if($rowcount>0){
+
+
+               foreach ($query->result_array() as $row) {
+
+
+
+
+                  $stdid=$row['user_id'];
+
+          $this->db->select('*')->from('register')->where('r_id', $stdid)->where('CounsellorName',$counsellor);
+          $var = $this->db->get();
+           $rowcount2 = $var->num_rows();
+           if($rowcount2>0){
+                   $var=$var->result();
+
+array_push($query2,$var[0]);
+//array_push($query2, $var);
+         // $query2 =
+          }
           
 
 

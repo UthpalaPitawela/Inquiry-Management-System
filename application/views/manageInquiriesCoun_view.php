@@ -90,7 +90,7 @@
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
                             <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
-                            <li class="active"><a href="<?php echo base_url();?>index.php/ManageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
+                            <li class="active"><a href="<?php echo base_url();?>index.php/ManageInquiriesCoun_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
                             
                         </ul>
                         
@@ -145,6 +145,13 @@
                 
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+
+                 <li class="xn-search" style="z-index: 1001;">
+                        <form role="form">
+                            <input type="text" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search Tags">
+                            <div id="tagresultdiv" style="background-color: black; " ></div> 
+                        </form>
+                    </li>
                     
 
                     <!-- SIGN OUT -->
@@ -171,6 +178,145 @@
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                     <div class="row">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+ if(isset($_SESSION["tagsearch"])){
+?>
+                                                <!-- Start of Pending tab -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Tagged(<?php echo $_SESSION["tagsearch"]; ?>) Student Info </h3>                               
+                                </div>
+
+                                <div class="panel-body">
+                                <div class="ScrollStyle">
+                                <div class="table-responsive">
+                                    <table id="customers2" class="table datatable table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="50" style="text-align: center">Status</th>
+                                                <th width="50" style="text-align: center">First Name</th>
+                                                <th width="70" style="text-align: center">Last Name</th>
+                                                <th width="50" style="text-align: center">OL</th>
+                                                <th width="50" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">Contact No.</th>
+                                                <th width="150" style="text-align: center">Email</th>
+                                                <th width="80" style="text-align: center">Potential Date</th>
+                                                <th width="120" style="text-align: center">Handled By</th>
+                                                <!-- <th width="300" style="text-align: center">Actions</th> -->
+                                            </tr>
+                                        </thead>
+                                    <tbody id='table'>
+                                        
+                                    <?php
+
+                                    foreach($tagstudent as $tagposttpostt){ ?>
+                                            <tr id="<?php  echo $tagposttpostt->r_id; ?>">
+                                               <!-- <form method="post" action="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges" >  -->
+                                            
+                                                <!-- <input type="hidden" style="border:none; text-align: center;" value="<?php echo $postt->r_id; ?>" id="id" name="rid" /> -->
+<?php
+                                                if($tagposttpostt->Status=="Pending"){
+
+
+?>
+                                                <td style="text-align: center; color: red; text-decoration: font-weight:bold;font-size: 15px; ">Pending</td>
+                                                <td style="text-align: center;"><a href="<?php echo base_url('index.php/EditRecordsPending_controller/index/'.$tagposttpostt->r_id);?>"><?php echo $tagposttpostt->Fname; ?></a></td>
+<?php
+
+
+                                                    }elseif ($tagposttpostt->Status=="Following") {
+
+                                                        ?>
+ <td style="text-align: center; color: red; text-decoration: font-weight:bold;font-size: 15px;">Following</td>
+ <td style="text-align: center;"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $tagposttpostt->r_id);?>"><?php echo $tagposttpostt->Fname; ?></a></td>
+                                                        <?php
+                                                        # code...
+                                                    }elseif ($tagposttpostt->Status=="Completed") {
+                                                        ?>
+ <td style="text-align: center; color: red; text-decoration: font-weight:bold;font-size: 15px;">Completed</td>
+ <td style="text-align: center;"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $tagposttpostt->r_id);?>"><?php echo $tagposttpostt->Fname; ?></a></td>
+                                                         <?php
+                                                        # code...
+                                                    }else{
+?>
+ <td style="text-align: center; color: red; text-decoration: font-weight:bold;font-size: 15px;">Deleted</td>
+ <td style="text-align: center;"><a><?php echo $tagposttpostt->Fname; ?></a></td>
+<?php                                                        
+                                                    }
+                                                   ?> 
+                                                
+                                                <td style="text-align: center"><?php echo $tagposttpostt->Lname; ?></td>
+                                                <td style="text-align: center"><?php echo $tagposttpostt->OL; ?></td>
+                                                <td style="text-align: center"><?php echo $tagposttpostt->Grade1+$tagposttpostt->Grade2+$tagposttpostt->Grade3; ?></td>
+                                                <td style="text-align: center"><?php echo $tagposttpostt->Contactno; ?></td>
+                                                <td style="text-align: center"><?php echo $tagposttpostt->Email; ?></td>
+                                                <td style="text-align: center"><?php echo $tagposttpostt->Pdate; ?></td>
+                                                <td style="text-align: center"><?php echo $tagposttpostt->CounsellorName; ?></td>
+                                                <!-- <td style="text-align: center">
+                                            
+                                                <input type="submit" name="submit" class="btn btn-primary btn-rounded btn-sm" data-tooltip="tooltip" title="Update Changes" data-toggle="top" value="Save" />
+                                                <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Following</button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Completed</button>
+                                                </td> -->
+                                          <!--   </form> -->
+                                            </tr>
+                                            
+                            
+                                        </tbody>
+                                        <?php } ?>
+                                    </table> 
+                                    </div>
+                                    </div>                                   
+                                    
+                                </div>
+                            </div>      
+                
+                        </div> 
+                        </div> <!-- End of tab-first -->
+
+
+<?php
+unset($_SESSION['tagsearch']);
+}
+?>
+
+
+
+
+
+
+
+
+
+
                         <div class="col-md-12">
             <!-- ++++++++++++++++++++++++ Tabbed page  ++++++++++++++++++++++ -->
                             <form class="form-horizontal">
@@ -1600,4 +1746,60 @@ $.ajax({
 
 
 
+
+<script type="text/javascript">
+
+$(document).click(function() {
+    $("#tagresultdiv").html("");
+});
+
+
+    function tagsinput(){
+
+ var searchtag = document.getElementById("searchtag").value;
+
+
+    $('#tagresultdiv').html("");
+     // alert(skey);
+
+
+    if(searchtag!=""){
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTagforAllCoun/',
+                     data : {skey:searchtag},
+                     success: function(searchresult) {
+
+                            $('#tagresultdiv').html(searchresult);
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+            // $.ajax({
+
+            //     type:"get",
+            //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
+            //     success: function (searchresult) {
+
+
+            //         $('#tagdiv').html(searchresult);
+ 
+            //     }
+            // })
+
+
+    }
+
+
+    }
+</script>
 

@@ -200,7 +200,7 @@
                                                 <!-- Start of Pending tab -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Tagged Student Info</h3>                               
+                                    <h3 class="panel-title">Tagged(<?php echo $_SESSION["tagsearch"];?>) Student Info</h3>                               
                                 </div>
 
                                 <div class="panel-body">

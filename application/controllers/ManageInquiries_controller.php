@@ -27,9 +27,9 @@ class ManageInquiries_controller extends CI_Controller{
 		$this->load->view('manageInquiries_view', $this->data);
 	}
 
-	public function tagindex($tagid){
+	public function tagindex($tagid,$tag){
 
-		$_SESSION["tagsearch"]="tagsinquiries";
+		$_SESSION["tagsearch"]=$tag;
 		$this->data['following'] = $this->ManageInquiries_model->getAllFollowing();
 		$this->data['posts'] = $this->ManageInquiries_model->getPostsHigh();
 		

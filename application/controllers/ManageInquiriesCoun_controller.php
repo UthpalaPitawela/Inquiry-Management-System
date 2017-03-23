@@ -7,14 +7,14 @@ class ManageInquiriesCoun_controller extends CI_Controller{
 
 		//Load the model of manage_inquiries
 		$this->load->model('ManageInquiriesCoun_model');
-		
+		$this->load->model('Tag_Model');	
 	}
 
 	public function index()
 	{
 		$counsellorname = $_SESSION["first_username"]." ".$_SESSION["last_username"];
 		$this->data['posts'] = $this->ManageInquiriesCoun_model->getPostsHigh($counsellorname);
-		$this->data['following'] = $this->ManageInquiriesCoun_model->getAllFollowing();
+		$this->data['following'] = $this->ManageInquiriesCoun_model->getAllFollowing($counsellorname);
 		//$this->data['posts'] = $this->manageInquiries_model->getPostsHigh();
 		//$this->load->view('manageInquiries_view', $this->data);
 
@@ -23,6 +23,26 @@ class ManageInquiriesCoun_controller extends CI_Controller{
 		$this->data['posts3'] = $this->ManageInquiriesCoun_model->getPending($counsellorname);
 		$this->data['posts4'] = $this->ManageInquiriesCoun_model->getCompleted($counsellorname);
 		$this->load->view('manageInquiriesCoun_view', $this->data);
+	}
+
+	public function tagindex($tagid,$tag){
+$_SESSION["tagsearch"]=$tag;
+		
+		$counsellorname = $_SESSION["first_username"]." ".$_SESSION["last_username"];
+		$this->data['posts'] = $this->ManageInquiriesCoun_model->getPostsHigh($counsellorname);
+		$this->data['following'] = $this->ManageInquiriesCoun_model->getAllFollowing($counsellorname);
+		//$this->data['posts'] = $this->manageInquiries_model->getPostsHigh();
+		//$this->load->view('manageInquiries_view', $this->data);
+
+		$this->data['posts1'] = $this->ManageInquiriesCoun_model->getPostsMedium($counsellorname);
+		$this->data['posts2'] = $this->ManageInquiriesCoun_model->getPostsLow($counsellorname);
+		$this->data['posts3'] = $this->ManageInquiriesCoun_model->getPending($counsellorname);
+		$this->data['posts4'] = $this->ManageInquiriesCoun_model->getCompleted($counsellorname);
+
+		$this->data["tagstudent"]=$this->Tag_Model->getTagStudentsCoun($tagid,$counsellorname);
+
+		$this->load->view('manageInquiriesCoun_view', $this->data);
+
 	}
 
 	// public function completedforadmissionofficer(){

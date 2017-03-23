@@ -18,10 +18,10 @@ class ManageInquiriesCoun_model extends CI_Model{
 		return $query->result();
 	}
 
-	function getAllFollowing(){
+	function getAllFollowing($counsellorname){
 				$status = "Following";
-		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName");
-		$query = $this->db->get_where('register',array('status'=>$status));
+		$this->db->select("Fname,Lname,OL,Grade1,Grade2,Grade3,r_id,Contactno,Email,Pdate,CounsellorName,call_count,sms_count,email_count");
+		$query = $this->db->get_where('register',array('status'=>$status,'CounsellorName'=>$counsellorname));
 		return $query;
 	}
 

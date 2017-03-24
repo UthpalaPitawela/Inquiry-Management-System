@@ -207,6 +207,8 @@
                     <li><a href="<?php echo base_url();?>index.php/user">Edit Records</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
+                <div id="loading_image" style="display:none;position:absolute;top:3%;left:35%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="90" height="90"/>Loading..</div>
+
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
@@ -895,7 +897,7 @@
                                                                            
                                                      <script>           
                                                                             function check_sms(email,r_id) {
-                                                                              //  $('#loading_image').show();
+                                                                               $('#loading_image').show();
                                                                                 var recipient = $('#contactno').val();
                                                                                 var message = $('#sms1').val();
 
@@ -915,7 +917,7 @@ $.ajax({
                      url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
                      data : {recipient:recipient,text:message},
                      success: function(data) {
-
+                        $('#loading_image').hide();
               document.getElementById("smssummaryform").submit();
 
                         //$('#loading_image').hide();

@@ -409,6 +409,7 @@
                                                     <script>
                                                                     
                                                                     function check_email() {
+                                                                        $('#loading_image').show();
                                                                         $campaign = $('#campaign_name').val();
                                                                         $id = $('#campaign_id').val();
                                                                         $subject = $('#email_subj').val();
@@ -421,6 +422,7 @@
                                                                                     dataType: 'json',
                                                                                     data: {camp: $campaign, id: $id, subj: $subject , message: $message},
                                                                                     success: function (data) {
+                                                                                        $('#loading_image').hide();
                                                                                         swal("Bulk email sent successfully", "You clicked the button!", "success");
                                                                                     },
                                                                                     error: function (error) {
@@ -516,6 +518,7 @@
         <script type="text/javascript">
     
         function getDetails() {
+            $('#loading_image').show();
             var campName=$('#campaign_name').val();;
             var campID=$('#campaign_id').val();;
             
@@ -525,6 +528,7 @@
                 data : {id: campID},
                 dataType: 'json',
                 success: function (data) {
+                    $('#loading_image').hide();
                     if(data.fail){
                         swal("Sorry! Campaign has been updated");
                     }else{

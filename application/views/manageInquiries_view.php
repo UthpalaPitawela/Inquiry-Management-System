@@ -181,6 +181,8 @@
                     <li><a href="#">Manage Inquiries</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
+                <div id="loading_image" style="display:none;position:absolute;top:3%;left:35%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="90" height="90"/>Loading..</div>
+
 
 
                 
@@ -709,8 +711,8 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                         </div>              
                                 <script>           
                                                                             function check_sms(tp,r_id) {
-                                                                                //alert();
-                                                                              //  $('#loading_image').show();
+                                                                                
+                                                                               $('#loading_image').show();
                                                                                 var recipient = tp;
                                                              //var message=;
                                                              message=document.getElementById('smsmessage1'+r_id).value;
@@ -738,7 +740,7 @@ $.ajax({
                      url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
                      data : {recipient:recipient,text:message},
                      success: function(data) {
-
+                        $('#loading_image').hide();
               document.getElementById("smssummaryform"+r_id).submit();
 
                         //$('#loading_image').hide();
@@ -1068,7 +1070,7 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
 
                                 <script>           
                                                                             function check_sms2(tp,r_id) {
-                                                                              //  $('#loading_image').show();
+                                                                                $('#loading_image').show();
                                                                                 var recipient = tp;
                                                                                 var message = $('#smsmessage2'+r_id).val();
 
@@ -1093,7 +1095,7 @@ $.ajax({
                      url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
                      data : {recipient:recipient,text:message},
                      success: function(data) {
-
+                        $('#loading_image').hide();
               document.getElementById("smssummaryform2"+r_id).submit();
 
                         //$('#loading_image').hide();
@@ -1416,7 +1418,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
 
                                 <script>           
                                                                             function check_sms3(r_id,tp) {
-                                                                              //  $('#loading_image').show();
+                                                                               $('#loading_image').show();
                                                                                 var recipient = tp;
                                                                                 var message = $('#smsmessage3'+r_id).val();
 
@@ -1441,11 +1443,11 @@ $.ajax({
                      url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
                      data : {recipient:recipient,text:message},
                      success: function(data) {
-
+                        $('#loading_image').hide();
               document.getElementById("smssummaryform3"+r_id).submit();
 
-                        //$('#loading_image').hide();
-                             alert("SMS sent successfully");
+                        
+                             swal("SMS sent successfully");
                             
 
                      },

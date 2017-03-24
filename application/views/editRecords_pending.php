@@ -205,6 +205,8 @@
                     <li><a href="<?php echo base_url();?>index.php/user">Edit Records</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
+                <div id="loading_image" style="display:none;position:absolute;top:3%;left:35%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="90" height="90"/>Loading..</div>
+
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">

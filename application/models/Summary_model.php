@@ -12,11 +12,11 @@ class Summary_model extends CI_Model{
 
 		if($call_count%2==1)
 		{
-			$this->db->query("UPDATE register SET summary_call1='$call',summary_call1_date='$date',call_count='$call_count' WHERE r_id='$rid' ");
-			return;
+			return $this->db->query("UPDATE register SET summary_call1='$call',summary_call1_date='$date',call_count='$call_count' WHERE r_id='$rid' ");
+			
 		}elseif ($call_count%2==0) {
-			$this->db->query("UPDATE register SET summary_call2='$call',summary_call2_date='$date',call_count='$call_count' WHERE r_id='$rid' ");
-			return;
+			return $this->db->query("UPDATE register SET summary_call2='$call',summary_call2_date='$date',call_count='$call_count' WHERE r_id='$rid' ");
+			
 		}
  	} 
 
@@ -26,11 +26,11 @@ class Summary_model extends CI_Model{
 
 		if($sms_count%2==1)
 		{
-			$this->db->query("UPDATE register SET summary_sms1='$sms',summary_sms1_date='$date',sms_count='$sms_count' WHERE r_id='$rid' ");
-			return;
+			return $this->db->query("UPDATE register SET summary_sms1='$sms',summary_sms1_date='$date',sms_count='$sms_count' WHERE r_id='$rid' ");
+			
 		}elseif ($sms_count%2==0) {
-			$this->db->query("UPDATE register SET summary_sms2='$sms',summary_sms2_date='$date',sms_count='$sms_count' WHERE r_id='$rid' ");
-			return;
+			return $this->db->query("UPDATE register SET summary_sms2='$sms',summary_sms2_date='$date',sms_count='$sms_count' WHERE r_id='$rid' ");
+			
 		}
  	} 
 

@@ -28,7 +28,15 @@ class Summary_controller extends CI_Controller{
 		$call_count = $this->input->post('call_count');
 			
 
-		$this->Summary_model->updateCallSummary($call,$regid,$date,$call_count);
+		$res1 = $this->Summary_model->updateCallSummary($call,$regid,$date,$call_count);
+
+		if($res1==1){
+            $_SESSION["alert3"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert3"]="notsuccess";
+
+        }
 		redirect("index.php/ManageInquiries_controller");
 	}
 
@@ -41,8 +49,16 @@ class Summary_controller extends CI_Controller{
 		$call_count = $this->input->post('call_count');
 			
 
-		$this->Summary_model->updateCallSummary($call,$regid,$date,$call_count);
-		redirect("index.php/ManageInquiriesCoun_controller/");
+		$res1 = $this->Summary_model->updateCallSummary($call,$regid,$date,$call_count);
+
+		if($res1==1){
+            $_SESSION["alert3"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert3"]="notsuccess";
+
+        }
+		redirect("index.php/ManageInquiriesCoun_controller");
 	}
 
 	public function updateCallSummary1()
@@ -54,7 +70,15 @@ class Summary_controller extends CI_Controller{
 		$call_count = $this->input->post('call_count');
 			
 
-		$this->Summary_model->updateCallSummary($call,$regid,$date,$call_count);
+		$res1 = $this->Summary_model->updateCallSummary($call,$regid,$date,$call_count);
+
+		if($res1==1){
+            $_SESSION["alert3"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert3"]="notsuccess";
+
+        }
 		redirect("index.php/EditRecords_controller/index/$regid");
 	}
 
@@ -67,7 +91,15 @@ class Summary_controller extends CI_Controller{
 		$sms_count = $this->input->post('sms_count');
 			
 
-		$res=$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+		$res2=$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+
+		if($res2==1){
+            $_SESSION["alert4"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert4"]="notsuccess";
+
+        }
 
 		redirect("index.php/ManageInquiries_controller");
 	}
@@ -81,7 +113,15 @@ class Summary_controller extends CI_Controller{
 		$sms_count = $this->input->post('sms_count');
 			
 
-		$res=$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+		$res2=$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+
+		if($res2==1){
+            $_SESSION["alert4"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert4"]="notsuccess";
+
+        }
 
 		redirect("index.php/ManageInquiriesCoun_controller");
 	}
@@ -95,7 +135,16 @@ class Summary_controller extends CI_Controller{
 		$sms_count = $this->input->post('sms_count');
 			
 
-		$res=$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+		$res2=$this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+
+		if($res2==1){
+            $_SESSION["alert4"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert4"]="notsuccess";
+
+        }
+		
 
 		redirect("index.php/EditRecords_controller/index/$regid");
 	}

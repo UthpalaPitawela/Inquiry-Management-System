@@ -39,6 +39,8 @@
        input[type="text"][disabled] {
             color: black;
         }
+
+        .button1 {padding: 2px 3px;}
         </style>
 
     </head>
@@ -917,7 +919,7 @@ $.ajax({
 
 
                         $('#loading_image').hide();
-                             alert("SMS sent successfully");
+                             swal("SMS Sent!", "Submitted successfully!", "success");
                             
 
                      },
@@ -944,10 +946,10 @@ $.ajax({
                                                                                                     
 
                                                                                     }else{
-                                                                                        alert("Please fill the required field");
+                                                                                        swal("Please fill the required field", "Cannot Submit", 'error');
                                                                                     } 
                                                                                 }else{
-                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                    swal("Choose either a campaign or a recipient", "Note: Cannot choose both", 'error');
                                                                                 }
 
 
@@ -1507,7 +1509,7 @@ $(function(){
             
 ?>
 <script type="text/javascript">
-    swal("Submitted!", "Entry submitted succesfully!", "success");
+    swal("Submitted!", "Changes saved succesfully!", "success");
       
 </script>
 
@@ -1530,4 +1532,44 @@ unset($_SESSION['alert1']);
         <!-- EOF CSS INCLUDE --> 
       <!-- JS INCLUDE --> 
 <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<!-- End of alerts -->
+
+
+
+<!-- Start of alerts -->
+<!-- <?php
+     if(isset($_SESSION["alert3"])){
+
+                ?>
+        
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert3"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Call summary saved succesfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert3"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert3']);
+            }
+?> -->
 <!-- End of alerts -->

@@ -157,7 +157,7 @@
 
                 <li class="xn-search" style="z-index: 1001;">
                         <form role="form">
-                            <input type="text" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search Tags">
+                            <input type="text" style="width: 200px" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search Tags">
                             <div id="tagresultdiv" style="background-color: black; " ></div> 
                         </form>
                     </li>
@@ -1809,4 +1809,83 @@ $.ajax({
 
     }
 </script>
+
+<!-- Start of alerts -->
+<?php
+     if(isset($_SESSION["alert3"])){
+
+                ?>
+        
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert3"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Call summary saved successfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert3"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert3']);
+            }
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<!-- End of alerts -->
+
+
+<!-- Start of alerts -->
+<?php
+     if(isset($_SESSION["alert4"])){
+
+                ?>
+        
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert4"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("SMS Sent!", "SMS summary saved successfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert4"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert4']);
+            }
+?>
+<!-- End of alerts -->
 

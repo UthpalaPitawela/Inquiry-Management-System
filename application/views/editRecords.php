@@ -919,7 +919,7 @@ $.ajax({
               document.getElementById("smssummaryform").submit();
 
                         //$('#loading_image').hide();
-                             alert("SMS sent successfully");
+                             swal("SMS Sent!", "Submitted successfully!", "success");
                             
 
                      },
@@ -946,10 +946,10 @@ $.ajax({
                                                                                                     
 
                                                                                     }else{
-                                                                                        alert("Please fill the required field");
+                                                                                        swal("Please fill the required field", "Cannot Submit", 'error');
                                                                                     } 
                                                                                 }else{
-                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                    swal("Choose either a campaign or a recipient", "Note: Cannot choose both", 'error');
                                                                                 }
 
 
@@ -1464,16 +1464,14 @@ $(function(){
         
 </script>
 
-<!-- Start of alerts -->
+<!-- Start of alerts for saving changes-->
 <?php
      if(isset($_SESSION["alert"])){
 
                 ?>
         
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
-        <!-- EOF CSS INCLUDE --> 
-      <!-- JS INCLUDE --> 
-                <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 
 <?php
   echo "<script>alert(".$_SESSION["alert"].")</script>";
@@ -1483,7 +1481,7 @@ $(function(){
             
 ?>
 <script type="text/javascript">
-    swal("Submitted!", "Entry submitted succesfully!", "success");
+    swal("Submitted!", "Changes saved succesfully!", "success");
       
 </script>
 
@@ -1502,8 +1500,84 @@ $(function(){
 unset($_SESSION['alert']);
             }
 ?>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
-        <!-- EOF CSS INCLUDE --> 
-      <!-- JS INCLUDE --> 
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
 <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
-<!-- End of alerts -->
+<!-- End of alerts of saving changes -->
+
+
+
+<!-- Start of alerts for call summary -->
+<?php
+     if(isset($_SESSION["alert3"])){
+
+                ?>
+        
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert3"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Saved succesfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert3"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert3']);
+            }
+?>
+<!-- End of alerts for summary -->
+
+<!-- Start of alerts for sms summary -->
+<?php
+     if(isset($_SESSION["alert4"])){
+
+                ?>
+        
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert4"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Summary saved successfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert4"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert4']);
+            }
+?>
+<!-- End of alerts for summary -->

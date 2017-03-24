@@ -50,6 +50,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'Login_Controller';
-$route['404_override'] = '';
+$route['404_override'] = 'ErrorHandling_controller/push404';
 $route['translate_uri_dashes'] = FALSE;
 $route['reset/(:any)'] = 'email/ForgotPassword_Controller/viewResetPw/$1';

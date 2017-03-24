@@ -1042,7 +1042,7 @@ $.ajax({
                                   </div>
                                 </div>
 
-                                <!-- POPUP for call summary -->
+                                <!-- POPUP for other summary -->
                                       <div id="myModal3<?php echo $post->r_id; ?>" class="modal fade">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
@@ -1537,8 +1537,8 @@ unset($_SESSION['alert1']);
 
 
 <!-- Start of alerts -->
-<!-- <?php
-     if(isset($_SESSION["alert3"])){
+ <?php
+     if(isset($_SESSION["alert5"])){
 
                 ?>
         
@@ -1547,7 +1547,7 @@ unset($_SESSION['alert1']);
 
 <?php
 
-      if( $_SESSION["alert3"]=="insertsuccess"){
+      if( $_SESSION["alert5"]=="insertsuccess"){
 
       
             
@@ -1558,7 +1558,7 @@ unset($_SESSION['alert1']);
 </script>
 
           <?php
-}elseif ($_SESSION["alert3"]=="notsuccess") {
+}elseif ($_SESSION["alert5"]=="notsuccess") {
             ?>
             <script type="text/javascript">
           swal(
@@ -1569,7 +1569,7 @@ unset($_SESSION['alert1']);
           </script>
           <?php
         }
-unset($_SESSION['alert3']);
+unset($_SESSION['alert5']);
             }
-?> -->
+?> 
 <!-- End of alerts -->

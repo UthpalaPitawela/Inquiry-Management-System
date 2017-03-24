@@ -197,7 +197,15 @@ class Summary_controller extends CI_Controller{
 		//$email_count = $this->input->post('email_count');
 			
 
-		$this->Summary_model->updateOtherSummary($other,$regid,$date);
+		$res3 = $this->Summary_model->updateOtherSummary($other,$regid,$date);
+
+		if($res3==1){
+            $_SESSION["alert5"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert5"]="notsuccess";
+
+        }
 		redirect("index.php/ManageInquiries_controller");
 	}
 
@@ -210,7 +218,16 @@ class Summary_controller extends CI_Controller{
 		//$email_count = $this->input->post('email_count');
 			
 
-		$this->Summary_model->updateOtherSummary($other,$regid,$date);
+		$res = $this->Summary_model->updateOtherSummary($other,$regid,$date);
+
+		if($res3==1){
+            $_SESSION["alert5"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert5"]="notsuccess";
+
+        }
+
 		redirect("index.php/ManageInquiriesCoun_controller");
 	}
 
@@ -223,7 +240,16 @@ class Summary_controller extends CI_Controller{
 		//$email_count = $this->input->post('email_count');
 			
 
-		$this->Summary_model->updateOtherSummary($other,$regid,$date);
+		$res = $this->Summary_model->updateOtherSummary($other,$regid,$date);
+
+		if($res3==1){
+            $_SESSION["alert5"]="insertsuccess";
+
+        }else{
+            $_SESSION["alert5"]="notsuccess";
+
+        }
+
 		redirect("index.php/EditRecords_controller/index/$regid");
 	}
 }

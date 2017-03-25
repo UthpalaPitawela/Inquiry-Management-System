@@ -86,7 +86,7 @@ include 'imports.php';
 ?>
 
 <?php
-     if(isset($_SESSION["alert1"])){
+     if(isset($_SESSION["alert2"])){
 
 ?>
         
@@ -94,15 +94,15 @@ include 'imports.php';
 <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 
 <?php
-    if( $_SESSION["alert1"]=="insertsuccess"){       
+    if( $_SESSION["alert2"]=="insertsuccess"){       
 ?>
 <script type="text/javascript">
-    swal("Submitted!", "Password changed successfully!", "success");
+    swal("Submitted!", "User added successfully!", "success");
       
 </script>
 
 <?php
-}elseif ($_SESSION["alert1"]=="notsuccess") {
+}elseif ($_SESSION["alert2"]=="notsuccess") {
 ?>
     <script type="text/javascript">
     swal(
@@ -113,9 +113,11 @@ include 'imports.php';
     </script>
 <?php
 }
-unset($_SESSION['alert1']);
+unset($_SESSION['alert2']);
 }
 ?>
+
+
 
 
 

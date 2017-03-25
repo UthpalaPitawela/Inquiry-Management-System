@@ -15,14 +15,14 @@ class ResetPassword_Controller extends CI_Controller{
     			$result = $this->ResetPassword_Model->changePassword($password,$uid);
 
     			if($result==1){
-                            $_SESSION["alert1"]="insertsuccess";
+                            $_SESSION["alert2"]="insertsuccess";
 
                 }else{
-                            $_SESSION["alert1"]="notsuccess";
+                            $_SESSION["alert2"]="notsuccess";
 
                      }
 
-                        redirect("index.php/Login_Controller/index");
+               redirect("index.php/Login_Controller/index");
                       
                       
                 

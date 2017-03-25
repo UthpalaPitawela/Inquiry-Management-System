@@ -34,15 +34,26 @@ class ForgotPassword_Controller extends CI_Controller {
             $recipient = $email;
             if($recipient!=""){
             $mail->addAddress($recipient);
+            $result = $mail->send();
+            if($result==1){
+                            $_SESSION["alert2"]="insertsuccess";
 
-            if (!$mail->send()) {
+                }else{
+                            $_SESSION["alert2"]="notsuccess";
+
+                     }
+
+               redirect("index.php/Login_Controller/index");
+               
+
+            /*if (!$mail->send()) {
                 //return $mail->ErrorInfo;
                 print_r("hii");
 
             } else {
                 print json_encode(array("status"=>"success","info"=>"Your message has been sent"));
                 
-            }
+            }*/
             
         }
 

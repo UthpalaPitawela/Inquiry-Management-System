@@ -82,10 +82,6 @@
 </html>
 
 <?php
-include 'imports.php';
-?>
-
-<?php
      if(isset($_SESSION["alert2"])){
 
 ?>
@@ -94,7 +90,7 @@ include 'imports.php';
 <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 
 <?php
-    if( $_SESSION["alert2"]=="insertsuccess"){       
+    if( $_SESSION["alert2"]=="success"){       
 ?>
 <script type="text/javascript">
     swal("Submitted!", "Password reset successfully!", "success");
@@ -102,7 +98,7 @@ include 'imports.php';
 </script>
 
 <?php
-}elseif ($_SESSION["alert2"]=="notsuccess") {
+}elseif ($_SESSION["alert2"]=="unsuccess") {
 ?>
     <script type="text/javascript">
     swal(
@@ -116,6 +112,15 @@ include 'imports.php';
 unset($_SESSION['alert2']);
 }
 ?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+include 'imports.php';
+?>
+
+
 
 
 

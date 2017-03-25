@@ -125,18 +125,33 @@
       
 </script>
 
+
+
 <?php
-}elseif ($_SESSION["alert2"]=="notsuccess") {
+}elseif ($_SESSION["alert2"]=="error") {
 ?>
     <script type="text/javascript">
     swal(
-      'Oops...',
-      'Something went wrong!',
+      '',
+      'You are not an authorized user!',
       'error'
     );
     </script>
 <?php
+}elseif($_SESSION["alert2"] == "notsuccess"){
+?>
+<script type="text/javascript">
+    swal(
+      '',
+      'Failed to send the mail!',
+      'error'
+    );
+    </script>
+
+<?php
 }
+
+
 unset($_SESSION['alert2']);
 }
 ?>

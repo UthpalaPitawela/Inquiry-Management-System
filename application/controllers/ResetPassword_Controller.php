@@ -15,10 +15,10 @@ class ResetPassword_Controller extends CI_Controller{
     			$result = $this->ResetPassword_Model->changePassword($password,$uid);
 
     			if($result==1){
-                            $_SESSION["alert2"]="insertsuccess";
+                            $_SESSION["alert2"]="success";
 
                 }else{
-                            $_SESSION["alert2"]="notsuccess";
+                            $_SESSION["alert2"]="unsuccess";
 
                      }
 

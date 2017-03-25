@@ -23,6 +23,7 @@ class ForgotPassword_Controller extends CI_Controller {
         
         
        if($data['status'] == '0'){
+            $_SESSION["alert2"]="error";
 
         }else{
             $value = $this->randomPassword();

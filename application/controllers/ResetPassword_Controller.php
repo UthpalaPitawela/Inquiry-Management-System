@@ -12,7 +12,18 @@ class ResetPassword_Controller extends CI_Controller{
     			$password = $this->input->post('newPwd');
     			
                         
-    			$this->ResetPassword_Model->changePassword($password,$uid);
+    			$result = $this->ResetPassword_Model->changePassword($password,$uid);
+
+    			if($result==1){
+                            $_SESSION["alert1"]="insertsuccess";
+
+                }else{
+                            $_SESSION["alert1"]="notsuccess";
+
+                     }
+
+                        redirect("index.php/Login_Controller/index");
+                      
                       
                 
 	}

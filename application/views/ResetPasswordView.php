@@ -97,7 +97,7 @@ include 'imports.php';
     if( $_SESSION["alert2"]=="insertsuccess"){       
 ?>
 <script type="text/javascript">
-    swal("Submitted!", "User added successfully!", "success");
+    swal("Submitted!", "Password reset successfully!", "success");
       
 </script>
 

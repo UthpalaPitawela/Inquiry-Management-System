@@ -6,7 +6,7 @@ class ResetPassword_Model extends CI_Model{
 			);
 
 		$this->db->where('u_id', $uid);
-		$this->db->update('user', $data);
+		return $this->db->update('user', $data);
 
 	}
 }

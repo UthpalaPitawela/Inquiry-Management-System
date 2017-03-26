@@ -150,7 +150,7 @@
                         <div class="col-md-3"></div>
                         <div class="col-md-7">
                             
-                            <form class="form-horizontal" role="form" method="post" action="<?php echo base_url('index.php/manager_settings_Controller/changePassword');?>">
+                            <form class="form-horizontal" role="form" method="post" action="<?php echo base_url('index.php/Manager_Settings_Controller/changePassword');?>">
                            
                                 <div class="panel panel-default tabs"> 
                                     <div class="panel-body content">

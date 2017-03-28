@@ -10,7 +10,7 @@ class Inquirybutton_model extends CI_Model{
 		//Select the fields
 		$newStatus = "Following";
 		$data = array('Status'=>$newStatus);
-		$this->db->where('Email',$id);
+		$this->db->where('r_id',$id);
 		$this->db->update('register',$data);
 	}
 

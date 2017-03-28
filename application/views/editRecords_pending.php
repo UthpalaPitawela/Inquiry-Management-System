@@ -789,9 +789,11 @@ s
                                 <a class="btn btn-info btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-placement="top" title="Email" data-tooltip="tooltip" data-target="#myModal2<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-envelope" style="color:#1E90FF"></span></a>
                                 <a class="btn btn-warning btn-rounded btn-sm" style="text-align: center" data-toggle="modal" data-placement="top" title="Other" data-tooltip="tooltip" data-target="#myModal3<?php echo $post->r_id;?>" onclick="assignID('<?php  echo $post->r_id; ?>')"><span class="glyphicon glyphicon-plus" style="color:orange"></span></a>
                                 
-                                <button type="submit" name="" class="btn btn-primary pull-right" onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>') ">Save and Follow</button>
+                                <button type="submit" name="" class="btn btn-primary pull-right" >Save and Follow</button>
 
-<!--                                 -->
+                                <!-- onclick="follow('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>') " -->
+
+
                                 
                             </div>
 
@@ -891,29 +893,17 @@ s
                                                                 <button type="submit" id="save" class="btn btn-primary" onclick="check_sms('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Send Text Message</button>
                                                         </div>
 
-                                                                        <script>           
-                                                                            function check_sms(email,r_id) {
-                                                                                $('#loading_image').show();
-                                                                                var recipient = $('#contactno').val();
-                                                                                var message = $('#sms1').val();
+<script>           
+    function check_sms(email,r_id) {
+        $('#loading_image').show();
+        var recipient = $('#contactno').val();
+        var message = $('#sms1').val();
 
-                                                                                // alert(recipient);
-                                                                                // alert(message);
-
-                                                                                //alert(recipient);
-                                                                                //alert(message);
                                                                                  
-                                                                                if ( recipient!=="") {
-                                                                                    if(message!==""){
+        if ( recipient!=="") {
+            if(message!==""){
 
-
-
-
-
-
-
-
-$.ajax({             
+                $.ajax({             
                      type:"post",
                      url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
                      data : {recipient:recipient,text:message},
@@ -930,57 +920,42 @@ $.ajax({
                         //jqXHR.responseText
                      }
                  });
-               
-
-                                                                                        // $.ajax({
-                                                                                        //     type: "get",
-                                                                                        //     url: '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/'+recipient,message,
-                                                                                        //     //+"/"+message,
-                                                                                           
-                                                                                        //     success: function (msg) {
-                                                                                        //         $('#loading_image').hide();
-                                                                                        //         alert("SMS sent successfully");
-                                                                                        //     },
-                                                                                        //     error: function (error) {
-                                                                                        //         alert("Something went wrong");
-                                                                                        //     }
-                                                                                        // }); 
-                                                                                                    
-
-                                                                                    }else{
-                                                                                        swal("Please fill the required field", "Cannot Submit", 'error');
-                                                                                    } 
-                                                                                }else{
-                                                                                    swal("Choose either a campaign or a recipient", "Note: Cannot choose both", 'error');
-                                                                                }
+              
+            }else{
+                swal("Please fill the required field", "Cannot Submit", 'error');
+            } 
+        }else{
+            swal("Choose either a campaign or a recipient", "Note: Cannot choose both", 'error');
+        }
 
 
 
-                                            $.ajax({             
-                                                type:"post",
-                                                url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
-                                                data : {id:r=email},
-                                                success: function(data) {
-                                                    $('#followed').html(data);
-                                                }
-                                            });
-                                            $('#'+r_id).hide();
+            $.ajax({             
+                type:"post",
+                url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
+                data : {id:r=email},
+                success: function(data) {
+                    $('#followed').html(data);
+                }
+            });
+            $('#'+r_id).hide();
+    }
                                                                             }        
                                                  
-                            function follow(email,r_id){
-                                 $.ajax({             
-                                                type:"post",
-                                                url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
-                                                data : {id:r=email},
-                                                success: function(data) {
-                                                    $('#followed').html(data);
-                                                }
-                                            });
-                                            $('#'+r_id).hide();
+    function follow(email,r_id){
+        $.ajax({             
+            type:"post",
+            url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
+            data : {id:r=email},
+            success: function(data) {
+                $('#followed').html(data);
+            }
+        });
+        $('#'+r_id).hide();
                                            
-                            }                                   
+    }                                   
 
-                                                                        </script>                                
+</script>                                
                                                     
                                                     </form>
                                                     

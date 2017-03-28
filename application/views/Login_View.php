@@ -64,7 +64,7 @@
         </div>
     <div class="modal fade" id="myModal">
     <div class="modal-dialog">
-    <form action="<?php echo base_url('index.php/email/ForgotPassword_Controller/sendPassword');?>" method="post">
+    <form action="<?php echo base_url('index.php/Email/ForgotPassword_Controller/sendPassword');?>" method="post">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -155,6 +155,10 @@
 unset($_SESSION['alert2']);
 }
 ?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
 
 <?php
 include 'imports.php';

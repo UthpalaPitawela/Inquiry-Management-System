@@ -9,6 +9,7 @@ class EditRecords_controller extends CI_Controller{
 
          $this->load->model('EditRecords_model');
          $this->load->model('Tag_Model');
+         $this->load->model('Inquirybutton_model');
 
 
      }
@@ -29,13 +30,13 @@ class EditRecords_controller extends CI_Controller{
      function register(){
 
 
-        $id = $this->input->post('rid');
-        $this->load->model('Inquirybutton_model');
-        $this->Inquirybutton_model->following($id);
+        $rid = $this->input->post('rid');
+        //echo '$rid';
+        $this->Inquirybutton_model->following($rid);
         
 
              //everything is good-process the form- write the data into the registration database
-             $rid = $this->input->post('rid');
+             //$rid = $this->input->post('rid');
              $fname = $this->input->post('fname');
              $lname = $this->input->post('lname');
              $address = $this->input->post('address');

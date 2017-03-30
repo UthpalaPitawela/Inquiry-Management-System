@@ -17,21 +17,15 @@
         <script type="text/javascript">
             function handleInquiry(rid){
                   if (document.getElementById('assign').checked) {
-                            //var counsellorname = document.getElementById('counsellorname').value;
-                            //alert(counsellorname);
+                            
                             var value = document.getElementById("counsellorname").value;
                             $.ajax({
                                 url : '<?php echo base_url('index.php/Web_Inquiries_Controller/assignInquiries'); ?>',
                                 method : 'get',
                                 data : {'rid': rid, 'counsellorname' : value},
                                 success : function(){
-                                    //alert("hiii");
-                                    
-
-                                }
-
-
-                            });
+                            }
+                        });
                             $('#'+rid).hide();
                         }
 
@@ -149,20 +143,22 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active"><a href="#">Settings</li>
+                    <li class="active"><a href="#">Web Inquiries</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-                        <div class="row">
-                        <div class="col-md-6">
+                    
+                            <div class="row"></div>
+                        
                             <div class="row">
                                 <h4 align="center"> Web Inquiries</h4><br>
                             </div>
-                            <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-9">
+
+                            <div class="row"></div>
+                            <div class="row" align="center">
+                                
                                 <div class="btn-group">
                                
                                     <select id = "counsellorname" name="counsellornamename" class="btn btn-primary dropdown-toggle">
@@ -178,10 +174,14 @@
                                     <br><br>
                                 
                                 </div>
-                                </div>
-                                <div class="col-md-2"></div>
+                               
                             </div>
+
+                            <div class="row"><br><br></div>
                             <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-8">
+
                                     <div class="panel-body panel-body-table">
 
                                                 <div class="table-responsive">
@@ -231,10 +231,14 @@
                                                         </tbody>
                                                     </table>
                                         </div>    
+                            
                             </div>
-                        </div>
+                            <div class="col-md-1"></div>
 
-                        <div class="col-md-6"></div>
+                            </div>
+                       
+                       
+                       
 
 
                     </div>  

@@ -46,6 +46,8 @@
 
     $name = $_SESSION["first_username"];
     $propic = $_SESSION["propic"];
+    $status1 = $_SESSION["status"];
+    $lname = $_SESSION["last_username"];
 
     ?>
    
@@ -57,17 +59,24 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/managerhome') ?>">Edulink IMS</a>
+                        <?php if($status1==0){   ?>
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller">Edulink IMS</a>
+                        <?php }  ?>
+                        <?php if($status1==3){ ?>
+                        <a href="<?php echo base_url('index.php/Counsellor_Profile_Controller/index/'. $name."/" .$lname);?>">Edulink IMS</a>
+                        <?php }  ?>
                         
                     </li>
                     <li class="xn-profile">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="<?php echo base_url(). $propic ?>" alt="Viduni"/>
+                                <img src="<?php echo base_url(). $propic ?>" alt="noimage"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name"><?php echo $name ?></div>
-                                <!-- <div class="profile-data-title">Designation</div> -->
+                                <div class="profile-data-title"><?php if($status1==0){echo 'Manager';}
+                                elseif($status1==2){echo 'Admissions Officer';}
+                                elseif($status1==3){echo 'Counsellor';}   ?></div> 
                             </div>
                             <div class="profile-controls">
                                 <a href="<?php echo base_url();?>index.php/profile_controller" class="profile-control-left"><span class="fa fa-info"></span></a>
@@ -76,15 +85,30 @@
                         </div>                                                                        
                     </li>
 
-                    <li>
-                        <a href="<?php echo base_url('index.php/page_controller/loadingpages/managerhome') ?>"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>                        
+                    <li class="active">
+                        <?php if($status1==0){   ?>
+                        <a href="<?php echo base_url();?>index.php/Manager_Profile_Controller"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>
+                        <?php }  ?>
+                        <?php if($status1==3){ ?>
+                        <a href="<?php echo base_url('index.php/Counsellor_Profile_Controller/index/'. $name."/" .$lname);?>"><span class="fa fa-home"></span> <span class="xn-text">Home</span></a>  
+                        <?php }  ?>                        
                     </li>                    
                     <li class="xn-openable">
                         
                         <a href="#"><span class="fa fa-question"></span> <span class="xn-text">Inquiries</span></a>
                         <ul>
                             <li><a href="<?php echo base_url();?>index.php/user"><span class="fa fa-pencil"></span> Data Entry</a></li>
-                            <li><a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a></li> 
+                            <li>
+
+                            <?php if($status1==0){ ?>
+                            <a href="<?php echo base_url();?>index.php/manageInquiries_controller"><span class="fa fa-phone"></span> Manage Inquiries</a>
+                            <?php  } ?>
+
+                            <?php if($status1==3){ ?>
+                            <a href="<?php echo base_url();?>index.php/manageInquiriesCoun_controller"><span class="fa fa-phone"></span> Manage Inquiries</a>
+                            <?php  } ?>
+
+                            </li> 
                             
                         </ul>
                         
@@ -95,11 +119,21 @@
                     </li>
 
                     <li>
+                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
+                    </li>
+
+                    <li>
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
                     </li>
 
                     <li>
+                        <?php if($status1==0){ ?>
                         <a href="<?php echo base_url();?>index.php/admissions_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
+                        <?php  } ?>
+
+                        <?php if($status1==3){ ?>
+                        <a href="<?php echo base_url();?>index.php/admissionsCoun_controller"><span class="fa fa-graduation-cap"></span> <span class="xn-text">Admissions</span></a>
+                        <?php  } ?>
                     </li>
 
                     <li>
@@ -107,19 +141,20 @@
                     </li>
 
                     
-
+                    <?php if($status1==0){ ?>
                     <li class="xn-title">Administration</li>
-                    <li class>
+                    <li>
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
                     </li>    
 
-                    <li>
+                    <!-- <li>
                         <a href="#"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Reports</span></a>                 
-                    </li> 
+                    </li>  -->
 
-                    <li class="active">
+                    <li>
                         <a href="<?php echo base_url();?>index.php/Manager_Settings_Controller"><span class="fa fa-cogs"></span> <span class="xn-text">Settings</span></a>  
-                    </li>               
+                    </li>         
+                    <?php } ?>      
 
                     
                 </ul>
@@ -150,7 +185,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active"><a href="#">Web Inquiries</li>
+                    <li class="active"><a href="#">Web Inquiries</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 
@@ -167,7 +202,7 @@
                             <div class="row" >
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
-                                    <label>select cousellor to assign web inquiries</label>
+                                    <label>Select cousellor to assign Web Inquiries</label>
                                 </div>
                                 <div class="col-md-4">
                                 <div class="btn-group">
@@ -263,25 +298,25 @@
         </div>
         <!-- END PAGE CONTAINER -->
 
-        <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+         <!-- MESSAGE BOX-->
+       <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
                     <div class="mb-content">
                         <p>Are you sure you want to log out?</p>                    
-                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                        <p><strong>Press No if you want to continue work.</strong> Press Yes to logout.</p>
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                            <a href="<?php echo base_url('index.php/Login_Controller/logout') ?>" class="btn btn-danger btn-lg">Yes</a>
+                            <button type= "button" class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END MESSAGE BOX-->
+        <!--end of message box-->
 
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>

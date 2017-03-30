@@ -218,12 +218,12 @@
                                 </div>
                                 <div class="widget-data">
                                 <br>
-                                    <a href="#"><div class="widget-subtitle"><div class="widget-int num-count">Web Inquiries</div></div></a>
+                                    <a href="<?php echo base_url();?>index.php/Web_Inquiries_Controller><div class="widget-subtitle"><div class="widget-int num-count">Web Inquiries</div></div></a>
                                     
-                                    <a href="<?php echo base_url();?>index.php/Assign_Inquiries_Controller"><div class="widget-subtitle">Direct Inquiries From The Website</div></a>
+                                    <a href="<?php echo base_url();?>index.php/Web_Inquiries_Controller"><div class="widget-subtitle">Direct Inquiries From The Website</div></a>
                                 </div>
                                                            
-                            </div>
+                            </div>  
 
                         </div>
 

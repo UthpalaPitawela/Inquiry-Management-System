@@ -261,7 +261,7 @@
                                                             <tr id="">
                                                                 
                                                                 <td><strong><?php echo $fname;   ?></strong></td>
-                                                                <td><span class="label label-success"><?php echo $lname;   ?></span></td>
+                                                                <td><?php echo $lname;   ?></td>
                                                                 <td><?php echo $email;   ?></td>
                                                                 <td><?php echo $intake;   ?></td>
                                                                 <td><label class="switch">

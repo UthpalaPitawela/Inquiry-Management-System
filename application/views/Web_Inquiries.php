@@ -24,7 +24,14 @@
                                 method : 'get',
                                 data : {'rid': rid, 'counsellorname' : value},
                                 success : function(){
-                            }
+                                        /*swal("Submitted!", "Web inquiry is successfully allocated to "+value+ " !", "success");*/
+                                    }/*else{
+                                        swal(
+                                              'Oops...',
+                                              'Something went wrong!',
+                                              'error'
+                                            );
+                                    }*/
                         });
                             $('#'+rid).hide();
                         }
@@ -157,8 +164,12 @@
                             </div>
 
                             <div class="row"></div>
-                            <div class="row" align="center">
-                                
+                            <div class="row" >
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <label>select cousellor to assign web inquiries</label>
+                                </div>
+                                <div class="col-md-4">
                                 <div class="btn-group">
                                
                                     <select id = "counsellorname" name="counsellornamename" class="btn btn-primary dropdown-toggle">
@@ -173,6 +184,7 @@
                                     </select>
                                     <br><br>
                                 
+                                </div>
                                 </div>
                                
                             </div>
@@ -189,11 +201,11 @@
                                                         <thead>
                                                             <tr>
                                                                 
-                                                                <th width="100">First Name</th>
-                                                                <th width="100">LastName</th>
-                                                                <th width="60">Email</th>
-                                                                <th width="100">Intake</th>
-                                                                <th width="100">Assign</th>
+                                                                <th width="120" align="center">First Name</th>
+                                                                <th width="120" align="center">LastName</th>
+                                                                <th width="120" align="center">Email</th>
+                                                                <th width="60" align="center">Intake</th>
+                                                                <th width="80" align="center">Assign</th>
                                                                 
                                                             </tr>
                                                         </thead>

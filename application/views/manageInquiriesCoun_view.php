@@ -146,12 +146,26 @@
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
 
-                 <li class="xn-search" style="z-index: 1001;">
+                <li class="xn-search" style="z-index: 1001;">
+                        <form role="form">
+                            <input type="text" style="width: 200px" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search by Name">
+                            <div id="#" style="background-color: black; " ></div> 
+                        </form>
+                </li>
+
+                <li class="xn-search" style="z-index: 1001;">
+                        <form role="form">
+                            <input type="text" style="width: 200px" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search by Contact No.">
+                            <div id="#" style="background-color: black; " ></div> 
+                        </form>
+                </li>
+
+                <li class="xn-search" style="z-index: 1001;">
                         <form role="form">
                             <input type="text" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search Tags">
                             <div id="tagresultdiv" style="background-color: black; " ></div> 
                         </form>
-                    </li>
+                </li>
                     
 
                     <!-- SIGN OUT -->
@@ -684,7 +698,7 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="other" id="other"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
@@ -1040,7 +1054,7 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="other" id="other"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
@@ -1386,7 +1400,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                                         <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="other" id="other"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 

@@ -70,6 +70,186 @@ $_SESSION["tagsearch"]=$tag;
 		//Go back to index after inserting
 	redirect("index.php/ManageInquiriesCoun_controller/index");
 	}
+
+
+
+
+
+	   public function searchbyName(){
+   	$skey = $this->input->post('skey');
+$noresult="No Result";
+ //  	echo "<script>".$skey."=encodeURI(".$skey.")</script>";
+   	//echo "<script>alert(".$skey.")</script>";
+   //	echo "<script>".$skey."=decodeURI(".$skey.")</script>";
+$counsellorname = $_SESSION["first_username"]." ".$_SESSION["last_username"];
+
+//   	$searchkey = $this->input->post('search');
+
+	$searchresult = $this->ManageInquiriesCoun_model->searchStudent($skey);
+
+
+?>
+<table >
+
+<?php
+
+foreach($searchresult as $sch){
+	 	$base=base_url();
+	 
+$noresult="No Result";
+?>
+
+<?php
+$name=$sch->Fname." ".$sch->Lname;
+$str_id=$sch->r_id;
+$status=$sch->Status;
+$coun=$sch->CounsellorName;
+//	 	$tpnumber=urlencode($tpnumber);
+
+if($status=="Pending" && $coun==$counsellorname){
+
+?>
+<tr>
+<td>
+<?php
+echo "<li><a href=".$base."index.php/EditRecordsPending_controller/index/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";
+	 	
+	 	?>
+</td>
+</tr>
+
+<?php
+}elseif($status=="Following" && $coun==$counsellorname){
+
+?>
+<tr>
+<td>
+<?php
+echo "<li><a href=".$base."index.php/EditRecords_controller/index/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";
+	 	
+	 	?>
+</td>
+</tr>
+
+<?php
+}elseif($status=="Completed" && $coun==$counsellorname){
+?>
+<tr>
+<td>
+<?php
+echo "<li><a href=".$base."index.php/ManageInquiries_Controller/viewSummary/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";	 	
+	 	?>
+</td>
+</tr>
+
+<?php
+
+
+}
+}
+?>
+	
+</table>
+	 	
+
+
+
+<?php           
+
+        
+
+
+   }
+
+
+
+	   public function searchbyNo(){
+   	$skey = $this->input->post('skey');
+
+ //  	echo "<script>".$skey."=encodeURI(".$skey.")</script>";
+   	//echo "<script>alert(".$skey.")</script>";
+   //	echo "<script>".$skey."=decodeURI(".$skey.")</script>";
+$counsellorname = $_SESSION["first_username"]." ".$_SESSION["last_username"];
+
+//   	$searchkey = $this->input->post('search');
+	$searchresult = $this->ManageInquiriesCoun_model->searchStudentbyNO($skey);
+$noresult="No Result";
+
+?>
+<table >
+
+<?php
+
+foreach($searchresult as $sch){
+	 	$base=base_url();
+	 
+$noresult="No Result";
+?>
+
+<?php
+$name=$sch->Fname." ".$sch->Lname;
+$str_id=$sch->r_id;
+$status=$sch->Status;
+$coun=$sch->CounsellorName;
+
+//	 	$tpnumber=urlencode($tpnumber);
+
+if($status=="Pending" && $coun==$counsellorname){
+
+?>
+<tr>
+<td>
+<?php
+echo "<li><a href=".$base."index.php/EditRecordsPending_controller/index/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";
+	 	
+	 	?>
+</td>
+</tr>
+
+<?php
+}elseif($status=="Following" && $coun==$counsellorname){
+
+?>
+<tr>
+<td>
+<?php
+echo "<li><a href=".$base."index.php/EditRecords_controller/index/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";
+	 	
+	 	?>
+</td>
+</tr>
+
+<?php
+}elseif($status=="Completed" && $coun==$counsellorname){
+?>
+<tr>
+<td>
+<?php
+echo "<li><a href=".$base."index.php/ManageInquiries_Controller/viewSummary/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";	 	
+	 	?>
+</td>
+</tr>
+
+<?php
+
+
+}
+}
+?>
+	
+</table>
+	 	
+
+
+
+<?php           
+
+        
+
+
+   }
+
+
 }
 
 ?>

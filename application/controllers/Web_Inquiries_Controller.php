@@ -2,8 +2,6 @@
 class Web_Inquiries_Controller extends CI_Controller{
 	function __construct(){
 		parent::__construct();
-
-		//Load the model of assign_inquiries
 		$this->load->model('Web_Inquiries_Model');
 
 		
@@ -12,7 +10,6 @@ class Web_Inquiries_Controller extends CI_Controller{
 	function index(){
 		$data['result'] = $this->Web_Inquiries_Model->getUsers();
 		$data['inquiries'] = $this->Web_Inquiries_Model->getInquiries();
-		//print_r($data);
 		$this->load->view('Web_Inquiries',$data);
 	}
 

@@ -168,18 +168,19 @@
                     <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
                         <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-7">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
                             <div class="row">
-                                <h4 align="center"> Unassigned Web Inquiries</h4><br>
+                                <h4 align="center">Web Inquiries</h4><br>
                             </div>
+                            <br>
                             <div class="row">
-                                
-                                <div class="col-md-6">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-4">
                                     <label>Select the counsellor to assign inquiries</label>
                                 </div>
-                                <div class="col-md-2"></div>
-                                <div class="col-md-6">
+                               <!--  <div class="col-md-1"></div> -->
+                                <div class="col-md-4">
                                 <div class="btn-group">
                                
                                     <select id = "counsellorname" name="counsellornamename" class="btn btn-primary dropdown-toggle">
@@ -192,14 +193,16 @@
                                         }
                                     ?>
                                     </select>
-                                    <br><br>
+                                  
                                 
                                 </div>
+                                <div class="col-md-1"></div>
                                 </div>
                                 
                             </div>
+                            <br>
                             <div class="row">
-                                <div class="ScrollStyle">
+                                <div class="ScrollStyle" >
                                     <div class="panel-body panel-body-table">
 
                                                 <div class="table-responsive">
@@ -210,8 +213,10 @@
                                                                 <th width="120" align="center">First Name</th>
                                                                 <th width="120" align="center">Last Name</th>
                                                                 <th width="120" align="center">Email</th>
-                                                                <th width="60" align="center">Intake</th>
-                                                                <th width="80" align="center">Assign</th>
+                                                                <th width="60" align="center">Contact No</th>
+                                                                <th width="80" align="center">Interested Study</th>
+                                                                <th width="120" align="center">Message</th>
+                                                                <th width="60" align="center">Assign</th>
                                                                 
                                                                 
                                                             </tr>
@@ -224,7 +229,9 @@
                                                                 $fname = $row['Fname'];
                                                                 $lname = $row['Lname'];
                                                                 $email = $row['Email'];
-                                                                $intake = $row['Intake'];
+                                                                $contactno = $row['Contactno'];
+                                                                $interestedStudy = $row['interested_study'];
+                                                                $message = $row['message'];
                                                                 $rid = $row['r_id']
                                                             
                                                         ?>
@@ -235,8 +242,10 @@
                                                                 <td  style="height:40px; padding-bottom: 0px"><?php echo $fname;   ?></td>
                                                                 <td  style="height:40px; padding-bottom: 0px"><?php echo $lname;   ?></td>
                                                                 <td  style="height:40px; padding-bottom: 0px"><?php echo $email;   ?></td>
-                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $intake;   ?></td>
-                                                                <td  style="height:40px; padding-bottom: 0px"><label class="switch switch-small" style="height:20px">
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $contactno;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $interestedStudy;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $message;   ?></td>
+                                                                 <td  style="height:40px; padding-bottom: 0px"><label class="switch switch-small" style="height:20px">
                                                     <input type="checkbox" class = "chk" id="assign" name="assign"  value="<?php echo $rid?>"  />
                                                     <span></span>
                                                 </label></td>
@@ -288,7 +297,7 @@
                         </div>
                     </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-1">
                        
 
 

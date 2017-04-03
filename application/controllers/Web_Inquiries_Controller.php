@@ -18,9 +18,9 @@ class Web_Inquiries_Controller extends CI_Controller{
 
 	function assignInquiries(){
 		$counsellorname = $this->input->get('counsellorname');
-		$rid = $this->input->get('rid');
-		echo $counsellorname.$rid;
-		$this->Web_Inquiries_Model->updateInquiries($counsellorname,$rid);
+		$data = $this->input->get('result');
+		$data = json_decode("$data",true);
+		$this->Web_Inquiries_Model->updateInquiries($counsellorname,$data);
 		
 	}
 }

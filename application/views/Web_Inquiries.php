@@ -13,31 +13,7 @@
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('public/css/theme-default.css'); ?>"/>
         <!-- EOF CSS INCLUDE -->  
-
-        <script type="text/javascript">
-            function handleInquiry(rid){
-                  if (document.getElementById('assign').checked) {
-                            
-                            var value = document.getElementById("counsellorname").value;
-                            $.ajax({
-                                url : '<?php echo base_url('index.php/Web_Inquiries_Controller/assignInquiries'); ?>',
-                                method : 'get',
-                                data : {'rid': rid, 'counsellorname' : value},
-                                success : function(){
-                                        /*swal("Submitted!", "Web inquiry is successfully allocated to "+value+ " !", "success");*/
-                                    }/*else{
-                                        swal(
-                                              'Oops...',
-                                              'Something went wrong!',
-                                              'error'
-                                            );
-                                    }*/
-                        });
-                            $('#'+rid).hide();
-                        }
-
-            }
-        </script>                                  
+                                 
     </head>
 
     <body>
@@ -189,22 +165,21 @@
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 
-                <!-- PAGE CONTENT WRAPPER -->
+                    <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-                    
-                            <div class="row"></div>
-                        
+                        <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-7">
                             <div class="row">
-                                <h4 align="center"> Web Inquiries</h4><br>
+                                <h4 align="center"> Unassigned Web Inquiries</h4><br>
                             </div>
-
-                            <div class="row"></div>
-                            <div class="row" >
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4">
-                                    <label>Select cousellor to assign Web Inquiries</label>
+                            <div class="row">
+                                
+                                <div class="col-md-6">
+                                    <label>Select the counsellor to assign inquiries</label>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-6">
                                 <div class="btn-group">
                                
                                     <select id = "counsellorname" name="counsellornamename" class="btn btn-primary dropdown-toggle">
@@ -221,14 +196,10 @@
                                 
                                 </div>
                                 </div>
-                               
+                                
                             </div>
-
-                            <div class="row"><br><br></div>
                             <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-8">
-
+                                <div class="ScrollStyle">
                                     <div class="panel-body panel-body-table">
 
                                                 <div class="table-responsive">
@@ -237,10 +208,11 @@
                                                             <tr>
                                                                 
                                                                 <th width="120" align="center">First Name</th>
-                                                                <th width="120" align="center">LastName</th>
+                                                                <th width="120" align="center">Last Name</th>
                                                                 <th width="120" align="center">Email</th>
                                                                 <th width="60" align="center">Intake</th>
                                                                 <th width="80" align="center">Assign</th>
+                                                                
                                                                 
                                                             </tr>
                                                         </thead>
@@ -260,14 +232,15 @@
                                                         <tbody>                                            
                                                             <tr id="">
                                                                 
-                                                                <td><strong><?php echo $fname;   ?></strong></td>
-                                                                <td><?php echo $lname;   ?></td>
-                                                                <td><?php echo $email;   ?></td>
-                                                                <td><?php echo $intake;   ?></td>
-                                                                <td><label class="switch">
-                                                    <input type="checkbox" value="1" id="assign" name="assign"onchange="handleInquiry(<?php echo $rid?>);"/>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $fname;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $lname;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $email;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $intake;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><label class="switch switch-small" style="height:20px">
+                                                    <input type="checkbox" class = "chk" id="assign" name="assign"  value="<?php echo $rid?>"  />
                                                     <span></span>
                                                 </label></td>
+                                                                
                                                                
                                                                
                                                             </tr>
@@ -276,23 +249,53 @@
                                                              ?>
                                                             
                                                         </tbody>
+
                                                     </table>
-                                        </div>    
+                                                    
+                                                   
+                                        </div>
+                                    </div>    
+                                
+                                 
+                            </div>
+                            <br><br>
+                            <button onclick="handleInquiry();" style="float: right;" id="doneBtn" name="doneBtn" class="btn btn-success" >Done</button>
                             
-                            </div>
-                            <div class="col-md-1"></div>
+                              <script type="text/javascript">
+                                function handleInquiry(){
+                                    var counsellorname = document.getElementById('counsellorname').value; 
+                                    var selected_value = []; // initialize empty array 
+                                    $(".chk:checked").each(function(){
+                                        selected_value.push($(this).val());
+                                });
+                                   
+                 
+                             $.ajax({
+                                url : '<?php echo base_url('index.php/Web_Inquiries_Controller/assignInquiries'); ?>',
+                                method : 'get',
+                                data : {'result':JSON.stringify(selected_value), 'counsellorname' : counsellorname },
+                                success : function(){
+                                   
+                                }
 
-                            </div>
-                       
-                       
+
+                            });
+                          
+}
+
+
+        </script>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-3">
                        
 
 
-                    </div>  
+                     
                     
                     
-                </div>
-                <!-- END PAGE CONTENT WRAPPER -->                                
+                </div>                              
             </div>            
             <!-- END PAGE CONTENT -->
         </div>

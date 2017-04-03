@@ -210,12 +210,12 @@
                                                         <thead>
                                                             <tr>
                                                                 
-                                                                <th width="120" align="center">First Name</th>
-                                                                <th width="120" align="center">Last Name</th>
-                                                                <th width="120" align="center">Email</th>
+                                                                <th width="110" align="center">First Name</th>
+                                                                <th width="110" align="center">Last Name</th>
+                                                                <th width="60" align="center">Email</th>
                                                                 <th width="60" align="center">Contact No</th>
-                                                                <th width="80" align="center">Interested Study</th>
-                                                                <th width="120" align="center">Message</th>
+                                                                <th width="120" align="center">Interested Study</th>
+                                                                <th width="140" align="center">Message</th>
                                                                 <th width="60" align="center">Assign</th>
                                                                 
                                                                 

@@ -7,6 +7,7 @@ class Summary_controller extends CI_Controller{
 
 		//Load the model of manage_inquiries
 		$this->load->model('Summary_model');
+		$this->load->model('Inquirybutton_model');
 		
 	}
 
@@ -22,8 +23,11 @@ class Summary_controller extends CI_Controller{
 	public function updateCallSummary()
 	{
 
-		$call = $this->input->post('summary1');
 		$regid = $this->input->post('regid');
+        $this->Inquirybutton_model->following($regid);
+
+		$call = $this->input->post('summary1');
+		//$regid = $this->input->post('regid');
 		$date = $this->input->post('date');
 		$call_count = $this->input->post('call_count');
 			
@@ -37,14 +41,17 @@ class Summary_controller extends CI_Controller{
             $_SESSION["alert3"]="notsuccess";
 
         }
-		redirect("index.php/ManageInquiries_controller");
+		redirect("index.php/ManageInquiries_controller#tab-second");
 	}
 
 	public function updateCallSummary2()
 	{
 
-		$call = $this->input->post('summary1');
 		$regid = $this->input->post('regid');
+        $this->Inquirybutton_model->following($regid);
+
+		$call = $this->input->post('summary1');
+		//$regid = $this->input->post('regid');
 		$date = $this->input->post('date');
 		$call_count = $this->input->post('call_count');
 			
@@ -152,27 +159,33 @@ class Summary_controller extends CI_Controller{
 	public function updateEmailSummary()
 	{
 
-		$email = $this->input->post('email1');
 		$regid = $this->input->post('regid');
+        $this->Inquirybutton_model->following($regid);
+
+		$email = $this->input->post('email1');
+		//$regid = $this->input->post('regid');
 		$date = $this->input->post('date');
 		$email_count = $this->input->post('email_count');
 			
 
 		$this->Summary_model->updateEmailSummary($email,$regid,$date,$email_count);
-		redirect("index.php/ManageInquiries_controller");
+		redirect("index.php/ManageInquiries_controller#tab-second");
 	}
 
 	public function updateEmailSummary2()
 	{
 
-		$email = $this->input->post('email1');
 		$regid = $this->input->post('regid');
+        $this->Inquirybutton_model->following($regid);
+
+		$email = $this->input->post('email1');
+		//$regid = $this->input->post('regid');
 		$date = $this->input->post('date');
 		$email_count = $this->input->post('email_count');
 			
 
 		$this->Summary_model->updateEmailSummary($email,$regid,$date,$email_count);
-		redirect("index.php/ManageInquiriesCoun_controller");
+		redirect("index.php/ManageInquiriesCoun_controller#tab-second");
 	}
 
 	public function updateEmailSummary1()
@@ -191,8 +204,11 @@ class Summary_controller extends CI_Controller{
 	public function updateOtherSummary()
 	{
 
-		$other = $this->input->post('other');
 		$regid = $this->input->post('regid');
+        $this->Inquirybutton_model->following($regid);
+
+		$other = $this->input->post('other');
+		//$regid = $this->input->post('regid');
 		$date = $this->input->post('date');
 		//$email_count = $this->input->post('email_count');
 			
@@ -206,14 +222,17 @@ class Summary_controller extends CI_Controller{
             $_SESSION["alert5"]="notsuccess";
 
         }
-		redirect("index.php/ManageInquiries_controller");
+		redirect("index.php/ManageInquiries_controller#tab-second");
 	}
 
 	public function updateOtherSummary2()
 	{
 
-		$other = $this->input->post('other');
 		$regid = $this->input->post('regid');
+        $this->Inquirybutton_model->following($regid);
+
+		$other = $this->input->post('other');
+		//$regid = $this->input->post('regid');
 		$date = $this->input->post('date');
 		//$email_count = $this->input->post('email_count');
 			
@@ -228,7 +247,7 @@ class Summary_controller extends CI_Controller{
 
         }
 
-		redirect("index.php/ManageInquiriesCoun_controller");
+		redirect("index.php/ManageInquiriesCoun_controller#tab-second");
 	}
 
 	public function updateOtherSummary1()

@@ -5,6 +5,26 @@ class ManageInquiriesCoun_model extends CI_Model{
 		parent::__construct();
 	}
 
+function searchStudent($searchkey){
+
+
+     $searchresult = $this->db->like('Fname', $searchkey,'after')->or_like('Lname',$searchkey,'after')->get('register');
+
+    return $searchresult->result();
+
+
+  }
+
+ function searchStudentbyNO($searchkey){
+
+
+     $searchresult = $this->db->like('Contactno', $searchkey,'after')->or_like('Contactno',$searchkey,'after')->get('register');
+
+    return $searchresult->result();
+
+
+  }
+
 
 	function getPostsHigh($counsellorname){
 		//Select the fields

@@ -40,11 +40,11 @@ class Summary_model extends CI_Model{
 
 		if($email_count%2==1)
 		{
-			$this->db->query("UPDATE register SET summary_email1='$email',summary_email1_date='$date',email_count='$email_count' WHERE r_id='$rid' ");
-			return;
+			return $this->db->query("UPDATE register SET summary_email1='$email',summary_email1_date='$date',email_count='$email_count' WHERE r_id='$rid' ");
+			
 		}elseif ($call_count%2==0) {
-			$this->db->query("UPDATE register SET summary_email2='$email',summary_email2_date='$date',email_count='$email_count' WHERE r_id='$rid' ");
-			return;
+			return $this->db->query("UPDATE register SET summary_email2='$email',summary_email2_date='$date',email_count='$email_count' WHERE r_id='$rid' ");
+			
 		}
  	} 
 
@@ -53,8 +53,8 @@ class Summary_model extends CI_Model{
 		//$email_count++;
 
 		
-			$this->db->query("UPDATE register SET summary_other1='$other',summary_other1_date='$date' WHERE r_id='$rid' ");
-			return;
+			return $this->db->query("UPDATE register SET summary_other1='$other',summary_other1_date='$date' WHERE r_id='$rid' ");
+			
 		
  	}
 	

@@ -897,7 +897,7 @@
                                                                            
                                                      <script>           
                                                                             function check_sms(email,r_id) {
-                                                                               $('#loading_image').show();
+                                                                               
                                                                                 var recipient = $('#contactno').val();
                                                                                 var message = $('#sms1').val();
 
@@ -909,6 +909,7 @@
                                                                                  
                                                                                 if ( recipient!=="") {
                                                                                     if(message!==""){
+                                                                                        $('#loading_image').show();
 
 
 
@@ -926,6 +927,7 @@ $.ajax({
 
                      },
                      error: function(jqXHR){
+                        $('#loading_image').hide();
                       alert(jqXHR.responseText);
                         //jqXHR.responseText
                      }

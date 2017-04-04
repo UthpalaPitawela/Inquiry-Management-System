@@ -712,7 +712,7 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                 <script>           
                                                                             function check_sms(tp,r_id) {
                                                                                 
-                                                                               $('#loading_image').show();
+                                                                               
                                                                                 var recipient = tp;
                                                              //var message=;
                                                              message=document.getElementById('smsmessage1'+r_id).value;
@@ -728,7 +728,7 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                                                                 if ( recipient!=="") {
                                                                                     if(message!==""){
 
-
+                                                                                        $('#loading_image').show();
 
 
 
@@ -749,6 +749,7 @@ $.ajax({
 
                      },
                      error: function(jqXHR){
+                        $('#loading_image').hide();
                       alert(jqXHR.responseText);
                         //jqXHR.responseText
                      }
@@ -1070,7 +1071,7 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
 
                                 <script>           
                                                                             function check_sms2(tp,r_id) {
-                                                                                $('#loading_image').show();
+                                                                                
                                                                                 var recipient = tp;
                                                                                 var message = $('#smsmessage2'+r_id).val();
 
@@ -1082,7 +1083,7 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                                                                  
                                                                                 if ( recipient!=="") {
                                                                                     if(message!==""){
-
+                                                                                        $('#loading_image').show();
 
 
 
@@ -1104,6 +1105,7 @@ $.ajax({
 
                      },
                      error: function(jqXHR){
+                        $('#loading_image').hide();
                       alert(jqXHR.responseText);
                         //jqXHR.responseText
                      }
@@ -1418,7 +1420,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
 
                                 <script>           
                                                                             function check_sms3(r_id,tp) {
-                                                                               $('#loading_image').show();
+                                                                               
                                                                                 var recipient = tp;
                                                                                 var message = $('#smsmessage3'+r_id).val();
 
@@ -1431,7 +1433,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                                                 if ( recipient!=="") {
                                                                                     if(message!==""){
 
-
+                                                                                        $('#loading_image').show();
 
 
 
@@ -1452,6 +1454,7 @@ $.ajax({
 
                      },
                      error: function(jqXHR){
+                        $('#loading_image').hide();
                       alert(jqXHR.responseText);
                         //jqXHR.responseText
                      }

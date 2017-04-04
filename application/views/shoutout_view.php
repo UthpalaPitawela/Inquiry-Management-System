@@ -246,12 +246,13 @@
                                                                         <script>
                                                                                         
                                                                             function check_sms() {
-                                                                                $('#loading_image').show();
+                                                                                
                                                                                 var recipient = $('#sms_number').val();
                                                                                 var message = $('#text_body').val();
                                                                                  
                                                                                 if ( recipient!=="") {
                                                                                     if(message!==""){
+                                                                                        $('#loading_image').show();
                                                                                         $.ajax({
                                                                                             type: "get",
                                                                                             url: "<?php echo base_url(); ?>" +"index.php/sms/send_sms/send/"+recipient+"/"+message,
@@ -261,6 +262,7 @@
                                                                                                 swal("SMS sent successfully", "You clicked the button!", "success")
                                                                                             },
                                                                                             error: function (error) {
+                                                                                                $('#loading_image').hide();
                                                                                                 alert("Something went wrong");
                                                                                             }
                                                                                         }); 
@@ -330,13 +332,14 @@
                                                                         <script>
                                                                                         
                                                                                         function check_email() {
-                                                                                            $('#loading_image').show();
+                                                                                            
                                                                                             $recipient = $('#email').val();
                                                                                             $subject = $('#email_subj').val();
                                                                                             $message = $('#email_body').val();
                                                                                             
                                                                                             if ( $recipient!=="" ) {
                                                                                                 if($subject!=="" && $message!==""){
+                                                                                                    $('#loading_image').show();
                                                                                                     $.ajax({
                                                                                                         type: "post",
                                                                                                         url: "<?php echo base_url(); ?>" +"index.php/email/send_email/send",
@@ -349,6 +352,7 @@
                                                                                                             } 
                                                                                                         },
                                                                                                         error: function (error) {
+                                                                                                            $('#loading_image').hide();
                                                                                                             alert("Something went wrong");
                                                                                                         }
                                                                                                     }); 

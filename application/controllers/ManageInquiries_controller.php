@@ -151,7 +151,7 @@ echo "<li><a href=".$base."index.php/EditRecords_controller/index/".$str_id."><s
 <tr>
 <td>
 <?php
-echo "<li><a href=".$base."index.php/ManageInquiries_Controller/viewSummary/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";	 	
+echo "<li><a href=".$base."index.php/ManageInquiries_controller/viewSummary/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";	 	
 	 	?>
 </td>
 </tr>
@@ -237,7 +237,7 @@ echo "<li><a href=".$base."index.php/EditRecords_controller/index/".$str_id."><s
 <tr>
 <td>
 <?php
-echo "<li><a href=".$base."index.php/ManageInquiries_Controller/viewSummary/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";	 	
+echo "<li><a href=".$base."index.php/ManageInquiries_controller/viewSummary/".$str_id."><span class='fa fa-user'></span>&nbsp $name</a></li>";	 	
 	 	?>
 </td>
 </tr>

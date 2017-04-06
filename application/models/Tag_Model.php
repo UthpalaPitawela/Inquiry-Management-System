@@ -135,7 +135,7 @@ $this->db->select('tagid')->from('tagvsuser')->where('user_id', $userID)->where(
 
     $this->db->where('user_id', $rid)->where('tagid',$tagid);
 
-$this->db->delete('tagvsuser');
+return $this->db->delete('tagvsuser');
 
   }
   function getTags($userID){

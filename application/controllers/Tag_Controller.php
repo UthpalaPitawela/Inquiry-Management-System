@@ -17,15 +17,30 @@ $this->load->model("Tag_Model");
 
  	}
 public function addTag(){
-	 $tag_id=$this->uri->segment(3);
-	  $userID=$this->uri->segment(4);
+
+	$tag_id = $this->input->post('tid');
+	$userID = $this->input->post('userID');
+	 //$tag_id=$this->uri->segment(3);
+	  //$userID=$this->uri->segment(4);
 
 	  $searchresult = $this->Tag_Model->AddTag($tag_id,$userID);
 	  if($searchresult){
-	   redirect("index.php/EditRecords_controller/index/$userID");
+	  	 $alltags=$this->Tag_Model->getTags($userID);
+//foreach($searchresult as $sch){
+ foreach($alltags as $mytags){ echo"
+                                            <input style=\"width:50px\" type='text' value='$mytags->tag'/>
+                                                   <button type='button' onclick='removetag($userID,$mytags->tag_id)' class='btn btn-secondary button1'><i class='fa fa-times'></i></button>
+
+                                            ";}
+
+
+
+
+
+	   //redirect("index.php/EditRecords_controller/index/$userID");
 
 	  }else{
-	  	echo"baa";
+	  	echo"cannot";
 
 	  }
 
@@ -37,8 +52,29 @@ public function removetag(){
 
    $tagid=$this->input->post('tagid');
    	$searchresult = $this->Tag_Model->RemoveTag($rid,$tagid);
+
+
+if($searchresult){
+	  	 $alltags=$this->Tag_Model->getTags($rid);
+//foreach($searchresult as $sch){
+ foreach($alltags as $mytags){ echo"
+                                            <input style=\"width:50px\" type='text' value='$mytags->tag'/>
+                                                   <button type='button' onclick='removetag($rid,$mytags->tag_id)' class='btn btn-secondary button1'><i class='fa fa-times'></i></button>
+
+                                            ";}
+
+
+
+
+
+	   //redirect("index.php/EditRecords_controller/index/$userID");
+
+	  }else{
+	  	echo"cannot";
+
+	  }
 //   	echo "done";
-                         redirect("index.php/EditRecords_controller/index/$rid");
+                        // redirect("index.php/EditRecords_controller/index/$rid");
 
 
 }
@@ -49,6 +85,32 @@ public function addnewTag(){
 
    $userID=$this->input->post('userID');
 $searchresult = $this->Tag_Model->AddNewTag($newtag,$userID);
+
+
+
+if($searchresult){
+	  	 $alltags=$this->Tag_Model->getTags($userID);
+//foreach($searchresult as $sch){
+ foreach($alltags as $mytags){ echo"
+                                            <input style=\"width:50px\" type='text' value='$mytags->tag'/>
+                                                   <button type='button' onclick='removetag($userID,$mytags->tag_id)' class='btn btn-secondary button1'><i class='fa fa-times'></i></button>
+
+                                            ";}
+
+
+
+
+
+	   //redirect("index.php/EditRecords_controller/index/$userID");
+
+	  }else{
+	  	echo"cannot";
+
+	  }
+
+
+
+
 }
 
    public function searchTag(){
@@ -84,7 +146,8 @@ $tag_id=$sch->tag_id;
 ?>
 <td>
 <?php
-echo "<li><a href=".$base."index.php/Tag_Controller/addTag/".$tag_id."/".$userID."><span class='fa fa-tag'></span>&nbsp $sch->tag</a></li>";
+echo "<li><button type='button' onclick=addthetag(".$userID.",".$tag_id.")><span class='fa fa-tag'></span>&nbsp $sch->tag</button></li>";
+// href=".$base."index.php/Tag_Controller/addTag/".$tag_id."/".$userID."><span class='fa fa-tag'></span>&nbsp $sch->tag</a></li>";
 	 	
 	 	?>
 </td>

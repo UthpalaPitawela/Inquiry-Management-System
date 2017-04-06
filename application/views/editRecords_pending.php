@@ -715,7 +715,7 @@
                                         </div>
 
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary active" onclick="addnewtag(<?php echo $post->r_id;?>)" type="button">Add new</button>
+                                            <button class="btn active" onclick="addnewtag(<?php echo $post->r_id;?>)" type="button">Add new</button>
                                         </div>
 
                                         <div class = "col-md-3 col-xs-12"></div>
@@ -724,7 +724,7 @@
                                             <div id="tagdiv"></div>
 
                                             <br>
-                                            <div><?php foreach($tags as $mytags){ echo"
+                                            <div id=owntags><?php foreach($tags as $mytags){ echo"
                                             <input style=\"width:50px\" type='text' value='$mytags->tag'/>
                                                    <button type='button' onclick='removetag($post->r_id,$mytags->tag_id)' class='btn btn-secondary button1'><i class='fa fa-times'></i></button>
 
@@ -733,7 +733,7 @@
                                         </div>
                                     </div>                      
                                     <!-- END OF TAGSINPUT --> 
-s
+
 
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Potential Date* </label>
@@ -1143,8 +1143,7 @@ $.ajax({
                      data : {rid:rid,tagid:tagid},
                      success: function(searchresult) {
 
-                    //       redirect("index.php/EditRecords_controller/index/"+rid);
-                    window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+rid;
+                  $('#owntags').html(searchresult);
 
 
 
@@ -1171,7 +1170,8 @@ $.ajax({
                      data : {newtag:newtag,userID:userID},
                      success: function(searchresult) {
 
-                             window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+userID;
+                            $('#owntags').html(searchresult);
+                            // window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+userID;
 
                             
 
@@ -1225,6 +1225,58 @@ $.ajax({
                      success: function(searchresult) {
 
                             $('#tagdiv').html(searchresult);
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+            // $.ajax({
+
+            //     type:"get",
+            //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
+            //     success: function (searchresult) {
+
+
+            //         $('#tagdiv').html(searchresult);
+ 
+            //     }
+            // })
+
+
+    }
+
+
+    }
+
+
+
+
+    function addthetag(userID,tagid){
+
+
+// var searchtag = document.getElementById("tag").value;
+
+
+    $('#tagdiv').html("");
+     // alert(skey);
+
+
+    if(tagid!="" && userID!=""){
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/Tag_Controller/addTag/',
+                     data : {tid:tagid,userID:userID},
+                     success: function(searchresult) {
+
+                            $('#owntags').html(searchresult);
                             
 
                      },

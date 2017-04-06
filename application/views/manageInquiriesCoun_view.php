@@ -177,7 +177,7 @@
                  <li class="xn-search" style="z-index: 1001;">
                          <form role="form">
                              <input type="text" style="width: 200px" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search Tags">
-                             <input type="text" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search Tags">
+                           
                               <div id="tagresultdiv" style="background-color: black; " ></div> 
                           </form>
                 </li>
@@ -1786,7 +1786,7 @@ $.ajax({
 $(document).click(function() {
     
 
-
+$("#tagresultdiv").html("");
     $("#namediv").html("");
     $("#contactnodiv").html("");
  
@@ -1794,6 +1794,7 @@ $(document).click(function() {
  
  
  $(document).ready(function () {
+
     $('#searchname').click(function() {
      $("#tagresultdiv").html("");
     // $("#namediv").html("");
@@ -1816,7 +1817,7 @@ $(document).click(function() {
  
  });
 
-
+});
     function tagsinput(){
 
  var searchtag = document.getElementById("searchtag").value;

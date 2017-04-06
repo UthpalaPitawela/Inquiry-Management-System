@@ -37,17 +37,64 @@ class Tag_Model extends CI_Model{
   }
   function AddNewTag($newtag,$userID){
 
-     $data = array(
+ 
+
+
+
+    
+
+          $this->db->select('tag_id')->from('tags')->where('tag', $newtag);
+      $querycheck =$this->db->get();
+       $rowcountcheck2 = $querycheck->num_rows();
+    
+          if($rowcountcheck2>0){
+
+            foreach ($querycheck->result_array() as $row) {
+               $tagid=$row['tag_id'];
+
+
+
+
+
+
+$this->db->select('tagid')->from('tagvsuser')->where('user_id', $userID)->where('tagid', $tagid);
+      $querycheck =$this->db->get();
+       $rowcountcheck = $querycheck->num_rows();
+    
+          if($rowcountcheck>0){
+
+            return 1;
+          }else{
+
+              $data = array(
+      'user_id'=>$userID,    
+      'tagid' => $tagid,);
+
+        return $this->db->insert('tagvsuser',$data); 
+
+
+         }
+
+       }
+
+
+
+          }else{
+
+             $data = array(
           
       'tag' => $newtag,);
 
          $this->db->insert('tags',$data); 
 
+
+
+
+
+
           $this->db->select('tag_id')->from('tags')->where('tag', $newtag);
       $querycheck =$this->db->get();
-       $rowcountcheck = $querycheck->num_rows();
-    
-          if($rowcountcheck>0){
+      
 
             foreach ($querycheck->result_array() as $row) {
                $tagid=$row['tag_id'];
@@ -60,23 +107,30 @@ class Tag_Model extends CI_Model{
 
 
 
-            }
+          
 
 
 
-          }else{
-
-              $data = array(
-      'user_id'=>$userID,    
-      'tagid' => $tag_id,);
-
-        return $this->db->insert('tagvsuser',$data); 
-
+           
 
           }
 
 
   }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
   function RemoveTag($rid,$tagid){
 
     $this->db->where('user_id', $rid)->where('tagid',$tagid);

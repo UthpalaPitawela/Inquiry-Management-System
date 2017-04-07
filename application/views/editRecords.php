@@ -17,9 +17,7 @@
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
 
-        <!-- ALERT CSS -->
-        <!-- <link href="<?php echo base_url('public/alert/css/alert.css'); ?>" rel="stylesheet" />
-        <link href="<?php echo base_url('public/alert/themes/default/theme.css'); ?>" rel="stylesheet" /> -->
+        
         <!-- EOF CSS INCLUDE --> 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
 
@@ -27,13 +25,14 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js"></script> 
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js"></script>  -->
 
 
-        <!-- ALERT -->
-        <!-- <script src="<?php echo base_url('public/alert/js/alert.js'); ?>"></script> -->
-        <!-- JS INCLUDE --> 
+        
 
         <style>
        input[type="text"][disabled] {
@@ -1183,7 +1182,7 @@ $.ajax({
                         //jqXHR.responseText
                      }
                  });
-               
+            
 
 
 
@@ -1201,7 +1200,7 @@ $.ajax({
 
 
     }else{
-        alert("Enter the tag input");
+        swal('Error','Enter the tag input!','error');
     }
 
 

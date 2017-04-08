@@ -36,6 +36,7 @@
        input[type="text"][disabled] {
             color: black;
         }
+
         </style>
 
     </head>
@@ -118,7 +119,7 @@
                         <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
                     </li>
 
@@ -143,7 +144,7 @@
                     
                     <?php if($status1==0){ ?>
                     <li class="xn-title">Administration</li>
-                    <li class="active">
+                    <li>
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
                     </li>    
 
@@ -189,7 +190,7 @@
                     <li><a href="<?php echo base_url();?>index.php/Campaign_Controller/index">Campaigns</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
-                <div id="loading_image" style="display:none;position:absolute;top:3%;left:35%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="90" height="90"/>Loading..</div>
+               <!-- <div id="loading_image" style="display:none;position:absolute;top:3%;left:35%;padding:2px;"><img src="<?php //echo base_url('public/img/waiting.gif'); ?>" width="90" height="90"/>Loading..</div> -->
 
                 
                 <!-- PAGE CONTENT WRAPPER -->
@@ -214,6 +215,8 @@
                                                           <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                             <h4 class="modal-title">Create Campaign</h4>
+                                                            <div id="loading_image" style="display:none;position:absolute;top:-5%;left:35%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="90" height="90"/>Loading..</div>
+
                                                           </div>
                                                           <br>
                                                           
@@ -241,7 +244,8 @@
                                                                                 <div class="col-md-9">
                                                                                     <div class="input-group">
                                                                                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                                                        <input type="text" name="inquiry_date" id="inquiry_date" class="form-control datepicker" value="" required="" />                                            
+                                                                                        
+                                                                                        <input type="text" name="inquiry_date" id="inquiry_date" value="<?php echo date('Y-m-d'); ?>" data-date-format="yyyy-mm-dd" data-date-viewmode="years" class="form-control" required>                                            
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -475,46 +479,59 @@
         </script>
 
         <script>
+        //To select date of insertion
+          $( function() {
+            $( "#inquiry_date" ).datepicker();
+          } );
+        </script> 
+
+        <script>
             function update_campaign() {
-                $('#loading_image').show(); 
+                
                 $campaign_name = $('#campaign_name').val();
                 $date = $('#inquiry_date').val();
                 $type = $('#inquiry_type').val();
                 $status = $('#inquiry_status').val();
                 
-                
-                if ($type!=="" || $status!==""){
-
-                    $.ajax({
-                        type: "post",
-                        url: "<?php echo base_url();?>index.php/Campaign_Controller/evaluate_campaign",
-                        dataType: 'json',
-                        data: {name: $campaign_name, date: $date, type: $type ,status: $status},
-                            success: function (data) {
-                                $('#loading_image').hide(); 
-                                if (data.status == "success") {
-                                    $('#newModal').modal('hide');
-                                    swal({title: data.info, text: "You clicked the button!", type: "success"},
-                                           function(){
-                                               var url = "<?php echo base_url();?>index.php/Campaign_Controller/send_campaign/"+data.id;
-                                               window.location.href = url;
-        
-                                           }
-                                        );
-                                }else{
-                                    swal(data.info);
+                if ($campaign_name !==""){
+                    if ($type!=="" || $status!==""){
+                        $('#loading_image').show(); 
+                        $.ajax({
+                            type: "post",
+                            url: "<?php echo base_url();?>index.php/Campaign_Controller/evaluate_campaign",
+                            dataType: 'json',
+                            data: {name: $campaign_name, date: $date, type: $type ,status: $status},
+                                success: function (data) {
+                                    $('#loading_image').hide(); 
+                                    if (data.status == "success") {
+                                        $('#newModal').modal('hide');
+                                        swal({title: data.info, text: "You clicked the button!", type: "success"},
+                                               function(){
+                                                   var url = "<?php echo base_url();?>index.php/Campaign_Controller/send_campaign/"+data.id;
+                                                   window.location.href = url;
+            
+                                               }
+                                            );
+                                    }else{
+                                        $('#loading_image').hide(); 
+                                        $('#newModal').modal('hide');
+                                        swal(data.info);
+                                    }
+                                                                                                        
+                                },
+                                error: function (error) {
+                                    $('#loading_image').hide(); 
+                                    alert("Error in connection");
                                 }
+                        }); 
                                                                                                     
-                            },
-                            error: function (error) {
-                                alert("Error in connection");
-                            }
-                    }); 
-                                                                                                
+                    }else{
+                        alert("Select a Category");
+                    }
                 }else{
-                    alert("Select a Category");
+                    alert("Fill the required fields");
                 }
-                    
+                        
             }
                                                                                
         </script>
@@ -547,6 +564,10 @@
                         $('.modal-title').html('<i class="glyphicon glyphicon-bullhorn"></i>  '+campName); 
                     }
                     
+                },
+                error: function (error) {
+                    $('#loading_image').hide();
+                    alert("Something went wrong");
                 }
             }) 
  

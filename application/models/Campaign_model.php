@@ -50,6 +50,11 @@ class Campaign_model extends CI_Model
 
     }
 
+    public function delete_campaign($camp_id){
+        $this->db->where('campaign_id', $camp_id);
+        $this->db->delete('campaign'); 
+    }
+
     public function get_camp($camp_id){
         $this->db->where('campaign_id',$camp_id);
         $query = $this->db->get('campaign');
@@ -80,6 +85,16 @@ class Campaign_model extends CI_Model
             return false;
         }
 
+    }
+
+    public function select_bulkSMS($camp_id){
+
+        $this->db->select("Contactno,Fname,r_id");
+        $this->db->where('campaign_id',$camp_id);
+        $query = $this->db->get('register');
+        
+        return $query->result();
+        
     }
 
     public function select_bulkEmail($camp_id){

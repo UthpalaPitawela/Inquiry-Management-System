@@ -1,4 +1,21 @@
 <?php
+if (time() - $_SESSION['start'] > 1800) {
+            session_destroy();
+            
+            ?>
+            <script type="text/javascript">
+                window.location="<?php echo base_url()?>index.php/Login_Controller/session_timeout_direct/";
+            </script>
+            <?php
+
+        }
+        else{
+            $_SESSION['start']=time();
+
+        }
+          ?>
+
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">

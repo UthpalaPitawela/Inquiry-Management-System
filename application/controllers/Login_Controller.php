@@ -12,6 +12,9 @@ $this->load->model("Student_Data_Model");
         $this->load->view("Login_View");
         
     }
+    public function session_timeout_direct(){
+        $this->load->view("Session_timeout_login_view");
+    }
     public function validate_user(){
         $username = $this->input->post('username');
         $password = $this->input->post('password');
@@ -35,6 +38,8 @@ $this->load->model("Student_Data_Model");
                     $_SESSION["user_ID"]=$row['u_id'];
                     $_SESSION["propic"]=$row['profilepicture'];
                     $_SESSION["status"]=$row['status'];
+                    $_SESSION['start'] = time(); 
+
                     if ($row['status']==0) {
                         $this->load->model('Manager_Profile_Model');
                         $data['result'] = $this->Manager_Profile_Model->index();
@@ -101,6 +106,8 @@ $this->load->model("Student_Data_Model");
                     $_SESSION["first_username"]=$rowstudent['firstname'];
                     $_SESSION["user_ID"]=$rowstudent['tpnumber'];
                     $_SESSION["propic"]=$rowstudent['propic'];
+                    $_SESSION['start'] = time(); 
+
                     $data['programme'] = $this->Login_Model->getCourses($username);
                     if($this->input->post('username') && $this->input->post('password')) {
                             redirect('index.php/Login_Controller/validate_user');

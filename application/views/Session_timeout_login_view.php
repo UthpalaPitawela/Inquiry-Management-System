@@ -1,20 +1,3 @@
-<?php
-if (time() - $_SESSION['start'] > 1800) {
-            session_destroy();
-            
-            ?>
-            <script type="text/javascript">
-                window.location="<?php echo base_url()?>index.php/Login_Controller/session_timeout_direct/";
-            </script>
-            <?php
-
-        }
-        else{
-            $_SESSION['start']=time();
-
-        }
-          ?>
-
 
 <!DOCTYPE html>
 <html lang="en" class="body-full-height">
@@ -45,28 +28,26 @@ if (time() - $_SESSION['start'] > 1800) {
             <div class="login-box animated fadeInDown">
                
                 <div class="login-body">
-                    <div class="login-title"><strong>Reset Password</strong></div>
-                    <form action="<?php echo base_url('index.php/ResetPassword_Controller/changePassword/'.$userid);?>" class="form-horizontal" method="post">
+
+                    <div class="login-title"><strong>Your Session Has Timed out</strong><br> Please login</div>
+                    <form action="<?php echo base_url('index.php/Login_Controller/validate_user');?>" class="form-horizontal" method="post">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="New Password" name="newPwd" required />
-                             <?php echo form_error('newPwd');?>
+                            <input type="text" class="form-control" placeholder="Username" name="username" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="password" class="form-control" placeholder="Confirm Password" name="newConfirmPwd" required />
-                           
-                             <?php echo form_error('newConfirmPwd');?>
+                            <input type="password" class="form-control" placeholder="Password" name="password" />
                         </div>
                     </div>
                     <div class="form-group">
                       
                         <div class="col-md-6">
-                           
+                            <a href="" class="btn btn-link btn-block" data-toggle="modal" data-target="#myModal">Forgot your password?</a>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-info btn-block">Save</button><br>
+                            <button class="btn btn-info btn-block">Log In</button><br>
                              <!-- <a href="#">Sign Up</a> -->
                         </div>
 
@@ -82,7 +63,38 @@ if (time() - $_SESSION['start'] > 1800) {
             </div>
             
         </div>
-    
+    <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+    <form action="<?php echo base_url('index.php/Email/ForgotPassword_Controller/sendPassword');?>" method="post">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Forgot Password</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+            
+            <div class="col-md-6">
+                <label>Enter email address:</label><br>
+               
+            </div>
+            <div class="col-md-6">
+                <textarea class="form-control" rows="1" name="summary1" id="summary1"></textarea>
+            </div>
+         
+        </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" id="save" class="btn btn-primary">Send Password</button>
+        </div>
+
+      </div>
+      </form>
+      
+    </div>
+  </div>
       
 
         
@@ -107,25 +119,40 @@ if (time() - $_SESSION['start'] > 1800) {
 <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 
 <?php
-    if( $_SESSION["alert2"]=="success"){       
+    if( $_SESSION["alert2"]=="insertsuccess"){       
 ?>
 <script type="text/javascript">
-    swal("Submitted!", "Password reset successfully!", "success");
+    swal("", "Email is sent to reset the password!", "success");
       
 </script>
 
+
+
 <?php
-}elseif ($_SESSION["alert2"]=="unsuccess") {
+}elseif ($_SESSION["alert2"]=="error") {
 ?>
     <script type="text/javascript">
     swal(
-      'Oops...',
-      'Something went wrong!',
+      '',
+      'You are not an authorized user!',
       'error'
     );
     </script>
 <?php
+}elseif($_SESSION["alert2"] == "notsuccess"){
+?>
+<script type="text/javascript">
+    swal(
+      '',
+      'Failed to send the mail!',
+      'error'
+    );
+    </script>
+
+<?php
 }
+
+
 unset($_SESSION['alert2']);
 }
 ?>
@@ -133,12 +160,10 @@ unset($_SESSION['alert2']);
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
 <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 
+
 <?php
 include 'imports.php';
 ?>
-
-
-
 
 
 

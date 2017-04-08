@@ -2,15 +2,9 @@
 
 require 'Autoload.php';
 
-class Send_sms extends CI_Controller {
+class Send_bulksms extends CI_Controller {
 
-    function send($recipient,$text){
-        /*
-       $campaign = 'camp1';
-       $campaign_id = '1';
-       $recipient = '';
-       $subject = "regarding lecs";
-       $message = "lectures have been postponed"; */
+    function send($text,$id,$campaign){
 
 
         $apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhMjhjMmVmMC0yM2NlLTExZTYtOGQ3My0zN2JlMTBmZDRmNjUiLCJzdWIiOiJTSE9VVE9VVF9BUElfVVNFUiIsImlhdCI6MTQ2NDMyODEwNywiZXhwIjoxNzc5ODYwOTA3LCJzY29wZXMiOnsiY29udGFjdHMiOlsicmVhZCIsIndyaXRlIl0sImFjdGl2aXRpZXMiOlsid3JpdGUiLCJyZWFkIl0sIm1lc3NhZ2VzIjpbIndyaXRlIiwicmVhZCJdfSwic29fdXNlcl9pZCI6IjI2OCIsInNvX3VzZXJfcm9sZSI6InVzZXIiLCJzb19wcm9maWxlIjoiYWxsIiwic29fdXNlcl9uYW1lIjoiIiwic29fYXBpa2V5Ijoibm9uZSJ9.oVr6Y5acqK0XBYL21ALYzZc2qSZOm81EaqbcuzaTbMA';
@@ -21,7 +15,7 @@ class Send_sms extends CI_Controller {
         $config->setSSLVerification(false);
 
         $apiInstance = new Swagger\Client\Api\DefaultApi();
-
+        /*
         $message = new Swagger\Client\Model\Message(array(
          'source' => 'EDULINK',
          'destinations' => [$recipient],
@@ -29,14 +23,32 @@ class Send_sms extends CI_Controller {
           'sms' => $text
          ),
          'transports' => ['SMS']
-        ));
+        )); */
 
-        if($recipient!=""){
-            $result = $apiInstance->messagesPost($message,$config);
-            //print json_encode(array("status"=>"success"));
-        }//else{
-          //  print json_encode(array("status"=>"fail"));
-      //  }
+        if($id!=""){
+            $this->load->model('Campaign_model','campaign_model');
+            $res = $this->campaign_model->select_bulkSMS($id);
+            $recipients = array();
+            foreach ($res as $row) {
+                $message = new Swagger\Client\Model\Message(array(
+               'source' => 'EDULINK',
+               'destinations' => [$row->Contactno],
+               'content' => array(
+                'sms' => $text
+               ),
+               'transports' => ['SMS']
+              ));
+                $result = $apiInstance->messagesPost($message,$config);
+            }
+           
+           // print json_encode(array("status"=>"success"));
+            
+           
+        } /* else{
+            print json_encode(array("status"=>"fail"));
+        } */
+
+        
 
     }
 }

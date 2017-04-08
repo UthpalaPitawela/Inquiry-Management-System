@@ -118,7 +118,7 @@
                         <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
                     </li>
 
@@ -139,7 +139,7 @@
                     
                     <?php if($status1==0){ ?>
                     <li class="xn-title">Administration</li>
-                    <li class="active">
+                    <li >
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
                     </li>    
 
@@ -255,11 +255,15 @@
                                                                                         $('#loading_image').show();
                                                                                         $.ajax({
                                                                                             type: "get",
-                                                                                            url: "<?php echo base_url(); ?>" +"index.php/sms/send_sms/send/"+recipient+"/"+message,
+                                                                                            url: "<?php echo base_url(); ?>" +"index.php/sms/Send_sms/send/"+recipient+"/"+message,
                                                                                            
                                                                                             success: function (msg) {
                                                                                                 $('#loading_image').hide();
-                                                                                                swal("SMS sent successfully", "You clicked the button!", "success")
+                                                                                               // if(msg.status == "success"){
+                                                                                                    swal("SMS sent successfully", "You clicked the button!", "success");
+                                                                                               // }else{
+                                                                                                  //  swal('Oops...','An error occured','error');
+                                                                                               // }
                                                                                             },
                                                                                             error: function (error) {
                                                                                                 $('#loading_image').hide();
@@ -348,7 +352,7 @@
                                                                                                         success: function (msg) {
                                                                                                             $('#loading_image').hide();
                                                                                                             if (msg.status == "success") {
-                                                                                                                swal(msg,info, "You clicked the button!", "success");
+                                                                                                                swal("Your message has been sent", "You clicked the button!", "success");
                                                                                                             } 
                                                                                                         },
                                                                                                         error: function (error) {
@@ -442,10 +446,6 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins.js"></script>        
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/actions.js"></script>        
         <!-- END TEMPLATE -->
-
-        <!-- START MyJS -->
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/js/shoutout.js"></script>        
-        <!-- END MyJS -->
 
         <script>
         $('.mb-control').click(function(e){

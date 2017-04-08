@@ -118,7 +118,7 @@
                         <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
                     </li>
 
@@ -143,7 +143,7 @@
                     
                     <?php if($status1==0){ ?>
                     <li class="xn-title">Administration</li>
-                    <li class="active">
+                    <li >
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
                     </li>    
 
@@ -189,7 +189,7 @@
                     <li><a href="#">Create Campaign</a></li>
                 </ul>
                 <!-- END BREADCRUMB -->
-                <div id="loading_image" style="display:none;position:absolute;top:10%;left:50%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="60" height="60" /><br>Loading..</div>
+                 <div id="loading_image" style="display:none;position:absolute;top:3%;left:35%;padding:2px;"><img src="<?php echo base_url('public/img/waiting.gif'); ?>" width="90" height="90"/>Loading..</div>
 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
@@ -334,20 +334,23 @@
                                                     <script>
                                                                     
                                                         function check_sms() {
-                                                            
-                                                            var recipient = $('#sms_number').val();
+                                                            var campaign = $('#campaign_name').val();
+                                                            var id = $('#campaign_id').val();
                                                             var message = $('#text_body').val();
-                                                             
-                                                            if ( recipient!=="") {
+                                                           
                                                                 if(message!==""){
                                                                     $('#loading_image').show();
                                                                     $.ajax({
                                                                         type: "get",
-                                                                        url: "<?php echo base_url(); ?>" +"index.php/sms/send_sms/send/"+recipient+"/"+message,
+                                                                        url: "<?php echo base_url(); ?>" +"index.php/sms/Send_bulksms/send/"+message+"/"+id+"/"+campaign,
                                                                        
                                                                         success: function (msg) {
                                                                             $('#loading_image').hide();
-                                                                            swal("SMS sent successfully", "You clicked the button!", "success")
+                                                                            //if(msg.status == "success"){
+                                                                                swal("Bulk SMS sent successfully", "You clicked the button!", "success");
+                                                                            //}else{
+                                                                              //  swal('Oops...','Check the contact numbers','error');
+                                                                            //}
                                                                         },
                                                                         error: function (error) {
                                                                             $('#loading_image').hide();
@@ -359,9 +362,7 @@
                                                                 }else{
                                                                     alert("Please fill the required field");
                                                                 } 
-                                                            }else{
-                                                                alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
-                                                            }
+                                                            
                                                         }        
                                                                 
 
@@ -426,7 +427,9 @@
                                                                                     data: {camp: $campaign, id: $id, subj: $subject , message: $message},
                                                                                     success: function (data) {
                                                                                         $('#loading_image').hide();
-                                                                                        swal("Bulk email sent successfully", "You clicked the button!", "success");
+                                                                                        if (data.status == "success") {
+                                                                                            swal("Bulk email sent successfully", "You clicked the button!", "success");
+                                                                                        }
                                                                                     },
                                                                                     error: function (error) {
                                                                                         $('#loading_image').hide();
@@ -548,6 +551,10 @@
                         $('.modal-title').html('<i class="glyphicon glyphicon-bullhorn"></i>  '+campName); 
                     }
                     
+                },
+                error: function (error) {
+                    $('#loading_image').hide();
+                    alert("Something went wrong");
                 }
             }) 
  

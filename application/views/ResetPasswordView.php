@@ -1,21 +1,3 @@
-<?php
-if (time() - $_SESSION['start'] > 1800) {
-            session_destroy();
-            
-            ?>
-            <script type="text/javascript">
-                window.location="<?php echo base_url()?>index.php/Login_Controller/session_timeout_direct/";
-            </script>
-            <?php
-
-        }
-        else{
-            $_SESSION['start']=time();
-
-        }
-          ?>
-
-
 <!DOCTYPE html>
 <html lang="en" class="body-full-height">
     <head>        

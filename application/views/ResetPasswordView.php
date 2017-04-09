@@ -94,6 +94,7 @@
 ?>
 <script type="text/javascript">
     swal("Submitted!", "Password reset successfully!", "success");
+    
       
 </script>
 

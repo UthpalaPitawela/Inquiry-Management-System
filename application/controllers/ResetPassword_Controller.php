@@ -26,13 +26,16 @@ class ResetPassword_Controller extends CI_Controller{
 
     			if($result==1){
                             $_SESSION["alert2"]="success";
+                            redirect("index.php/Login_Controller/index");
+                            
 
                 }else{
                             $_SESSION["alert2"]="unsuccess";
+                            redirect("index.php/Email/ForgotPassword_Controller/ViewResetPw/".$uid);
 
                      }
 
-               redirect("index.php/Login_Controller/index");
+               
                       
                       
            }     

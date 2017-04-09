@@ -32,6 +32,13 @@ if (time() - $_SESSION['start'] > 1800) {
         <!-- EOF CSS INCLUDE -->  
                                  
     </head>
+    <style>
+        .ScrollStyle {
+            
+            max-height: 400px;
+            overflow-y: scroll;
+        }                 
+        </style>
 
     <style>
         .ScrollStyle {

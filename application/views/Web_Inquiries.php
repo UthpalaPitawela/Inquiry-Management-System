@@ -15,6 +15,13 @@
         <!-- EOF CSS INCLUDE -->  
                                  
     </head>
+    <style>
+        .ScrollStyle {
+            
+            max-height: 400px;
+            overflow-y: scroll;
+        }                 
+        </style>
 
     <body>
 

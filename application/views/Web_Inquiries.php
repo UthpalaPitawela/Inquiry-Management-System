@@ -33,6 +33,14 @@ if (time() - $_SESSION['start'] > 1800) {
                                  
     </head>
 
+    <style>
+        .ScrollStyle {
+            
+            max-height: 400px;
+            overflow-y: scroll;
+        }                 
+        </style>
+
     <body>
 
          <?php

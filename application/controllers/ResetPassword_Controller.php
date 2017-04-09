@@ -9,7 +9,17 @@ class ResetPassword_Controller extends CI_Controller{
                
                
                
+               
+                if ($this->form_validation->run() == FALSE)
+                {
+                        
+                    $_SESSION["alert2"] = "unsuccess";
+                    redirect("index.php/Email/ForgotPassword_Controller/ViewResetPw/".$uid);
+                }
+                else
+                {
     			$password = $this->input->post('newPwd');
+
     			
                         
     			$result = $this->ResetPassword_Model->changePassword($password,$uid);
@@ -25,7 +35,7 @@ class ResetPassword_Controller extends CI_Controller{
                redirect("index.php/Login_Controller/index");
                       
                       
-                
+           }     
 	}
 }
 

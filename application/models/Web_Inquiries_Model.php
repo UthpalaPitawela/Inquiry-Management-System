@@ -11,7 +11,7 @@ class Web_Inquiries_Model extends CI_Model{
 	}
 
 	function getInquiries(){
-		$query = $this->db->query("SELECT Fname,Lname,Email,Contactno,interested_study,message,r_id FROM register WHERE CounsellorName IS NULL AND Status = 'Pending' AND web  = 1 ");
+		$query = $this->db->query("SELECT Fname,Lname,Email,Contactno,interested,study,message,r_id FROM register WHERE CounsellorName IS NULL AND Status = 'Pending' AND web  = 1 ");
 		return $query;
 	}
 

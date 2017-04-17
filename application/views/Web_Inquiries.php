@@ -35,7 +35,7 @@ if (time() - $_SESSION['start'] > 1800) {
     <style>
         .ScrollStyle {
             
-            max-height: 400px;
+            max-height: 600px;
             overflow-y: scroll;
         }                 
         </style>
@@ -43,7 +43,7 @@ if (time() - $_SESSION['start'] > 1800) {
     <style>
         .ScrollStyle {
             
-            max-height: 400px;
+            max-height: 600px;
             overflow-y: scroll;
         }                 
         </style>
@@ -198,21 +198,21 @@ if (time() - $_SESSION['start'] > 1800) {
                 <!-- END BREADCRUMB -->                       
                 
                     <!-- PAGE CONTENT WRAPPER -->
-                <div class="page-content-wrap">
+               <div class="page-content-wrap">
                         <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
                             <div class="row">
-                                <h4 align="center">Web Inquiries</h4><br>
+                                <h2 align = "center" >Web Inquiries</h2><br>
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-4">
-                                    <label>Select the counsellor to assign inquiries</label>
+                                <div class="col-md-0"></div>
+                                <div class="col-md-4" style="align-items: right">
+                                    <h3 align="right" >Select the counsellor to assign inquiries</h3>
                                 </div>
                                <!--  <div class="col-md-1"></div> -->
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="align-items: left">
                                 <div class="btn-group">
                                
                                     <select id = "counsellorname" name="counsellornamename" class="btn btn-primary dropdown-toggle">
@@ -233,6 +233,7 @@ if (time() - $_SESSION['start'] > 1800) {
                                 
                             </div>
                             <br>
+                            <br>
                             <div class="row">
                                 <div class="ScrollStyle" >
                                     <div class="panel-body panel-body-table">
@@ -246,7 +247,8 @@ if (time() - $_SESSION['start'] > 1800) {
                                                                 <th width="110" align="center">Last Name</th>
                                                                 <th width="60" align="center">Email</th>
                                                                 <th width="60" align="center">Contact No</th>
-                                                                <th width="120" align="center">Interested Study</th>
+                                                                <th width="120" align="center">Interested</th>
+                                                                <th width="120" align="center">Study</th>
                                                                 <th width="140" align="center">Message</th>
                                                                 <th width="60" align="center">Assign</th>
                                                                 
@@ -262,7 +264,8 @@ if (time() - $_SESSION['start'] > 1800) {
                                                                 $lname = $row['Lname'];
                                                                 $email = $row['Email'];
                                                                 $contactno = $row['Contactno'];
-                                                                $interestedStudy = $row['interested_study'];
+                                                                $interested = $row['interested'];
+                                                                $study = $row['study'];
                                                                 $message = $row['message'];
                                                                 $rid = $row['r_id']
                                                             
@@ -275,7 +278,8 @@ if (time() - $_SESSION['start'] > 1800) {
                                                                 <td  style="height:40px; padding-bottom: 0px"><?php echo $lname;   ?></td>
                                                                 <td  style="height:40px; padding-bottom: 0px"><?php echo $email;   ?></td>
                                                                 <td  style="height:40px; padding-bottom: 0px"><?php echo $contactno;   ?></td>
-                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $interestedStudy;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $interested;   ?></td>
+                                                                <td  style="height:40px; padding-bottom: 0px"><?php echo $study;   ?></td>
                                                                 <td  style="height:40px; padding-bottom: 0px"><?php echo $message;   ?></td>
                                                                  <td  style="height:40px; padding-bottom: 0px"><label class="switch switch-small" style="height:20px">
                                                     <input type="checkbox" class = "chk" id="assign" name="assign"  value="<?php echo $rid?>"  />

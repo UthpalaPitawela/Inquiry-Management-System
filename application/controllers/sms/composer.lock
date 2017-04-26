@@ -1,0 +1,71 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "36620e9b2d80c2cf41c5c5e8f8195aad",
+    "content-hash": "25ae7a7cd91dc45ed05b54ba68df4b51",
+    "packages": [
+        {
+            "name": "shoutoutlabs/shoutout-sdk",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shoutout-labs/shoutout-sdk-php.git",
+                "reference": "dca37a0d875e1dcc26da1bb7f08d0a720889b1c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shoutout-labs/shoutout-sdk-php/zipball/dca37a0d875e1dcc26da1bb7f08d0a720889b1c4",
+                "reference": "dca37a0d875e1dcc26da1bb7f08d0a720889b1c4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~1.12",
+                "phpunit/phpunit": "~4.8",
+                "satooshi/php-coveralls": "~1.0",
+                "squizlabs/php_codesniffer": "~2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Swagger\\Client\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ShoutOUT Team",
+                    "email": "dev@getshoutout.com"
+                }
+            ],
+            "description": "shoutout sdk for php",
+            "homepage": "http://getshoutout.com",
+            "keywords": [
+                "api",
+                "php",
+                "sdk",
+                "swagger"
+            ],
+            "time": "2017-03-09 06:43:25"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

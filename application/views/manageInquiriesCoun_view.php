@@ -1,20 +1,3 @@
-<?php
-if (time() - $_SESSION['start'] > 1800) {
-            session_destroy();
-            
-            ?>
-            <script type="text/javascript">
-                window.location="<?php echo base_url()?>index.php/Login_Controller/session_timeout_direct/";
-            </script>
-            <?php
-
-        }
-        else{
-            $_SESSION['start']=time();
-
-        }
-          ?>
-
 <!DOCTYPE html>
 <html lang="en"> 
 
@@ -36,19 +19,6 @@ if (time() - $_SESSION['start'] > 1800) {
         <!-- EOF CSS INCLUDE --> 
 
         <style type="text/css">
-
-             #namediv{
- -            color:white;
- -
- -        }
- -        #tagresultdiv{
- -            color:white;
- -        }
- -        #contactnodiv{
- -            color: white;
- -
- -        }
-
             input:focus{
                 outline: none;
             }
@@ -176,28 +146,12 @@ if (time() - $_SESSION['start'] > 1800) {
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
 
-                  <li class="xn-search" style="z-index: 1001;">
-                          <form role="form">
-                             <input type="text" style="width: 200px" id="searchname" name="search" onkeyup="nameSearch() " placeholder="Search by Name">
-                             <div id="namediv" style="background-color: black; " ></div> 
-                         </form>
-                 </li>
- 
                  <li class="xn-search" style="z-index: 1001;">
-                         <form role="form">
-                             <input type="text" style="width: 200px" id="searchcontactno" name="search" onkeyup="ContactNOSearch()" placeholder="Search by Contact No.">
-                             <div id="contactnodiv" style="background-color: black; " ></div> 
-                         </form>
-                 </li>
-                 
- 
-                 <li class="xn-search" style="z-index: 1001;">
-                         <form role="form">
-                             <input type="text" style="width: 200px" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search Tags">
-                           
-                              <div id="tagresultdiv" style="background-color: black; " ></div> 
-                          </form>
-                </li>
+                        <form role="form">
+                            <input type="text" id="searchtag" name="search" onkeyup="tagsinput()" placeholder="Search Tags">
+                            <div id="tagresultdiv" style="background-color: black; " ></div> 
+                        </form>
+                    </li>
                     
 
                     <!-- SIGN OUT -->
@@ -605,9 +559,10 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" id="smssummaryform<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary2">
+                                                    <form class="form-horizontal" id="smssummaryform<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/sms/Sendsms_summary/send">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+                                                        <input type="text" name="page" id="page" value="4" hidden="hidden" />
 
                                                         <input type="text" name="sms_count" id="sms_count" value="<?php echo $post['sms_count']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -630,13 +585,13 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage1<?php echo $post['r_id']; ?>"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="button" onclick="check_sms('<?php echo $post['Contactno']; ?>','<?php echo $post['r_id']; ?>')" id="save" class="btn btn-primary">Send Text Message</button>
+                                                                <button type="submit"  id="save" class="btn btn-primary">Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -962,9 +917,10 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" id="smssummaryform2<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary2">
+                                                    <form class="form-horizontal" id="smssummaryform2<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/sms/Sendsms_summary/send">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+                                                        <input type="text" name="page" id="page" value="4" hidden="hidden" />
 
                                                         <input type="text" name="sms_count" id="sms_count" value="<?php echo $post['sms_count']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -987,13 +943,13 @@ if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage2<?php echo $post['r_id']; ?>"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms2('<?php echo $post['Contactno']; ?>','<?php echo $post['r_id']; ?>')">Send Text Message</button>
+                                                                <button type="submit" id="save" class="btn btn-primary" >Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -1309,9 +1265,10 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" id="smssummaryform3<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary2">
+                                                    <form class="form-horizontal" id="smssummaryform3<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/sms/Sendsms_summary/send">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
+                                                        <input type="text" name="page" id="page" value="4" hidden="hidden" />
 
                                                         <input type="text" name="sms_count" id="sms_count" value="<?php echo $post['sms_count']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
@@ -1334,13 +1291,13 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage3<?php echo $post['r_id']; ?>"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms3('<?php echo $post['r_id']; ?>','<?php echo $post['Contactno']; ?>')">Send Text Message</button>
+                                                                <button type="submit" id="save" class="btn btn-primary" >Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -1801,46 +1758,16 @@ $.ajax({
 <script type="text/javascript">
 
 $(document).click(function() {
-    
-
-$("#tagresultdiv").html("");
-    $("#namediv").html("");
-    $("#contactnodiv").html("");
- 
- });
- 
- 
- $(document).ready(function () {
-
-    $('#searchname').click(function() {
-     $("#tagresultdiv").html("");
-    // $("#namediv").html("");
-     $("#contactnodiv").html("");
- 
- });
- 
-    $('#searchtag').click(function() {
-     //$("#tagresultdiv").html("");
-    $("#namediv").html("");
-     $("#contactnodiv").html("");
- 
-
-});
-
-    $('#searchcontactno').click(function() {
     $("#tagresultdiv").html("");
-     $("#namediv").html("");
-    // $("#contactnodiv").html("");
- 
- });
-
 });
+
+
     function tagsinput(){
 
  var searchtag = document.getElementById("searchtag").value;
 
 
-   $('#tagresultdiv').html("No Result");
+    $('#tagresultdiv').html("");
      // alert(skey);
 
 
@@ -1884,120 +1811,6 @@ $.ajax({
     }
 </script>
 
-<script type="text/javascript">
- 
- 
- 
-     function nameSearch(){
- 
-  var searchkey = document.getElementById("searchname").value;
- 
- 
-     $('#namediv').html("No Result");
-      // alert(skey);
- 
- 
-     if(searchkey!=""){
- 
- $.ajax({             
-                      type:"post",
-                      url : '<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/searchbyName/',
-                      data : {skey:searchkey},
-                      success: function(searchresult) {
- 
-                             $('#namediv').html(searchresult);
-                             
- 
-                      },
-                      error: function(jqXHR){
-                        alert(jqXHR.responseText);
-                         //jqXHR.responseText
-                      }
-                  });
-                
- 
- 
- 
-             // $.ajax({
- 
-             //     type:"get",
-             //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
-             //     success: function (searchresult) {
- 
- 
-             //         $('#tagdiv').html(searchresult);
-  
-             //     }
-             // })
- 
- 
-     }
- 
- 
-     }
- </script>
- 
- 
- 
- 
- 
- 
- 
- 
- <script type="text/javascript">
- 
- 
- 
-     function ContactNOSearch(){
- 
-  var searchkey = document.getElementById("searchcontactno").value;
- 
- 
-     $('#contactnodiv').html("No Result");
-      // alert(skey);
- 
- 
-     if(searchkey!=""){
- 
- $.ajax({             
-                      type:"post",
-                      url : '<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/searchbyNo/',
-                      data : {skey:searchkey},
-                      success: function(searchresult) {
- 
-                             $('#contactnodiv').html(searchresult);
-                             
- 
-                      },
-                      error: function(jqXHR){
-                        alert(jqXHR.responseText);
-                         //jqXHR.responseText
-                      }
-                  });
-                
- 
- 
- 
-             // $.ajax({
- 
-             //     type:"get",
-             //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
-             //     success: function (searchresult) {
- 
- 
-             //         $('#tagdiv').html(searchresult);
-  
-             //     }
-             // })
- 
- 
-     }
- 
- 
-     }
- </script>
- 
- 
 
 <!-- Start of alerts -->
 <?php
@@ -2038,3 +1851,47 @@ unset($_SESSION['alert3']);
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
 <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
 <!-- End of alerts -->
+
+<!-- Start of alerts for sms-->
+        <?php
+             if(isset($_SESSION["alertsms"])){
+
+                        ?>
+                
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+                <!-- EOF CSS INCLUDE --> 
+              <!-- JS INCLUDE --> 
+                        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+        <?php
+          echo "<script>alert(".$_SESSION["alertsms"].")</script>";
+            
+              if( $_SESSION["alertsms"]=="smsSent"){
+
+                    
+        ?>
+        <script type="text/javascript">
+            swal("Sms sent succesfully", "You clicked the button", "success");
+              
+        </script>
+
+                  <?php
+        }elseif ($_SESSION["alertsms"]=="smsFail") {
+                    ?>
+                    <script type="text/javascript">
+                  swal(
+          'Oops...',
+          'Something went wrong!',
+          'error'
+        );
+                  </script>
+                  <?php
+                }
+        unset($_SESSION['alertsms']);
+                    }
+        ?>
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+                <!-- EOF CSS INCLUDE --> 
+              <!-- JS INCLUDE --> 
+        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        <!-- End of alerts for sms-->

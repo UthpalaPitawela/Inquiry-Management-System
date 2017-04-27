@@ -1,20 +1,3 @@
-<?php
-if (time() - $_SESSION['start'] > 1800) {
-            session_destroy();
-            
-            ?>
-            <script type="text/javascript">
-                window.location="<?php echo base_url()?>index.php/Login_Controller/session_timeout_direct/";
-            </script>
-            <?php
-
-        }
-        else{
-            $_SESSION['start']=time();
-
-        }
-          ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +17,9 @@ if (time() - $_SESSION['start'] > 1800) {
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/theme-default.css'); ?> "/>
         <link rel="stylesheet" type="text/css" href= "<?php echo base_url('public/css/fontawesome/font-awesome.min.css'); ?> "/>
 
-        
+        <!-- ALERT CSS -->
+        <!-- <link href="<?php echo base_url('public/alert/css/alert.css'); ?>" rel="stylesheet" />
+        <link href="<?php echo base_url('public/alert/themes/default/theme.css'); ?>" rel="stylesheet" /> -->
         <!-- EOF CSS INCLUDE --> 
         <script type="text/javascript" src="<?php echo base_url(); ?>public/js/plugins/jquery/jquery.min.js"></script>
 
@@ -42,14 +27,13 @@ if (time() - $_SESSION['start'] > 1800) {
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
-        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
-
-        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js"></script>  -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js"></script> 
 
 
-        
+        <!-- ALERT -->
+        <!-- <script src="<?php echo base_url('public/alert/js/alert.js'); ?>"></script> -->
+        <!-- JS INCLUDE --> 
 
         <style>
        input[type="text"][disabled] {
@@ -733,7 +717,7 @@ if (time() - $_SESSION['start'] > 1800) {
                                         </div>
 
                                         <div class="col-md-2">
-                                            <button class="btn active" onclick="addnewtag(<?php echo $post->r_id;?>)" type="button">Add new</button>
+                                            <button class="btn btn-primary active" onclick="addnewtag(<?php echo $post->r_id;?>)" type="button">Add new</button>
                                         </div>
 
                                         <div class = "col-md-3 col-xs-12"></div>
@@ -742,7 +726,7 @@ if (time() - $_SESSION['start'] > 1800) {
                                             <div id="tagdiv"></div>
 
                                             <br>
-                                            <div id=owntags><?php foreach($tags as $mytags){ echo"
+                                            <div><?php foreach($tags as $mytags){ echo"
                                             <input style=\"width:50px\" type='text' value='$mytags->tag'/>
                                                    <button type='button' onclick='removetag($post->r_id,$mytags->tag_id)' class='btn btn-secondary button1'><i class='fa fa-times'></i></button>
 
@@ -877,9 +861,10 @@ if (time() - $_SESSION['start'] > 1800) {
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" id="smssummaryform" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary1">
+                                                    <form class="form-horizontal" id="smssummaryform" method="POST" action="<?php echo base_url();?>index.php/sms/Sendsms_summary/send">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post->r_id; ?>" hidden="hidden" />
+                                                        <input type="text" name="page" id="page" value="3" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
@@ -907,7 +892,7 @@ if (time() - $_SESSION['start'] > 1800) {
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms('<?php echo $post->Email; ?>','<?php echo $post->r_id; ?>')">Send Text Message</button>
+                                                                <button type="submit" id="save" class="btn btn-primary" >Send Text Message</button>
                                                         </div>   
 
                                                                            
@@ -917,8 +902,8 @@ if (time() - $_SESSION['start'] > 1800) {
                                                                                 var recipient = $('#contactno').val();
                                                                                 var message = $('#sms1').val();
 
-                                                                                // alert(recipient);
-                                                                                // alert(message);
+                                                                                alert(recipient);
+                                                                                 alert(message);
 
                                                                                 //alert(recipient);
                                                                                 //alert(message);
@@ -1159,9 +1144,8 @@ $.ajax({
                      data : {rid:rid,tagid:tagid},
                      success: function(searchresult) {
 
- $('#owntags').html(searchresult);
                     //       redirect("index.php/EditRecords_controller/index/"+rid);
-                 //   window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+rid;
+                    window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+rid;
 
 
 
@@ -1188,8 +1172,7 @@ $.ajax({
                      data : {newtag:newtag,userID:userID},
                      success: function(searchresult) {
 
-                          $('#owntags').html(searchresult);
-                             //window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+userID;
+                             window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+userID;
 
                             
 
@@ -1199,7 +1182,7 @@ $.ajax({
                         //jqXHR.responseText
                      }
                  });
-            
+               
 
 
 
@@ -1217,7 +1200,7 @@ $.ajax({
 
 
     }else{
-        swal('Error','Enter the tag input!','error');
+        alert("Enter the tag input");
     }
 
 
@@ -1272,71 +1255,6 @@ $.ajax({
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function addthetag(userID,tagid){
-
-
-// var searchtag = document.getElementById("tag").value;
-
-
-    $('#tagdiv').html("");
-     // alert(skey);
-
-
-    if(tagid!="" && userID!=""){
-
-$.ajax({             
-                     type:"post",
-                     url : '<?php echo base_url();?>index.php/Tag_Controller/addTag/',
-                     data : {tid:tagid,userID:userID},
-                     success: function(searchresult) {
-
-                            $('#owntags').html(searchresult);
-                            
-
-                     },
-                     error: function(jqXHR){
-                      alert(jqXHR.responseText);
-                        //jqXHR.responseText
-                     }
-                 });
-               
-
-
-
-            // $.ajax({
-
-            //     type:"get",
-            //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
-            //     success: function (searchresult) {
-
-
-            //         $('#tagdiv').html(searchresult);
- 
-            //     }
-            // })
-
-
-    }
-
-
-    }
-
-
-
-
 </script>
 
 <script type="text/javascript">
@@ -1668,3 +1586,47 @@ unset($_SESSION['alert4']);
             }
 ?>
 <!-- End of alerts for summary -->
+
+<!-- Start of alerts for sms-->
+        <?php
+             if(isset($_SESSION["alertsms"])){
+
+                        ?>
+                
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+                <!-- EOF CSS INCLUDE --> 
+              <!-- JS INCLUDE --> 
+                        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+        <?php
+          echo "<script>alert(".$_SESSION["alertsms"].")</script>";
+            
+              if( $_SESSION["alertsms"]=="smsSent"){
+
+                    
+        ?>
+        <script type="text/javascript">
+            swal("Sms sent succesfully", "You clicked the button", "success");
+              
+        </script>
+
+                  <?php
+        }elseif ($_SESSION["alertsms"]=="smsFail") {
+                    ?>
+                    <script type="text/javascript">
+                  swal(
+          'Oops...',
+          'Something went wrong!',
+          'error'
+        );
+                  </script>
+                  <?php
+                }
+        unset($_SESSION['alertsms']);
+                    }
+        ?>
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+                <!-- EOF CSS INCLUDE --> 
+              <!-- JS INCLUDE --> 
+        <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        <!-- End of alerts for sms-->

@@ -164,21 +164,34 @@ if (time() - $_SESSION['start'] > 1800) {
                     <div class="col-md-6">
                         <div class="row">
 
+
                         <?php
+
                             $sum = 0;
-                            foreach ($result as $row) {
-                                $sum = $sum + $row['count'];
-                                # code...
+                            $val1 = 0;
+                            $val2 = 0;
+                            $val3 = 0;
+                             foreach ($result as $row) {
+                                if($row['status'] == 'Pending'){
+                                    $val1 = $row['count'];
+                                }else if($row['status'] == 'Following'){
+                                    $val2 = $row['count'];
+                                }else if($row['status'] == 'Completed'){
+                                    $val3 = $row['count'];
+                                }
+
+                               
                             }
 
-                            $val1 = $result[2];
-                            $pending = round(($val1['count']/$sum)*100,0);
+                            $sum = $val1 + $val2 + $val3;
+                          
+                    
+                            $pending = round(($val1/$sum)*100,0);
 
-                            $val2 = $result[1];
-                            $following = round(($val2['count']/$sum)*100,0);
+                            $following = round(($val2/$sum)*100,0);
 
-                            $val3 = $result[0];
-                            $completed = round(($val3['count']/$sum)*100,0);
+                   
+                            $completed = round(($val3/$sum)*100,0);
 
                         ?>
                         <!--This is the activity summary section-->
@@ -191,7 +204,7 @@ if (time() - $_SESSION['start'] > 1800) {
 
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $pending?>%">
-
+                                            <font color="black">
                                                 <?php
                                                     
                                                  
@@ -199,23 +212,28 @@ if (time() - $_SESSION['start'] > 1800) {
                                                     echo $pending."% Pending";
                                                           
                                                 ?>
+                                            </font>
                                             </div>
                                         </div>
 
                                          <div class="progress">
                                             <div class="progress-bar progress-bar-colorful" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $following?>%">
+                                                <font color="black">
                                                 <?php
                                                      
                                                     echo $following."% Following";   
                                                 ?>
+                                                </font>
                                             </div>
                                         </div>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $completed?>%">
+                                            <font color="black">
                                                <?php
                                                
                                                     echo $completed."% Completed";
                                                 ?>
+                                            </font>
                                             </div>
                                         </div>
                                         

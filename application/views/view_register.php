@@ -438,16 +438,7 @@ if (time() - $_SESSION['start'] > 1800) {
 
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Potential Level* </label>
-                                        <div class="col-md-6 col-xs-12" name="mode">
-                                            <input type="radio" name="intake" value="High" required> High&nbsp;
-                                            <input type="radio" name="intake" value="Medium"> Medium&nbsp;
-                                            <input type="radio" name="intake" value="Low"> Low&nbsp;
-
-                                        </div>
-                                    </div>
-
+                                    
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Potential Date </label>
                                         <div class="col-md-6 col-xs-12">

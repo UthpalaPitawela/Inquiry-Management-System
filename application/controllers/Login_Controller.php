@@ -15,6 +15,9 @@ $this->load->model("Student_Data_Model");
     public function session_timeout_direct(){
         $this->load->view("Session_timeout_login_view");
     }
+    public function password_reset_direct(){
+        $this->load->view("Login_after_reset_password");
+    }
     public function validate_user(){
         $username = $this->input->post('username');
         $password = $this->input->post('password');

@@ -1629,7 +1629,7 @@ $.ajax({
         function follow(email,r_id){
                 $.ajax({             
                     type:"post",
-                    url : 'inquirybutton_controller/following/',
+                   url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/following/',
                     data : {id:r=email},
                     success: function(data) {
                         $('#followed').html(data);
@@ -1641,8 +1641,8 @@ $.ajax({
         function complete(email,r_id){
                 $.ajax({             
                     type:"post",
-                    url : 'inquirybutton_controller/completed/',
-                    data : {id:r=email},
+                   url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/completed/',
+                    data : {id:r=r_id},
                     success: function(data) {
                         $('#completed').html(data);
                     }
@@ -1653,8 +1653,8 @@ $.ajax({
         function registered(email,r_id){
                 $.ajax({             
                     type:"post",
-                    url : 'inquirybutton_controller/registered/',
-                    data : {id:r=email},
+                     url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/registered/',
+                    data : {id:r=r_id},
                     success: function(data) {
                         $('#registered').html(data);
                     }

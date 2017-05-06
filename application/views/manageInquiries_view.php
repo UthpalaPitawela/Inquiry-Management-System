@@ -1591,7 +1591,7 @@ $.ajax({
                 $.ajax({             
                     type:"post",
                     url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/completed/',
-                    data : {id:r=email},
+                    data : {id:r=r_id},
                     success: function(data) {
                         $('#completed').html(data);
                     }
@@ -1603,7 +1603,7 @@ $.ajax({
                 $.ajax({             
                     type:"post",
                     url : '<?php echo base_url();?>/index.php/Inquirybutton_controller/registered/',
-                    data : {id:r=email},
+                    data : {id:r=r_id},
                     success: function(data) {
                         $('#registered').html(data);
                     }

@@ -1,4 +1,20 @@
-    <!DOCTYPE html>
+<?php
+ if (time() - $_SESSION['start'] > 1800) {
+             session_destroy();
+             
+             ?>
+             <script type="text/javascript">
+                 window.location="<?php echo base_url()?>index.php/Login_Controller/session_timeout_direct/";
+             </script>
+             <?php
+ 
+         }
+         else{
+             $_SESSION['start']=time();
+ 
+         }
+           ?>
+     <!DOCTYPE html>
 <html lang="en"> 
 
     <head> 
@@ -19,6 +35,19 @@
         <!-- EOF CSS INCLUDE --> 
 
         <style type="text/css">
+
+
+          #namediv{
+              color:white;
+  
+          }
+          #tagresultdiv{
+              color:white;
+          }
+          #contactnodiv{
+              color: white;
+  
+          }
             input:focus{
                 outline: none;
             }
@@ -154,6 +183,21 @@
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
 
+                 <li class="xn-search" style="z-index: 1001;">
+                          <form role="form">
+                              <input type="text" style="width: 200px" id="searchname" name="search" onkeyup="nameSearch() " placeholder="Search by Name">
+                              <div id="namediv" style="background-color: black; " ></div> 
+                          </form>
+                  </li>
+  
+                  <li class="xn-search" style="z-index: 1001;">
+                          <form role="form">
+                              <input type="text" style="width: 200px" id="searchcontactno" name="search" onkeyup="ContactNOSearch()" placeholder="Search by Contact No.">
+                              <div id="contactnodiv" style="background-color: black; " ></div> 
+                          </form>
+                  </li>
+                  
+ 
 
                 <li class="xn-search" style="z-index: 1001;">
                         <form role="form">
@@ -1753,16 +1797,40 @@ $.ajax({
 
 $(document).click(function() {
     $("#tagresultdiv").html("");
-});
-
-
+ $("#namediv").html("");
+      $("#contactnodiv").html("");
+  });
+  
+$(document).ready(function () {
+   $('#searchname').click(function() {
+      $("#tagresultdiv").html("");
+     // $("#namediv").html("");
+      $("#contactnodiv").html("");
+  
+  });
+  
+     $('#searchtag').click(function() {
+      //$("#tagresultdiv").html("");
+     $("#namediv").html("");
+      $("#contactnodiv").html("");
+  
+  });
+  
+     $('#searchcontactno').click(function() {
+      $("#tagresultdiv").html("");
+      $("#namediv").html("");
+     // $("#contactnodiv").html("");
+  
+  });
+  });
+  
+  
     function tagsinput(){
 
  var searchtag = document.getElementById("searchtag").value;
 
 
-    $('#tagresultdiv').html("");
-     // alert(skey);
+   $('#tagresultdiv').html("No Result");
 
 
     if(searchtag!=""){
@@ -1804,6 +1872,125 @@ $.ajax({
 
     }
 </script>
+
+<script type="text/javascript">
+  
+  
+  
+      function nameSearch(){
+  
+   var searchkey = document.getElementById("searchname").value;
+  
+  
+      $('#namediv').html("No Result");
+       // alert(skey);
+  
+  
+      if(searchkey!=""){
+  
+  $.ajax({             
+                       type:"post",
+                       url : '<?php echo base_url();?>index.php/ManageInquiries_controller/searchbyName/',
+                       data : {skey:searchkey},
+                       success: function(searchresult) {
+  
+                              $('#namediv').html(searchresult);
+                              
+  
+                       },
+                       error: function(jqXHR){
+                         alert(jqXHR.responseText);
+                          //jqXHR.responseText
+                       }
+                   });
+                 
+  
+  
+  
+              // $.ajax({
+  
+              //     type:"get",
+              //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
+              //     success: function (searchresult) {
+  
+  
+              //         $('#tagdiv').html(searchresult);
+   
+              //     }
+              // })
+  
+  
+      }
+  
+  
+      }
+  </script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="text/javascript">
+  
+  
+  
+      function ContactNOSearch(){
+  
+   var searchkey = document.getElementById("searchcontactno").value;
+  
+  
+      $('#contactnodiv').html("No Result");
+       // alert(skey);
+  
+  
+      if(searchkey!=""){
+  
+  $.ajax({             
+                       type:"post",
+                       url : '<?php echo base_url();?>index.php/ManageInquiries_controller/searchbyNo/',
+                       data : {skey:searchkey},
+                       success: function(searchresult) {
+  
+                              $('#contactnodiv').html(searchresult);
+                              
+  
+                       },
+                       error: function(jqXHR){
+                         alert(jqXHR.responseText);
+                          //jqXHR.responseText
+                       }
+                   });
+                 
+  
+  
+  
+              // $.ajax({
+  
+              //     type:"get",
+              //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
+              //     success: function (searchresult) {
+  
+  
+              //         $('#tagdiv').html(searchresult);
+   
+              //     }
+              // })
+  
+  
+      }
+  
+  
+      }
+  </script>
+  
+  
+  
+  
+  
+
 
 <!-- Start of alerts -->
 <?php

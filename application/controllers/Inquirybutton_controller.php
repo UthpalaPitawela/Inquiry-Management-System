@@ -51,6 +51,11 @@ class Inquirybutton_controller extends CI_Controller{
 		$id = $this->input->post('id');
 		$this->load->model('Inquirybutton_model');
 		$this->Inquirybutton_model->completed($id);
+
+
+
+
+		
 	}
 
 	public function registered()

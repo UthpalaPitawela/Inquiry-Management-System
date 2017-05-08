@@ -1645,7 +1645,7 @@ unset($_SESSION['alert3']);
                     
         ?>
         <script type="text/javascript">
-            swal("Sms sent succesfully", "You clicked the button", "success");
+            swal("Sms sent succesfully", "Summary Saved!", "success");
               
         </script>
 

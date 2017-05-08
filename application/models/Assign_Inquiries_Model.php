@@ -12,7 +12,7 @@ class Assign_Inquiries_Model extends CI_Model{
 
 	function getInquiries(){
 		
-		$query = $this->db->query("SELECT Fname,Lname,Email,Intake,r_id FROM register WHERE CounsellorName IS NULL AND Status = 'Pending'");
+		$query = $this->db->query("SELECT Fname,Lname,Email,Intake,r_id FROM register WHERE CounsellorName IS NULL AND Status = 'Pending' AND web = 0");
 		$count = 0;
 		foreach($query->result() as $row){
 			$count++;
@@ -26,7 +26,7 @@ class Assign_Inquiries_Model extends CI_Model{
 	}
 
 	function updateInquiries($counsellorname,$inqcount){
-		$query = $this->db->query("SELECT r_id FROM register WHERE Status = 'Pending' AND CounsellorName IS NULL");
+		$query = $this->db->query("SELECT r_id FROM register WHERE Status = 'Pending' AND CounsellorName IS NULL AND web = 0 ");
 		$count = 0;
 		$data  = array();
 		foreach ($query->result() as $row) {

@@ -726,10 +726,10 @@ if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thisse
                                                                     </div>
                                                                 
                                                                     <div class="form-group">
-                                                                        <label class="col-md-3 col-xs-12 control-label" for="summary1">Enter Summary:</label>
+                                                                        <label class="col-md-3 col-xs-12 control-label" for="other">Enter Summary:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="summary1" id="summary1"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="other" id="other"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
@@ -2038,6 +2038,43 @@ $.ajax({
           <?php
         }
 unset($_SESSION['alert3']);
+            }
+?>
+
+
+<?php
+     if(isset($_SESSION["alert5"])){
+
+                ?>
+        
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert5"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Summary saved successfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert5"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert5']);
             }
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">

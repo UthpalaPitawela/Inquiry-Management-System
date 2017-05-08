@@ -23,7 +23,10 @@ class Sendsms_summary extends CI_Controller {
             
 
         $this->Summary_model->updateSmsSummary($sms,$regid,$date,$sms_count);
+        $this->load->model('Inquirybutton_model');
         
+        $this->Inquirybutton_model->following($regid);
+
         
 
         //Send sms

@@ -444,7 +444,7 @@ if (time() - $_SESSION['start'] > 1800) {
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input id="datepicker" class="form-control datepicker" value="dd-mm-yyyy" data-date-format="dd-mm-yyyy" data-date-viewmode="years" name="pdate" required />
+                                                <input id="datepicker" class="form-control datepicker" value="yyyy-mm-dd" data-date-format="yyyy-mm-dd" data-date-viewmode="years" name="pdate" required />
 
                                             </div>
 

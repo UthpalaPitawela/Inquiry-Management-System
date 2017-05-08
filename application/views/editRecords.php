@@ -1636,6 +1636,42 @@ unset($_SESSION['alert']);
 unset($_SESSION['alert3']);
             }
 ?>
+
+<?php
+     if(isset($_SESSION["alert5"])){
+
+                ?>
+        
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert5"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Summary saved successfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert5"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert5']);
+            }
+?>
 <!-- End of alerts for summary -->
 
 <!-- Start of alerts for sms summary -->

@@ -1590,7 +1590,7 @@ unset($_SESSION['alert1']);
 
 <!-- Start of alerts -->
  <?php
-     if(isset($_SESSION["alert5"])){
+     if(isset($_SESSION["alert3"])){
 
                 ?>
         
@@ -1599,7 +1599,7 @@ unset($_SESSION['alert1']);
 
 <?php
 
-      if( $_SESSION["alert5"]=="insertsuccess"){
+      if( $_SESSION["alert3"]=="insertsuccess"){
 
       
             
@@ -1610,7 +1610,7 @@ unset($_SESSION['alert1']);
 </script>
 
           <?php
-}elseif ($_SESSION["alert5"]=="notsuccess") {
+}elseif ($_SESSION["alert3"]=="notsuccess") {
             ?>
             <script type="text/javascript">
           swal(
@@ -1621,7 +1621,7 @@ unset($_SESSION['alert1']);
           </script>
           <?php
         }
-unset($_SESSION['alert5']);
+unset($_SESSION['alert3']);
             }
 ?> 
 <!-- End of alerts -->

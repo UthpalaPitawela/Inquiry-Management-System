@@ -35,7 +35,7 @@ class Send_bulksms extends CI_Controller {
                 'sms' => $text
                ),
                'transports' => ['SMS']
-              ));
+              );
                  try {
                     $result = $client->sendMessage($message);
                     //print_r($result);

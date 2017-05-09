@@ -325,7 +325,7 @@ $propic=$_SESSION["propic"];
 
                 
                 <div class="page-title">                    
-                    <h2><span class="fa fa-arrow-circle-o-left"></span>Hello <?php echo $name; ?> Welcome to Edulink</h2>
+                    <h2><span class="fa fa-arrow-circle-o-left"></span>Hello <?php echo $name; ?>, Welcome to Edulink International Campus!</h2>
                 </div>                   
                 
 

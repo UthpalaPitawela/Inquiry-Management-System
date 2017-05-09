@@ -526,7 +526,7 @@ $propic=$_SESSION["propic"];
 
                 
                 <div class="page-title">                    
-                    <h2><span class="fa fa-arrow-circle-o-left"></span>Results Uploading</h2>
+                    <h2><span class="fa fa-arrow-circle-o-left"></span>Upload Results</h2>
                 </div>                   
                 
 
@@ -599,7 +599,7 @@ foreach ($current_results ->result_array() as $row3) {
 <label style="float: left; padding-top: 7px;">Enter image 4 : &nbsp</label>
  <input name="file4" type="file" id="addimage4" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange="readURL(this,'image4','a4');">
 
-<label style="float: left; padding-top: 7px;">Enter pdf File : &nbsp&nbsp</label>
+<label style="float: left; padding-top: 7px;">Enter PDF File : &nbsp&nbsp</label>
 
 <input name="file5" type="file" id="pdf" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange="">
 

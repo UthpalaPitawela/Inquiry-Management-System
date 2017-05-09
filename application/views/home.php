@@ -154,7 +154,7 @@ $propic=$_SESSION["propic"];
 
                 
                 <div class="page-title">                    
-                    <h2><span class="fa fa-arrow-circle-o-left"></span>Hello <?php echo $name?>, Welcome to Edulink</h2>
+                    <h2><span class="fa fa-arrow-circle-o-left"></span>Hello <?php echo $name?>, Welcome to Edulink International Campus!</h2>
                 </div>                   
                 
 
@@ -169,12 +169,12 @@ $propic=$_SESSION["propic"];
                                     
                                 </div>
                                 <div class="panel-body">
-                                   <h3 class="panel-title">This is your temporary account and you have to upload your relevant certificates to prove your results.
-You can proceed to upload from <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>" style="color:blue; ">here</a> or you can select "Upload results" from menu</h3>
+                                   <h3 class="panel-title">This is your temporary account. You have to upload your relevant certificates to prove your results.
+You can proceed to upload from <a href="<?php echo site_url('page_controller/loadingpages/uploadresults') ?>" style="color:blue; ">here</a> or you can select "Upload results" from the menu</h3>
 
 
 <br><br><br><br><br><br><br><br>
-<h1>You are eligible to following Degrees</h1>
+<h1>You are eligible for the following Degrees</h1>
 <br><br>
 
     <?php

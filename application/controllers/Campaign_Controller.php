@@ -55,7 +55,7 @@ class Campaign_Controller extends CI_Controller {
 			//$id = "61";
 			$updated = $this->Campaign_model->update_id($id,$campaign);
 			if($updated){
-				print json_encode(array("status"=>"success","info"=>"Campaign created successfully..","id"=>$id));
+				print json_encode(array("status"=>"success","info"=>"Done!","id"=>$id));
 			}else{
 				$this->Campaign_model->delete_campaign($id);
 				print json_encode(array("status"=>"fail","info"=>"No such selection found. Try Agian"));

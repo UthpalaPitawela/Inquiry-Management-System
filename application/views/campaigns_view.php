@@ -523,7 +523,7 @@ if (time() - $_SESSION['start'] > 1800) {
                                     $('#loading_image').hide(); 
                                     if (data.status == "success") {
                                         $('#newModal').modal('hide');
-                                        swal({title: data.info, text: "You clicked the button!", type: "success"},
+                                        swal({title: data.info, text: "Done!", type: "success"},
                                                function(){
                                                    var url = "<?php echo base_url();?>index.php/Campaign_Controller/send_campaign/"+data.id;
                                                    window.location.href = url;

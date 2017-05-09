@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+<?php
+ if (time() - $_SESSION['start'] > 1800) {
+             session_destroy();
+             
+             ?>
+             <script type="text/javascript">
+                 window.location="<?php echo base_url()?>index.php/Login_Controller/session_timeout_direct/";
+             </script>
+             <?php
+ 
+         }
+         else{
+             $_SESSION['start']=time();
+ 
+         }
+           ?>
+ <!DOCTYPE html>
 <html lang="en">
 
     <head> 
@@ -26,6 +42,11 @@
         <!-- JQUERY -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+        -        <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+         <script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+ 
+         <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js"></script>  -->
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.35.1/js/bootstrap-dialog.min.js"></script> 
@@ -717,7 +738,7 @@
                                         </div>
 
                                         <div class="col-md-2">
-                                            <button class="btn btn-primary active" onclick="addnewtag(<?php echo $post->r_id;?>)" type="button">Add new</button>
+                                            <button class="btn active" onclick="addnewtag(<?php echo $post->r_id;?>)" type="button">Add new</button>
                                         </div>
 
                                         <div class = "col-md-3 col-xs-12"></div>
@@ -726,7 +747,7 @@
                                             <div id="tagdiv"></div>
 
                                             <br>
-                                            <div><?php foreach($tags as $mytags){ echo"
+                                            <div id=owntags><?php foreach($tags as $mytags){ echo"
                                             <input style=\"width:50px\" type='text' value='$mytags->tag'/>
                                                    <button type='button' onclick='removetag($post->r_id,$mytags->tag_id)' class='btn btn-secondary button1'><i class='fa fa-times'></i></button>
 
@@ -1143,9 +1164,9 @@ $.ajax({
                      url : '<?php echo base_url();?>index.php/Tag_Controller/removeTag/',
                      data : {rid:rid,tagid:tagid},
                      success: function(searchresult) {
-
+                        $('#owntags').html(searchresult);
                     //       redirect("index.php/EditRecords_controller/index/"+rid);
-                    window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+rid;
+                   // window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+rid;
 
 
 
@@ -1172,7 +1193,8 @@ $.ajax({
                      data : {newtag:newtag,userID:userID},
                      success: function(searchresult) {
 
-                             window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+userID;
+                        $('#owntags').html(searchresult);
+                            // window.location="<?php echo base_url()?>index.php/EditRecords_controller/index/"+userID;
 
                             
 
@@ -1200,7 +1222,7 @@ $.ajax({
 
 
     }else{
-        alert("Enter the tag input");
+        swal('Error','Enter the tag input!','error');
     }
 
 
@@ -1255,6 +1277,73 @@ $.ajax({
 
 
     }
+
+
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     function addthetag(userID,tagid){
+ 
+ 
+ // var searchtag = document.getElementById("tag").value;
+ 
+ 
+     $('#tagdiv').html("");
+      // alert(skey);
+ 
+ 
+     if(tagid!="" && userID!=""){
+ 
+ $.ajax({             
+                      type:"post",
+                      url : '<?php echo base_url();?>index.php/Tag_Controller/addTag/',
+                      data : {tid:tagid,userID:userID},
+                      success: function(searchresult) {
+ 
+                             $('#owntags').html(searchresult);
+                             
+ 
+                      },
+                      error: function(jqXHR){
+                       alert(jqXHR.responseText);
+                         //jqXHR.responseText
+                      }
+                  });
+                
+ 
+ 
+ 
+             // $.ajax({
+ 
+             //     type:"get",
+             //     url : '<?php echo base_url();?>index.php/Tag_Controller/searchTag/'+searchtag,
+             //     success: function (searchresult) {
+ 
+ 
+             //         $('#tagdiv').html(searchresult);
+  
+             //     }
+             // })
+ 
+ 
+     }
+ 
+ 
+     }
+ 
+ 
+ 
+ 
 </script>
 
 <script type="text/javascript">
@@ -1545,6 +1634,42 @@ unset($_SESSION['alert']);
           <?php
         }
 unset($_SESSION['alert3']);
+            }
+?>
+
+<?php
+     if(isset($_SESSION["alert5"])){
+
+                ?>
+        
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+<?php
+
+      if( $_SESSION["alert5"]=="insertsuccess"){
+
+      
+            
+?>
+<script type="text/javascript">
+    swal("Submitted!", "Summary saved successfully!", "success");
+      
+</script>
+
+          <?php
+}elseif ($_SESSION["alert5"]=="notsuccess") {
+            ?>
+            <script type="text/javascript">
+          swal(
+  'Oops...',
+  'Something went wrong!',
+  'error'
+);
+          </script>
+          <?php
+        }
+unset($_SESSION['alert5']);
             }
 ?>
 <!-- End of alerts for summary -->

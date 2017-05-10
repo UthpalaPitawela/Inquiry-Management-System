@@ -164,7 +164,7 @@
 
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $pending?>%">
-
+                                                 <font color="black">
                                                 <?php
                                                     
                                                  
@@ -172,23 +172,28 @@
                                                     echo $pending."% Pending";
                                                           
                                                 ?>
+                                                </font>
                                             </div>
                                         </div>
 
                                          <div class="progress">
                                             <div class="progress-bar progress-bar-colorful" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $following?>%">
+                                                 <font color="black">
                                                 <?php
                                                      
                                                     echo $following."% Following";   
                                                 ?>
+                                                </font>
                                             </div>
                                         </div>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $completed?>%">
+                                                 <font color="black">
                                                <?php
                                                
                                                     echo $completed."% Completed";
                                                 ?>
+                                                </font>
                                             </div>
                                         </div>
                                         

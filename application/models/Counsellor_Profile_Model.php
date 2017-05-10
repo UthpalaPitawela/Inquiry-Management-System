@@ -16,6 +16,7 @@ class Counsellor_Profile_Model extends CI_Model{
 
 	function getActivitySummary($counsellorname){
 		
+		$data = array();
 		
 		$query = $this->db->query("SELECT CounsellorName, sum(Status='Pending') AS pending, sum(Status='Following') AS following, sum(Status='Completed') AS completed FROM register GROUP BY CounsellorName");
 		foreach($query -> result() as $row){

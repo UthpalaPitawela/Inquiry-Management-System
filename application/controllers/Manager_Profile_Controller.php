@@ -7,7 +7,7 @@ class Manager_Profile_Controller extends CI_Controller{
 	function index(){
 		$this->load->model('Manager_Profile_Model');
         $data['result'] = $this->Manager_Profile_Model->index();
-        $this->load->view("manager_profile",$data);
+		$this->load->view("manager_profile",$data);
 	}
 }
 

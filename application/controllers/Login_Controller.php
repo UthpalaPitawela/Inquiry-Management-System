@@ -69,7 +69,12 @@ $this->load->model("Student_Data_Model");
                         ///print_r($counsellorname);
                          $data['remiderstudent'] = $this->Student_Data_Model->get_Student_For_Counsellor($counsellorname);
                        $val = $this->Counsellor_Profile_Model->getActivitySummary($counsellorname);
+                       if ($val == null){
+                        $data['result'] = 0;
+                       }else{
                         $data['result'] = $val[0];
+                       }
+                        
                         if($this->input->post('username') && $this->input->post('password')) {
                             redirect('index.php/Login_Controller/validate_user');
                         }

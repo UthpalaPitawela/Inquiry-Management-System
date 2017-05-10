@@ -9,7 +9,12 @@ class Counsellor_Profile_Controller extends CI_Controller{
 		$counsellorname = $name." ".$lname; 
 		 $data['remiderstudent'] = $this->Student_Data_Model->get_Student_For_Counsellor($counsellorname);
 		$val = $this->Counsellor_Profile_Model->getActivitySummary($counsellorname);
-		$data['result'] = $val[0];
+		if($val == null){
+			$data['result'] = 0;
+		}else{
+			$data['result'] = $val[0];
+		}
+		
 		$this->load->view('Counsellor_Profile',$data);
 	}
 }

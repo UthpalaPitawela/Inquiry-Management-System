@@ -176,7 +176,12 @@ if (time() - $_SESSION['start'] > 1800) {
                             $sum = $result['pending'] + $result['following']+$result['completed'];
                                 
                             
+                            if ($sum == 0){
+                                $pending = 0;
+                                $following = 0;
+                                $completed = 0;
 
+                            }else{
                         
                             $pending =round( ($result['pending']/$sum)*100 , 0);
 
@@ -185,7 +190,7 @@ if (time() - $_SESSION['start'] > 1800) {
 
                             
                             $completed = round(($result['completed']/$sum)*100 , 0);
-
+                        }
                         ?>
                         <!--This is the activity summary section-->
                         <br>

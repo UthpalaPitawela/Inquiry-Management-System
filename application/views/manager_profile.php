@@ -183,15 +183,32 @@ if (time() - $_SESSION['start'] > 1800) {
                                
                             }
 
+<<<<<<< HEAD
                             $sum = $val1 + $val2 + $val3;
                           
                     
                             $pending = round(($val1/$sum)*100,0);
+=======
+                            if($sum == 0){
+                                $pending = 0;
+                                $following = 0;
+                                $completed = 0;
+                            }else{
+
+                            $val1 = $result[2];
+                            $pending = round(($val1['count']/$sum)*100,0);
+>>>>>>> edulinkBranch
 
                             $following = round(($val2/$sum)*100,0);
 
+<<<<<<< HEAD
                    
                             $completed = round(($val3/$sum)*100,0);
+=======
+                            $val3 = $result[0];
+                            $completed = round(($val3['count']/$sum)*100,0);
+                        }
+>>>>>>> edulinkBranch
 
                         ?>
                         <!--This is the activity summary section-->

@@ -93,7 +93,7 @@
             
             <script type='text/javascript' src='<?php echo base_url();?>public/js/plugins/noty/themes/default.js'></script>
             <script type="text/javascript">                                            
-            <script type="text/javascript">                                            
+            /*<script type="text/javascript">   */                                         
                 function notyConfirm(){
                     noty({
                         text: 'Do you want to continue?',

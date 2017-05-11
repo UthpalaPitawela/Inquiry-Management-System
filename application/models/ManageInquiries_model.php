@@ -16,6 +16,15 @@ class ManageInquiries_model extends CI_Model{
 
   }
 
+ function getProgrammeStudents($searchkey){
+
+
+ $this->db->select('*')->from('register')->where('pref1', $searchkey)->or_where('pref2', $searchkey);
+    
+
+    $query =$this->db->get();
+return $query->result();
+  }
  function searchStudentbyNO($searchkey){
 
 

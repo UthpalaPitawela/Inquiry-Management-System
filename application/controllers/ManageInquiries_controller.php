@@ -47,6 +47,47 @@ class ManageInquiries_controller extends CI_Controller{
 		$this->load->view('manageInquiries_view', $this->data);
 
 	}
+	public function programmeindex($programme){
+
+		if($programme==1){
+			$programme="BSC(Hons) Computing";
+		}elseif($programme==2){
+			$programme="BA(Hons) Business Studies";
+		}elseif($programme==3){
+			$programme="BA(Hons) Business & Marketing";
+		}elseif($programme==4){
+			$programme="BA(Hons) International Business";
+		}elseif($programme==5){
+			$programme="BA(Hons) Accounting & Finance";
+		}elseif($programme==6){
+			$programme="Higher National Diploma in Business";
+		}elseif($programme==7){
+			$programme="Higher National Diploma in Computer Science";
+		}elseif($programme==8){
+			$programme="Foundation";
+		}elseif($programme==9){
+			$programme="Other";
+		}elseif($programme==10){
+			$programme="MBA";
+		}
+
+		$_SESSION["programmestudents"]=$programme;
+		$this->data['following'] = $this->ManageInquiries_model->getAllFollowing();
+		$this->data['posts'] = $this->ManageInquiries_model->getPostsHigh();
+		
+		//$this->data['posts'] = $this->manageInquiries_model->getPostsHigh();
+		//$this->load->view('manageInquiries_view', $this->data);
+
+		$this->data['posts1'] = $this->ManageInquiries_model->getPostsMedium();
+		$this->data['posts2'] = $this->ManageInquiries_model->getPostsLow();
+		$this->data['posts3'] = $this->ManageInquiries_model->getPending();
+		$this->data['posts4'] = $this->ManageInquiries_model->getCompleted();
+
+		$this->data["programmestudentsdata"]=$this->ManageInquiries_model->getProgrammeStudents($programme);
+
+		$this->load->view('manageInquiries_view', $this->data);
+
+	}
 
 	public function completedforadmissionofficer(){
 

@@ -52,6 +52,49 @@ $_SESSION["tagsearch"]=$tag;
 	// }
 
 	//Making the pending entry editable
+
+	public function programmeindex($programme){
+
+		if($programme==1){
+			$programme="BSC(Hons) Computing";
+		}elseif($programme==2){
+			$programme="BA(Hons) Business Studies";
+		}elseif($programme==3){
+			$programme="BA(Hons) Business & Marketing";
+		}elseif($programme==4){
+			$programme="BA(Hons) International Business";
+		}elseif($programme==5){
+			$programme="BA(Hons) Accounting & Finance";
+		}elseif($programme==6){
+			$programme="Higher National Diploma in Business";
+		}elseif($programme==7){
+			$programme="Higher National Diploma in Computer Science";
+		}elseif($programme==8){
+			$programme="Foundation";
+		}elseif($programme==9){
+			$programme="Other";
+		}elseif($programme==10){
+			$programme="MBA";
+		}
+
+		$_SESSION["programmestudents"]=$programme;
+		$counsellorname = $_SESSION["first_username"]." ".$_SESSION["last_username"];
+		$this->data['posts'] = $this->ManageInquiriesCoun_model->getPostsHigh($counsellorname);
+		$this->data['following'] = $this->ManageInquiriesCoun_model->getAllFollowing($counsellorname);
+		//$this->data['posts'] = $this->manageInquiries_model->getPostsHigh();
+		//$this->load->view('manageInquiries_view', $this->data);
+
+		$this->data['posts1'] = $this->ManageInquiriesCoun_model->getPostsMedium($counsellorname);
+		$this->data['posts2'] = $this->ManageInquiriesCoun_model->getPostsLow($counsellorname);
+		$this->data['posts3'] = $this->ManageInquiriesCoun_model->getPending($counsellorname);
+		$this->data['posts4'] = $this->ManageInquiriesCoun_model->getCompleted($counsellorname);
+		
+		$this->data["programmestudentsdata"]=$this->ManageInquiriesCoun_model->getProgrammeStudents($programme,$counsellorname);
+
+		$this->load->view('manageInquiriesCoun_view', $this->data);
+
+	}
+
 	public function updateChanges(){
 
 		$id = $this->input->post('rid');

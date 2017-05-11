@@ -24,7 +24,16 @@ function searchStudent($searchkey){
 
 
   }
+ function getProgrammeStudents($searchkey,$counsellorname){
 
+$query=$this->db->query("SELECT * FROM register WHERE CounsellorName='$counsellorname' AND (pref1='$searchkey' OR pref2='$searchkey')");
+	//WHERE pref1=$searchkey OR pref2=$searchkey AND CounsellorName="Randhaja Malshan" ');
+ //$this->db->select('*')->from('register')->where('CounsellorName', $counsellorname)->where('pref1', $searchkey)->or_where('pref2', $searchkey);
+    
+
+//    $query =$this->db->get();
+return $query->result();
+  }
 
 	function getPostsHigh($counsellorname){
 		//Select the fields

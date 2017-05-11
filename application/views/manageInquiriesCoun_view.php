@@ -36,6 +36,10 @@
 
         <style type="text/css">
 
+ #programmeresult{
+              color: white;
+  
+          }
               #namediv{
              color:white;
  
@@ -198,6 +202,15 @@
                  </li>
                     
 
+                                    <li class="xn-search" style="z-index: 1001;">
+                        <form role="form">
+
+                         <input type="text" style="width: 200px"  name="search" onclick="programmesearch()" placeholder="Search by Programme"> 
+                       
+                            <div id="programmeresult" style="background-color: black; " ></div> 
+                        </form>
+                    </li>
+
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
                         <a href="<?php echo base_url();?>index.php/Login_Controller/logout" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
@@ -245,6 +258,109 @@
 
 
 
+
+
+<?php
+ if(isset($_SESSION["programmestudents"])){
+?>
+                                                <!-- Start of Pending tab -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Programme&nbsp(<?php echo $_SESSION["programmestudents"];?>) Student Info</h3>                               
+                                </div>
+
+                                <div class="panel-body">
+                                <div class="ScrollStyle">
+                                <div class="table-responsive">
+                                    <table id="customers2" class="table datatable table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="50" style="text-align: center">Status</th>
+                                                <th width="50" style="text-align: center">First Name</th>
+                                                <th width="70" style="text-align: center">Last Name</th>
+                                                <th width="50" style="text-align: center">OL</th>
+                                                <th width="50" style="text-align: center">AL</th>
+                                                <th width="100" style="text-align: center">Contact No.</th>
+                                                <th width="150" style="text-align: center">Email</th>
+                                                <th width="80" style="text-align: center">Potential Date</th>
+                                                <th width="120" style="text-align: center">Handled By</th>
+                                                <!-- <th width="300" style="text-align: center">Actions</th> -->
+                                            </tr>
+                                        </thead>
+                                    <tbody id='table'>
+                                        
+                                    <?php
+
+                                    foreach($programmestudentsdata as $programmepostt){ ?>
+                                            <tr id="<?php  echo $programmepostt->r_id; ?>">
+                                               <!-- <form method="post" action="<?php echo base_url();?>index.php/ManageInquiries_controller/updateChanges" >  -->
+                                            
+                                                <!-- <input type="hidden" style="border:none; text-align: center;" value="<?php echo $postt->r_id; ?>" id="id" name="rid" /> -->
+<?php
+                                                if($programmepostt->Status=="Pending"){
+
+
+?>
+                                                <td style="text-align: center; color: red; text-decoration: font-weight:bold;font-size: 15px; ">Pending</td>
+                                                <td style="text-align: center;"><a href="<?php echo base_url('index.php/EditRecordsPending_controller/index/'.$programmepostt->r_id);?>"><?php echo $programmepostt->Fname; ?></a></td>
+<?php
+
+
+                                                    }elseif ($programmepostt->Status=="Following") {
+
+                                                        ?>
+ <td style="text-align: center; color: red; text-decoration: font-weight:bold;font-size: 15px;">Following</td>
+ <td style="text-align: center;"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $programmepostt->r_id);?>"><?php echo $programmepostt->Fname; ?></a></td>
+                                                        <?php
+                                                        # code...
+                                                    }elseif ($programmepostt->Status=="Completed") {
+                                                        ?>
+ <td style="text-align: center; color: red; text-decoration: font-weight:bold;font-size: 15px;">Completed</td>
+ <td style="text-align: center;"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $programmepostt->r_id);?>"><?php echo $programmepostt->Fname; ?></a></td>
+                                                         <?php
+                                                        # code...
+                                                    }else{
+?>
+ <td style="text-align: center; color: red; text-decoration: font-weight:bold;font-size: 15px;">Deleted</td>
+ <td style="text-align: center;"><a><?php echo $programmepostt->Fname; ?></a></td>
+<?php                                                        
+                                                    }
+                                                   ?> 
+                                                
+                                                <td style="text-align: center"><?php echo $programmepostt->Lname; ?></td>
+                                                <td style="text-align: center"><?php echo $programmepostt->OL; ?></td>
+                                                <td style="text-align: center"><?php echo $programmepostt->Grade1+$programmepostt->Grade2+$programmepostt->Grade3; ?></td>
+                                                <td style="text-align: center"><?php echo $programmepostt->Contactno; ?></td>
+                                                <td style="text-align: center"><?php echo $programmepostt->Email; ?></td>
+                                                <td style="text-align: center"><?php echo $programmepostt->Pdate; ?></td>
+                                                <td style="text-align: center"><?php echo $programmepostt->CounsellorName; ?></td>
+                                                <!-- <td style="text-align: center">
+                                            
+                                                <input type="submit" name="submit" class="btn btn-primary btn-rounded btn-sm" data-tooltip="tooltip" title="Update Changes" data-toggle="top" value="Save" />
+                                                <button type="button" class="btn btn-info btn-rounded btn-sm" onclick="follow('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Following</button>
+                                                <button type="button" class="btn btn-success btn-rounded btn-sm" onclick="complete('<?php echo $postt->Email; ?>','<?php echo $postt->r_id; ?>')">Completed</button>
+                                                </td> -->
+                                          <!--   </form> -->
+                                            </tr>
+                                            
+                            
+                                        </tbody>
+                                        <?php } ?>
+                                    </table> 
+                                    </div>
+                                    </div>                                   
+                                    
+                                </div>
+                            </div>      
+                
+                        </div> 
+                        </div> <!-- End of tab-first -->
+
+
+<?php
+unset($_SESSION['programmestudents']);
+}
+?>
 
 
 
@@ -1892,6 +2008,16 @@ $.ajax({
 <script type="text/javascript">
   
   
+    function programmesearch(){
+
+ //var searchtag = document.getElementById("searchtag").value;
+
+
+   $('#programmeresult').html("<table><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/programmeindex/1'><span class='fa fa-users'>&nbsp</span>BSC(Hons) Computing</a></li></td></tr><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/programmeindex/2'><span class='fa fa-users'>&nbspBA(Hons) Business Studies</a></li></td></tr><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/programmeindex/3'><span class='fa fa-users'>&nbspBA(Hons) Business & Marketing</a></li></td></tr><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/programmeindex/4'><span class='fa fa-users'>&nbspBA(Hons) International Business</a></li></td></tr><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/programmeindex/5'><span class='fa fa-users'>&nbspBA(Hons) Accounting & Finance</a></li></td></tr><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/programmeindex/6'><span class='fa fa-users'>&nbspHigher National Diploma in Business</a></li></td></tr><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiries_controllerCoun/programmeindex/7'><span class='fa fa-users'>&nbspHigher National Diploma in Computer Science</a></li></td></tr><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/programmeindex/8'><span class='fa fa-users'>&nbspFoundation</a></li></td></tr><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/programmeindex/9'><span class='fa fa-users'>&nbspOther</a></li></td></tr><tr><td><li><a href='<?php echo base_url();?>index.php/ManageInquiriesCoun_controller/programmeindex/10'><span class='fa fa-users'>&nbspMBA</a></li></td></tr></table");
+
+
+
+    }
   
       function nameSearch(){
   

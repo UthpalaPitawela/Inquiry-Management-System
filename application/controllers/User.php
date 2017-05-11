@@ -24,12 +24,16 @@ function TPcheck(){
     $tp= $this->input->post('tp');
      $result = $this->User_model->check_student_TP($tp);
         $rowcount = $result->num_rows();
-
+$existresult=$result->result();
       
        // $numrows=mysqli_num_rows($result);
         if($rowcount>0){
 
-                echo "True";
+foreach ($existresult as $key) {
+
+    echo "Phone number $tp exists! Handled by $key->CounsellorName";
+}
+        //        echo "True";
            
            }else{
             echo "False";

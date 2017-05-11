@@ -825,9 +825,9 @@ unset($_SESSION['alert']);
 
                      respond=data.trim();
 
-                  
+//alert(data);                  
                        // alert(respond);
-                       if(respond=="True"){
+                       if(respond!="False"){
 
 
  document.getElementById("submitform").disabled=true;
@@ -835,7 +835,7 @@ unset($_SESSION['alert']);
                        
           swal(
   'Oops...',
-  'Phone number exists!',
+  data,
   'error'
 );
             

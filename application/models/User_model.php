@@ -10,7 +10,7 @@
 
                 // $query = $this->db->query("SELECT firstname,user_name,propic FROM student_table WHERE user_name= '$username' AND password = '$password'");
 
-        $this->db->select('Fname')->from('register')->where('Contactno', $tp);
+        $this->db->select('Fname,CounsellorName')->from('register')->where('Contactno', $tp);
         
 
         $query =$this->db->get();

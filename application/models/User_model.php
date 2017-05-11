@@ -18,7 +18,7 @@
         
     }
 
-      function register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname){
+      function register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname,$Preference1,$Preference2){
          //$shal_password = sha1($password);
 
 
@@ -47,7 +47,7 @@
         }
 
 
-         $query_str = "INSERT INTO register(Fname,Lname,Gender,Address,Country,Email,Contactno,NIC,OL,Remark,Subject1,Subject2,Subject3,Grade1,Grade2,Grade3,Other,Inquiry,Intake,Pdate,id,CounsellorName)VALUES ('$fname','$lname','$gender','$address','$country','$email','$contactno','$nic','$ol','$remark','$subject1','$subject2','$subject3','$grade1','$grade2','$grade3','$other','$mode','$intake','$pdate','$id','$counsellorname')";
+         $query_str = "INSERT INTO register(Fname,Lname,Gender,Address,Country,Email,Contactno,NIC,OL,Subject1,Subject2,Subject3,Grade1,Grade2,Grade3,Other,Inquiry,Intake,Pdate,id,CounsellorName,pref1,pref2)VALUES ('$fname','$lname','$gender','$address','$country','$email','$contactno','$nic','$ol','$subject1','$subject2','$subject3','$grade1','$grade2','$grade3','$other','$mode','$intake','$pdate','$id','$counsellorname','$Preference1','$Preference2')";
 
         return $this->db->query($query_str);
 

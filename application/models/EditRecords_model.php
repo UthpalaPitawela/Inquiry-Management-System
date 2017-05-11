@@ -5,7 +5,7 @@
          parent::__construct();
      }
 
-      function update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$pdate,$counsellorname){
+      function update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$pdate,$counsellorname,$Preference1,$Preference2){
          //$shal_password = sha1($password);
 
 
@@ -37,7 +37,7 @@
          // $query_str = "INSERT INTO register(Fname,Lname,Gender,Address,Country,Email,Contactno,NIC,OL,Remark,Subject1,Subject2,Subject3,Grade1,Grade2,Grade3,Other,Inquiry,Intake,Pdate,id,CounsellorName)VALUES ('$fname','$lname','$gender','$address','$country','$email','$contactno','$nic','$ol','$remark','$subject1','$subject2','$subject3','$grade1','$grade2','$grade3','$other','$mode','$intake','$pdate','$id','$counsellorname')";
 
 
-      return $this->db->query("UPDATE register SET Fname='$fname', Lname='$lname', Gender='$gender', Address='$address', Country='$country', Email='$email',Contactno='$contactno',NIC='$nic',OL='$ol',Remark='$remark',Subject1='$subject1',Subject2='$subject2',Subject3='$subject3',Grade1='$grade1',Grade2='$grade2',Grade3='$grade3',Other='$other',Inquiry='$mode',Pdate='$pdate',id='$id' WHERE r_id='$rid' ");
+      return $this->db->query("UPDATE register SET Fname='$fname', Lname='$lname', Gender='$gender', Address='$address', Country='$country', Email='$email',Contactno='$contactno',NIC='$nic',OL='$ol',Subject1='$subject1',Subject2='$subject2',Subject3='$subject3',Grade1='$grade1',Grade2='$grade2',Grade3='$grade3',Other='$other',Inquiry='$mode',Pdate='$pdate',id='$id',pref1='$Preference1',pref2='$Preference2' WHERE r_id='$rid' ");
 
 
 

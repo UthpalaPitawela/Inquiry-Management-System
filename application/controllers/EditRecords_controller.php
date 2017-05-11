@@ -46,8 +46,10 @@ class EditRecords_controller extends CI_Controller{
              $contactno = $this->input->post('contactno');
              $nic = $this->input->post('nic');
              $ol = $this->input->post('ol');
-             $remark = $this->input->post('remark');
-             $subject1 = $this->input->post('subject1');
+//             $remark = $this->input->post('remark');
+               $Preference1 = $this->input->post('Preference1');             
+             $Preference2 = $this->input->post('Preference2');
+           $subject1 = $this->input->post('subject1');
              $subject2 = $this->input->post('subject2');
              $subject3 = $this->input->post('subject3');
              $grade1 = $this->input->post('grade1');
@@ -60,15 +62,18 @@ class EditRecords_controller extends CI_Controller{
 
              $counsellorname = $this->input->post('counsellorname');
       
-             if($remark==""){
-                $remark="No remark";
+              if($Preference1==""){
+                $Preference1="No Preference";
+             }
+             if($Preference2==""){
+                $Preference2="No Preference";
              }
              if($other==""){
                 $other="No Description";
              }
 
 
-             $res =     $this->EditRecords_model->update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$pdate,$counsellorname);
+             $res =     $this->EditRecords_model->update_user($rid,$fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$pdate,$counsellorname,$Preference1,$Preference2);
 
              if($res==1){
                $_SESSION["alert"]="insertsuccess";

@@ -405,13 +405,56 @@
                                         &nbsp;
 
                                         <div class="form-group">
-                                            <label class="col-md-3 col-xs-12 control-label">Remarks</label>
-                                            <div class="col-md-6 col-xs-12">
+                                                                                    <label class="col-md-3 col-xs-12 control-label">Preferences</label>
+                                        <div class="col-md-3">
+                                        <div class="row">
+                                                    <label class="col-md-10 col-xs-12 control-label" style="text-align: left"><?php echo $post->pref1;?></label>
+                                            </div>
+                                                    <select class="form-control select" name="Preference1"  >
+                                                    <option value="<?php echo $post->pref1;?>"><?php echo $post->pref1;?></option>    
+                                                    <option value="BSC(Hons) Computing">BSC(Hons) Computing</option>
+                                                    <option value="BA(Hons) Business Studies">BA(Hons) Business Studies</option>
+                                                    <option value="BA(Hons) Business & Marketing">BA(Hons) Business & Marketing</option>
+                                                    <option value="BA(Hons) International Business">BA(Hons) International Business</option>
+                                                    <option value="BA(Hons) Accounting & Finance">BA(Hons) Accounting & Finance</option>
+                                                    <option value="Higher National Diploma in Business">Higher National Diploma in Business</option>
+                                                    <option value="Higher National Diploma in Computer Science">Higher National Diploma in Computer Science</option>
+                                                    <option value="Foundation">Foundation</option>
+                                                    <option value="Other">Other</option>
+                                                    <option value="MBA">MBA</option>
+                                                    
+
+
+                                                    </select>
+
+                                                </div>
+                                        <div class="col-md-3">
+  
+  <div class="row">
+                                                    <label class="col-md-10 col-xs-12 control-label" style="text-align: left"><?php echo $post->pref2;?></label>
+                                            </div>
+                                                      <select class="form-control select" name="Preference2" >
+                                                   <option value="<?php echo $post->pref2;?>"><?php echo $post->pref2;?></option>    
+                                                   <option value="BSC(Hons) Computing">BSC(Hons) Computing</option>
+                                                    <option value="BA(Hons) Business Studies">BA(Hons) Business Studies</option>
+                                                    <option value="BA(Hons) Business & Marketing">BA(Hons) Business & Marketing</option>
+                                                    <option value="BA(Hons) International Business">BA(Hons) International Business</option>
+                                                    <option value="BA(Hons) Accounting & Finance">BA(Hons) Accounting & Finance</option>
+                                                    <option value="Higher National Diploma in Business">Higher National Diploma in Business</option>
+                                                    <option value="Higher National Diploma in Computer Science">Higher National Diploma in Computer Science</option>
+                                                    <option value="Foundation">Foundation</option>
+                                                    <option value="Other">Other</option>
+                                                    <option value="MBA">MBA</option>
+                                                    </select>
+
+                                                </div>        
+
+                                           <!--  <div class="col-md-6 col-xs-12">
                                                 <div class="input-group">
                                                     <textarea class="form-control" rows="3" cols="50" name="remark"><?php echo $post->Remark; ?></textarea>
                                                 </div>
 
-                                            </div>
+                                            </div> -->
                                         </div>
 
                                         <div class="form-group">

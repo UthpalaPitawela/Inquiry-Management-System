@@ -52,7 +52,9 @@ foreach ($existresult as $key) {
              $contactno = $this->input->post('contactno');
              $nic = $this->input->post('nic');
              $ol = $this->input->post('ol');
-             $remark = $this->input->post('remark');
+            // $remark = $this->input->post('remark');
+             $Preference1 = $this->input->post('Preference1');             
+             $Preference2 = $this->input->post('Preference2');
              $subject1 = $this->input->post('subject1');
              $subject2 = $this->input->post('subject2');
              $subject3 = $this->input->post('subject3');
@@ -65,15 +67,18 @@ foreach ($existresult as $key) {
              $pdate = $this->input->post('pdate');
              $counsellorname = $this->input->post('counsellorname');
       
-             if($remark==""){
-                $remark="No remark";
+             if($Preference1==""){
+                $Preference1="No Preference";
+             }
+             if($Preference2==""){
+                $Preference2="No Preference";
              }
              if($other==""){
                 $other="No Description";
              }
  
 
-            $res= $this->User_model->register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$remark,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname);
+            $res= $this->User_model->register_user($fname,$lname,$address,$country,$email,$gender,$contactno,$nic,$ol,$subject1,$subject2,$subject3,$grade1,$grade2,$grade3,$other,$mode,$intake,$pdate,$counsellorname,$Preference1,$Preference2);
 
 
               if($res==1){

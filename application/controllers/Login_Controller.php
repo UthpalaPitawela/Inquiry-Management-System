@@ -127,7 +127,7 @@ $this->load->model("Student_Data_Model");
                 $_SESSION["alert3"]="wrongpassword";
                 echo $_SESSION["username"];
                 redirect('index.php/');
-                //$this->logout();
+                $this->logout();
              }
      
         }

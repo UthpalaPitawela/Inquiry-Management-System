@@ -124,8 +124,10 @@ $this->load->model("Student_Data_Model");
                 }
              }else{
                 echo "no account";
+                $_SESSION["alert3"]="wrongpassword";
                 echo $_SESSION["username"];
-                $this->logout();
+                redirect('index.php/');
+                //$this->logout();
              }
      
         }

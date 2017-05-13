@@ -126,7 +126,8 @@
     </script>
 <?php
 }
-unset($_SESSION['alert3']);
+session_unset(); 
+//unset($_SESSION['alert3']);
 }
 ?>
 

@@ -12,7 +12,7 @@ class AddStudentAcc_model extends CI_Model{
 	}
 
 	function insertdatabyadmissionofficer($Contactno){
-		$this->db->select("Fname,Lname,Email");
+		$this->db->select("Fname,Lname,Email,pref1,pref2");
 		$query = $this->db->get_where('register',array('Contactno'=>$Contactno));
 
 		if ($query->num_rows() > 0) {
@@ -28,6 +28,8 @@ class AddStudentAcc_model extends CI_Model{
 			'lastname' => $insertstudent['Lname'],
 			'email' => $insertstudent['Email'],
 			'propic'=>"public/assets/images/users/no-image.jpg",
+			'pref1'=>$insertstudent['pref1'],
+			'pref2'=>$insertstudent['pref2'],
 									//'dob' => $this->input->post('dob'),
 			'tpnumber' => $Contactno,);
 

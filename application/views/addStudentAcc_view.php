@@ -235,7 +235,8 @@ if (time() - $_SESSION['start'] > 1800) {
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>ID</th>
+                                                <th>Preference 1</th>
+                                                <th>Preference 2</th>
                                                 <th>Primary TP number</th>
                                                 <th>Profile</th>
                                                 
@@ -252,7 +253,9 @@ if (time() - $_SESSION['start'] > 1800) {
                                             <form action="">
                                                 <td><?php echo $studentrow['firstname']."  ".$studentrow['lastname'];?></td>
                                                 <td><?php echo $studentrow['email'];?></td>
-                                                <td><?php echo $studentrow['user_name'];?></td>
+                                                 <td><?php echo $studentrow['pref1'];?></td>
+                                                  <td><?php echo $studentrow['pref2'];?></td>
+
                                                  <td><?php echo $studentrow['tpnumber'];?></td>
                                                <?php
                                                 $tpnumber=$studentrow['tpnumber'];

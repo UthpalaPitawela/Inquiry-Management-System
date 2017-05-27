@@ -108,6 +108,33 @@
 }
     
 </html>
+<?php
+    if(isset($_SESSION['alert3'])){
+
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+<?php
+    if( $_SESSION["alert3"]=="wrongpassword"){       
+?>
+<script type="text/javascript">
+    swal(
+      '',
+      'Wrong password!',
+      'error'
+    );
+    </script>
+<?php
+}
+session_unset(); 
+//unset($_SESSION['alert3']);
+}
+?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('public/sweetalert-master/dist/sweetalert.css'); ?>">
+<script src="<?php echo base_url('public/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+
+
 
 <?php
      if(isset($_SESSION["alert2"])){

@@ -169,7 +169,8 @@ $propic=$_SESSION["propic"];
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>ID</th>
+                                                <th>Preference 1</th>
+                                                <th>Preference 2</th>
                                                 <th>Primary TP number</th>
                                                 <th>Profile</th>
 
@@ -190,7 +191,9 @@ foreach ($admissionstudent ->result_array() as $studentrow) {
                                             <form action="">
                                                 <td><?php echo $studentrow['firstname']."  ".$studentrow['lastname'];?></td>
                                                 <td><?php echo $studentrow['email'];?></td>
-                                                <td><?php echo $studentrow['user_name'];?></td>
+                                                 <td><?php echo $studentrow['pref1'];?></td>
+                                                  <td><?php echo $studentrow['pref2'];?></td>
+
                                                 <td><?php echo $studentrow['tpnumber'];?></td>
                                                <?php
                                                 $tpnumber=$studentrow['tpnumber'];

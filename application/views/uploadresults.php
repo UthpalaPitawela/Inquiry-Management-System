@@ -46,7 +46,39 @@ if (time() - $_SESSION['start'] > 1800) {
                 <script src="<?php echo base_url('public/sweetalert2/sweetalert2.min.js'); ?>"></script>
 
 
+<style type="text/css">
+     #newslight {
+        display: none;
+        position: fixed;
+        top: 8%;
+        left: 25%;
+        width: 50%;
+        height: 84%;
+        padding: 16px;
+        border: 5px solid black;
+        background-color: white;
+        z-index:102;
+        overflow: auto;
 
+    }
+
+
+  #newsfade{
+        display: none;
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index:101;
+        -moz-opacity: 0.8;
+        opacity:.80;
+        filter: alpha(opacity=80);
+    }
+
+
+</style>
 
 
 <script type="text/javascript">
@@ -228,8 +260,8 @@ function confirm2() {
 
 
 var retval=true;
-for (i = 1; i < 5; i++) { 
-    object="addimage"+i;
+for (i = 1; i < 11; i++) { 
+    object="pdf"+i;
     
 
 
@@ -254,12 +286,10 @@ for (i = 1; i < 5; i++) {
         var ex=fileExtension.toLowerCase();
         switch(ex){
 
-          case "png":retval= checkSizeAssignment(object,i);break;
-          case "jpg":retval=checkSizeAssignment(object,i);break;
-          case "jpeg":retval= checkSizeAssignment(object,i);break;
+          case "pdf":retval= checkSizeAssignment(object,i);break;
          
           
-   default: document.getElementById('pText').innerHTML = "Invalid file type. You can select only png,jpg,jpeg";
+   default: document.getElementById('pText').innerHTML = "Invalid file type for file "+i+". You can select only pdf";
           
               document.getElementById("message-box-danger").style.display = 'block';
 
@@ -280,50 +310,6 @@ if(retval==false){
 
 
 
- object2="pdf";
-    
-
-
-
-
-
-
-
-
-        var fileElement = document.getElementById(object2);
-        var fileExtension = "";
-  
-
-        if ($('#'+object2).get(0).files.length === 0) {
-            
-            retval=true;
-        }else{
-
-            if (fileElement.value.lastIndexOf(".") > 0) {
-            fileExtension = fileElement.value.substring(fileElement.value.lastIndexOf(".") + 1, fileElement.value.length);
-            }
-        var ex=fileExtension.toLowerCase();
-        switch(ex){
-
-          case "pdf":retval= checkSizeAssignment(object2,5);break;
-          
-          
-   default: document.getElementById('pText').innerHTML = "Invalid file type. You can select only pdf files in fifth file input tag";
-          
-              document.getElementById("message-box-danger").style.display = 'block';
-
-            return false;break;
-       
-
-
-        }
-
-
-        }
-
-
-
-
     return retval;
     
 }
@@ -332,23 +318,14 @@ function checkSizeAssignment(upimage,i){
             var oFile = document.getElementById(upimage).files[0]; 
 
 
-            if (oFile.size > 2097152) // 2 mb for bytes.
+            if (oFile.size > 10485760) // 5 mb for bytes.
             {
-                if(i==5){
 
-
-                    document.getElementById('pText').innerHTML = "PDF file size is too large. Select a file of size atmost 2Mb.";
+                document.getElementById('pText').innerHTML = "PDF "+i+" size is too large. Select an image of size atmost 5Mb.";
           
                 document.getElementById("message-box-danger").style.display = 'block';
                 return false;
                 
-
-                }else{
-                document.getElementById('pText').innerHTML = "Image "+i+" size is too large. Select an image of size atmost 2Mb.";
-          
-                document.getElementById("message-box-danger").style.display = 'block';
-                return false;
-                }
             }else{
                   
                return true;
@@ -576,12 +553,21 @@ if ($current_results->num_rows() > 0) {
 foreach ($current_results ->result_array() as $row3) {
 //$row=$row->result();
 
- $im1=$row3['olimage1'];
-    $im2=$row3['olimage2'];
-    $im3=$row3['alimage1'];
-    $im4=$row3['alimage2'];
-    $file1=$row3['other'];
-
+ // $im1=$row3['olimage1'];
+ //    $im2=$row3['olimage2'];
+ //    $im3=$row3['alimage1'];
+ //    $im4=$row3['alimage2'];
+ //    $file1=$row3['other'];
+$f1= base_url($row3['pdf1']);
+$f2= base_url($row3['pdf2']);
+$f3= base_url($row3['pdf3']);
+$f4= base_url($row3['pdf4']);
+$f5= base_url($row3['pdf5']);
+$f6= base_url($row3['pdf6']);
+$f7= base_url($row3['pdf7']);
+$f8= base_url($row3['pdf8']);
+$f9= base_url($row3['pdf9']);
+$f10= base_url($row3['pdf10']); 
 
 ?>
 
@@ -589,196 +575,249 @@ foreach ($current_results ->result_array() as $row3) {
 
 <form enctype="multipart/form-data" id="dataform" action="<?php echo base_url("index.php/Upload_result/update_Result")?>" method="POST" >
 <!-- onsubmit="return checkimage();return" -->
-<label style="float: left; padding-top: 7px;">Enter image 1 : &nbsp</label>
- <input name="file1" type="file" id="addimage1" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange=" readURL(this,'image1','a1');">
+<input type="text" hidden="" value="<?php echo $f1; ?>" id="f1" name="">
+<input type="text" hidden="" value="<?php echo $f2; ?>" id="f2" name="">
+<input type="text" hidden="" value="<?php echo $f3; ?>" id="f3" name="">
+<input type="text" hidden="" value="<?php echo $f4; ?>" id="f4" name="">
+<input type="text" hidden="" value="<?php echo $f5; ?>" id="f5" name="">
+<input type="text" hidden="" value="<?php echo $f6; ?>" id="f6" name="">
+<input type="text" hidden="" value="<?php echo $f7; ?>" id="f7" name="">
+<input type="text" hidden="" value="<?php echo $f8; ?>" id="f8" name="">
+<input type="text" hidden="" value="<?php echo $f9; ?>" id="f9" name="">
+<input type="text" hidden="" value="<?php echo $f10; ?>" id="f10" name="">
+<table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>File Name</th>
+                                                <th>Open File</th>
+                                                <th>Add File</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td><input name="name1" type="text" id="name1" style="width:90%; margin-bottom: 2px;" value="<?php echo ($row3['name1']); ?>" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                <td>
+                                                <?php
+                                                if($row3['pdf1']!='nolink'){?>
+<button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f1')" ><span>View PDF</span></button>
+<?php
+}else{
+  echo "No File";
+}
+?>
 
- <label style="float: left; padding-top: 7px;">Enter image 2 : &nbsp</label>
-<input name="file2" type="file" id="addimage2" class="btn btn-info" style="width:200px;  margin-bottom: 2px;" onchange=" readURL(this,'image2','a2');">
-<label style="float: left; padding-top: 7px;">Enter image 3 : &nbsp</label>
-<input name="file3" type="file" id="addimage3" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange=" readURL(this,'image3','a3');">
-<label style="float: left; padding-top: 7px;">Enter image 4 : &nbsp</label>
- <input name="file4" type="file" id="addimage4" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange="readURL(this,'image4','a4');">
+</td>
+                                                <td><input name="file1" type="file" id="pdf1" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td><input name="name2" type="text" id="name2" style="width:90%; margin-bottom: 2px;" value="<?php echo ($row3['name2']); ?>" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                <td>
+                                                                                                <?php
+                                                if($row3['pdf2']!='nolink'){?>
+<button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f2')" ><span>View PDF</span></button>
+<?php
+}else{
+  echo "No File";
+}
+?>
 
-<label style="float: left; padding-top: 7px;">Enter PDF File : &nbsp&nbsp</label>
+</td>
+                                                <td><input name="file2" type="file" id="pdf2" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td><input name="name3" type="text" id="name3" style="width:90%; margin-bottom: 2px;" value="<?php echo ($row3['name3']); ?>" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                <td>
+                                                                                                <?php
+                                                if($row3['pdf3']!='nolink'){?>
+<button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f3')" ><span>View PDF</span></button>
+<?php
+}else{
+  echo "No File";
+}
+?>
 
-<input name="file5" type="file" id="pdf" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange="">
+</td>
+                                                <td><input name="file3" type="file" id="pdf3" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td><input name="name4" type="text" id="name4" style="width:90%; margin-bottom: 2px;" value="<?php echo ($row3['name4']); ?>" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                <td>
+                                                                                                <?php
+                                                if($row3['pdf4']!='nolink'){?>
+        <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f4')" ><span>View PDF</span></button>
+<?php
+}else{
+  echo "No File";
+}
+?>
+                                                </td>
+                                                <td><input name="file4" type="file" id="pdf4" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style=""  onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td><input name="name5" type="text" id="name5" style="width:90%; margin-bottom: 2px;" value=" <?php echo ($row3['name5']); ?>" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                <td>
+                                                                                                <?php
+                                                if($row3['pdf5']!='nolink'){?>
 
-<div class="gallery" id="links">
-                             
+        <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f5')" ><span>View PDF</span></button>
 
-                            <a class="gallery-item" style="height:200px;width:200px;" id="a1" href="<?php echo base_url($row3['olimage1'])?>" title="O/L Certificate Image 1" data-gallery="">
-                                <div class="image">                              
-                                    <img style="height:200px;width:200px;" id="image1" src=" <?php echo base_url($row3['olimage1']); ?>" alt="O/L Certificate Image 1">           
+<?php
+}else{
+  echo "No File";
+}
+?>
 
-                                    <ul class="gallery-item-controls">
-                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
-                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                                    </ul>                                                                    
-                                </div>
+                                                </td>
+                                                <td><input name="file5" type="file" id="pdf5" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td><input name="name6" type="text" id="name6" placeholder="Enter Name of File" value=" <?php echo ($row3['name6']); ?> " style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" onchange=""></td>
+                                                <td>
+                                                                                                <?php
+                                                if($row3['pdf6']!='nolink'){?>
+        <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f6')" ><span>View PDF</span></button>
 
-                                <div class="meta">
-                                    <strong>O/L Certificate Image 1</strong>
-                                  
-                                </div>   
+<?php
+}else{
+  echo "No File";
+}
+?>
 
-
-                            </a>
-                                
-
-                            <a class="gallery-item" style="height:200px;width:200px;" id="a2" href="<?php echo base_url($row3['olimage2'])?>" title="O/L Certificate Image 2" data-gallery="">
-                                <div class="image">
-                                    <img style="height:200px;width:200px;" id="image2" src="<?php echo base_url($row3['olimage2'])?>" alt="O/L Certificate Image 2">    
-                                    <ul class="gallery-item-controls">
-                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
-                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                                    </ul>                                                                    
-                                </div>
-                                <div class="meta">
-                                    <strong>O/L Certificate Image 2</strong>
-                          
-                                </div>                                
-                            </a>                            
-
-                            <a class="gallery-item" style="height:200px;width:200px;" id="a3" href="<?php echo base_url($row3['alimage1'])?>" title="A/L Certificate Image 1" data-gallery="">
-                                <div class="image">
-                                    <img style="height:200px;width:200px;" id="image3" src="<?php echo base_url($row3['alimage1'])?>" alt="A/L Certificate Image 1">                                        
-                                    <ul class="gallery-item-controls">
-                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
-                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                                    </ul>                                                                    
-                                </div>
-                                <div class="meta">
-                                    <strong>A/L Certificate Image 1</strong>
-                                  
-                                </div>                                
-                            </a>
-
-                            <a class="gallery-item" style="height:200px;width:200px;" id="a4" href="<?php echo base_url($row3['alimage2'])?>" title="A/L Certificate Image 2" data-gallery="">
-                                <div class="image">
-                                    <img style="height:200px;width:200px;" id="image4" src="<?php echo base_url($row3['alimage2'])?>" alt="A/L Certificate Image 2">    
-                                    <ul class="gallery-item-controls">
-                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
-                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                                    </ul>                                                                    
-                                </div>
-                                <div class="meta">
-                                    <strong>A/L Certificate Image 2</strong>
-                     
-                                </div>                                
-                            </a>                            
-                             
-                        </div>
-                        
-
-
-
-
-
-   <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-            <div class="slides"></div>
-            <h3 class="title"></h3>
-            <a class="prev">‹</a>
-            <a class="next">›</a>
-            <a class="close">×</a>
-            <a class="play-pause"></a>
-            <ol class="indicator"></ol>
-        </div>      
-        <!-- END BLUEIMP GALLERY -->
-        
-     
-        <script>            
-            document.getElementById('links').onclick = function (event) {
-                event = event || window.event;
-                var target = event.target || event.srcElement;
-                var link = target.src ? target.parentNode : target;
-                var options = {index: link, event: event,onclosed: function(){
-                        setTimeout(function(){
-                            $("body").css("overflow","");
-                        },200);                        
-                    }};
-                var links = this.getElementsByTagName('a');
-                blueimp.Gallery(links, options);
-            };
-        </script>        
-        
-   
-
-
-
-
-
-
-<!-- <table>
-    <tr>
-        
-    <td>
-          <div style="margin-left:10%; margin-top: 2%; float:left; ">
-    <img for="file1" src=' <?php echo base_url($row3['olimage1']); ?>' id="image1" style=" " class="img-rounded" alt="O/L result image 1" width="304" height="236"  onclick="$('#addimage1').click();">
-    <br>
-    <input name="file1" type="file" id="addimage1" class="btn btn-info" style="width:303px;" onchange=" readURL(this,'image1');">
-</div>
-        
-    </td>
-
-    <td>
-        
-        <div style="margin-left:12%; margin-top: 2%; float: left;">
-    <img src='<?php echo base_url($row3['olimage2']); ?>' id="image2" style=" "  class="img-rounded" alt="O/L result image 2" width="304" height="236">
-    <br>
-    <input name="file2" type="file" id="addimage2" class="btn btn-info" style="width:303px; " onchange=" readURL(this,'image2');">
-</div>
+                                                </td>
+                                                <td><input name="file6" type="file" id="pdf6" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td><input name="name7" type="text" id="name7" placeholder="Enter Name of File" value="<?php echo ($row3['name7']); ?>" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" onchange=""></td>
+                                                <td>
+                                                                                                <?php
+                                                if($row3['pdf7']!='nolink'){?>
+        <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f7')" ><span>View PDF</span></button>
+<?php
+}else{
+  echo "No File";
+}
+?>
 
 
-    </td>
-
-    <td>
-        
-        <div style="margin-left:12%; margin-top:2%; float:left; ">
-    <img src='<?php echo base_url($row3['alimage1']); ?>' style="" id="image3" class="img-rounded" alt="A/L result image 1" width="304" height="236">
-    <br>
-    <input name="file3" type="file" id="addimage3" class="btn btn-info" style="width:303px;" onchange=" readURL(this,'image3');">
-</div>
-
-    </td>
-    </tr>
-
-
-    <tr>
-        <td>
-            
-<div style="margin-left: 12%; margin-top:2%;float:left;">
-    <img src='<?php echo base_url($row3['alimage2']); ?>' style="" id="image4" class="img-rounded" alt="A/L result image 2" width="304" height="236">
-    <br>
-    <input name="file4" type="file" id="addimage4" class="btn btn-info" style="float:bottom;width:303px;" onchange="readURL(this,'image4');">
-</div>            
-        </td>
-    </tr>
-    </table>
- -->            
-        
+                                                </td>
+                                                <td><input name="file7" type="file" id="pdf7" style="width:200px; margin-bottom: 2px;"  class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td><input name="name8" type="text" id="name8"  style="width:90%; margin-bottom: 2px;" value=" <?php echo ($row3['name8']); ?>" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                <td>
+                                                  <?php
+                                                if($row3['pdf8']!='nolink'){?>
+        <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f8')" ><span>View PDF</span></button>
+<?php
+}else{
+  echo "No File";
+}
+?>
 
 
-<div class="col-md-12 col-sm-6" style="margin-top: 45px;" >
-<?php 
+                                                </td>
+                                                <td><input name="file8" type="file" id="pdf8" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td><input name="name9" type="text" id="name9" style="width:90%; margin-bottom: 2px;" value=" <?php echo ($row3['name9']); ?>" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                <td>
+                                                                                                <?php
+                                                if($row3['pdf9']!='nolink'){?>
+        <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f9')" ><span>View PDF</span></button>
+<?php
+}else{
+  echo "No File";
+}
+?>
+                                                </td>
+                                                <td><input name="file9" type="file" id="pdf9" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td><input name="name10" type="text" id="name10" style="width:90%; margin-bottom: 2px;" value=" <?php echo ($row3['name10']); ?>" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                <td>
+                                                                                                <?php
+                                                if($row3['pdf10']!='nolink'){?>
+        <button type="button" class="btn btn-primary view-pdf" style="" href = "javascript:void(0)" onclick = "showPDF('f10')" ><span>View PDF</span></button>
+        <?php
+      }else{
+  echo "No File";
+}
+      ?>
+                                            
 
-         if($row3['other']!="nolink"){
-            ?>
+                                                </td>
+                                                <td><input name="file10" type="file" id="pdf10" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
- <div style="height:35vw;border:solid; width: 70%;" onload="this.style.height=this.contentDocument.body.scrollHeight +'px'; href="<?php echo base_url($row3['other']); ?>">
+
+
+
+<script type="text/javascript">
+
+function showPDF(fil){
+
+var urloffile=document.getElementById(fil).value;
+
+  document.getElementById("pdfviwer").setAttribute('data', urloffile);
+  document.getElementById('newslight').style.display='block';
+  document.getElementById('newsfade').style.display='block';
+
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  <input style="" class="btn btn-info pull-right" type="button" onclick=" confirm();" id="newssubmit" name="submitresults" value="Submit" >
+ -->
+
+ <div id="newsfade" class="black_overlay"></div>
+
+
+<!-- div for white area of adding a news -->
+<div id="newslight" class="white_content">
+
+
+
+
+
+ <div style=" height:32.5vw;" onload="this.style.height=this.contentDocument.body.scrollHeight +'px'; href="<?php //echo base_url($row2['other']); ?>">
               
-                  <object data="<?php echo base_url($row3['other']); ?> " type="application/pdf" width="100%" height="100%" >
-                  alt : <a href="<?php echo base_url($row3['other']); ?> ">No other files have been uploaded</a>
+                  <object id="pdfviwer" data="" type="application/pdf" width="100%" height="100%" >
+                  alt : <a href="<?php //echo base_url($row2['other'])?>">No other files have been uploaded</a>
                   </object>
 
 
             </div>
-            <?php
-          }else{
-            echo "No other files have been uploaded";
-          }
-          ?>
+<br>
+<br>
+
+<a class="btn btn-primary view-pdf col-md-2 pull-right" href = "javascript:void(0)" onclick = "document.getElementById('newslight').style.display='none';document.getElementById('newsfade').style.display='none'">Close</a>
 
 </div>
+
 
 
 <div  style="margin-top: 150px;">
@@ -798,6 +837,7 @@ foreach ($current_results ->result_array() as $row3) {
 
 <?php
 }
+
 }else{
   $old=0;
 
@@ -821,220 +861,84 @@ foreach ($current_results ->result_array() as $row3) {
 <form enctype="multipart/form-data" style="" id="emptyform" action="<?php echo base_url("index.php/Upload_result/insert_Result")?>"  method="POST">
 
 <!--  onsubmit="return checkimage();" -->
+<table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>File Name</th>
+                                               
+                                                <th>Add File</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td><input name="name1" type="text" id="name1" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                
+                                                <td><input name="file1" type="file" id="pdf1" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td><input name="name2" type="text" id="name2" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                
+                                                <td><input name="file2" type="file" id="pdf2" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td><input name="name3" type="text" id="name3" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                
+                                                <td><input name="file3" type="file" id="pdf3" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td><input name="name4" type="text" id="name4" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                
+                                                <td><input name="file4" type="file" id="pdf4" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style=""  onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td><input name="name5" type="text" id="name5" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                
+                                                <td><input name="file5" type="file" id="pdf5" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td><input name="name6" type="text" id="name6" placeholder="Enter Name of File" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" onchange=""></td>
+                                                
+                                                <td><input name="file6" type="file" id="pdf6" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td><input name="name7" type="text" id="name7" placeholder="Enter Name of File" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" onchange=""></td>
+                                                
+                                                <td><input name="file7" type="file" id="pdf7" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td><input name="name8" type="text" id="name8"  style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                
+                                                <td><input name="file8" type="file" id="pdf8" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td><input name="name9" type="text" id="name9" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                
+                                                <td><input name="file9" type="file" id="pdf9" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td><input name="name10" type="text" id="name10" style="width:90%; margin-bottom: 2px;" class="btn btn-default" style="" placeholder="Enter Name of File" onchange=""></td>
+                                                
+                                                <td><input name="file10" type="file" id="pdf10" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange=""></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
 
-
-<label style="float: left; padding-top: 7px;">Enter image 1 : &nbsp</label>
- <input name="file1" type="file" id="addimage1" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange=" readURL(this,'image1','a1');">
-
- <label style="float: left; padding-top: 7px;">Enter image 2 : &nbsp</label>
-<input name="file2" type="file" id="addimage2" class="btn btn-info" style="width:200px;  margin-bottom: 2px;" onchange=" readURL(this,'image2','a2');">
-<label style="float: left; padding-top: 7px;">Enter image 3 : &nbsp</label>
-<input name="file3" type="file" id="addimage3" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange=" readURL(this,'image3','a3');">
-<label style="float: left; padding-top: 7px;">Enter image 4 : &nbsp</label>
- <input name="file4" type="file" id="addimage4" class="btn btn-info" style="width:200px; margin-bottom: 2px;" onchange="readURL(this,'image4','a4');">
-
-<label style="float: left; padding-top: 7px;">Enter pdf File : &nbsp&nbsp</label>
-
-<input name="file5" type="file" id="pdf" style="width:200px; margin-bottom: 2px;" class="btn btn-info" style="" onchange="">
-
-<div class="gallery" id="links">
-                             
-
-                            <a class="gallery-item" style="height:200px;width:200px;"  id="a1" href=""  title="O/L Certificate Image 1" data-gallery="">
-                                <div class="image">                              
-                                    <img style="height:200px;width:200px;" id="image1" src="" alt="O/L Certificate Image 1">           
-
-                                    <ul class="gallery-item-controls">
-                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
-                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                                    </ul>                                                                    
-                                </div>
-
-                                <div class="meta">
-                                    <strong>O/L Certificate Image 1</strong>
-                                  
-                                </div>   
-
-
-                            </a>
-                                
-
-                            <a class="gallery-item" style="height:200px;width:200px;"  id="a2"  href="" title="O/L Certificate Image 2" data-gallery="">
-                                <div class="image">
-                                    <img style="height:200px;width:200px;" id="image2" src="" alt="O/L Certificate Image 2">    
-                                    <ul class="gallery-item-controls">
-                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
-                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                                    </ul>                                                                    
-                                </div>
-                                <div class="meta">
-                                    <strong>O/L Certificate Image 2</strong>
-                          
-                                </div>                                
-                            </a>                            
-
-                            <a class="gallery-item" style="height:200px;width:200px;" href=""  id="a3"  title="A/L Certificate Image 1" data-gallery="">
-                                <div class="image">
-                                    <img style="height:200px;width:200px;" id="image3" src="" alt="A/L Certificate Image 1">                                        
-                                    <ul class="gallery-item-controls">
-                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
-                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                                    </ul>                                                                    
-                                </div>
-                                <div class="meta">
-                                    <strong>A/L Certificate Image 1</strong>
-                                  
-                                </div>                                
-                            </a>
-
-                            <a class="gallery-item" style="height:200px;width:200px;" href=""  id="a4"  title="A/L Certificate Image 2" data-gallery="">
-                                <div class="image">
-                                    <img style="height:200px;width:200px;" id="image4" src="" alt="A/L Certificate Image 2">    
-                                    <ul class="gallery-item-controls">
-                                        <li><label class="check"><div class="icheckbox_minimal-grey" style="position: relative;"><input type="checkbox" class="icheckbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></label></li>
-                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
-                                    </ul>                                                                    
-                                </div>
-                                <div class="meta">
-                                    <strong>A/L Certificate Image 2</strong>
-                     
-                                </div>                                
-                            </a>                            
-                             
-                        </div>
-                        
-
-
-
-
-
-   <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-            <div class="slides"></div>
-            <h3 class="title"></h3>
-            <a class="prev">‹</a>
-            <a class="next">›</a>
-            <a class="close">×</a>
-            <a class="play-pause"></a>
-            <ol class="indicator"></ol>
-        </div>      
-        <!-- END BLUEIMP GALLERY -->
-        
-     
-        <script>            
-            document.getElementById('links').onclick = function (event) {
-                event = event || window.event;
-                var target = event.target || event.srcElement;
-                var link = target.src ? target.parentNode : target;
-                var options = {index: link, event: event,onclosed: function(){
-                        setTimeout(function(){
-                            $("body").css("overflow","");
-                        },200);                        
-                    }};
-                var links = this.getElementsByTagName('a');
-                blueimp.Gallery(links, options);
-            };
-        </script>        
-        
-   
-
-
-
-
-<!-- <table>
-    <tr>
-        <td>
-                  <div style="margin-left:12%; margin-top: 2%; float:left; ">
-
-
-    <img for="file1" src=""  id="image1" class="img-rounded" alt="O/L result image 1" style=" width:304px !important; height:236px !important;">
-    <br>
-    <input name="file1" type="file" id="addimage1" class="btn btn-info" style=" width:303px; float: left;" onchange=" readURL(this,'image1'); ">
-
-
-</div>
-            
-        </td>
-
-
-        <td>
-            
-            <div style="margin-left:15%; margin-top: 2%; float: left; ">
-    <img src="" class="img-rounded" alt="O/L result image 2" id="image2" width="304" height="236">
-    <br>
-    <input name="file2" type="file" id="addimage2" style="width:303px; float: left;" class="btn btn-info" onchange="readURL(this,'image2');">
-    </div>
-
-
-        </td>
-
-
-        <td>
-            
-
-<div style="margin-left:15%; margin-top:2%; float:left; ">
-    <img src="" class="img-rounded" alt="A/L result image 1" id="image3" width="304" height="236">
-    <br>
-    <input name="file3" type="file" id="addimage3" style="width:303px;" class="btn btn-info" onchange="readURL(this,'image3');">
-</div>
-
-            
-        </td>
-    </tr>
-
-    <tr>
-        
-        <td>
-            
-            <div style="margin-left: 12%; margin-top:2%; float:left; ">
-    <img src="" class="img-rounded" alt="A/L result image 2" width="304" height="236" id="image4">
-    <br>
-    <input name="file4" type="file" id="addimage4" style="width:303px;" class="btn btn-info" onchange="readURL(this,'image4');">
-</div>
-
-
-        </td>
-    </tr>
-<tr>
-
-    <td>
-        
-
-
-<div style="margin-left: 12%; margin-top:10%;float:bottom;">
-
- <?php 
-            echo "No other files have been uploaded";
-
-          ?>
-          
-
-
-            
- <input name="file5" type="file" id="addpdf" style="width: 303px;" class="btn btn-info" onchange="">
-
-          </div>
-
-    </td>
-</tr>
-
-
-<tr>
-    <td>
-        
-        
-
-    </td>
-</tr>
-
-
-
-
-
-
-</table>
- -->
  <input style="" class="btn btn-info pull-right" type="button" onclick=" confirm();" id="newssubmit" name="submitresults" value="Submit" >
+
+
+
 </form>
 
 <?php

@@ -128,13 +128,7 @@ if (time() - $_SESSION['start'] > 1800) {
                         
                     </li>
 
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
-                    </li>
-
-                    <li>
-                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
-                    </li>
+                   
 
                     <li>
                         <a href="<?php echo base_url();?>index.php/shoutout/index"><span class="fa fa-envelope"></span> <span class="xn-text">Email/SMS</span></a>
@@ -157,6 +151,13 @@ if (time() - $_SESSION['start'] > 1800) {
                     
                     <?php if($status==0){ ?>
                     <li class="xn-title">Administration</li>
+                     <li>
+                        <a href="<?php echo base_url();?>index.php/Database"><span class="fa fa-database"></span> <span class="xn-text">Databases</span></a>
+                    </li>
+
+                    <li>
+                        <a href="<?php echo base_url();?>index.php/Campaign_Controller/index"><span class="fa fa-th-list"></span> <span class="xn-text">Campaigns</span></a>
+                    </li>
                     <li class>
                         <a href="<?php echo base_url();?>index.php/TargetsController"><span class="fa fa-bullseye"></span> <span class="xn-text">Targets</span></a>                        
                     </li>    

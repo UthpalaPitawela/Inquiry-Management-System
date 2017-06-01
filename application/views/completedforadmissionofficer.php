@@ -324,14 +324,14 @@ if (time() - $_SESSION['start'] > 1800) {
 
 
                 $.ajax({
-                    type:"get",
-                    url: '<?php echo base_url();?>index.php/Email/EmailtoDB_Controller/addstudentforadmissionofficer/'+Contactno+'/'+email,
+                    type:"post",
+                    url: '<?php echo base_url();?>index.php/Email/EmailtoDB_Controller/addstudentforadmissionofficer',
+                     data : {Contactno:Contactno,email:email},
                     success: function(data) {
                         respond=data.trim();
-                        //alert(respond)
                       if(respond=="True"){
 
-                        swal("Email Sent!", "An email with account details are sent to the user "+email+" !", "success");
+                        swal("Account created!", "An email with account details are sent to the user "+email+" !", "success");
                         window.location="<?php echo base_url();?>index.php/ManageInquiries_controller/completedforadmissionofficer";
 
 

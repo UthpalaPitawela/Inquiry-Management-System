@@ -44,9 +44,10 @@ public function offerletter(){
 
 
 
-
-	public function addstudentforadmissionofficer($Contactno,$email){
+	public function addstudentforadmissionofficer(){
 		
+		$Contactno=$this->input->post('Contactno');
+		$email=$this->input->post('email');
 		
  
 		$this->load->model('AddStudentAcc_model');
@@ -59,9 +60,16 @@ public function offerletter(){
 ?>
 
 <?php
-		$this->AddStudentAcc_model->insertdatabyadmissionofficer($Contactno);
+		$respond=$this->AddStudentAcc_model->insertdatabyadmissionofficer($Contactno);
+		if($respond==1){
+			echo "True";
+		}else{
+			echo "False";
+		}
 
-
+		//redirect('index.php/ManageInquiries_controller/completedforadmissionofficer');
+//redirect
+#return "true";
 		?>
 		
 		<?php
@@ -69,10 +77,9 @@ public function offerletter(){
 
 		 $content='<p><span style="font-size: 18px; font-weight: bold;">Congratulations  '.$email.' !</span></p><p>Your Account for <span style="font-weight: bold; font-size: 14px; background-color: rgb(206, 198, 206);">Edulink</span> has been created and now you can login to <span style="text-decoration: underline;">enter your exam results to prove the validity of the data you provided</span>.<br><br><span style="font-weight: bold;">Login details:</span></p><p><span style="font-weight: bold;">Username: </span>'.$Contactno.'</p><p><span style="font-weight: bold;">Password: &nbsp; </span>edulink@123</p><p>You can change your password once you log in to your account.<br>Feel free to contact us in any case of need.<br>Thanks.</p>';
 
-		 $this->send("Your EDULINK Account Created",$email,$content);
+		// $this->send("Your EDULINK Account Created",$email,$content);
 
 	}
-
 
 
 	public function Resend_addstudentforadmissionofficer($Contactno,$email){
@@ -99,8 +106,8 @@ public function offerletter(){
 		 <p>You can login to EDULINK using following link </p>
 		 <p>You can change your password once you log in to your account.<br>Feel free to contact us in any case of need.<br>Thanks.</p>';
 
-		 $this->send("Reminder: Your EDULINK Account Created",$email,$content);
-
+	//	 $this->send("Reminder: Your EDULINK Account Created",$email,$content);
+//redirect('index.php/ManageInquiries_controller/completedforadmissionofficer');
 	}
 
 

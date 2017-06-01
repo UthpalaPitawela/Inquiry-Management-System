@@ -33,13 +33,13 @@ class AddStudentAcc_model extends CI_Model{
 									//'dob' => $this->input->post('dob'),
 			'tpnumber' => $Contactno,);
 
-				$this->db->insert('student_table',$data);			 
+			$reval=$this->db->insert('student_table',$data);			 
 
 			
 				$acc = array('account_created'=>1);
 		$this->db->where('Contactno',$Contactno);
 		$this->db->update('register',$acc);
-
+return $reval;
 
 			}
 		}

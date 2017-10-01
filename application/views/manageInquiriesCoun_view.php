@@ -291,7 +291,7 @@
                                         <form>
                                     <?php
                                    
-                                    foreach($following->result_array() as $post){ 
+                                        foreach($following->result_array() as $post){ 
 
                                             date_default_timezone_set('Asia/Colombo');
 
@@ -301,12 +301,20 @@
 
                                             $sepintake = "$thisyear-09-01";
                                             $januaryforcompare= "$thisyear-01-31";
+                                            $januarybeg= "$thisyear-01-01";
+                                             $thisjanstart = date('Y-m-d',strtotime($januarybeg));
+
+                                              $septemberbeg= "$thisyear-09-01";
+                                             $thisseptart = date('Y-m-d',strtotime($septemberbeg));
+
+
                                             $septemberforcompare="$thisyear-09-30";
                                             $nextyear=$thisyear+1;
                                             $nextjanuaryforcompare="$nextyear-01-31";
                                             
                                             $sep = date('Y-m-d',strtotime($sepintake));
                                             $thisjanend = date('Y-m-d',strtotime($januaryforcompare));
+
                                             $thissepend=date('Y-m-d',strtotime($septemberforcompare));
                                             $nextjan=date('Y-m-d',strtotime($nextjanuaryforcompare));
 
@@ -315,7 +323,7 @@
 
                                             $potentialdate= $post['Pdate'];
 
-if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissepend) > strtotime($potentialdate)) && (strtotime($thisjanend) < strtotime($today))    ) || (  (strtotime($thissepend) < strtotime($today)) && (strtotime($nextjan) > strtotime($potentialdate))  ) || ( (strtotime($thisjanend) > strtotime($potentialdate)) )   ){
+if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thissepend) >= strtotime($potentialdate)) && (strtotime($thisjanend) <= strtotime($today))    ) || (  (strtotime($thissepend) <= strtotime($today)) && (strtotime($nextjan) >= strtotime($potentialdate))  ) || ( (strtotime($thisjanend) >= strtotime($potentialdate)) )   ){
 
 
 ?>
@@ -394,14 +402,14 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" id="smssummaryform<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Contactno; ?>" />
+                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post['Contactno']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -409,13 +417,13 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage1<?php echo $post['r_id']; ?>"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="save" class="btn btn-primary">Send Text Message</button>
+                                                                <button type="button" onclick="check_sms('<?php echo $post['Contactno']; ?>','<?php echo $post['r_id']; ?>')" id="save" class="btn btn-primary">Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -519,7 +527,73 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                                     </table>
 
                         </div>
-                        </div>              
+                        </div>         
+
+
+                                    <script>           
+                                                                            function check_sms(tp,r_id) {
+                                                                                //alert();
+                                                                              //  $('#loading_image').show();
+                                                                                var recipient = tp;
+                                                             //var message=;
+                                                             message=document.getElementById('smsmessage1'+r_id).value;
+                                                                                //var message = $('#smsmessage1').val();
+                                                                           //     alert(message);
+
+                                                                                // alert(recipient);
+                                                                                // alert(message);
+
+                                                                                //alert(recipient);
+                                                                                //alert(message);
+                                                                                 
+                                                                                if ( recipient!=="") {
+                                                                                    if(message!==""){
+
+
+
+
+
+
+
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
+                     data : {recipient:recipient,text:message},
+                     success: function(data) {
+
+              document.getElementById("smssummaryform"+r_id).submit();
+
+                        //$('#loading_image').hide();
+                             alert("SMS sent successfully");
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+                                                
+
+                                                                                    }else{
+                                                                                       
+                                                                                        alert("Please fill the required field");
+                                                                                    } 
+                                                                                }else{
+                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                }
+
+
+
+                                           }
+                                                                       
+                                                                       </script>                            
+     
 
                         <!-- +++++++++++++++++++++++++ Following (Medium) ++++++++++++++++++++++++  -->
                         <div class="tab-pane" id="tab23" >
@@ -541,26 +615,31 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
 
                                         <tbody>
                                         <form>
-                                    <?php
+                                                           <?php
                                    
-                                                                              foreach($following->result_array() as $post){ 
+
+                                   
+                                        foreach($following->result_array() as $post){ 
 
                                             date_default_timezone_set('Asia/Colombo');
 
                                             $today = date('Y-m-d ');
                                             $thisyear=date('Y');
                                             $thismonth = date('m'); 
-
+                                               $januarybeg= "$thisyear-01-01";
+                                             $thisjanstart = date('Y-m-d',strtotime($januarybeg));
                                             $sepintake = "$thisyear-09-01";
                                             $januaryforcompare= "$thisyear-01-31";
                                             $septemberforcompare="$thisyear-09-30";
                                             $nextyear=$thisyear+1;
                                             $nextjanuaryforcompare="$nextyear-01-31";
+                                            $nextseptemberforcompare="$nextyear-09-31";
                                             
                                             $sep = date('Y-m-d',strtotime($sepintake));
                                             $thisjanend = date('Y-m-d',strtotime($januaryforcompare));
                                             $thissepend=date('Y-m-d',strtotime($septemberforcompare));
                                             $nextjan=date('Y-m-d',strtotime($nextjanuaryforcompare));
+                                            $nextsep=date('Y-m-d',strtotime($nextseptemberforcompare));
 
                                             $janintake = "2010-01-12 13:57:01";
                                            // $sep = date('m',strtotime($sepintake));
@@ -568,7 +647,7 @@ if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissep
                                             $potentialdate= $post['Pdate'];
 
 
-if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < strtotime($thissepend) )  && ( strtotime($potentialdate) > strtotime($thissepend) ) ) ||  (( strtotime($today) > strtotime($thissepend) ) && ( strtotime($today) < strtotime($nextjan) ) &&  ( strtotime($potentialdate) > strtotime($nextjan) ) ) ){
+if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <= strtotime($thissepend) )  && ( strtotime($potentialdate) >= strtotime($thissepend) ) ) && ( strtotime($potentialdate) <= strtotime($nextjan) )||(  (strtotime($today)<=strtotime($thisjanend)) && (strtotime($potentialdate)>=strtotime($thisjanend) )&& ( strtotime($potentialdate) <= strtotime($thissepend) ) ) ||  (( strtotime($today) >= strtotime($thissepend) ) && ( strtotime($today) <= strtotime($nextjan) ) &&  ( strtotime($potentialdate) >= strtotime($nextjan) ) && ( strtotime($potentialdate) <= strtotime($nextsep) )) ){
 ?>
 
                                         
@@ -605,7 +684,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                 
@@ -643,14 +722,14 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" id="smssummaryform2<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Contactno; ?>" />
+                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post['Contactno']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -658,13 +737,13 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage2<?php echo $post['r_id']; ?>"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="save" class="btn btn-primary">Send Text Message</button>
+                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms2('<?php echo $post['Contactno']; ?>','<?php echo $post['r_id']; ?>')">Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -733,7 +812,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                 
@@ -767,6 +846,64 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                 </div>
                             </div> <!-- End of Following Medium -->
 
+   <script>           
+                                                                            function check_sms2(tp,r_id) {
+                                                                              //  $('#loading_image').show();
+                                                                                var recipient = tp;
+                                                                                var message = $('#smsmessage2'+r_id).val();
+
+                                                                                // alert(recipient);
+                                                                                // alert(message);
+
+                                                                                //alert(recipient);
+                                                                                //alert(message);
+                                                                                 
+                                                                                if ( recipient!=="") {
+                                                                                    if(message!==""){
+
+
+
+
+
+
+
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
+                     data : {recipient:recipient,text:message},
+                     success: function(data) {
+
+              document.getElementById("smssummaryform2"+r_id).submit();
+
+                        //$('#loading_image').hide();
+                             alert("SMS sent successfully");
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+
+
+
+         
+
+                                                                                    }else{
+                                                                                        alert("Please fill the required field");
+                                                                                    } 
+                                                                                }else{
+                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                }
+
+
+
+                                           }
+                                                                       
+                                                                       </script> 
 
                         <!-- +++++++++++++++++++++++++ Following (Low) ++++++++++++++++++++++++  -->
                         <div class="tab-pane" id="tab24" >
@@ -788,8 +925,11 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
 
                                         <tbody>
                                         <form>
-                                    <?php
- foreach($following->result_array() as $post){ 
+                                                           <?php
+                                   
+
+                                   
+                                        foreach($following->result_array() as $post){ 
 
                                             date_default_timezone_set('Asia/Colombo');
 
@@ -816,8 +956,9 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             $potentialdate= $post['Pdate'];
 
 
-if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < strtotime($thissepend) )  && ( strtotime($potentialdate) > strtotime($nextjan) ) ) ||  (( strtotime($today) > strtotime($thissepend) ) && ( strtotime($today) < strtotime($nextjan) ) &&  ( strtotime($potentialdate) > strtotime($nextsep) ) ) ){
+if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < strtotime($thissepend) )  && ( strtotime($potentialdate) > strtotime($nextjan) ) ) || (  (strtotime($today)<=strtotime($thisjanend)) &&  ( strtotime($potentialdate) >= strtotime($thissepend) ) ) || (( strtotime($today) > strtotime($thissepend) ) && ( strtotime($today) < strtotime($nextjan) ) &&  ( strtotime($potentialdate) > strtotime($nextsep) ) ) ){
 ?>
+       
                                         
                                             <tr id="<?php  echo $post['r_id']; ?>">
                                                 <td style="text-align: center"><a href="<?php echo base_url('index.php/ManageInquiries_controller/viewSummary/'. $post['r_id']);?>"><?php echo $post['Fname']; ?></a></td>
@@ -853,7 +994,7 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
+                                                    <form class="form-horizontal"  method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateCallSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                 
@@ -891,14 +1032,14 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     
-                                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSummary">
+                                                    <form class="form-horizontal" id="smssummaryform3<?php echo $post['r_id']; ?>" method="POST" action="<?php echo base_url();?>index.php/Summary_controller/updateSmsSummary">
 
                                                         <input type="text" name="regid" id="regid" value="<?php echo $post['r_id']; ?>" hidden="hidden" />
                                                                     <div class="form-group">
                                                                         <label class="col-md-3 col-xs-12 control-label" for="contactno">Enter Number:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post->Contactno; ?>" />
+                                                                            <input type="text" class="form-control" name="contactno" id="contactno" value="<?php echo $post['Contactno']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                 
@@ -906,13 +1047,13 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                                                         <label class="col-md-3 col-xs-12 control-label" for="sms1">Enter SMS content:</label>
                                                                         <div class="col-md-8 col-xs-12">     
                                                                             
-                                                                            <textarea class="form-control" rows="5" name="sms1" id="sms1"></textarea>
+                                                                            <textarea class="form-control" rows="5" name="sms1" id="smsmessage3<?php echo $post['r_id']; ?>"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 
                                                         <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="save" class="btn btn-primary">Send Text Message</button>
+                                                                <button type="button" id="save" class="btn btn-primary" onclick="check_sms3('<?php echo $post['r_id']; ?>','<?php echo $post['Contactno']; ?>')">Send Text Message</button>
                                                         </div>                               
                                                     
                                                     </form>
@@ -1015,7 +1156,62 @@ if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < 
                                 </div>
                         </div> <!-- End of Following Low -->
                             
-                                         
+        
+                                <script>           
+                                                                            function check_sms3(r_id,tp) {
+                                                                              //  $('#loading_image').show();
+                                                                                var recipient = tp;
+                                                                                var message = $('#smsmessage3'+r_id).val();
+
+                                                                                // alert(recipient);
+                                                                                // alert(message);
+
+                                                                                //alert(recipient);
+                                                                                //alert(message);
+                                                                                 
+                                                                                if ( recipient!=="") {
+                                                                                    if(message!==""){
+
+
+
+
+
+
+
+
+$.ajax({             
+                     type:"post",
+                     url : '<?php echo base_url();?>index.php/sms/Sendsms_summary/send/',
+                     data : {recipient:recipient,text:message},
+                     success: function(data) {
+
+              document.getElementById("smssummaryform3"+r_id).submit();
+
+                        //$('#loading_image').hide();
+                             alert("SMS sent successfully");
+                            
+
+                     },
+                     error: function(jqXHR){
+                      alert(jqXHR.responseText);
+                        //jqXHR.responseText
+                     }
+                 });
+               
+                                                                                    }else{
+                                                                                        alert("Please fill the required field");
+                                                                                    } 
+                                                                                }else{
+                                                                                    alert("Choose either a campaign or a recipient \n Note: Cannot choose both");
+                                                                                }
+
+
+
+                                           }
+                                                                       
+                                                                       </script>                            
+                                                    
+                                 
                                             
                         </div> 
                         </div>                        

@@ -315,12 +315,20 @@
 
                                             $sepintake = "$thisyear-09-01";
                                             $januaryforcompare= "$thisyear-01-31";
+                                            $januarybeg= "$thisyear-01-01";
+                                             $thisjanstart = date('Y-m-d',strtotime($januarybeg));
+
+                                              $septemberbeg= "$thisyear-09-01";
+                                             $thisseptart = date('Y-m-d',strtotime($septemberbeg));
+
+
                                             $septemberforcompare="$thisyear-09-30";
                                             $nextyear=$thisyear+1;
                                             $nextjanuaryforcompare="$nextyear-01-31";
                                             
                                             $sep = date('Y-m-d',strtotime($sepintake));
                                             $thisjanend = date('Y-m-d',strtotime($januaryforcompare));
+
                                             $thissepend=date('Y-m-d',strtotime($septemberforcompare));
                                             $nextjan=date('Y-m-d',strtotime($nextjanuaryforcompare));
 
@@ -329,7 +337,7 @@
 
                                             $potentialdate= $post['Pdate'];
 
-if(   ( strtotime($today) > strtotime($potentialdate) ) || ( (strtotime($thissepend) > strtotime($potentialdate)) && (strtotime($thisjanend) < strtotime($today))    ) || (  (strtotime($thissepend) < strtotime($today)) && (strtotime($nextjan) > strtotime($potentialdate))  ) || ( (strtotime($thisjanend) > strtotime($potentialdate)) )   ){
+if(   ( strtotime($today) >= strtotime($potentialdate) ) || ( (strtotime($thissepend) >= strtotime($potentialdate)) && (strtotime($thisjanend) <= strtotime($today))    ) || (  (strtotime($thissepend) <= strtotime($today)) && (strtotime($nextjan) >= strtotime($potentialdate))  ) || ( (strtotime($thisjanend) >= strtotime($potentialdate)) )   ){
 
 
 ?>
@@ -641,17 +649,20 @@ $.ajax({
                                             $today = date('Y-m-d ');
                                             $thisyear=date('Y');
                                             $thismonth = date('m'); 
-
+                                               $januarybeg= "$thisyear-01-01";
+                                             $thisjanstart = date('Y-m-d',strtotime($januarybeg));
                                             $sepintake = "$thisyear-09-01";
                                             $januaryforcompare= "$thisyear-01-31";
                                             $septemberforcompare="$thisyear-09-30";
                                             $nextyear=$thisyear+1;
                                             $nextjanuaryforcompare="$nextyear-01-31";
+                                            $nextseptemberforcompare="$nextyear-09-31";
                                             
                                             $sep = date('Y-m-d',strtotime($sepintake));
                                             $thisjanend = date('Y-m-d',strtotime($januaryforcompare));
                                             $thissepend=date('Y-m-d',strtotime($septemberforcompare));
                                             $nextjan=date('Y-m-d',strtotime($nextjanuaryforcompare));
+                                            $nextsep=date('Y-m-d',strtotime($nextseptemberforcompare));
 
                                             $janintake = "2010-01-12 13:57:01";
                                            // $sep = date('m',strtotime($sepintake));
@@ -659,7 +670,7 @@ $.ajax({
                                             $potentialdate= $post['Pdate'];
 
 
-if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < strtotime($thissepend) )  && ( strtotime($potentialdate) > strtotime($thissepend) ) ) ||  (( strtotime($today) > strtotime($thissepend) ) && ( strtotime($today) < strtotime($nextjan) ) &&  ( strtotime($potentialdate) > strtotime($nextjan) ) ) ){
+if(   ( ( strtotime($today) >= strtotime($thisjanend) ) && ( strtotime($today) <= strtotime($thissepend) )  && ( strtotime($potentialdate) >= strtotime($thissepend) ) ) && ( strtotime($potentialdate) <= strtotime($nextjan) )||(  (strtotime($today)<=strtotime($thisjanend)) && (strtotime($potentialdate)>=strtotime($thisjanend) )&& ( strtotime($potentialdate) <= strtotime($thissepend) ) ) ||  (( strtotime($today) >= strtotime($thissepend) ) && ( strtotime($today) <= strtotime($nextjan) ) &&  ( strtotime($potentialdate) >= strtotime($nextjan) ) && ( strtotime($potentialdate) <= strtotime($nextsep) )) ){
 ?>
                                         
                                             <tr id="<?php  echo $post['r_id']; ?>">
@@ -972,7 +983,7 @@ $.ajax({
                                             $potentialdate= $post['Pdate'];
 
 
-if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < strtotime($thissepend) )  && ( strtotime($potentialdate) > strtotime($nextjan) ) ) ||  (( strtotime($today) > strtotime($thissepend) ) && ( strtotime($today) < strtotime($nextjan) ) &&  ( strtotime($potentialdate) > strtotime($nextsep) ) ) ){
+if(   ( ( strtotime($today) > strtotime($thisjanend) ) && ( strtotime($today) < strtotime($thissepend) )  && ( strtotime($potentialdate) > strtotime($nextjan) ) ) || (  (strtotime($today)<=strtotime($thisjanend)) &&  ( strtotime($potentialdate) >= strtotime($thissepend) ) ) || (( strtotime($today) > strtotime($thissepend) ) && ( strtotime($today) < strtotime($nextjan) ) &&  ( strtotime($potentialdate) > strtotime($nextsep) ) ) ){
 ?>
          
                                         
